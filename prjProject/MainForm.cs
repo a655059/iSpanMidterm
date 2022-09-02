@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2;
 
 namespace prjProject
 {
@@ -109,6 +110,17 @@ namespace prjProject
                 CartForm form = new CartForm();
                 form.ShowDialog();
             }
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            主畫面 form = new 主畫面();
+            form.ShowDialog();
         }
     }
 }
