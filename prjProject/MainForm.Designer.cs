@@ -45,7 +45,6 @@ namespace prjProject
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.flpBigType = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProduct = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,14 +61,13 @@ namespace prjProject
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.splitContainer1.Panel1.Controls.Add(this.linkLabel1);
             this.splitContainer1.Panel1.Controls.Add(this.lblProductNumInCart);
             this.splitContainer1.Panel1.Controls.Add(this.lblWelcome);
             this.splitContainer1.Panel1.Controls.Add(this.linkLabelLogin);
@@ -85,18 +83,17 @@ namespace prjProject
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1324, 764);
-            this.splitContainer1.SplitterDistance = 199;
-            this.splitContainer1.SplitterWidth = 6;
+            this.splitContainer1.Size = new System.Drawing.Size(1914, 1018);
+            this.splitContainer1.SplitterDistance = 267;
+            this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 0;
             // 
             // lblProductNumInCart
             // 
             this.lblProductNumInCart.AutoSize = true;
-            this.lblProductNumInCart.Location = new System.Drawing.Point(1154, 90);
-            this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProductNumInCart.Location = new System.Drawing.Point(1667, 121);
             this.lblProductNumInCart.Name = "lblProductNumInCart";
-            this.lblProductNumInCart.Size = new System.Drawing.Size(115, 18);
+            this.lblProductNumInCart.Size = new System.Drawing.Size(154, 24);
             this.lblProductNumInCart.TabIndex = 20;
             this.lblProductNumInCart.Text = "ProductNumber";
             // 
@@ -104,10 +101,10 @@ namespace prjProject
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWelcome.Location = new System.Drawing.Point(1251, 22);
-            this.lblWelcome.Margin = new System.Windows.Forms.Padding(15, 0, 4, 0);
+            this.lblWelcome.Location = new System.Drawing.Point(1808, 30);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(22, 0, 7, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(79, 32);
+            this.lblWelcome.Size = new System.Drawing.Size(102, 42);
             this.lblWelcome.TabIndex = 19;
             this.lblWelcome.Text = "歡迎";
             // 
@@ -117,10 +114,10 @@ namespace prjProject
             this.linkLabelLogin.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
             this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(1176, 22);
-            this.linkLabelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelLogin.Location = new System.Drawing.Point(1698, 30);
+            this.linkLabelLogin.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(79, 32);
+            this.linkLabelLogin.Size = new System.Drawing.Size(102, 42);
             this.linkLabelLogin.TabIndex = 13;
             this.linkLabelLogin.TabStop = true;
             this.linkLabelLogin.Text = "登入";
@@ -132,10 +129,10 @@ namespace prjProject
             this.linkLabelRegister.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
             this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Location = new System.Drawing.Point(1062, 22);
-            this.linkLabelRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelRegister.Location = new System.Drawing.Point(1533, 30);
+            this.linkLabelRegister.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.linkLabelRegister.Name = "linkLabelRegister";
-            this.linkLabelRegister.Size = new System.Drawing.Size(79, 32);
+            this.linkLabelRegister.Size = new System.Drawing.Size(102, 42);
             this.linkLabelRegister.TabIndex = 12;
             this.linkLabelRegister.TabStop = true;
             this.linkLabelRegister.Text = "註冊";
@@ -143,10 +140,10 @@ namespace prjProject
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(1066, 99);
-            this.pbCart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbCart.Location = new System.Drawing.Point(1540, 132);
+            this.pbCart.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pbCart.Name = "pbCart";
-            this.pbCart.Size = new System.Drawing.Size(75, 75);
+            this.pbCart.Size = new System.Drawing.Size(108, 100);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCart.TabIndex = 18;
             this.pbCart.TabStop = false;
@@ -156,30 +153,30 @@ namespace prjProject
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(945, 108);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(1366, 144);
+            this.button1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 50);
+            this.button1.Size = new System.Drawing.Size(72, 66);
             this.button1.TabIndex = 17;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(398, 111);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Location = new System.Drawing.Point(575, 148);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(595, 45);
+            this.textBox1.Size = new System.Drawing.Size(858, 58);
             this.textBox1.TabIndex = 16;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(573, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(165, 100);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(130, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -188,10 +185,10 @@ namespace prjProject
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(231, 102);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(334, 136);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 53);
+            this.label1.Size = new System.Drawing.Size(243, 70);
             this.label1.TabIndex = 14;
             this.label1.Text = "蝦到爆";
             // 
@@ -201,10 +198,10 @@ namespace prjProject
             this.linkLabel2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabel2.ForeColor = System.Drawing.Color.Black;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(300, 26);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Location = new System.Drawing.Point(434, 34);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(143, 32);
+            this.linkLabel2.Size = new System.Drawing.Size(186, 42);
             this.linkLabel2.TabIndex = 11;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "追蹤我們";
@@ -215,10 +212,10 @@ namespace prjProject
             this.lblToSellerForm.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
             this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.Location = new System.Drawing.Point(114, 26);
-            this.lblToSellerForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblToSellerForm.Location = new System.Drawing.Point(165, 34);
+            this.lblToSellerForm.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblToSellerForm.Name = "lblToSellerForm";
-            this.lblToSellerForm.Size = new System.Drawing.Size(143, 32);
+            this.lblToSellerForm.Size = new System.Drawing.Size(186, 42);
             this.lblToSellerForm.TabIndex = 10;
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
@@ -227,7 +224,6 @@ namespace prjProject
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -237,9 +233,8 @@ namespace prjProject
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.flpProduct);
-            this.splitContainer2.Size = new System.Drawing.Size(1324, 559);
-            this.splitContainer2.SplitterDistance = 133;
-            this.splitContainer2.SplitterWidth = 3;
+            this.splitContainer2.Size = new System.Drawing.Size(1914, 743);
+            this.splitContainer2.SplitterDistance = 193;
             this.splitContainer2.TabIndex = 0;
             // 
             // flpBigType
@@ -249,9 +244,8 @@ namespace prjProject
             this.flpBigType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpBigType.Font = new System.Drawing.Font("標楷體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.flpBigType.Location = new System.Drawing.Point(0, 0);
-            this.flpBigType.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.flpBigType.Name = "flpBigType";
-            this.flpBigType.Size = new System.Drawing.Size(133, 559);
+            this.flpBigType.Size = new System.Drawing.Size(193, 743);
             this.flpBigType.TabIndex = 0;
             this.flpBigType.WrapContents = false;
             // 
@@ -260,29 +254,17 @@ namespace prjProject
             this.flpProduct.AutoScroll = true;
             this.flpProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpProduct.Location = new System.Drawing.Point(0, 0);
-            this.flpProduct.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.flpProduct.Name = "flpProduct";
-            this.flpProduct.Size = new System.Drawing.Size(1188, 559);
+            this.flpProduct.Size = new System.Drawing.Size(1717, 743);
             this.flpProduct.TabIndex = 0;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(985, 34);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(44, 18);
-            this.linkLabel1.TabIndex = 21;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "後台";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1324, 764);
+            this.ClientSize = new System.Drawing.Size(1914, 1018);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -319,7 +301,6 @@ namespace prjProject
         private System.Windows.Forms.FlowLayoutPanel flpBigType;
         private System.Windows.Forms.FlowLayoutPanel flpProduct;
         private System.Windows.Forms.Label lblProductNumInCart;
-        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

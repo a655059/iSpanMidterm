@@ -260,11 +260,5 @@
       <LastGenOutput>iSpanProject.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApp2\WindowsFormsApp2.csproj">
-      <Project>{9801FB5F-D00A-4526-AAEB-68D7B05C64AA}</Project>
-      <Name>WindowsFormsApp2</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
