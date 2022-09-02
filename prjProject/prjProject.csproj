@@ -185,6 +185,12 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="UCtrlForCoupon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrlForCoupon.Designer.cs">
+      <DependentUpon>UCtrlForCoupon.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrlShowItemsInCart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     <EmbeddedResource Include="SelectedProductForm.resx">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrlForCoupon.resx">
+      <DependentUpon>UCtrlForCoupon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrlShowItemsInCart.resx">
       <DependentUpon>UCtrlShowItemsInCart.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +258,12 @@
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WindowsFormsApp2\WindowsFormsApp2.csproj">
+      <Project>{9801FB5F-D00A-4526-AAEB-68D7B05C64AA}</Project>
+      <Name>WindowsFormsApp2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="iSpanProject.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>iSpanProject.edmx</DependentUpon>
@@ -259,12 +274,6 @@
       <DependentUpon>iSpanProject.edmx</DependentUpon>
       <LastGenOutput>iSpanProject.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApp2\WindowsFormsApp2.csproj">
-      <Project>{9801FB5F-D00A-4526-AAEB-68D7B05C64AA}</Project>
-      <Name>WindowsFormsApp2</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

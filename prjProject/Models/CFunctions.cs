@@ -133,11 +133,18 @@ namespace prjProject.Models
             }
         }
         
-        public static void AddToCart(COrderInfo orderInfo, int memberID)
+        public static void AddToCart(COrderInfo orderInfo, int memberID, int productDetailID)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 1).Select(i => i).ToList();
-            if (q.Count > 0)
+            int orderID = q[0].OrderID;
+            var q1 = dbContext.OrderDetails.Where(i => i.ProductDetailID == productDetailID && i.OrderID == orderID).Select(i => i);
+            if (q1.ToList().Count > 0)
+            {
+                q1.FirstOrDefault().Quantity += orderInfo.Quantity;
+                dbContext.SaveChanges();
+            }
+            else if (q.Count > 0)
             {
                 OrderDetail orderDetail = new OrderDetail
                 {
@@ -166,10 +173,10 @@ namespace prjProject.Models
                 };
                 dbContext.Orders.Add(order);
                 dbContext.SaveChanges();
-                int orderID = dbContext.Orders.Where(i => i.MemberID == orderInfo.MemberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
+                int newOrderID = dbContext.Orders.Where(i => i.MemberID == orderInfo.MemberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
                 OrderDetail orderDetail = new OrderDetail
                 {
-                    OrderID = orderID,
+                    OrderID = newOrderID,
                     ProductDetailID = orderInfo.ProductDetailID,
                     ShipperID = orderInfo.ShipperID,
                     Quantity = orderInfo.Quantity,
@@ -292,9 +299,53 @@ namespace prjProject.Models
                 }
             }
         }
-        public static void SummarizeTotalPrice()
+        public static int GetTotalPrice(FlowLayoutPanel flpProductInCart, float discount)
         {
+            int totalPrice = 0;
+            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    totalPrice += Convert.ToInt32(uCtrl.productSumPrice.Replace("NT$", "").Replace(",", ""));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            totalPrice += Convert.ToInt32(discount);
+            if (totalPrice <= 0)
+            {
+                totalPrice = 0;
+            }
+            return totalPrice;
+        }
 
+        public static float GetDiscountPrice(FlowLayoutPanel flpSelectedCoupon, FlowLayoutPanel flpProductInCart)
+        {
+            float oldTotalPrice = 0;
+            
+            foreach (UCtrlShowItemsInCart uCtrlShowItemsInCart in flpProductInCart.Controls)
+            {
+                if (uCtrlShowItemsInCart.IsChecked)
+                {
+                    oldTotalPrice += float.Parse(uCtrlShowItemsInCart.productSumPrice.Replace("NT$", "").Replace(",", ""));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            float tempPrice = oldTotalPrice;
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            foreach (UCtrlForCoupon uCtrl in flpSelectedCoupon.Controls)
+            {
+                string couponName = uCtrl.CouponName;
+                var q = dbContext.Coupons.Where(i => i.CouponName == couponName).Select(i => i.Discount).FirstOrDefault();
+                tempPrice *= (1 - q);
+            }
+            float discount = tempPrice - oldTotalPrice;
+            return discount;
         }
     }
 }

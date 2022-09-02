@@ -213,13 +213,17 @@ namespace prjProject
                     ShippingStatusID = 1,
                 };
                 int latestQuantity = 0;
-                CFunctions.AddToCart(orderInfo, memberID);
+                CFunctions.AddToCart(orderInfo, memberID, productDetailID);
                 CFunctions.SendMemberInfoToEachForm(memberID);
                 latestQuantity = CFunctions.UpgradeQuantity(productDetailID, -qty);
                 lblQty.Text = $"庫存 {latestQuantity} 件";
                 nudCount.Value = 0;
                 nudCount.Maximum = latestQuantity;
                 CFunctions.ResetStyleButton(flpStyle, productID);
+                var q = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
+                string productName = q.Product.ProductName;
+                string style = q.Style;
+                MessageBox.Show("已將 " + qty + " 件 " + productName + " - " + style + " 加入購物車");
             }
             else
             {
@@ -230,8 +234,16 @@ namespace prjProject
 
         private void pbCart_Click(object sender, EventArgs e)
         {
-            CartForm form = new CartForm();
-            form.ShowDialog();
+            if (memberID > 0)
+            {
+                CartForm form = new CartForm();
+                form.ShowDialog();
+            }
+            else
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+            }
         }
 
         private void btnBuyNow_Click(object sender, EventArgs e)

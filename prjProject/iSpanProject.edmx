@@ -122,7 +122,7 @@
           </Key>
           <Property Name="MemberID" Type="int" Nullable="false" />
           <Property Name="CouponID" Type="int" Nullable="false" />
-          <Property Name="ExpireN_A" Type="datetime" Nullable="false" />
+          <Property Name="ExpireN_A" Type="bit" Nullable="false" />
           <Property Name="OffCouponsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderDetails">
@@ -843,7 +843,7 @@
           </Key>
           <Property Name="MemberID" Type="Int32" Nullable="false" />
           <Property Name="CouponID" Type="Int32" Nullable="false" />
-          <Property Name="ExpireN_A" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpireN_A" Type="Boolean" Nullable="false" />
           <Property Name="OffCouponsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Coupon" Relationship="Self.FK_OfficialCoupons_Coupons" FromRole="OfficialCoupons" ToRole="Coupons" />
           <NavigationProperty Name="MemberAccount" Relationship="Self.FK_Wallet_MemberAccount" FromRole="OfficialCoupons" ToRole="MemberAccount" />

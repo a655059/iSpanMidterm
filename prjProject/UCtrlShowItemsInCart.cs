@@ -45,9 +45,9 @@ namespace prjProject
             get { return Convert.ToInt32(nudCount.Value); }
             set { nudCount.Value = value; }
         }
-        public int nudCountMaxValue
+        public int nudCountMinValue
         {
-            get { return Convert.ToInt32(nudCount.Maximum); }
+            get { return Convert.ToInt32(nudCount.Minimum); }
             set { nudCount.Maximum = value; }
         }
         public string productSumPrice

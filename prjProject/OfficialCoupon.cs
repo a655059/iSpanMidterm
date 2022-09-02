@@ -16,7 +16,7 @@ namespace prjProject
     {
         public int MemberID { get; set; }
         public int CouponID { get; set; }
-        public System.DateTime ExpireN_A { get; set; }
+        public bool ExpireN_A { get; set; }
         public int OffCouponsID { get; set; }
     
         public virtual Coupon Coupon { get; set; }

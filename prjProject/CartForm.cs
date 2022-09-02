@@ -75,23 +75,90 @@ namespace prjProject
                     }
                 }
             }
+            var q1 = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.ExpireN_A == true && i.CouponID != 7).Select(i => i.Coupon.CouponName);
+            if (q1.ToList().Count > 0)
+            {
+                foreach (var p in q1)
+                {
+                    UCtrlForCoupon uCtrlForCoupon = new UCtrlForCoupon();
+                    uCtrlForCoupon.CouponName = p;
+                    uCtrlForCoupon.UseOrNot = "使用";
+                    flpCouponCandidate.Controls.Add(uCtrlForCoupon);
+                    foreach (Control control in uCtrlForCoupon.Controls)
+                    {
+                        if (control.GetType() == typeof(Button))
+                        {
+                            Button button = (Button)control;
+                            button.Click += btnUse_Click;
+                        }
+                    }
+                }
+            }
+            
         }
 
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        private void btnUse_Click(object sender, EventArgs e)
         {
-            int totalPrice = 0;
-            CheckBox checkBox = (CheckBox)sender;
-            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            Button btnUse = (Button)sender;
+            UCtrlForCoupon uCtrl = (UCtrlForCoupon)btnUse.Parent;
+            string couponName = uCtrl.CouponName;
+            UCtrlForCoupon uCtrl1 = new UCtrlForCoupon();
+            uCtrl1.CouponName = couponName;
+            uCtrl1.UseOrNot = "這次不用";
+            flpSelectedCoupon.Controls.Add(uCtrl1);
+            flpCouponCandidate.Controls.Remove(uCtrl);
+            foreach (Control control in uCtrl1.Controls)
             {
-                if (uCtrl.IsChecked)
+                if (control.GetType() == typeof(Button))
                 {
-                    totalPrice += Convert.ToInt32(uCtrl.productSumPrice.Replace("NT$", "").Replace(",", ""));
+                    Button button = (Button)control;
+                    button.Click += btnNotUse_Click;
                 }
                 else
                 {
                     continue;
                 }
             }
+            
+            float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+            lblDiscount.Text = discount.ToString("C0");
+            int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
+            lblTotalPrice.Text = totalPrice.ToString("C0");
+        }
+
+        private void btnNotUse_Click(object sender, EventArgs e)
+        {
+            Button btnUse = (Button)sender;
+            UCtrlForCoupon uCtrl = (UCtrlForCoupon)btnUse.Parent;
+            string couponName = uCtrl.CouponName;
+            UCtrlForCoupon uCtrl1 = new UCtrlForCoupon();
+            uCtrl1.CouponName = couponName;
+            uCtrl1.UseOrNot = "使用";
+            flpCouponCandidate.Controls.Add(uCtrl1);
+            flpSelectedCoupon.Controls.Remove(uCtrl);
+            foreach (Control control in uCtrl1.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    Button button = (Button)control;
+                    button.Click += btnUse_Click;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+            lblDiscount.Text = discount.ToString("C0");
+            int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
+            lblTotalPrice.Text = totalPrice.ToString("C0");
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+            lblDiscount.Text = discount.ToString("C0");
+            int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
             lblTotalPrice.Text = totalPrice.ToString("C0");
         }
 
@@ -101,7 +168,10 @@ namespace prjProject
             UCtrlShowItemsInCart parent = (UCtrlShowItemsInCart)numericUpDown.Parent;
             int productPrice = int.Parse(parent.productPrice.Replace("NT$", "").Replace(",",""));
             parent.productSumPrice = (Convert.ToInt32(parent.productCount) * productPrice).ToString("C0");
-
+            float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+            lblDiscount.Text = discount.ToString("C0");
+            int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
+            lblTotalPrice.Text = totalPrice.ToString("C0");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -144,11 +214,53 @@ namespace prjProject
         {
             if (cbChooseAll.Checked)
             {
-                foreach (UCtrlShowItemsInCart cCtrl in flpProductInCart.Controls)
+                foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
                 {
-
+                    uCtrl.IsChecked = true;
+                }
+            }
+            else
+            {
+                foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                {
+                    uCtrl.IsChecked = false;
                 }
             }
         }
+
+        private void btnBuy_Click(object sender, EventArgs e)
+        {
+            if (flpProductInCart.Controls.Count == 0)
+            {
+                MessageBox.Show("購物車裡沒有商品了");
+                return;
+            }
+            else
+            {
+
+                MessageBox.Show("你的訂單已成立");
+            }
+        }
+        private bool IsShowCoupon = false;
+        private void btnChooseCoupon_Click(object sender, EventArgs e)
+        {
+            if (IsShowCoupon)
+            {
+                flpCouponCandidate.Visible = false;
+            }
+            else
+            {
+                flpCouponCandidate.Visible = true;
+            }
+            IsShowCoupon = !IsShowCoupon;
+        }
+
+        //private void lblDiscount_TextChanged(object sender, EventArgs e)
+        //{
+        //    float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+        //    lblDiscount.Text = discount.ToString("C0");
+        //    int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
+        //    lblTotalPrice.Text = totalPrice.ToString("C0");
+        //}
     }
 }
