@@ -125,6 +125,13 @@ namespace prjProject.Models
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
                     f.memberRegion = q.RegionList.Region;
+                } 
+                else if (form.GetType() == typeof(CartForm))
+                {
+                    CartForm f = (CartForm)form;
+                    f.memberID = memberID;
+                    f.memberName = q.Name;
+                    f.ProductNumInCart = productNumInCart.ToString();
                 }
                 else
                 {
@@ -347,5 +354,17 @@ namespace prjProject.Models
             float discount = tempPrice - oldTotalPrice;
             return discount;
         }
+        public static void CancelcbChooseAll(FlowLayoutPanel flp, CheckBox checkBox)
+        {
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked == false)
+                {
+                    checkBox.Checked = false;
+                    break;
+                }
+            }
+        }
+
     }
 }

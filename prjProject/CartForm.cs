@@ -22,7 +22,17 @@ namespace prjProject
         public bool IsBuyNow { get; set; }
         public int productDetailID { get; set; }
         public int productCount { get; set; }
-        int memberID = 0;
+        public string memberName
+        {
+            get { return lblWelcome.Text; }
+            set { lblWelcome.Text = value; }
+        }
+        public string ProductNumInCart
+        {
+            get { return lblProductNumInCart.Text; }
+            set { lblProductNumInCart.Text = value; }
+        }
+        public int memberID { get; set; }
         private void CartForm_Load(object sender, EventArgs e)
         {
             memberID = CFunctions.GetMemberInfoFromHomePage();
@@ -160,6 +170,12 @@ namespace prjProject
             lblDiscount.Text = discount.ToString("C0");
             int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
             lblTotalPrice.Text = totalPrice.ToString("C0");
+            IscbChooseAllClicked = false;
+            if (IscbItemsClicked)
+            {
+                CFunctions.CancelcbChooseAll(flpProductInCart, cbChooseAll);
+            }
+            IscbChooseAllClicked = true;
         }
 
         private void nudCount_ValueChanged(object sender, EventArgs e)
@@ -202,6 +218,7 @@ namespace prjProject
                         dbContext.SaveChanges();
                     }
                     flpProductInCart.Controls.Remove(button.Parent);
+                    CFunctions.SendMemberInfoToEachForm(memberID);
                 }
             }
             else
@@ -210,22 +227,34 @@ namespace prjProject
             }
         }
 
+        private bool IscbChooseAllClicked = true;
+        private bool IscbItemsClicked = true;
         private void cbChooseAll_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbChooseAll.Checked)
+            IscbItemsClicked = false;
+            if (IscbChooseAllClicked)
             {
-                foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                if (cbChooseAll.Checked)
                 {
-                    uCtrl.IsChecked = true;
+                    foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                    {
+                        uCtrl.IsChecked = true;
+                    }
+                }
+                else
+                {
+                    foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                    {
+                        uCtrl.IsChecked = false;
+                    }
                 }
             }
             else
             {
-                foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
-                {
-                    uCtrl.IsChecked = false;
-                }
+                return;
             }
+            IscbItemsClicked = true;
+
         }
 
         private void btnBuy_Click(object sender, EventArgs e)
@@ -255,12 +284,6 @@ namespace prjProject
             IsShowCoupon = !IsShowCoupon;
         }
 
-        //private void lblDiscount_TextChanged(object sender, EventArgs e)
-        //{
-        //    float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
-        //    lblDiscount.Text = discount.ToString("C0");
-        //    int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
-        //    lblTotalPrice.Text = totalPrice.ToString("C0");
-        //}
+        
     }
 }

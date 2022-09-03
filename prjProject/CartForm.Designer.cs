@@ -254,7 +254,7 @@ namespace prjProject
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Gray;
-            this.lblDiscount.Location = new System.Drawing.Point(826, 1163);
+            this.lblDiscount.Location = new System.Drawing.Point(955, 1108);
             this.lblDiscount.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(119, 43);
