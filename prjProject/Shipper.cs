@@ -19,6 +19,7 @@ namespace prjProject
         {
             this.OrderDetails = new HashSet<OrderDetail>();
             this.Products = new HashSet<Product>();
+            this.ProductShippers = new HashSet<ProductShipper>();
         }
     
         public int ShipperID { get; set; }
@@ -29,5 +30,7 @@ namespace prjProject
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductShipper> ProductShippers { get; set; }
     }
 }

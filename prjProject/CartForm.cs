@@ -49,7 +49,12 @@ namespace prjProject
                 productName = $"{productName} - {productStyle}";
                 decimal productPrice = q.UnitPrice;
                 int productSumPrice = Convert.ToInt32(productPrice) * productCount;
-                UCtrlShowItemsInCart uCtrl = CFunctions.AddOrderToUCtrl(productPhoto, productName, productPrice, productCount,productSumPrice);
+                var q3 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
+                string buyerAddress = q3.Address;
+                string buyerPhone = q3.Phone;
+                int productID = q.ProductID;
+                List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
+                UCtrlShowItemsInCart uCtrl = CFunctions.AddOrderToUCtrl(productPhoto, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName);
                 flpProductInCart.Controls.Add(uCtrl);
             }
             else
@@ -105,6 +110,7 @@ namespace prjProject
                 }
             }
             
+
         }
 
         private void btnUse_Click(object sender, EventArgs e)
@@ -264,26 +270,41 @@ namespace prjProject
                 MessageBox.Show("購物車裡沒有商品了");
                 return;
             }
-            else
+            bool IsAllProductChecked = true;
+            bool IsUseCoupon = false;
+            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
             {
-
-                MessageBox.Show("你的訂單已成立");
+                if (uCtrl.IsChecked)
+                {
+                    if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart)) return;
+                    var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+                    int shipperID = dbContext.Shippers.Where(i => i.ShipperName == uCtrl.shipperName.ToString()).Select(i => i.ShipperID).FirstOrDefault();
+                    q.ShipperID = shipperID;
+                    q.Quantity = uCtrl.productCount;
+                    q.ShippingDate = DateTime.Now;
+                    q.RecieveDate = DateTime.Now;
+                    q.ShippingStatusID = 1;
+                }
+                else
+                {
+                    IsAllProductChecked = false;
+                }
             }
+            
+
+            MessageBox.Show("你的訂單已成立");
+
         }
-        private bool IsShowCoupon = false;
+        
         private void btnChooseCoupon_Click(object sender, EventArgs e)
         {
-            if (IsShowCoupon)
-            {
-                flpCouponCandidate.Visible = false;
-            }
-            else
-            {
-                flpCouponCandidate.Visible = true;
-            }
-            IsShowCoupon = !IsShowCoupon;
+            flpCouponCandidate.Visible = true;
+            btnCloseCouponCandidate.Visible = true;
         }
-
-        
+        private void btnCloseCouponCandidate_Click_1(object sender, EventArgs e)
+        {
+            flpCouponCandidate.Visible = false;
+            btnCloseCouponCandidate.Visible = false;
+        }
     }
 }

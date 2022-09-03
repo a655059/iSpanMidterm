@@ -55,7 +55,27 @@ namespace prjProject
             get { return lblSum.Text; }
             set { lblSum.Text = value; }
         }
-
-        
+        public object shipperName
+        {
+            get
+            {
+                return cbbShipperName.Text;
+            }
+            set
+            {
+                cbbShipperName.DataSource = value;
+            }
+        }
+        public string buyerAddress
+        {
+            get { return txtBuyerAddress.Text; }
+            set { txtBuyerAddress.Text = value; }
+        }
+        public string buyerPhone
+        {
+            get { return txtBuyerPhone.Text; }
+            set { txtBuyerPhone.Text = value; }
+        }
+        public int oldQty { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace prjProject
             this.Likes = new HashSet<Like>();
             this.ProductDetails = new HashSet<ProductDetail>();
             this.ProductPics = new HashSet<ProductPic>();
+            this.ProductShippers = new HashSet<ProductShipper>();
         }
     
         public int ProductID { get; set; }
@@ -43,6 +44,8 @@ namespace prjProject
         public virtual SmallType SmallType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductPic> ProductPics { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductShipper> ProductShippers { get; set; }
         public virtual RegionList RegionList { get; set; }
     }
 }

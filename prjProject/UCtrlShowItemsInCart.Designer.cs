@@ -37,6 +37,13 @@ namespace prjProject
             this.lblSum = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbShipperName = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBuyerAddress = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBuyerPhone = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).BeginInit();
             this.panel1.SuspendLayout();
@@ -138,10 +145,82 @@ namespace prjProject
             this.panel1.Size = new System.Drawing.Size(319, 150);
             this.panel1.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(94, 181);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 32);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "寄送資訊";
+            // 
+            // cbbShipperName
+            // 
+            this.cbbShipperName.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbbShipperName.FormattingEnabled = true;
+            this.cbbShipperName.Location = new System.Drawing.Point(94, 301);
+            this.cbbShipperName.Name = "cbbShipperName";
+            this.cbbShipperName.Size = new System.Drawing.Size(266, 40);
+            this.cbbShipperName.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Location = new System.Drawing.Point(94, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 32);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "物流名稱";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(453, 232);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(143, 32);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "收貨地址";
+            // 
+            // txtBuyerAddress
+            // 
+            this.txtBuyerAddress.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtBuyerAddress.Location = new System.Drawing.Point(662, 225);
+            this.txtBuyerAddress.Name = "txtBuyerAddress";
+            this.txtBuyerAddress.Size = new System.Drawing.Size(652, 46);
+            this.txtBuyerAddress.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(453, 305);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 32);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "連絡電話";
+            // 
+            // txtBuyerPhone
+            // 
+            this.txtBuyerPhone.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtBuyerPhone.Location = new System.Drawing.Point(662, 298);
+            this.txtBuyerPhone.Name = "txtBuyerPhone";
+            this.txtBuyerPhone.Size = new System.Drawing.Size(652, 46);
+            this.txtBuyerPhone.TabIndex = 14;
+            // 
             // UCtrlShowItemsInCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtBuyerPhone);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtBuyerAddress);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbbShipperName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblSum);
@@ -151,7 +230,7 @@ namespace prjProject
             this.Controls.Add(this.checkBox);
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "UCtrlShowItemsInCart";
-            this.Size = new System.Drawing.Size(1764, 180);
+            this.Size = new System.Drawing.Size(1764, 368);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -171,5 +250,12 @@ namespace prjProject
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbShipperName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtBuyerAddress;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtBuyerPhone;
     }
 }

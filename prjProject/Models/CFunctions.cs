@@ -220,6 +220,9 @@ namespace prjProject.Models
             List<UCtrlShowItemsInCart> list = new List<UCtrlShowItemsInCart>();
             int orderID = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
             var q = dbContext.OrderDetails.Where(i => i.OrderID == orderID).Select(i => i);
+            var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
+            string buyerAddress = q1.Address;
+            string buyerPhone = q1.Phone;
             foreach (var p in q)
             {
                 byte[] bytes = p.ProductDetail.Pic;
@@ -232,12 +235,16 @@ namespace prjProject.Models
                 int productCount = p.Quantity;
                 int productSumPrice = Convert.ToInt32(productPrice) * productCount;
                 int orderDetailID = p.OrderDetailID;
-                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(image, productName, productPrice, productCount, productSumPrice, orderDetailID);
+                int productID = p.ProductDetail.Product.ProductID;
+                List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
+
+
+                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(image, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName, orderDetailID);
                 list.Add(uCtrl);
             }
             return list;
         }
-        public static UCtrlShowItemsInCart AddOrderToUCtrl(Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, int orderDetailID = 0)
+        public static UCtrlShowItemsInCart AddOrderToUCtrl(Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, string buyerAddress, string buyerPhone, object shipperName, int orderDetailID = 0)
         {
             UCtrlShowItemsInCart uCtrl = new UCtrlShowItemsInCart
             {
@@ -246,7 +253,10 @@ namespace prjProject.Models
                 productName = productName,
                 productPrice = $"{productPrice.ToString("C0")}",
                 productCount = productCount,
-                productSumPrice = $"{productSumPrice.ToString("C0")}"
+                productSumPrice = $"{productSumPrice.ToString("C0")}",
+                buyerAddress = buyerAddress,
+                buyerPhone = buyerPhone,
+                shipperName = shipperName,
             };
             return uCtrl;
         }
@@ -364,6 +374,47 @@ namespace prjProject.Models
                     break;
                 }
             }
+        }
+
+        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+                    string productName = q.ProductDetail.Product.ProductName;
+                    string style = q.ProductDetail.Style;
+                    int productQty = q.ProductDetail.Quantity;
+                    int orderDetailQty = q.Quantity;
+                    if (uCtrl.productCount > productQty + orderDetailQty)
+                    {
+                        MessageBox.Show($"{productName} - {style} 的庫存僅剩 {productQty + orderDetailQty} 件，請重新選擇商品數量");
+                        return false;
+                    }
+                    else if (uCtrl.shipperName.ToString() == "")
+                    {
+                        MessageBox.Show("請選擇一個物流公司");
+                        return false;
+                    }
+                    else if (uCtrl.buyerAddress == "")
+                    {
+                        MessageBox.Show("請填寫收貨地址");
+                        return false;
+                    }
+                    else if (uCtrl.buyerPhone == "")
+                    {
+                        MessageBox.Show("請填寫連絡電話");
+                        return false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            return true;
         }
 
     }
