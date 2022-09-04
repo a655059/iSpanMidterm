@@ -376,18 +376,34 @@ namespace prjProject.Models
             }
         }
 
-        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp)
+        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp, bool isBuyNow, int productDetailID)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
             {
                 if (uCtrl.IsChecked)
                 {
-                    var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
-                    string productName = q.ProductDetail.Product.ProductName;
-                    string style = q.ProductDetail.Style;
-                    int productQty = q.ProductDetail.Quantity;
-                    int orderDetailQty = q.Quantity;
+                    string productName = "";
+                    string style = "";
+                    int productQty = 0;
+                    int orderDetailQty = 0;
+                    if (isBuyNow)
+                    {
+                        var q = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
+                        productName = q.Product.ProductName;
+                        style = q.Style;
+                        productQty = q.Quantity;
+                        orderDetailQty = 0;
+                    }
+                    else
+                    {
+                        var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+                        productName = q.ProductDetail.Product.ProductName;
+                        style = q.ProductDetail.Style;
+                        productQty = q.ProductDetail.Quantity;
+                        orderDetailQty = q.Quantity;
+                    }
+                    
                     if (uCtrl.productCount > productQty + orderDetailQty)
                     {
                         MessageBox.Show($"{productName} - {style} 的庫存僅剩 {productQty + orderDetailQty} 件，請重新選擇商品數量");
@@ -416,6 +432,41 @@ namespace prjProject.Models
             }
             return true;
         }
-
+        public static bool IsAllProductSelected(FlowLayoutPanel flp, out int selectedCount)
+        {
+            bool isAllProductSelected = true;
+            selectedCount = 0;
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    selectedCount += 1;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            if (selectedCount == flp.Controls.Count)
+            {
+                isAllProductSelected = true;
+            }
+            else
+            {
+                isAllProductSelected = false;
+            }
+            return isAllProductSelected;
+        }
+        
+        public static int GetCouponID(FlowLayoutPanel flp)
+        {
+            int couponID = 0;
+            foreach (UCtrlForCoupon uCtrl in flp.Controls)
+            {
+                iSpanProjectEntities dbContext = new iSpanProjectEntities();
+                couponID = dbContext.Coupons.Where(i => i.CouponName == uCtrl.CouponName).Select(i => i.CouponID).FirstOrDefault();
+            }
+            return couponID;
+        }
     }
 }

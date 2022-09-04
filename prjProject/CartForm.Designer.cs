@@ -255,7 +255,7 @@ namespace prjProject
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Gray;
-            this.lblDiscount.Location = new System.Drawing.Point(1163, 1162);
+            this.lblDiscount.Location = new System.Drawing.Point(867, 1223);
             this.lblDiscount.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(119, 43);
@@ -393,7 +393,7 @@ namespace prjProject
             // 
             this.flpCouponCandidate.AutoScroll = true;
             this.flpCouponCandidate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpCouponCandidate.Location = new System.Drawing.Point(1155, 1082);
+            this.flpCouponCandidate.Location = new System.Drawing.Point(1149, 1082);
             this.flpCouponCandidate.Name = "flpCouponCandidate";
             this.flpCouponCandidate.Size = new System.Drawing.Size(420, 252);
             this.flpCouponCandidate.TabIndex = 11;

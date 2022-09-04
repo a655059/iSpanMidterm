@@ -118,23 +118,41 @@ namespace prjProject
             Button btnUse = (Button)sender;
             UCtrlForCoupon uCtrl = (UCtrlForCoupon)btnUse.Parent;
             string couponName = uCtrl.CouponName;
-            UCtrlForCoupon uCtrl1 = new UCtrlForCoupon();
-            uCtrl1.CouponName = couponName;
-            uCtrl1.UseOrNot = "這次不用";
-            flpSelectedCoupon.Controls.Add(uCtrl1);
-            flpCouponCandidate.Controls.Remove(uCtrl);
-            foreach (Control control in uCtrl1.Controls)
+            if (flpSelectedCoupon.Controls.Count == 0)
             {
-                if (control.GetType() == typeof(Button))
+                UCtrlForCoupon uCtrl1 = new UCtrlForCoupon();
+                uCtrl1.CouponName = couponName;
+                uCtrl1.UseOrNot = "這次不用";
+                foreach (Control control in uCtrl1.Controls)
                 {
-                    Button button = (Button)control;
-                    button.Click += btnNotUse_Click;
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button button = (Button)control;
+                        button.Click += btnNotUse_Click;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else
+                flpSelectedCoupon.Controls.Add(uCtrl1);
+                flpCouponCandidate.Controls.Remove(uCtrl);
+            }
+            else
+            {
+                string tempCouponName = couponName;
+                foreach (UCtrlForCoupon uCtrlForCoupon in flpSelectedCoupon.Controls)
                 {
-                    continue;
+                    uCtrl.CouponName = uCtrlForCoupon.CouponName;
+                }
+                foreach (UCtrlForCoupon uCtrlForCoupon in flpSelectedCoupon.Controls)
+                {
+                    uCtrlForCoupon.CouponName = tempCouponName;
                 }
             }
+            
+            
+            
             
             float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
             lblDiscount.Text = discount.ToString("C0");
@@ -270,26 +288,98 @@ namespace prjProject
                 MessageBox.Show("購物車裡沒有商品了");
                 return;
             }
-            bool IsAllProductChecked = true;
-            bool IsUseCoupon = false;
-            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart, IsBuyNow, productDetailID))
             {
-                if (uCtrl.IsChecked)
+                return;
+            }
+            int couponID = 0;
+            if (flpSelectedCoupon.Controls.Count == 0)
+            {
+                couponID = 7;
+            }
+            else
+            {
+                couponID = CFunctions.GetCouponID(flpSelectedCoupon);
+            }
+            if (IsBuyNow)
+            {
+                if (CFunctions.IsAllProductSelected(flpProductInCart, out int selectedCounnt))
                 {
-                    if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart)) return;
-                    var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
-                    int shipperID = dbContext.Shippers.Where(i => i.ShipperName == uCtrl.shipperName.ToString()).Select(i => i.ShipperID).FirstOrDefault();
-                    q.ShipperID = shipperID;
-                    q.Quantity = uCtrl.productCount;
-                    q.ShippingDate = DateTime.Now;
-                    q.RecieveDate = DateTime.Now;
-                    q.ShippingStatusID = 1;
+                    foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                    {
+                        string address = uCtrl.buyerAddress;
+                        Order order = new Order
+                        {
+                            MemberID = memberID,
+                            OrderDatetime = DateTime.Now,
+                            RecieveAdr = address,
+                            FinishDate = DateTime.Now,
+                            CouponID = couponID,
+                            StatusID = 2
+                        };
+                        dbContext.Orders.Add(order);
+                        dbContext.SaveChanges();
+                        var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 2 && i.CouponID == couponID).OrderByDescending(i => i.OrderID).Select(i=>i).FirstOrDefault();
+                        int orderID = q.OrderID;
+                        string shipperName = "";
+                        int quantity = 0;
+                        foreach (UCtrlShowItemsInCart uCtrlShowItemsInCart in flpProductInCart.Controls)
+                        {
+                            shipperName = uCtrlShowItemsInCart.shipperName.ToString();
+                            quantity = uCtrlShowItemsInCart.productCount;
+                        }
+                        int shipperID = dbContext.Shippers.Where(i => i.ShipperName == shipperName).Select(i => i.ShipperID).FirstOrDefault();
+                        int regionID = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i.Product.RegionID).FirstOrDefault();
+                        string outAdr = dbContext.RegionLists.Where(i => i.RegionID == regionID).Select(i => i.Region).FirstOrDefault();
+                        OrderDetail orderDetail = new OrderDetail
+                        {
+                            OrderID = orderID,
+                            ProductDetailID = productDetailID,
+                            ShipperID = shipperID,
+                            Quantity = quantity,
+                            ShippingDate = DateTime.Now,
+                            RecieveDate = DateTime.Now,
+                            OutAdr = outAdr,
+                            ShippingStatusID = 1, 
+                        };
+                        dbContext.OrderDetails.Add(orderDetail);
+                        dbContext.SaveChanges();
+                        var q1 = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
+                        q1.Quantity -= quantity;
+                        dbContext.SaveChanges();
+                    }
                 }
                 else
                 {
-                    IsAllProductChecked = false;
+                    MessageBox.Show("至少選購一件商品");
+                    return;
                 }
             }
+            //if (CFunctions.IsAllProductSelected(flpProductInCart))
+            //{
+
+            //}
+
+            bool IsAllProductChecked = true;
+            bool IsUseCoupon = false;
+            //foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            //{
+            //    if (uCtrl.IsChecked)
+            //    {
+            //        if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart)) return;
+            //        var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+            //        int shipperID = dbContext.Shippers.Where(i => i.ShipperName == uCtrl.shipperName.ToString()).Select(i => i.ShipperID).FirstOrDefault();
+            //        q.ShipperID = shipperID;
+            //        q.Quantity = uCtrl.productCount;
+            //        q.ShippingDate = DateTime.Now;
+            //        q.RecieveDate = DateTime.Now;
+            //        q.ShippingStatusID = 1;
+            //    }
+            //    else
+            //    {
+            //        IsAllProductChecked = false;
+            //    }
+            //}
             
 
             MessageBox.Show("你的訂單已成立");
