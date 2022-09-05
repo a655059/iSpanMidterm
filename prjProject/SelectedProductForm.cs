@@ -124,18 +124,10 @@ namespace prjProject
             int sellerID = q3.FirstOrDefault().MemberID;
             int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerID).Select(i => i).ToList().Count;
             lblSellerProductNum.Text = sellerProductNum.ToString();
-
-            var q4 = dbContext.Likes.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i).ToList();
-            if (q4.Count == 1)
-            {
-                pbHeart.Image = Image.FromFile("../../Images/redHeart.png");
-                IsHeartClick = true;
-            }
-            else
-            {
-                pbHeart.Image = Image.FromFile("../../Images/blackHeart4.png");
-                IsHeartClick = false;
-            }
+            CFunctions.SetHeart(this);
+            int soldCount = dbContext.OrderDetails.Where(i => i.ProductDetail.ProductID == productID && i.Order.StatusID == 2).Select(i => i.Quantity).Sum();
+            lblSoldCount.Text = soldCount.ToString();
+            linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
         }
 
         private void Style_MouseLeave(object sender, EventArgs e)
@@ -317,6 +309,14 @@ namespace prjProject
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
             }
+        }
+
+        private void linkLabelComment_Click(object sender, EventArgs e)
+        {
+            CommentForm form = new CommentForm();
+            form.productID = productID;
+            form.productName = lblProductName.Text;
+            form.ShowDialog();
         }
     }
 }
