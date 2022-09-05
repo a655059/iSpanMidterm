@@ -14,10 +14,13 @@ namespace prjProject
     {
         public FlowBarProductType()
         {
-            InitializeComponent();            
+            InitializeComponent();      
+            button1.MouseEnter += (sender, e) => { mEnter(); };
+            button1.MouseLeave += (sender, e) => { mLeave(); };
         }
         string _name = "";
         int _typeNum;
+        public bool _isclicked = false;
         public int TypeNum { get { return _typeNum; } set { _typeNum = value; } }
         public string TypeName { get { return _name; } set { _name = value; } }
         public event EventHandler<ButtonClickedEventArgs> ButtonClicked;
@@ -36,19 +39,24 @@ namespace prjProject
             button1.Text = _name;
         }
 
-        private void button1_MouseHover(object sender, EventArgs e)
+        private void FlowBarProductType_MouseEnter(object sender, EventArgs e)
         {
-            
+            mEnter();
         }
 
-        private void button1_MouseEnter(object sender, EventArgs e)
+        private void FlowBarProductType_MouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.Orange;
+            mLeave();
         }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
+        private void mEnter()
         {
-            button1.BackColor = Color.Black;
+            this.BackColor = Color.Orange;
+        }
+        private void mLeave()
+        {
+            if(!_isclicked) 
+                this.BackColor = Color.Black;
         }
     }
     public class ButtonClickedEventArgs : EventArgs

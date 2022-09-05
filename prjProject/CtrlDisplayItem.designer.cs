@@ -59,7 +59,7 @@ namespace pgjMidtermProject
             this.tbName.Multiline = true;
             this.tbName.Name = "tbName";
             this.tbName.ReadOnly = true;
-            this.tbName.Size = new System.Drawing.Size(139, 44);
+            this.tbName.Size = new System.Drawing.Size(139, 56);
             this.tbName.TabIndex = 9;
             this.tbName.Text = "123";
             // 
@@ -91,12 +91,12 @@ namespace pgjMidtermProject
             this.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbDescription.Enabled = false;
             this.tbDescription.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbDescription.Location = new System.Drawing.Point(10, 164);
+            this.tbDescription.Location = new System.Drawing.Point(10, 178);
             this.tbDescription.MinimumSize = new System.Drawing.Size(139, 44);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.ReadOnly = true;
-            this.tbDescription.Size = new System.Drawing.Size(139, 60);
+            this.tbDescription.Size = new System.Drawing.Size(139, 46);
             this.tbDescription.TabIndex = 10;
             this.tbDescription.Text = "123";
             // 

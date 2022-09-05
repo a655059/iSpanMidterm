@@ -49,8 +49,6 @@ namespace prjProject
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // FlowBarProductType
             // 
@@ -61,6 +59,8 @@ namespace prjProject
             this.Name = "FlowBarProductType";
             this.Size = new System.Drawing.Size(145, 32);
             this.Load += new System.EventHandler(this.FlowBarProductType_Load);
+            this.MouseEnter += new System.EventHandler(this.FlowBarProductType_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.FlowBarProductType_MouseLeave);
             this.ResumeLayout(false);
 
         }

@@ -30,7 +30,7 @@ namespace prjProject
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
             this.panelSearch = new System.Windows.Forms.Panel();
@@ -51,15 +51,18 @@ namespace prjProject
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.spContainerBotton = new System.Windows.Forms.SplitContainer();
             this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.spContainerItem = new System.Windows.Forms.SplitContainer();
             this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
             this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.spContainerGuessYouLike = new System.Windows.Forms.SplitContainer();
+            this.lblGuessYouLike = new System.Windows.Forms.Label();
+            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
+            this.spContainerMainPage.Panel1.SuspendLayout();
+            this.spContainerMainPage.Panel2.SuspendLayout();
+            this.spContainerMainPage.SuspendLayout();
             this.panelTopBar.SuspendLayout();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
@@ -70,39 +73,43 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).BeginInit();
+            this.spContainerBotton.Panel1.SuspendLayout();
+            this.spContainerBotton.Panel2.SuspendLayout();
+            this.spContainerBotton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).BeginInit();
+            this.spContainerItem.Panel1.SuspendLayout();
+            this.spContainerItem.Panel2.SuspendLayout();
+            this.spContainerItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).BeginInit();
+            this.spContainerGuessYouLike.Panel1.SuspendLayout();
+            this.spContainerGuessYouLike.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // spContainerMainPage
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.spContainerMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerMainPage.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerMainPage.Location = new System.Drawing.Point(0, 0);
+            this.spContainerMainPage.Margin = new System.Windows.Forms.Padding(0);
+            this.spContainerMainPage.Name = "spContainerMainPage";
+            this.spContainerMainPage.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // spContainerMainPage.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.splitContainer1.Panel1.Controls.Add(this.panelTopBar);
-            this.splitContainer1.Panel1.Controls.Add(this.panel3);
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.Controls.Add(this.linkLabel2);
-            this.splitContainer1.Panel1.Controls.Add(this.lblToSellerForm);
+            this.spContainerMainPage.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.spContainerMainPage.Panel1.Controls.Add(this.panelTopBar);
+            this.spContainerMainPage.Panel1.Controls.Add(this.panel3);
+            this.spContainerMainPage.Panel1.Controls.Add(this.panel1);
+            this.spContainerMainPage.Panel1.Controls.Add(this.linkLabel2);
+            this.spContainerMainPage.Panel1.Controls.Add(this.lblToSellerForm);
             // 
-            // splitContainer1.Panel2
+            // spContainerMainPage.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1331, 720);
-            this.splitContainer1.SplitterDistance = 128;
-            this.splitContainer1.TabIndex = 1;
+            this.spContainerMainPage.Panel2.Controls.Add(this.spContainerBotton);
+            this.spContainerMainPage.Size = new System.Drawing.Size(1331, 720);
+            this.spContainerMainPage.SplitterDistance = 128;
+            this.spContainerMainPage.TabIndex = 1;
             // 
             // panelTopBar
             // 
@@ -180,7 +187,7 @@ namespace prjProject
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(551, 22);
+            this.pbCart.Location = new System.Drawing.Point(537, 62);
             this.pbCart.Name = "pbCart";
             this.pbCart.Size = new System.Drawing.Size(38, 37);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -191,12 +198,12 @@ namespace prjProject
             // lblProductNumInCart
             // 
             this.lblProductNumInCart.AutoSize = true;
-            this.lblProductNumInCart.Location = new System.Drawing.Point(521, 7);
+            this.lblProductNumInCart.Location = new System.Drawing.Point(574, 50);
             this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductNumInCart.Name = "lblProductNumInCart";
-            this.lblProductNumInCart.Size = new System.Drawing.Size(79, 12);
+            this.lblProductNumInCart.Size = new System.Drawing.Size(11, 12);
             this.lblProductNumInCart.TabIndex = 20;
-            this.lblProductNumInCart.Text = "ProductNumber";
+            this.lblProductNumInCart.Text = "0";
             // 
             // linkLabelLogin
             // 
@@ -336,24 +343,26 @@ namespace prjProject
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
             // 
-            // splitContainer2
+            // spContainerBotton
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
+            this.spContainerBotton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerBotton.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerBotton.IsSplitterFixed = true;
+            this.spContainerBotton.Location = new System.Drawing.Point(0, 0);
+            this.spContainerBotton.Name = "spContainerBotton";
             // 
-            // splitContainer2.Panel1
+            // spContainerBotton.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.flowpanelType);
+            this.spContainerBotton.Panel1.Controls.Add(this.flowpanelType);
             // 
-            // splitContainer2.Panel2
+            // spContainerBotton.Panel2
             // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.MistyRose;
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1331, 588);
-            this.splitContainer2.SplitterDistance = 168;
-            this.splitContainer2.TabIndex = 0;
+            this.spContainerBotton.Panel2.BackColor = System.Drawing.Color.MistyRose;
+            this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
+            this.spContainerBotton.Panel2.Controls.Add(this.flowpanelTypeItem);
+            this.spContainerBotton.Size = new System.Drawing.Size(1331, 588);
+            this.spContainerBotton.SplitterDistance = 168;
+            this.spContainerBotton.TabIndex = 0;
             // 
             // flowpanelType
             // 
@@ -365,19 +374,27 @@ namespace prjProject
             this.flowpanelType.Size = new System.Drawing.Size(168, 588);
             this.flowpanelType.TabIndex = 0;
             // 
-            // splitContainer3
+            // spContainerItem
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.spContainerItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spContainerItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerItem.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerItem.IsSplitterFixed = true;
+            this.spContainerItem.Location = new System.Drawing.Point(0, 0);
+            this.spContainerItem.Name = "spContainerItem";
+            this.spContainerItem.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer3.Panel2
+            // spContainerItem.Panel1
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.flowpanelItem);
-            this.splitContainer3.Size = new System.Drawing.Size(1159, 588);
-            this.splitContainer3.SplitterDistance = 186;
-            this.splitContainer3.TabIndex = 0;
+            this.spContainerItem.Panel1.Controls.Add(this.spContainerGuessYouLike);
+            // 
+            // spContainerItem.Panel2
+            // 
+            this.spContainerItem.Panel2.Controls.Add(this.flowpanelItem);
+            this.spContainerItem.Size = new System.Drawing.Size(1159, 588);
+            this.spContainerItem.SplitterDistance = 186;
+            this.spContainerItem.TabIndex = 0;
+            this.spContainerItem.Visible = false;
             // 
             // flowpanelItem
             // 
@@ -385,7 +402,7 @@ namespace prjProject
             this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
             this.flowpanelItem.Name = "flowpanelItem";
-            this.flowpanelItem.Size = new System.Drawing.Size(1159, 398);
+            this.flowpanelItem.Size = new System.Drawing.Size(1157, 396);
             this.flowpanelItem.TabIndex = 0;
             // 
             // linkLabelMemberCenter
@@ -403,22 +420,58 @@ namespace prjProject
             this.linkLabelMemberCenter.Text = "會員中心";
             this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
             // 
+            // spContainerGuessYouLike
+            // 
+            this.spContainerGuessYouLike.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerGuessYouLike.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerGuessYouLike.IsSplitterFixed = true;
+            this.spContainerGuessYouLike.Location = new System.Drawing.Point(0, 0);
+            this.spContainerGuessYouLike.Name = "spContainerGuessYouLike";
+            this.spContainerGuessYouLike.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // spContainerGuessYouLike.Panel1
+            // 
+            this.spContainerGuessYouLike.Panel1.Controls.Add(this.lblGuessYouLike);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1157, 184);
+            this.spContainerGuessYouLike.SplitterDistance = 39;
+            this.spContainerGuessYouLike.TabIndex = 0;
+            // 
+            // lblGuessYouLike
+            // 
+            this.lblGuessYouLike.AutoSize = true;
+            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblGuessYouLike.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblGuessYouLike.Location = new System.Drawing.Point(0, 0);
+            this.lblGuessYouLike.Name = "lblGuessYouLike";
+            this.lblGuessYouLike.Size = new System.Drawing.Size(154, 37);
+            this.lblGuessYouLike.TabIndex = 0;
+            this.lblGuessYouLike.Text = "猜你喜歡...";
+            // 
+            // flowpanelTypeItem
+            // 
+            this.flowpanelTypeItem.AutoScroll = true;
+            this.flowpanelTypeItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelTypeItem.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelTypeItem.Name = "flowpanelTypeItem";
+            this.flowpanelTypeItem.Size = new System.Drawing.Size(1159, 588);
+            this.flowpanelTypeItem.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1331, 720);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.spContainerMainPage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.spContainerMainPage.Panel1.ResumeLayout(false);
+            this.spContainerMainPage.Panel1.PerformLayout();
+            this.spContainerMainPage.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).EndInit();
+            this.spContainerMainPage.ResumeLayout(false);
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelSearch.ResumeLayout(false);
@@ -432,20 +485,25 @@ namespace prjProject
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.spContainerBotton.Panel1.ResumeLayout(false);
+            this.spContainerBotton.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).EndInit();
+            this.spContainerBotton.ResumeLayout(false);
+            this.spContainerItem.Panel1.ResumeLayout(false);
+            this.spContainerItem.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).EndInit();
+            this.spContainerItem.ResumeLayout(false);
+            this.spContainerGuessYouLike.Panel1.ResumeLayout(false);
+            this.spContainerGuessYouLike.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).EndInit();
+            this.spContainerGuessYouLike.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer spContainerMainPage;
         private System.Windows.Forms.Panel panelTopBar;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Button btnSearch;
@@ -466,11 +524,14 @@ namespace prjProject
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel lblToSellerForm;
         private System.Windows.Forms.LinkLabel linkLabelHouTai;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer spContainerBotton;
         private System.Windows.Forms.FlowLayoutPanel flowpanelType;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer spContainerItem;
         private System.Windows.Forms.FlowLayoutPanel flowpanelItem;
         private System.Windows.Forms.LinkLabel linkLabelMemberCenter;
+        private System.Windows.Forms.SplitContainer spContainerGuessYouLike;
+        private System.Windows.Forms.Label lblGuessYouLike;
+        private System.Windows.Forms.FlowLayoutPanel flowpanelTypeItem;
     }
 }
 
