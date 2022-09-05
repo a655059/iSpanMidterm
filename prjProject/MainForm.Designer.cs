@@ -61,6 +61,7 @@ namespace prjProject
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
             this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
@@ -88,6 +89,7 @@ namespace prjProject
             this.spContainerGuessYouLike.Panel2.SuspendLayout();
             this.spContainerGuessYouLike.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // spContainerMainPage
@@ -111,7 +113,7 @@ namespace prjProject
             // spContainerMainPage.Panel2
             // 
             this.spContainerMainPage.Panel2.Controls.Add(this.spContainerBotton);
-            this.spContainerMainPage.Size = new System.Drawing.Size(1331, 720);
+            this.spContainerMainPage.Size = new System.Drawing.Size(1680, 900);
             this.spContainerMainPage.SplitterDistance = 128;
             this.spContainerMainPage.TabIndex = 1;
             // 
@@ -127,7 +129,7 @@ namespace prjProject
             this.panelTopBar.Controls.Add(this.lblProductNumInCart);
             this.panelTopBar.Controls.Add(this.linkLabelLogin);
             this.panelTopBar.Controls.Add(this.lblName);
-            this.panelTopBar.Location = new System.Drawing.Point(726, 24);
+            this.panelTopBar.Location = new System.Drawing.Point(1075, 24);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(605, 104);
             this.panelTopBar.TabIndex = 28;
@@ -180,14 +182,19 @@ namespace prjProject
             this.btnSearch.Size = new System.Drawing.Size(33, 33);
             this.btnSearch.TabIndex = 17;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbSearch.Location = new System.Drawing.Point(-24, -2);
+            this.tbSearch.ForeColor = System.Drawing.Color.LightGray;
+            this.tbSearch.Location = new System.Drawing.Point(0, -1);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(398, 35);
             this.tbSearch.TabIndex = 16;
+            this.tbSearch.Text = "從全部商品中搜尋...";
+            this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
+            this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
             // 
             // linkLabelRegister
             // 
@@ -259,7 +266,7 @@ namespace prjProject
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1331, 24);
+            this.panel3.Size = new System.Drawing.Size(1680, 24);
             this.panel3.TabIndex = 27;
             // 
             // panel4
@@ -268,7 +275,7 @@ namespace prjProject
             this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(1220, 2);
+            this.panel4.Location = new System.Drawing.Point(1569, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(111, 21);
             this.panel4.TabIndex = 28;
@@ -378,8 +385,8 @@ namespace prjProject
             // 
             this.spContainerBotton.Panel2.BackColor = System.Drawing.Color.MistyRose;
             this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
-            this.spContainerBotton.Panel2.Controls.Add(this.flowpanelTypeItem);
-            this.spContainerBotton.Size = new System.Drawing.Size(1331, 588);
+            this.spContainerBotton.Panel2.Controls.Add(this.panel5);
+            this.spContainerBotton.Size = new System.Drawing.Size(1680, 768);
             this.spContainerBotton.SplitterDistance = 168;
             this.spContainerBotton.TabIndex = 0;
             // 
@@ -390,7 +397,7 @@ namespace prjProject
             this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelType.Location = new System.Drawing.Point(0, 0);
             this.flowpanelType.Name = "flowpanelType";
-            this.flowpanelType.Size = new System.Drawing.Size(168, 588);
+            this.flowpanelType.Size = new System.Drawing.Size(168, 768);
             this.flowpanelType.TabIndex = 0;
             // 
             // spContainerItem
@@ -410,7 +417,7 @@ namespace prjProject
             // spContainerItem.Panel2
             // 
             this.spContainerItem.Panel2.Controls.Add(this.flowpanelItem);
-            this.spContainerItem.Size = new System.Drawing.Size(1159, 588);
+            this.spContainerItem.Size = new System.Drawing.Size(1508, 768);
             this.spContainerItem.SplitterDistance = 303;
             this.spContainerItem.TabIndex = 0;
             this.spContainerItem.Visible = false;
@@ -431,7 +438,7 @@ namespace prjProject
             // spContainerGuessYouLike.Panel2
             // 
             this.spContainerGuessYouLike.Panel2.Controls.Add(this.panel2);
-            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1157, 301);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1506, 301);
             this.spContainerGuessYouLike.SplitterDistance = 39;
             this.spContainerGuessYouLike.TabIndex = 0;
             // 
@@ -450,7 +457,7 @@ namespace prjProject
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.Controls.Add(this.flowpanelAD);
-            this.panel2.Location = new System.Drawing.Point(176, 3);
+            this.panel2.Location = new System.Drawing.Point(351, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(830, 252);
             this.panel2.TabIndex = 0;
@@ -469,7 +476,7 @@ namespace prjProject
             this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
             this.flowpanelItem.Name = "flowpanelItem";
-            this.flowpanelItem.Size = new System.Drawing.Size(1157, 279);
+            this.flowpanelItem.Size = new System.Drawing.Size(1506, 459);
             this.flowpanelItem.TabIndex = 0;
             // 
             // flowpanelTypeItem
@@ -478,14 +485,22 @@ namespace prjProject
             this.flowpanelTypeItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelTypeItem.Location = new System.Drawing.Point(0, 0);
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
-            this.flowpanelTypeItem.Size = new System.Drawing.Size(1159, 588);
+            this.flowpanelTypeItem.Size = new System.Drawing.Size(1413, 766);
             this.flowpanelTypeItem.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.flowpanelTypeItem);
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1413, 766);
+            this.panel5.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1331, 720);
+            this.ClientSize = new System.Drawing.Size(1680, 900);
             this.Controls.Add(this.spContainerMainPage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
@@ -524,6 +539,7 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).EndInit();
             this.spContainerGuessYouLike.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -561,6 +577,7 @@ namespace prjProject
         private System.Windows.Forms.FlowLayoutPanel flowpanelTypeItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpanelAD;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 
