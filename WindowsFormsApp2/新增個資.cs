@@ -17,6 +17,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
         iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1(); //資料模組帶入
+
         private void 新增_Click(object sender, EventArgs e)
         {
             var 地區 = DBiSpan.RegionLists.Where(n=>n.RegionName==comRegionID.Text).
@@ -85,8 +86,6 @@ namespace WindowsFormsApp2
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
                 this.pictureBox1.Image = Image.FromFile(this.openFileDialog1.FileName);
         }
-
-        List<int> list = new List<int>();
 
         private void 修改_Click(object sender, EventArgs e)
         {
@@ -161,10 +160,17 @@ namespace WindowsFormsApp2
             txtackUPEmail.Clear();
             txtAddress.Clear();
             txtNickName.Clear();
-             txtName.Clear();
+            txtName.Clear();
             dateTimePicker1.Value = DateTime.Now;
             txtBio.Clear();
             pictureBox1.Image = null;
+        }
+
+        private void 會員查詢_Click(object sender, EventArgs e)
+        {
+            會員查詢 會員查詢 = new 會員查詢();
+            會員查詢.ShowDialog();
+            listBox1.SelectedIndex= listBox1.FindString(會員查詢.acc);
         }
     }
 }
