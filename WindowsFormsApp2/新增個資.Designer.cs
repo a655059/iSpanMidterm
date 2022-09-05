@@ -62,6 +62,7 @@ namespace WindowsFormsApp2
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -343,12 +344,24 @@ namespace WindowsFormsApp2
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.清空格子_Click);
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("新細明體", 15F);
+            this.button6.Location = new System.Drawing.Point(953, 21);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(90, 81);
+            this.button6.TabIndex = 36;
+            this.button6.Text = "查詢會員";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.會員查詢_Click);
+            // 
             // 帳號管理
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 557);
             this.ControlBox = false;
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button4);
@@ -429,5 +442,6 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

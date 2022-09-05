@@ -14,7 +14,7 @@ namespace WindowsFormsApp2
     {
         public 酷碰增刪修()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
         public int select { get; set; }
 
@@ -29,7 +29,6 @@ namespace WindowsFormsApp2
             Q.Discount = float.Parse(txtds.Text);
             DBiSpan.SaveChanges();
             MessageBox.Show("修改成功");
-
         }
 
         private void 酷碰增刪修_Load(object sender, EventArgs e)
