@@ -12,7 +12,7 @@ namespace Project_期中專案
 {
     public partial class ForgetPas : Form
     {
-        iSpanProjectEntities2 dbContext = new iSpanProjectEntities2();
+        iSpanProjectEntities dbContext = new iSpanProjectEntities();
         public ForgetPas()
         {
             InitializeComponent();

@@ -1358,7 +1358,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="iSpanProjectEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="iSpanProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ADs" EntityType="Self.AD" />
           <EntitySet Name="ArguePics" EntityType="Self.ArguePic" />
           <EntitySet Name="Arguments" EntityType="Self.Argument" />
@@ -1503,7 +1503,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="iSpanProjectModelStoreContainer" CdmEntityContainer="iSpanProjectEntities2">
+        <EntityContainerMapping StorageEntityContainer="iSpanProjectModelStoreContainer" CdmEntityContainer="iSpanProjectEntities">
           <EntitySetMapping Name="ADs">
             <EntityTypeMapping TypeName="iSpanProjectModel.AD">
               <MappingFragment StoreEntitySet="AD">

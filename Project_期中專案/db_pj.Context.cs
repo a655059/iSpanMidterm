@@ -13,10 +13,10 @@ namespace Project_期中專案
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class iSpanProjectEntities2 : DbContext
+    public partial class iSpanProjectEntities : DbContext
     {
-        public iSpanProjectEntities2()
-            : base("name=iSpanProjectEntities2")
+        public iSpanProjectEntities()
+            : base("name=iSpanProjectEntities")
         {
         }
     
