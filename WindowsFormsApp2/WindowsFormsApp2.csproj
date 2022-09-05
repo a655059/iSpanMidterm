@@ -175,6 +175,12 @@
     <Compile Include="產品管理.Designer.cs">
       <DependentUpon>產品管理.cs</DependentUpon>
     </Compile>
+    <Compile Include="訂單增刪修.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="訂單增刪修.Designer.cs">
+      <DependentUpon>訂單增刪修.cs</DependentUpon>
+    </Compile>
     <Compile Include="訂單管理.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="訂單增刪修.resx">
+      <DependentUpon>訂單增刪修.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="訂單管理.resx">
       <DependentUpon>訂單管理.cs</DependentUpon>

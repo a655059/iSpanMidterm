@@ -71,13 +71,13 @@ namespace WindowsFormsApp2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(166, 492);
+            this.button1.Location = new System.Drawing.Point(286, 490);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 51);
             this.button1.TabIndex = 3;
             this.button1.Text = "新增";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.新增_Click);
             // 
             // label2
             // 
@@ -97,7 +97,7 @@ namespace WindowsFormsApp2
             this.button2.TabIndex = 5;
             this.button2.Text = "修改、刪除";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.修改刪除_Click);
             // 
             // 產品管理
             // 
@@ -113,6 +113,7 @@ namespace WindowsFormsApp2
             this.Name = "產品管理";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "產品管理";
+            this.Load += new System.EventHandler(this.產品管理_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

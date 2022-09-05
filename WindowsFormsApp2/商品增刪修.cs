@@ -43,6 +43,8 @@ namespace WindowsFormsApp2
             }
         }
         iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1();
+
+        產品管理 產品介面 = new 產品管理();
         public int pid { get; set; } //為了讓上一張form資料連接這張form
         private void isLoad()
         {
@@ -87,10 +89,6 @@ namespace WindowsFormsApp2
 
             txtpdfee.Text= DBiSpan.Products.Where(n => n.ProductID == pid)
                 .Select(n =>n.AdFee).FirstOrDefault().ToString();
-
-
-
-
         }
         private void 新增_Click(object sender, EventArgs e)
         {
@@ -127,7 +125,7 @@ namespace WindowsFormsApp2
                 };
                 DBiSpan.ProductDetails.Add(productDetail);
             
-            DBiSpan.SaveChanges();
+            DBiSpan.SaveChanges();            
             MessageBox.Show("新增成功");
         }
 
@@ -167,9 +165,34 @@ namespace WindowsFormsApp2
             cbSmall.Text = cbSmall.Items[0].ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void 修改_Click(object sender, EventArgs e)
         {
+            var Q = DBiSpan.Products.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
+            Q.ProductName = txtpdname.Text;
+            Q.AdFee = Convert.ToDecimal(txtpdfee.Text);
+            Q.ShipperID = DBiSpan.Shippers.Where(n => n.ShipperName == cbship.Text)
+                    .Select(n => n.ShipperID).FirstOrDefault();
+            Q.MemberID = 1;
+            Q.RegionID = DBiSpan.RegionLists.Where(n => n.RegionName == cbRegion.Text)
+                    .Select(n => n.RegionID).FirstOrDefault();
+            Q.Description = txtdesc.Text;
+            Q.SmallTypeID = DBiSpan.SmallTypes.Where(n => n.SmallTypeName == cbSmall.Text)
+                    .Select(n => n.SmallTypeID).FirstOrDefault();
 
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            Byte[] bytes = ms.GetBuffer();
+            
+            var QQ = DBiSpan.ProductDetails.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
+            QQ.UnitPrice = Convert.ToDecimal(txtpdup.Text);
+                    QQ.Quantity = Convert.ToInt32(txtpdquty.Text);
+            QQ.Style = txtstyle.Text;
+            QQ.ProductID = DBiSpan.Products.Where(n => n.MemberID == 1)
+            .OrderByDescending(n => n.ProductID).Select(n => n.ProductID).FirstOrDefault();
+                    QQ.Pic = bytes;
+
+            DBiSpan.SaveChanges();
+            MessageBox.Show("修改成功");
         }
 
         private void 商品增刪修_Load(object sender, EventArgs e)
@@ -186,6 +209,21 @@ namespace WindowsFormsApp2
                 button2.Enabled = false;
             }
 
+        }
+
+        private void 刪除_Click(object sender, EventArgs e)
+        {
+            var PD = DBiSpan.ProductDetails.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
+            DBiSpan.ProductDetails.Remove(PD);
+            var P=DBiSpan.Products.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
+            DBiSpan.Products.Remove(P);
+            this.DBiSpan.SaveChanges();
+            MessageBox.Show("刪除成功");
+        }
+
+        private void 商品增刪修_Leave(object sender, EventArgs e)
+        {
+            //產品介面.啟動表單();
         }
     }
 }
