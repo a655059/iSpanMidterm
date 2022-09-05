@@ -50,5 +50,6 @@ namespace prjProject
         public virtual DbSet<SmallType> SmallTypes { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ProductShipper> ProductShippers { get; set; }
     }
 }

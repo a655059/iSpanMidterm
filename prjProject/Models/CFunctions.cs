@@ -125,6 +125,13 @@ namespace prjProject.Models
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
                     f.memberRegion = q.RegionList.Region;
+                } 
+                else if (form.GetType() == typeof(CartForm))
+                {
+                    CartForm f = (CartForm)form;
+                    f.memberID = memberID;
+                    f.memberName = q.Name;
+                    f.ProductNumInCart = productNumInCart.ToString();
                 }
                 else
                 {
@@ -133,11 +140,18 @@ namespace prjProject.Models
             }
         }
         
-        public static void AddToCart(COrderInfo orderInfo, int memberID)
+        public static void AddToCart(COrderInfo orderInfo, int memberID, int productDetailID)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 1).Select(i => i).ToList();
-            if (q.Count > 0)
+            int orderID = q[0].OrderID;
+            var q1 = dbContext.OrderDetails.Where(i => i.ProductDetailID == productDetailID && i.OrderID == orderID).Select(i => i);
+            if (q1.ToList().Count > 0)
+            {
+                q1.FirstOrDefault().Quantity += orderInfo.Quantity;
+                dbContext.SaveChanges();
+            }
+            else if (q.Count > 0)
             {
                 OrderDetail orderDetail = new OrderDetail
                 {
@@ -166,10 +180,10 @@ namespace prjProject.Models
                 };
                 dbContext.Orders.Add(order);
                 dbContext.SaveChanges();
-                int orderID = dbContext.Orders.Where(i => i.MemberID == orderInfo.MemberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
+                int newOrderID = dbContext.Orders.Where(i => i.MemberID == orderInfo.MemberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
                 OrderDetail orderDetail = new OrderDetail
                 {
-                    OrderID = orderID,
+                    OrderID = newOrderID,
                     ProductDetailID = orderInfo.ProductDetailID,
                     ShipperID = orderInfo.ShipperID,
                     Quantity = orderInfo.Quantity,
@@ -206,6 +220,9 @@ namespace prjProject.Models
             List<UCtrlShowItemsInCart> list = new List<UCtrlShowItemsInCart>();
             int orderID = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 1).Select(i => i.OrderID).FirstOrDefault();
             var q = dbContext.OrderDetails.Where(i => i.OrderID == orderID).Select(i => i);
+            var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
+            string buyerAddress = q1.Address;
+            string buyerPhone = q1.Phone;
             foreach (var p in q)
             {
                 byte[] bytes = p.ProductDetail.Pic;
@@ -218,12 +235,16 @@ namespace prjProject.Models
                 int productCount = p.Quantity;
                 int productSumPrice = Convert.ToInt32(productPrice) * productCount;
                 int orderDetailID = p.OrderDetailID;
-                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(image, productName, productPrice, productCount, productSumPrice, orderDetailID);
+                int productID = p.ProductDetail.Product.ProductID;
+                List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
+
+
+                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(image, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName, orderDetailID);
                 list.Add(uCtrl);
             }
             return list;
         }
-        public static UCtrlShowItemsInCart AddOrderToUCtrl(Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, int orderDetailID = 0)
+        public static UCtrlShowItemsInCart AddOrderToUCtrl(Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, string buyerAddress, string buyerPhone, object shipperName, int orderDetailID = 0)
         {
             UCtrlShowItemsInCart uCtrl = new UCtrlShowItemsInCart
             {
@@ -232,7 +253,10 @@ namespace prjProject.Models
                 productName = productName,
                 productPrice = $"{productPrice.ToString("C0")}",
                 productCount = productCount,
-                productSumPrice = $"{productSumPrice.ToString("C0")}"
+                productSumPrice = $"{productSumPrice.ToString("C0")}",
+                buyerAddress = buyerAddress,
+                buyerPhone = buyerPhone,
+                shipperName = shipperName,
             };
             return uCtrl;
         }
@@ -292,9 +316,157 @@ namespace prjProject.Models
                 }
             }
         }
-        public static void SummarizeTotalPrice()
+        public static int GetTotalPrice(FlowLayoutPanel flpProductInCart, float discount)
         {
+            int totalPrice = 0;
+            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    totalPrice += Convert.ToInt32(uCtrl.productSumPrice.Replace("NT$", "").Replace(",", ""));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            totalPrice += Convert.ToInt32(discount);
+            if (totalPrice <= 0)
+            {
+                totalPrice = 0;
+            }
+            return totalPrice;
+        }
 
+        public static float GetDiscountPrice(FlowLayoutPanel flpSelectedCoupon, FlowLayoutPanel flpProductInCart)
+        {
+            float oldTotalPrice = 0;
+            
+            foreach (UCtrlShowItemsInCart uCtrlShowItemsInCart in flpProductInCart.Controls)
+            {
+                if (uCtrlShowItemsInCart.IsChecked)
+                {
+                    oldTotalPrice += float.Parse(uCtrlShowItemsInCart.productSumPrice.Replace("NT$", "").Replace(",", ""));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            float tempPrice = oldTotalPrice;
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            foreach (UCtrlForCoupon uCtrl in flpSelectedCoupon.Controls)
+            {
+                string couponName = uCtrl.CouponName;
+                var q = dbContext.Coupons.Where(i => i.CouponName == couponName).Select(i => i.Discount).FirstOrDefault();
+                tempPrice *= (1 - q);
+            }
+            float discount = tempPrice - oldTotalPrice;
+            return discount;
+        }
+        public static void CancelcbChooseAll(FlowLayoutPanel flp, CheckBox checkBox)
+        {
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked == false)
+                {
+                    checkBox.Checked = false;
+                    break;
+                }
+            }
+        }
+
+        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp, bool isBuyNow, int productDetailID)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    string productName = "";
+                    string style = "";
+                    int productQty = 0;
+                    int orderDetailQty = 0;
+                    if (isBuyNow)
+                    {
+                        var q = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
+                        productName = q.Product.ProductName;
+                        style = q.Style;
+                        productQty = q.Quantity;
+                        orderDetailQty = 0;
+                    }
+                    else
+                    {
+                        var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+                        productName = q.ProductDetail.Product.ProductName;
+                        style = q.ProductDetail.Style;
+                        productQty = q.ProductDetail.Quantity;
+                        orderDetailQty = q.Quantity;
+                    }
+                    
+                    if (uCtrl.productCount > productQty + orderDetailQty)
+                    {
+                        MessageBox.Show($"{productName} - {style} 的庫存僅剩 {productQty + orderDetailQty} 件，請重新選擇商品數量");
+                        return false;
+                    }
+                    else if (uCtrl.shipperName.ToString() == "")
+                    {
+                        MessageBox.Show("請選擇一個物流公司");
+                        return false;
+                    }
+                    else if (uCtrl.buyerAddress == "")
+                    {
+                        MessageBox.Show("請填寫收貨地址");
+                        return false;
+                    }
+                    else if (uCtrl.buyerPhone == "")
+                    {
+                        MessageBox.Show("請填寫連絡電話");
+                        return false;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            return true;
+        }
+        public static bool IsAllProductSelected(FlowLayoutPanel flp, out int selectedCount)
+        {
+            bool isAllProductSelected = true;
+            selectedCount = 0;
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    selectedCount += 1;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            if (selectedCount == flp.Controls.Count)
+            {
+                isAllProductSelected = true;
+            }
+            else
+            {
+                isAllProductSelected = false;
+            }
+            return isAllProductSelected;
+        }
+        
+        public static int GetCouponID(FlowLayoutPanel flp)
+        {
+            int couponID = 0;
+            foreach (UCtrlForCoupon uCtrl in flp.Controls)
+            {
+                iSpanProjectEntities dbContext = new iSpanProjectEntities();
+                couponID = dbContext.Coupons.Where(i => i.CouponName == uCtrl.CouponName).Select(i => i.CouponID).FirstOrDefault();
+            }
+            return couponID;
         }
     }
 }

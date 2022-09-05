@@ -45,9 +45,9 @@ namespace prjProject
             get { return Convert.ToInt32(nudCount.Value); }
             set { nudCount.Value = value; }
         }
-        public int nudCountMaxValue
+        public int nudCountMinValue
         {
-            get { return Convert.ToInt32(nudCount.Maximum); }
+            get { return Convert.ToInt32(nudCount.Minimum); }
             set { nudCount.Maximum = value; }
         }
         public string productSumPrice
@@ -55,7 +55,27 @@ namespace prjProject
             get { return lblSum.Text; }
             set { lblSum.Text = value; }
         }
-
-        
+        public object shipperName
+        {
+            get
+            {
+                return cbbShipperName.Text;
+            }
+            set
+            {
+                cbbShipperName.DataSource = value;
+            }
+        }
+        public string buyerAddress
+        {
+            get { return txtBuyerAddress.Text; }
+            set { txtBuyerAddress.Text = value; }
+        }
+        public string buyerPhone
+        {
+            get { return txtBuyerPhone.Text; }
+            set { txtBuyerPhone.Text = value; }
+        }
+        public int oldQty { get; set; }
     }
 }

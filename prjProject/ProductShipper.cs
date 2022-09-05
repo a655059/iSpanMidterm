@@ -12,14 +12,13 @@ namespace prjProject
     using System;
     using System.Collections.Generic;
     
-    public partial class OfficialCoupon
+    public partial class ProductShipper
     {
-        public int MemberID { get; set; }
-        public int CouponID { get; set; }
-        public bool ExpireN_A { get; set; }
-        public int OffCouponsID { get; set; }
+        public int ProductShipperID { get; set; }
+        public int ProductID { get; set; }
+        public int ShipperID { get; set; }
     
-        public virtual Coupon Coupon { get; set; }
-        public virtual MemberAccount MemberAccount { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Shipper Shipper { get; set; }
     }
 }
