@@ -196,11 +196,12 @@ namespace prjProject
                 {
                     return;
                 }
+                string memberAddress = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i.Address).FirstOrDefault();
                 COrderInfo orderInfo = new COrderInfo
                 {
                     MemberID = memberID,
                     OrderDatetime = DateTime.Now,
-                    RecieveAdr = cbbRegion.Text,
+                    RecieveAdr = memberAddress,
                     FinishDate = DateTime.Now,
                     CouponID = 7,
                     StatusID = 1,
@@ -213,7 +214,7 @@ namespace prjProject
                     ShippingStatusID = 1,
                 };
                 int latestQuantity = 0;
-                CFunctions.AddToCart(orderInfo, memberID, productDetailID);
+                CFunctions.AddToCart(orderInfo);
                 CFunctions.SendMemberInfoToEachForm(memberID);
                 latestQuantity = CFunctions.UpgradeQuantity(productDetailID, -qty);
                 lblQty.Text = $"庫存 {latestQuantity} 件";

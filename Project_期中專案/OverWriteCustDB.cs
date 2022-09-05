@@ -12,7 +12,7 @@ namespace Project_期中專案
 {
     public partial class OverWriteCustDB : Form
     {
-        iSpanProjectEntities2 dbindex = new iSpanProjectEntities2();
+        iSpanProjectEntities dbindex = new iSpanProjectEntities();
         public string account2
         {
             get;
@@ -36,16 +36,15 @@ namespace Project_期中專案
                      where i.MemberAcc == account2
                      select i).FirstOrDefault();
 
+            var q1 = from i in dbindex.CountryLists.AsEnumerable()
+                     where i.CountryID == q.RegionList.CountryID
+                     select i;
+            var q2 = q1.ToList();
+
             txtAccount.Text = q.MemberAcc;
             txtPassworld.Text = q.MemberPw;
-            //list.RegionID = cmbo_city.SelectedIndex + 1;
-            //if (q.RegionID == 5)
-            //{
-            //    string a = "新北市";
-            //    cmbo_city.Text = a;
-            //}
-
-            //cmb_are.SelectedIndex = q.RegionList.RegionID;
+            cmbo_city.Text =q2[0].CountryName;
+            cmb_are.Text =q.RegionList.RegionName;
             txt_phon.Text = q.Phone;
             txt_mail.Text = q.Email;
             txt_backMail.Text = q.BackUpEmail;
@@ -64,7 +63,7 @@ namespace Project_期中專案
         private void OverWriteCustDB_Load(object sender, EventArgs e)
         {
             showdata(account2);
-            cbload();
+            //cbload();
         }
         private void cbload()
         {
@@ -109,10 +108,15 @@ namespace Project_期中專案
                     select i).FirstOrDefault();
             if (q == null)
                 return;
+            var q1 = from i in dbindex.RegionLists.AsEnumerable()
+                     where i.RegionName == cmb_are.Text
+                     select i;
+            var q2 = q1.ToList();
+
             q.MemberAcc = txtAccount.Text;
             q.MemberPw = txtPassworld.Text;
             q.TWorNOT = ckbox_yes.Checked;
-            q.RegionID = cmbo_city.SelectedIndex + 1;
+            q.RegionID =Convert.ToInt32(q2[0].RegionID);
             q.Phone = txt_phon.Text;
             q.Email = txt_mail.Text;
             q.BackUpEmail = txt_backMail.Text;
@@ -137,6 +141,11 @@ namespace Project_期中專案
                 this.pic_box.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 bytes = ms.GetBuffer();//將圖片轉成byt儲存起來
             }
+        }
+
+        private void cmbo_city_Click(object sender, EventArgs e)
+        {
+            cbload();
         }
     }
 }

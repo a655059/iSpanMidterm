@@ -13,7 +13,7 @@ namespace Project_期中專案
     public partial class member_cre : Form
     {
         bool isClosed = true;
-        iSpanProjectEntities2 dbContext = new iSpanProjectEntities2();
+        iSpanProjectEntities dbContext = new iSpanProjectEntities();
         public member_cre()
         {
             InitializeComponent();

@@ -12,7 +12,7 @@ namespace Project_期中專案
 {
     public partial class Form1 : Form
     {
-        iSpanProjectEntities2 dbindex = new iSpanProjectEntities2();
+        iSpanProjectEntities dbindex = new iSpanProjectEntities();
         byte[] bytes;
         public string account;
         
@@ -25,11 +25,18 @@ namespace Project_期中專案
         private void btn_save_Click(object sender, EventArgs e)
         {
             MemberAccount list = new MemberAccount() { };
- 
+
+            var q = from i in dbindex.RegionLists.AsEnumerable()
+                    where i.RegionName.Contains(cmb_are.Text)
+                    //orderby i.RegionID ascending
+                    select i;
+            var q1 = q.ToList();
+            //MessageBox.Show(q1.ToString());
+
             list.MemberAcc = txtAccount.Text;
             list.MemberPw = txtPassworld.Text;
             list.TWorNOT = ckbox_yes.Checked;
-            list.RegionID = cmb_are.SelectedIndex+1;
+            list.RegionID =Convert.ToInt32(q1[0].RegionID);//countryID==>cmb_are.text
             list.Phone = txt_phon.Text;
             list.Email = txt_mail.Text;
             list.BackUpEmail = txt_backMail.Text;
