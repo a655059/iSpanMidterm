@@ -95,7 +95,6 @@ namespace WindowsFormsApp2
             var 地區 = DBiSpan.RegionLists.Where(n => n.RegionName == comRegionID.Text).
                             Select(n => n.RegionID).FirstOrDefault();
 
-            Q.MemberAcc = txtMemberAcc.Text;
             Q.MemberPw = txtMemberPw.Text;
             Q.TWorNOT = checkBox1.Checked;
             Q.RegionID =地區;
@@ -106,8 +105,7 @@ namespace WindowsFormsApp2
             Q.NickName = txtNickName.Text;
             Q.Name = txtName.Text;
             Q.Birthday = dateTimePicker1.Value;
-            Q.Bio = txtBio.Text;      
-
+            Q.Bio = txtBio.Text;
             this.DBiSpan.SaveChanges();
             MessageBox.Show("修改成功");
         }
@@ -150,6 +148,23 @@ namespace WindowsFormsApp2
                     where O.MemberAcc == value
                     select O;
             return Q.FirstOrDefault();
+        }
+
+        private void 清空格子_Click(object sender, EventArgs e)
+        {
+            txtMemberAcc.Clear();
+            txtMemberPw.Clear();
+            checkBox1.Checked = false;
+            comRegionID.Text="中正區";
+            txthone.Clear();
+            txtEmail.Clear();
+            txtackUPEmail.Clear();
+            txtAddress.Clear();
+            txtNickName.Clear();
+             txtName.Clear();
+            dateTimePicker1.Value = DateTime.Now;
+            txtBio.Clear();
+            pictureBox1.Image = null;
         }
     }
 }

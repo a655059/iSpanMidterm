@@ -18,7 +18,7 @@ namespace Project_期中專案
         //public string txt{set{ label2.Text = value; } }
         public string account2
         {
-            get { return lab_showname.Text; }
+            get { return lab_showname.Text; } 
             set { lab_showname.Text = value; }
         }
         public member_center()
