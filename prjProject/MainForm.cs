@@ -61,6 +61,7 @@ namespace prjProject
         FlowBarProductType _selectedButton = new FlowBarProductType();
         private void MainForm_Load(object sender, EventArgs e)
         {
+            gueseYouLike();
             LoadAllItem();
             LoadBigTypeList();
         }
@@ -173,14 +174,53 @@ namespace prjProject
                     control.Click += CtrlDisplayItem_Click;
                 }
             }
-
         }
         private void LastPage_Click(object sender, EventArgs e)
         {
             LoadBigTypeList();
-            LoadAllItem();
+            spContainerItem.Visible = true;
+            gueseYouLike();
         }
+        private void gueseYouLike()
+        {
+            flowpanelAD.Controls.Clear();
+            Random find5 = new Random();
+            int[] randomArray = new int[5];
+            var productquery = from q in dbContext.Products
+                               select q.ProductID;
+            for(int i = 0; i < 5; i++)
+            {
+                int index =find5.Next(productquery.Count());
+                randomArray[i] = productquery.ToList()[index];
+                for(int j = 1; j < i; j++)
+                {
+                    while (randomArray[j] == randomArray[i])    
+                    {
+                        j = 0;  
+                        randomArray[i] = productquery.ToList()[index];
+                    }
+                }
+            }
 
+            List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
+            foreach (int idx in randomArray)
+            {
+                var pidx = from p in dbContext.Products
+                           where p.ProductID == idx
+                           select p;
+                list.Add(CFunctions.GetProductsForShow(pidx)[0]);
+            }           
+            foreach (CtrlDisplayItem j in list)
+            {
+                flowpanelAD.Controls.Add(j);
+                j.Click += CtrlDisplayItem_Click;
+                foreach (Control control in j.Controls)
+                {
+                    control.Click += CtrlDisplayItem_Click;
+                }
+            }
+
+        }
         private void CtrlDisplayItem_Click(object sender, EventArgs e)
         {
             int productID = -1;
@@ -191,13 +231,12 @@ namespace prjProject
             form.ProductNumInCart = ProductNumInCart;
             form.ShowDialog();
         }
-
+        //右上三個視窗按鈕
         private void btnClose_Click(object sender, EventArgs e)
         {
 
             Application.Exit();
         }
-
         private void btnWindowMaximized_Click_1(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -211,13 +250,15 @@ namespace prjProject
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
+        //登入
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LoginForm form = new LoginForm();
             form.ShowDialog();
-            if (memberID != 0) lblWelcome.Visible = true;
-            linkLabelRegister.Visible = false;
+            if (memberID != 0) { 
+                lblWelcome.Visible = true;
+                linkLabelRegister.Visible = false;
+            }
         }
 
         private void pbCart_Click(object sender, EventArgs e)
@@ -239,7 +280,6 @@ namespace prjProject
             主畫面 form = new 主畫面();
             form.ShowDialog();
         }
-
         private void linkLabelMemberCenter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (memberID == 0)

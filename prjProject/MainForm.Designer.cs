@@ -32,6 +32,7 @@ namespace prjProject
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
             this.panelTopBar = new System.Windows.Forms.Panel();
+            this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
             this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -54,11 +55,12 @@ namespace prjProject
             this.spContainerBotton = new System.Windows.Forms.SplitContainer();
             this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
             this.spContainerItem = new System.Windows.Forms.SplitContainer();
-            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
             this.spContainerGuessYouLike = new System.Windows.Forms.SplitContainer();
             this.lblGuessYouLike = new System.Windows.Forms.Label();
+            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
@@ -83,7 +85,9 @@ namespace prjProject
             this.spContainerItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).BeginInit();
             this.spContainerGuessYouLike.Panel1.SuspendLayout();
+            this.spContainerGuessYouLike.Panel2.SuspendLayout();
             this.spContainerGuessYouLike.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // spContainerMainPage
@@ -127,6 +131,21 @@ namespace prjProject
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(605, 104);
             this.panelTopBar.TabIndex = 28;
+            // 
+            // linkLabelMemberCenter
+            // 
+            this.linkLabelMemberCenter.AutoSize = true;
+            this.linkLabelMemberCenter.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.Location = new System.Drawing.Point(230, 4);
+            this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
+            this.linkLabelMemberCenter.Size = new System.Drawing.Size(96, 27);
+            this.linkLabelMemberCenter.TabIndex = 24;
+            this.linkLabelMemberCenter.TabStop = true;
+            this.linkLabelMemberCenter.Text = "會員中心";
+            this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
             // 
             // linkLabelHouTai
             // 
@@ -392,33 +411,9 @@ namespace prjProject
             // 
             this.spContainerItem.Panel2.Controls.Add(this.flowpanelItem);
             this.spContainerItem.Size = new System.Drawing.Size(1159, 588);
-            this.spContainerItem.SplitterDistance = 186;
+            this.spContainerItem.SplitterDistance = 303;
             this.spContainerItem.TabIndex = 0;
             this.spContainerItem.Visible = false;
-            // 
-            // flowpanelItem
-            // 
-            this.flowpanelItem.AutoScroll = true;
-            this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelItem.Name = "flowpanelItem";
-            this.flowpanelItem.Size = new System.Drawing.Size(1157, 396);
-            this.flowpanelItem.TabIndex = 0;
-            // 
-            // linkLabelMemberCenter
-            // 
-            this.linkLabelMemberCenter.AutoSize = true;
-            this.linkLabelMemberCenter.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.Location = new System.Drawing.Point(230, 4);
-            this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
-            this.linkLabelMemberCenter.Size = new System.Drawing.Size(96, 27);
-            this.linkLabelMemberCenter.TabIndex = 24;
-            this.linkLabelMemberCenter.TabStop = true;
-            this.linkLabelMemberCenter.Text = "會員中心";
-            this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
             // 
             // spContainerGuessYouLike
             // 
@@ -432,7 +427,11 @@ namespace prjProject
             // spContainerGuessYouLike.Panel1
             // 
             this.spContainerGuessYouLike.Panel1.Controls.Add(this.lblGuessYouLike);
-            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1157, 184);
+            // 
+            // spContainerGuessYouLike.Panel2
+            // 
+            this.spContainerGuessYouLike.Panel2.Controls.Add(this.panel2);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1157, 301);
             this.spContainerGuessYouLike.SplitterDistance = 39;
             this.spContainerGuessYouLike.TabIndex = 0;
             // 
@@ -447,6 +446,15 @@ namespace prjProject
             this.lblGuessYouLike.TabIndex = 0;
             this.lblGuessYouLike.Text = "猜你喜歡...";
             // 
+            // flowpanelItem
+            // 
+            this.flowpanelItem.AutoScroll = true;
+            this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelItem.Name = "flowpanelItem";
+            this.flowpanelItem.Size = new System.Drawing.Size(1157, 279);
+            this.flowpanelItem.TabIndex = 0;
+            // 
             // flowpanelTypeItem
             // 
             this.flowpanelTypeItem.AutoScroll = true;
@@ -455,6 +463,23 @@ namespace prjProject
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
             this.flowpanelTypeItem.Size = new System.Drawing.Size(1159, 588);
             this.flowpanelTypeItem.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel2.Controls.Add(this.flowpanelAD);
+            this.panel2.Location = new System.Drawing.Point(176, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(830, 252);
+            this.panel2.TabIndex = 0;
+            // 
+            // flowpanelAD
+            // 
+            this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelAD.Name = "flowpanelAD";
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
+            this.flowpanelAD.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -495,8 +520,10 @@ namespace prjProject
             this.spContainerItem.ResumeLayout(false);
             this.spContainerGuessYouLike.Panel1.ResumeLayout(false);
             this.spContainerGuessYouLike.Panel1.PerformLayout();
+            this.spContainerGuessYouLike.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).EndInit();
             this.spContainerGuessYouLike.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -532,6 +559,8 @@ namespace prjProject
         private System.Windows.Forms.SplitContainer spContainerGuessYouLike;
         private System.Windows.Forms.Label lblGuessYouLike;
         private System.Windows.Forms.FlowLayoutPanel flowpanelTypeItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowpanelAD;
     }
 }
 
