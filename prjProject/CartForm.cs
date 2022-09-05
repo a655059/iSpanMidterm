@@ -54,7 +54,7 @@ namespace prjProject
                 string buyerPhone = q3.Phone;
                 int productID = q.ProductID;
                 List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
-                UCtrlShowItemsInCart uCtrl = CFunctions.AddOrderToUCtrl(productPhoto, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName);
+                UCtrlShowItemsInCart uCtrl = CFunctions.AddOrderToUCtrl(0, productDetailID, productPhoto, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName);
                 flpProductInCart.Controls.Add(uCtrl);
             }
             else
@@ -65,6 +65,29 @@ namespace prjProject
                     flpProductInCart.Controls.Add(i);
                 }
             }
+            RegisterEventToFlpProductInCart(flpProductInCart);
+            var q1 = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.ExpireN_A == true && i.CouponID != 7).Select(i => i.Coupon.CouponName);
+            if (q1.ToList().Count > 0)
+            {
+                foreach (var p in q1)
+                {
+                    UCtrlForCoupon uCtrlForCoupon = new UCtrlForCoupon();
+                    uCtrlForCoupon.CouponName = p;
+                    uCtrlForCoupon.UseOrNot = "使用";
+                    flpCouponCandidate.Controls.Add(uCtrlForCoupon);
+                    foreach (Control control in uCtrlForCoupon.Controls)
+                    {
+                        if (control.GetType() == typeof(Button))
+                        {
+                            Button button = (Button)control;
+                            button.Click += btnUse_Click;
+                        }
+                    }
+                }
+            }
+        }
+        private void RegisterEventToFlpProductInCart(FlowLayoutPanel flpProductInCart)
+        {
             foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
             {
                 foreach (Control control in uCtrl.Controls)
@@ -90,27 +113,6 @@ namespace prjProject
                     }
                 }
             }
-            var q1 = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.ExpireN_A == true && i.CouponID != 7).Select(i => i.Coupon.CouponName);
-            if (q1.ToList().Count > 0)
-            {
-                foreach (var p in q1)
-                {
-                    UCtrlForCoupon uCtrlForCoupon = new UCtrlForCoupon();
-                    uCtrlForCoupon.CouponName = p;
-                    uCtrlForCoupon.UseOrNot = "使用";
-                    flpCouponCandidate.Controls.Add(uCtrlForCoupon);
-                    foreach (Control control in uCtrlForCoupon.Controls)
-                    {
-                        if (control.GetType() == typeof(Button))
-                        {
-                            Button button = (Button)control;
-                            button.Click += btnUse_Click;
-                        }
-                    }
-                }
-            }
-            
-
         }
 
         private void btnUse_Click(object sender, EventArgs e)
@@ -150,8 +152,8 @@ namespace prjProject
                     uCtrlForCoupon.CouponName = tempCouponName;
                 }
             }
-            
-            
+            flpCouponCandidate.Visible = false;
+            IsCouponCandidateOpened = false;
             
             
             float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
@@ -283,118 +285,76 @@ namespace prjProject
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            if (flpProductInCart.Controls.Count == 0)
-            {
-                MessageBox.Show("購物車裡沒有商品了");
-                return;
-            }
-            if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart, IsBuyNow, productDetailID))
+            
+            if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart, IsBuyNow))
             {
                 return;
-            }
-            int couponID = 0;
-            if (flpSelectedCoupon.Controls.Count == 0)
-            {
-                couponID = 7;
-            }
-            else
-            {
-                couponID = CFunctions.GetCouponID(flpSelectedCoupon);
             }
             if (IsBuyNow)
             {
-                if (CFunctions.IsAllProductSelected(flpProductInCart, out int selectedCounnt))
-                {
-                    foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
-                    {
-                        string address = uCtrl.buyerAddress;
-                        Order order = new Order
-                        {
-                            MemberID = memberID,
-                            OrderDatetime = DateTime.Now,
-                            RecieveAdr = address,
-                            FinishDate = DateTime.Now,
-                            CouponID = couponID,
-                            StatusID = 2
-                        };
-                        dbContext.Orders.Add(order);
-                        dbContext.SaveChanges();
-                        var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 2 && i.CouponID == couponID).OrderByDescending(i => i.OrderID).Select(i=>i).FirstOrDefault();
-                        int orderID = q.OrderID;
-                        string shipperName = "";
-                        int quantity = 0;
-                        foreach (UCtrlShowItemsInCart uCtrlShowItemsInCart in flpProductInCart.Controls)
-                        {
-                            shipperName = uCtrlShowItemsInCart.shipperName.ToString();
-                            quantity = uCtrlShowItemsInCart.productCount;
-                        }
-                        int shipperID = dbContext.Shippers.Where(i => i.ShipperName == shipperName).Select(i => i.ShipperID).FirstOrDefault();
-                        int regionID = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i.Product.RegionID).FirstOrDefault();
-                        string outAdr = dbContext.RegionLists.Where(i => i.RegionID == regionID).Select(i => i.Region).FirstOrDefault();
-                        OrderDetail orderDetail = new OrderDetail
-                        {
-                            OrderID = orderID,
-                            ProductDetailID = productDetailID,
-                            ShipperID = shipperID,
-                            Quantity = quantity,
-                            ShippingDate = DateTime.Now,
-                            RecieveDate = DateTime.Now,
-                            OutAdr = outAdr,
-                            ShippingStatusID = 1, 
-                        };
-                        dbContext.OrderDetails.Add(orderDetail);
-                        dbContext.SaveChanges();
-                        var q1 = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
-                        q1.Quantity -= quantity;
-                        dbContext.SaveChanges();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("至少選購一件商品");
-                    return;
-                }
+                CFunctions.AddOrderAndOrderDetailToDataBase(flpProductInCart, flpSelectedCoupon, memberID);
             }
-            //if (CFunctions.IsAllProductSelected(flpProductInCart))
-            //{
-
-            //}
-
-            bool IsAllProductChecked = true;
-            bool IsUseCoupon = false;
-            //foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
-            //{
-            //    if (uCtrl.IsChecked)
-            //    {
-            //        if (!CFunctions.IsProductInCartInfoAllChecked(flpProductInCart)) return;
-            //        var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
-            //        int shipperID = dbContext.Shippers.Where(i => i.ShipperName == uCtrl.shipperName.ToString()).Select(i => i.ShipperID).FirstOrDefault();
-            //        q.ShipperID = shipperID;
-            //        q.Quantity = uCtrl.productCount;
-            //        q.ShippingDate = DateTime.Now;
-            //        q.RecieveDate = DateTime.Now;
-            //        q.ShippingStatusID = 1;
-            //    }
-            //    else
-            //    {
-            //        IsAllProductChecked = false;
-            //    }
-            //}
+            else if (CFunctions.IsAllProductSelected(flpProductInCart))
+            {
+                int orderDetailID = ((UCtrlShowItemsInCart)flpProductInCart.Controls[0]).orderDetailID;
+                string recieveAdr = ((UCtrlShowItemsInCart)flpProductInCart.Controls[0]).buyerAddress;
+                int couponID = CFunctions.GetCouponID(flpSelectedCoupon);
+                int orderID = dbContext.OrderDetails.Where(i => i.OrderDetailID == orderDetailID).Select(i => i.OrderID).FirstOrDefault();
+                var order = dbContext.Orders.Where(i => i.OrderID == orderID).Select(i => i).FirstOrDefault();
+                order.OrderDatetime = DateTime.Now;
+                order.RecieveAdr = recieveAdr;
+                order.FinishDate = DateTime.Now;
+                order.CouponID = couponID;
+                order.StatusID = 2;
+                dbContext.SaveChanges();
+                foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+                {
+                    string shipperName = uCtrl.shipperName.ToString();
+                    int shipperID = dbContext.Shippers.Where(i => i.ShipperName == shipperName).Select(i => i.ShipperID).FirstOrDefault();
+                    int quantity = uCtrl.productCount;
+                    var orderDetail = dbContext.OrderDetails.Where(i => i.OrderDetailID == uCtrl.orderDetailID).Select(i => i).FirstOrDefault();
+                    orderDetail.ShipperID = shipperID;
+                    orderDetail.Quantity = quantity;
+                    orderDetail.ShippingDate = DateTime.Now;
+                    orderDetail.RecieveDate = DateTime.Now;
+                    orderDetail.ShippingStatusID = 1;
+                    dbContext.SaveChanges();
+                    int oldQuantity = uCtrl.oldQty;
+                    CFunctions.SubtractQtyFromProductDetailDB(uCtrl.productDetailID, oldQuantity, quantity);
+                }
+                CFunctions.RemoveMemberCouponFromDB(memberID, couponID);
+            }
+            else 
+            {
+                CFunctions.AddOrderAndOrderDetailToDataBase(flpProductInCart, flpSelectedCoupon, memberID);
+                CFunctions.RemoveOrderDetailFromDB(flpProductInCart);
+            }
             
-
             MessageBox.Show("你的訂單已成立");
-
+            flpProductInCart.Controls.Clear();
+            List<UCtrlShowItemsInCart> list = CFunctions.AddOrderToUCtrlInCartForm(memberID);
+            foreach (var i in list)
+            {
+                flpProductInCart.Controls.Add(i);
+            }
+            RegisterEventToFlpProductInCart(flpProductInCart);
+            CFunctions.SendMemberInfoToEachForm(memberID);
+            int remainProductCount = Convert.ToInt32(lblProductNumInCart.Text);
+            MessageBox.Show($"你的購物車中尚有 {remainProductCount} 件商品");
         }
-        
+        bool IsCouponCandidateOpened = false;
         private void btnChooseCoupon_Click(object sender, EventArgs e)
         {
-            flpCouponCandidate.Visible = true;
-            btnCloseCouponCandidate.Visible = true;
+            if (!IsCouponCandidateOpened)
+            {
+                flpCouponCandidate.Visible = true;
+            }
+            else
+            {
+                flpCouponCandidate.Visible = false;
+            }
+            IsCouponCandidateOpened = !IsCouponCandidateOpened;
         }
-        private void btnCloseCouponCandidate_Click_1(object sender, EventArgs e)
-        {
-            flpCouponCandidate.Visible = false;
-            btnCloseCouponCandidate.Visible = false;
-        }
+        
     }
 }
