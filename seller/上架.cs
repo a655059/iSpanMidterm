@@ -123,13 +123,6 @@ namespace seller
             pd.RegionID = v[0].RegionID;
 
 
-            var m = (from n in isp.Shippers
-                     where n.ShipperName == cmb_shipper.Text
-                     select n).ToList();
-            pd.ShipperID = m[0].ShipperID;
-
-
-
             this.isp.Products.Add(pd);
             this.isp.SaveChanges();
             product_id = pd.ProductID;
@@ -178,6 +171,10 @@ namespace seller
 
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
+            var dee = (from a in isp.ShipperToProducts
+                     where a.ProductID == pdid
+                     select a).FirstOrDefault();
+
             var del = (from a in isp.ProductDetails
                        where a.ProductID == pdid
                        select a).FirstOrDefault();
@@ -187,6 +184,7 @@ namespace seller
                          select c
                         ).FirstOrDefault();
 
+            isp.ShipperToProducts.Remove(dee);
             isp.ProductDetails.Remove(del);
             isp.ProductPics.Remove(delll);
 
@@ -205,7 +203,7 @@ namespace seller
 
         }
 
-        private void alter_Click(object sender, EventArgs e)
+        private void alter_Click(object sender, EventArgs e)            //再產生對應新規格會卡住  要修改數量
         {
             //dataGridView1.CurrentRow.Cells[""]
 
@@ -215,13 +213,26 @@ namespace seller
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
 
-
+            //先修改  shiptoproduct    productdetails     productpics
             //-----------------------------------------------------------------------
-            var a = from b in isp.ProductDetails
+            var shipstatus = from a in isp.ShipperToProducts    //同一商品對應到多種運送方式
+                             where a.ProductID == pdid
+                             select a;
+
+            var shipid = (from a in isp.Shippers                //透過對應到的運送方式抓到
+                         where a.ShipperName == cmb_shipper.Text
+                         select a).ToList();
+
+            foreach (var shipst in shipstatus)      //倒底要給使用者更改shippertoproductid嗎?
+            {                                       //如果要個別改不同種的可能要再想一下
+                shipst.ShipperID = shipid[0].ShipperID;
+            }
+
+            var pddetail = from b in isp.ProductDetails
                     where b.ProductID == pdid
                     select b;
 
-            foreach (var pdtt in a)
+            foreach (var pdtt in pddetail)
             {
                 pdtt.Style = txt_style.Text;
                 pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
@@ -242,9 +253,6 @@ namespace seller
             }
             this.isp.SaveChanges();
 
-            //var t = from k in isp4.Products
-            //        where k.ProductID
-
             var j = (from s in isp.SmallTypes
                      where s.SmallTypeName == cmb_smtype.Text
                      select s).ToList();
@@ -253,10 +261,6 @@ namespace seller
             var i = (from t in isp.RegionLists
                      where t.RegionName == cmb_region.Text
                      select t).ToList();
-
-            var x = (from z in isp.Shippers
-                     where z.ShipperName == cmb_shipper.Text
-                     select z).ToList();
 
             var g = from f in isp.Products
                     where f.ProductID == pdid
@@ -270,11 +274,11 @@ namespace seller
                 prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
                 prds.SmallTypeID = j[0].SmallTypeID;
                 prds.RegionID = i[0].RegionID;
-                prds.ShipperID = x[0].ShipperID;
             }
 
             this.isp.SaveChanges();
 
+            shiper.Clear();
             pd_detail.Clear();
             pd_pic.Clear();
             //-----------------------------------------------------------------------
@@ -340,7 +344,7 @@ namespace seller
             show_type();
         }
 
-        void format()
+        void format()   //一個規格對應多
         {
             商品細項 pd_dtail = new 商品細項();
 
@@ -552,6 +556,9 @@ namespace seller
             stream.Close();
         }
 
-      
+        private void cmb_smtype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace seller
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(94, 14);
+            this.btn_delete.Location = new System.Drawing.Point(100, 14);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(69, 23);
             this.btn_delete.TabIndex = 2;
@@ -60,7 +60,7 @@ namespace seller
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.lbl_商品運送狀態);
             this.Name = "Ucl商品狀態";
-            this.Size = new System.Drawing.Size(175, 53);
+            this.Size = new System.Drawing.Size(185, 53);
             this.ResumeLayout(false);
             this.PerformLayout();
 
