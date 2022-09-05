@@ -18,16 +18,17 @@ namespace prjProject
 {
     public partial class MainForm : Form
     {
-//        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-//        private static extern IntPtr CreateRoundRectRgn
-//(
-//    int nLeftRect, // x-coordinate of upper-left corner
-//    int nTopRect, // y-coordinate of upper-left corner
-//    int nRightRect, // x-coordinate of lower-right corner
-//    int nBottomRect, // y-coordinate of lower-right corner
-//    int nWidthEllipse, // height of ellipse
-//    int nHeightEllipse // width of ellipse
-// );
+        //調整圓角 沒啥用
+        //        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        //        private static extern IntPtr CreateRoundRectRgn
+        //(
+        //    int nLeftRect, // x-coordinate of upper-left corner
+        //    int nTopRect, // y-coordinate of upper-left corner
+        //    int nRightRect, // x-coordinate of lower-right corner
+        //    int nBottomRect, // y-coordinate of lower-right corner
+        //    int nWidthEllipse, // height of ellipse
+        //    int nHeightEllipse // width of ellipse
+        // );
 
         public MainForm()
         {
@@ -60,11 +61,17 @@ namespace prjProject
         public int memberID { get; set; }        
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
         FlowBarProductType _selectedButton = new FlowBarProductType();
+        int _page;
+        //搜索系統
+        string _selectedName = "";
+        bool textboxHasText = false;
+        bool _isInType = false;
         private void MainForm_Load(object sender, EventArgs e)
         {
             gueseYouLike();
             LoadAllItem();
             LoadBigTypeList();
+            searchbarReset();
         }
         private void LoadAllItem()
         {
@@ -115,11 +122,16 @@ namespace prjProject
 
             FlowBarProductType _selected = (FlowBarProductType)sender;
             int bigtypenum = _selected.TypeNum;
+            _selectedName = _selected.TypeName;
+            tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
+            _isInType = true;
+
+            //新增回上一層按鈕
             List<FlowBarProductType> listpt = new List<FlowBarProductType>();
             FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
             lp.ButtonClicked += LastPage_Click;
             flowpanelType.Controls.Add(lp);
-
+            //新增左側小類別按鈕
             var q = dbContext.SmallTypes.Where(st => st.BigTypeID == bigtypenum).OrderBy(st => st.SmallTypeID).Select(st => st);            
             foreach (var item in q)
             {
@@ -133,10 +145,10 @@ namespace prjProject
             }
             //商品區處理
             flowpanelTypeItem.Controls.Clear();
-            var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Select(x => x);
+            var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Take(50).Select(x => x);
             if (!q2.Any()) return;
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q2);
-            foreach (CtrlDisplayItem j in list.Take(20))
+            foreach (CtrlDisplayItem j in list)
             {
                 flowpanelTypeItem.Controls.Add(j);
                 j.Click += CtrlDisplayItem_Click;
@@ -177,10 +189,12 @@ namespace prjProject
             }
         }
         private void LastPage_Click(object sender, EventArgs e)
-        {
+        {            
             LoadBigTypeList();
             spContainerItem.Visible = true;
             gueseYouLike();
+            searchbarReset();
+
         }
         private void gueseYouLike()
         {
@@ -296,6 +310,98 @@ namespace prjProject
                 member_center form = new member_center();
                 form.ShowDialog();
             }
+        }
+        //搜索功能
+        private void btnSearch_Click(object sender, EventArgs e)
+        {            
+            if (_isInType)
+            {
+                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0) {
+                    flowpanelType.Controls.Clear();
+                    FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
+                    lp.ButtonClicked += LastPage_Click;
+                    flowpanelType.Controls.Add(lp);
+
+                    spContainerItem.Visible = false;
+                    flowpanelTypeItem.Controls.Clear();
+                    foreach (CtrlDisplayItem j in SearchSys(_selectedName))
+                    {
+                        flowpanelTypeItem.Controls.Add(j);
+                        j.Click += CtrlDisplayItem_Click;
+                        foreach (Control control in j.Controls)
+                        {
+                            control.Click += CtrlDisplayItem_Click;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("查無此產品，請確認關鍵字");
+                    return;
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count!=0)
+                {
+                    flowpanelType.Controls.Clear();
+                    FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
+                    lp.ButtonClicked += LastPage_Click;
+                    flowpanelType.Controls.Add(lp);
+
+                    spContainerItem.Visible = false;
+                    flowpanelTypeItem.Controls.Clear();
+                    foreach (CtrlDisplayItem j in SearchSys(tbSearch.Text))
+                    {
+                        flowpanelTypeItem.Controls.Add(j);
+                        j.Click += CtrlDisplayItem_Click;
+                        foreach (Control control in j.Controls)
+                        {
+                            control.Click += CtrlDisplayItem_Click;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("查無此產品，請確認關鍵字");
+                    return;
+                }
+            }
+        }
+        //搜尋
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            if (textboxHasText == false)
+                tbSearch.Text = "";
+
+            tbSearch.ForeColor= Color.Black;
+        }        
+        private void tbSearch_Leave(object sender, EventArgs e)
+        {
+            if (tbSearch.Text == "")
+            {
+                tbSearch.Text = _selectedName;
+                tbSearch.ForeColor = Color.LightGray;
+                textboxHasText = false;
+            }
+            else
+                textboxHasText = true;
+        }
+
+        private List<CtrlDisplayItem> SearchSys(string s)
+        {
+            var q = from p in dbContext.Products
+                    where p.ProductName.ToUpper().Contains(s.ToUpper()) 
+                    select p;
+                List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
+                return list;
+        }
+        private void searchbarReset()
+        {
+            tbSearch.Text = "從全部商品中搜尋...";
+            tbSearch.ForeColor = Color.LightGray;
+            textboxHasText = false;            
+            _isInType = false;
         }
     }
 }
