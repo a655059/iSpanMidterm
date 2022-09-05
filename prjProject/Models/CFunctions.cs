@@ -124,11 +124,20 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
+
+                    CFunctions.SetHeart(f);
                     f.memberRegion = q.RegionList.Region;
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
                     CartForm f = (CartForm)form;
+                    f.memberID = memberID;
+                    f.memberName = q.Name;
+                    f.ProductNumInCart = productNumInCart.ToString();
+                }
+                else if (form.GetType() == typeof(CommentForm))
+                {
+                    CommentForm f = (CommentForm)form;
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
@@ -139,7 +148,24 @@ namespace prjProject.Models
                 }
             }
         }
-        
+
+        public static void SetHeart(SelectedProductForm form)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var q4 = dbContext.Likes.Where(i => i.MemberID == form.memberID && i.ProductID == form.productID).Select(i => i).ToList();
+
+            if (q4.Count == 1)
+            {
+                form.heart = Image.FromFile("../../Images/redHeart.png");
+                form.IsHeartClick = true;
+            }
+            else
+            {
+                form.heart = Image.FromFile("../../Images/blackHeart4.png");
+                form.IsHeartClick = false;
+            }
+        }
+
         public static void AddToCart(COrderInfo orderInfo)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
@@ -252,10 +278,7 @@ namespace prjProject.Models
             return list;
         }
 
-        public static void RegisterEventForFlpProductInCart(FlowLayoutPanel flpProductInCart)
-        {
-            
-        }
+       
 
 
         public static UCtrlShowItemsInCart AddOrderToUCtrl(int oldQty, int productDetailID, Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, string buyerAddress, string buyerPhone, object shipperName, int orderDetailID = 0)
@@ -595,7 +618,6 @@ namespace prjProject.Models
             }
         }
 
-
-
+        
     }
 }

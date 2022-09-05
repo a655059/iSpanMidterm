@@ -33,6 +33,12 @@ namespace prjProject
             get { return cbbRegion.Text; }
             set { cbbRegion.Text = value; }
         }
+        public Image heart
+        {
+            get { return pbHeart.Image; }
+            set { pbHeart.Image = value; }
+        }
+        public bool IsHeartClick { get; set; }
         public int productID { get; set; }
         public int memberID { get;set; }
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
@@ -118,7 +124,10 @@ namespace prjProject
             int sellerID = q3.FirstOrDefault().MemberID;
             int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerID).Select(i => i).ToList().Count;
             lblSellerProductNum.Text = sellerProductNum.ToString();
-
+            CFunctions.SetHeart(this);
+            int soldCount = dbContext.OrderDetails.Where(i => i.ProductDetail.ProductID == productID && i.Order.StatusID == 2).Select(i => i.Quantity).Sum();
+            lblSoldCount.Text = soldCount.ToString();
+            linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
         }
 
         private void Style_MouseLeave(object sender, EventArgs e)
@@ -270,7 +279,44 @@ namespace prjProject
                 form.ShowDialog();
             }
         }
+       
+        private void pbHeart_Click(object sender, EventArgs e)
+        {
+            if (memberID > 0)
+            {
+                if (IsHeartClick)
+                {
+                    pbHeart.Image = Image.FromFile("../../Images/blackHeart4.png");
+                    var q = dbContext.Likes.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i).FirstOrDefault();
+                    dbContext.Likes.Remove(q);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    pbHeart.Image = Image.FromFile("../../Images/redHeart.png");
+                    Like like = new Like
+                    {
+                        MemberID = memberID,
+                        ProductID = productID,
+                    };
+                    dbContext.Likes.Add(like);
+                    dbContext.SaveChanges();
+                }
+                IsHeartClick = !IsHeartClick;
+            }
+            else
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+            }
+        }
 
-        
+        private void linkLabelComment_Click(object sender, EventArgs e)
+        {
+            CommentForm form = new CommentForm();
+            form.productID = productID;
+            form.productName = lblProductName.Text;
+            form.ShowDialog();
+        }
     }
 }

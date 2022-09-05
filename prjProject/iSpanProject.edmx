@@ -53,13 +53,13 @@
           <Property Name="MemberID" Type="int" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Star" Type="tinyint" Nullable="false" />
-          <Property Name="CommentID" Type="int" Nullable="false" />
+          <Property Name="CommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="CommentPic">
           <Key>
             <PropertyRef Name="CommentPicID" />
           </Key>
-          <Property Name="CommentPicID" Type="int" Nullable="false" />
+          <Property Name="CommentPicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CommentID" Type="int" Nullable="false" />
           <Property Name="CommentPic" Type="varbinary(max)" Nullable="false" />
         </EntityType>
@@ -807,7 +807,7 @@
           <Property Name="MemberID" Type="Int32" Nullable="false" />
           <Property Name="Comment1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Star" Type="Byte" Nullable="false" />
-          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="MemberAccount" Relationship="Self.FK_Comment_MemberAccount" FromRole="Comment" ToRole="MemberAccount" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Comment_SalesCourt" FromRole="Comment" ToRole="Product" />
           <NavigationProperty Name="CommentPics" Relationship="Self.FK_CommentPic_Comment" FromRole="Comment" ToRole="CommentPic" />
@@ -816,7 +816,7 @@
           <Key>
             <PropertyRef Name="CommentPicID" />
           </Key>
-          <Property Name="CommentPicID" Type="Int32" Nullable="false" />
+          <Property Name="CommentPicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CommentID" Type="Int32" Nullable="false" />
           <Property Name="CommentPic1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_CommentPic_Comment" FromRole="CommentPic" ToRole="Comment" />

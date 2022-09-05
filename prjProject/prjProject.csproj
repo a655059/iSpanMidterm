@@ -85,6 +85,12 @@
     <Compile Include="Comment.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentForm.Designer.cs">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommentPic.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
@@ -200,6 +206,12 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="UCtrlComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UCtrlComment.Designer.cs">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrlForCoupon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CartForm.resx">
       <DependentUpon>CartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentForm.resx">
+      <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CtrlDisplayItem.resx">
       <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
@@ -245,6 +260,9 @@
     </Compile>
     <EmbeddedResource Include="SelectedProductForm.resx">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrlComment.resx">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrlForCoupon.resx">
       <DependentUpon>UCtrlForCoupon.cs</DependentUpon>
@@ -290,6 +308,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\next202.png" />
+    <None Include="Resources\BACK20.png" />
+    <None Include="Resources\8664917_window_minimize_icon.png" />
+    <None Include="Resources\8675159_ic_fluent_maximize_regular_icon.png" />
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="iSpanProject.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>iSpanProject.edmx</DependentUpon>
@@ -300,12 +326,6 @@
       <DependentUpon>iSpanProject.edmx</DependentUpon>
       <LastGenOutput>iSpanProject.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\logo2.png" />
-    <None Include="Resources\next202.png" />
-    <None Include="Resources\BACK20.png" />
-    <None Include="Resources\8664917_window_minimize_icon.png" />
-    <None Include="Resources\8675159_ic_fluent_maximize_regular_icon.png" />
-    <None Include="Resources\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

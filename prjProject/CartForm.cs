@@ -339,6 +339,9 @@ namespace prjProject
             }
             RegisterEventToFlpProductInCart(flpProductInCart);
             CFunctions.SendMemberInfoToEachForm(memberID);
+            lblDiscount.Text = "-NT$0";
+            lblTotalPrice.Text = "NT$0";
+            flpSelectedCoupon.Controls.Clear();
             int remainProductCount = Convert.ToInt32(lblProductNumInCart.Text);
             MessageBox.Show($"你的購物車中尚有 {remainProductCount} 件商品");
         }
