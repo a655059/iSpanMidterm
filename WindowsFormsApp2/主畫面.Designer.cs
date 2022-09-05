@@ -51,7 +51,8 @@ namespace WindowsFormsApp2
             "帳號管理",
             "產品管理",
             "訂單管理",
-            "集運管理"});
+            "常見問題",
+            "酷碰卷"});
             this.comboBox1.Location = new System.Drawing.Point(29, 60);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(192, 26);

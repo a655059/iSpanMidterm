@@ -23,7 +23,8 @@ namespace WindowsFormsApp2
             帳號管理 帳號 = new 帳號管理();
             產品管理 產品 = new 產品管理();
             訂單管理 訂單 = new 訂單管理();
-            集運管理 集運 = new 集運管理();
+            常見問題 集運 = new 常見問題();
+            酷碰 酷碰 = new 酷碰();
 
             if (comboBox1.SelectedItem == "帳號管理")
             {
@@ -46,12 +47,19 @@ namespace WindowsFormsApp2
                 panel1.Controls.Add(訂單);
                 訂單.Show();
             }
-            else if (comboBox1.SelectedItem == "集運管理")
+            else if (comboBox1.SelectedItem == "常見問題")
             {
                 panel1.Controls.Clear();
                 集運.TopLevel = false;
                 panel1.Controls.Add(集運);
                 集運.Show();
+            }
+            else if (comboBox1.SelectedItem == "酷碰卷")
+            {
+                panel1.Controls.Clear();
+                酷碰.TopLevel = false;
+                panel1.Controls.Add(酷碰);
+                酷碰.Show();
             }
             else
                 panel1.Controls.Clear();
