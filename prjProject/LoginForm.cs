@@ -1,4 +1,5 @@
 ﻿using prjProject.Models;
+using Project_期中專案;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,12 @@ namespace prjProject
         private void btnClosed__Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgetPas form = new ForgetPas();
+            form.ShowDialog();
         }
     }
 }

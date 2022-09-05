@@ -41,7 +41,7 @@ namespace prjProject
             this.pbCart = new System.Windows.Forms.PictureBox();
             this.lblProductNumInCart = new System.Windows.Forms.Label();
             this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
-            this.lblWelcome = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -57,10 +57,10 @@ namespace prjProject
             this.spContainerItem = new System.Windows.Forms.SplitContainer();
             this.spContainerGuessYouLike = new System.Windows.Forms.SplitContainer();
             this.lblGuessYouLike = new System.Windows.Forms.Label();
-            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
@@ -126,7 +126,7 @@ namespace prjProject
             this.panelTopBar.Controls.Add(this.pbCart);
             this.panelTopBar.Controls.Add(this.lblProductNumInCart);
             this.panelTopBar.Controls.Add(this.linkLabelLogin);
-            this.panelTopBar.Controls.Add(this.lblWelcome);
+            this.panelTopBar.Controls.Add(this.lblName);
             this.panelTopBar.Location = new System.Drawing.Point(726, 24);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(605, 104);
@@ -239,17 +239,17 @@ namespace prjProject
             this.linkLabelLogin.Text = "登入";
             this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
             // 
-            // lblWelcome
+            // lblName
             // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWelcome.Location = new System.Drawing.Point(458, 4);
-            this.lblWelcome.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(54, 27);
-            this.lblWelcome.TabIndex = 19;
-            this.lblWelcome.Text = "歡迎";
-            this.lblWelcome.Visible = false;
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblName.Location = new System.Drawing.Point(458, 4);
+            this.lblName.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(54, 27);
+            this.lblName.TabIndex = 19;
+            this.lblName.Text = "歡迎";
+            this.lblName.Visible = false;
             // 
             // panel3
             // 
@@ -446,6 +446,23 @@ namespace prjProject
             this.lblGuessYouLike.TabIndex = 0;
             this.lblGuessYouLike.Text = "猜你喜歡...";
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel2.Controls.Add(this.flowpanelAD);
+            this.panel2.Location = new System.Drawing.Point(176, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(830, 252);
+            this.panel2.TabIndex = 0;
+            // 
+            // flowpanelAD
+            // 
+            this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelAD.Name = "flowpanelAD";
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
+            this.flowpanelAD.TabIndex = 0;
+            // 
             // flowpanelItem
             // 
             this.flowpanelItem.AutoScroll = true;
@@ -463,23 +480,6 @@ namespace prjProject
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
             this.flowpanelTypeItem.Size = new System.Drawing.Size(1159, 588);
             this.flowpanelTypeItem.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel2.Controls.Add(this.flowpanelAD);
-            this.panel2.Location = new System.Drawing.Point(176, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 252);
-            this.panel2.TabIndex = 0;
-            // 
-            // flowpanelAD
-            // 
-            this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
-            this.flowpanelAD.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -539,7 +539,7 @@ namespace prjProject
         private System.Windows.Forms.PictureBox pbCart;
         private System.Windows.Forms.Label lblProductNumInCart;
         private System.Windows.Forms.LinkLabel linkLabelLogin;
-        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox5;

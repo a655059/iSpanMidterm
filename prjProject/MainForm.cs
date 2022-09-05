@@ -1,5 +1,6 @@
 ﻿using pgjMidtermProject;
 using prjProject.Models;
+using Project_期中專案;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,11 +38,11 @@ namespace prjProject
         {
             get
             {
-                return lblWelcome.Text;
+                return lblName.Text;
             }
             set
             {
-                lblWelcome.Text = value;
+                lblName.Text = value;
             }
         }
         public string ProductNumInCart
@@ -256,8 +257,10 @@ namespace prjProject
             LoginForm form = new LoginForm();
             form.ShowDialog();
             if (memberID != 0) { 
-                lblWelcome.Visible = true;
+                lblName.Visible = true;
                 linkLabelRegister.Visible = false;
+                linkLabelLogin.Text = "歡迎";
+                linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
             }
         }
 
@@ -290,7 +293,8 @@ namespace prjProject
             }
             else
             {
-
+                member_center form = new member_center();
+                form.ShowDialog();
             }
         }
     }
