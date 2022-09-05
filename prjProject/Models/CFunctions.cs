@@ -124,6 +124,19 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
+
+                    var q4 = dbContext.Likes.Where(i => i.MemberID == memberID && i.ProductID == f.productID).Select(i => i).ToList();
+                    
+                    if (q4.Count == 1)
+                    {
+                        f.heart = Image.FromFile("../../Images/redHeart.png");
+                        f.IsHeartClick = true;
+                    }
+                    else
+                    {
+                        f.heart = Image.FromFile("../../Images/blackHeart4.png");
+                        f.IsHeartClick = false;
+                    }
                     f.memberRegion = q.RegionList.Region;
                 } 
                 else if (form.GetType() == typeof(CartForm))
@@ -139,7 +152,6 @@ namespace prjProject.Models
                 }
             }
         }
-        
         public static void AddToCart(COrderInfo orderInfo)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
