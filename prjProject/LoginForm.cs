@@ -38,7 +38,7 @@ namespace prjProject
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnClosed__Click(object sender, EventArgs e)
         {
             this.Close();
         }

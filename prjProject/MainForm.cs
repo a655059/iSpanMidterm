@@ -223,5 +223,10 @@ namespace prjProject
             主畫面 form = new 主畫面();
             form.ShowDialog();
         }
+
+        private void linkLabelMemberCenter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
