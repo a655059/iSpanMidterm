@@ -18,6 +18,7 @@ namespace prjProject
            
         }
         public int orderDetailID { get; set; }
+        public int productDetailID { get; set; }
         public bool IsChecked
         {
             get { return checkBox.Checked; }

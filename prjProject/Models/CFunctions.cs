@@ -140,32 +140,37 @@ namespace prjProject.Models
             }
         }
         
-        public static void AddToCart(COrderInfo orderInfo, int memberID, int productDetailID)
+        public static void AddToCart(COrderInfo orderInfo)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
-            var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 1).Select(i => i).ToList();
-            int orderID = q[0].OrderID;
-            var q1 = dbContext.OrderDetails.Where(i => i.ProductDetailID == productDetailID && i.OrderID == orderID).Select(i => i);
-            if (q1.ToList().Count > 0)
+            var q = dbContext.Orders.Where(i => i.MemberID == orderInfo.MemberID && i.StatusID == 1).Select(i => i).ToList();
+            
+            if (q.Count > 0)
             {
-                q1.FirstOrDefault().Quantity += orderInfo.Quantity;
-                dbContext.SaveChanges();
-            }
-            else if (q.Count > 0)
-            {
-                OrderDetail orderDetail = new OrderDetail
+                int orderID = q[0].OrderID;
+                var q1 = dbContext.OrderDetails.Where(i => i.ProductDetailID == orderInfo.ProductDetailID && i.OrderID == orderID).Select(i => i);
+
+                if (q1.ToList().Count > 0)
                 {
-                    OrderID = q[0].OrderID,
-                    ProductDetailID = orderInfo.ProductDetailID,
-                    ShipperID = orderInfo.ShipperID,
-                    Quantity = orderInfo.Quantity,
-                    ShippingDate = orderInfo.ShippingDate,
-                    RecieveDate = orderInfo.RecieveDate,
-                    OutAdr = orderInfo.OutAdr,
-                    ShippingStatusID = orderInfo.ShippingStatusID,
-                };
-                dbContext.OrderDetails.Add(orderDetail);
-                dbContext.SaveChanges();
+                    q1.FirstOrDefault().Quantity += orderInfo.Quantity;
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    OrderDetail orderDetail = new OrderDetail
+                    {
+                        OrderID = orderID,
+                        ProductDetailID = orderInfo.ProductDetailID,
+                        ShipperID = orderInfo.ShipperID,
+                        Quantity = orderInfo.Quantity,
+                        ShippingDate = orderInfo.ShippingDate,
+                        RecieveDate = orderInfo.RecieveDate,
+                        OutAdr = orderInfo.OutAdr,
+                        ShippingStatusID = orderInfo.ShippingStatusID,
+                    };
+                    dbContext.OrderDetails.Add(orderDetail);
+                    dbContext.SaveChanges();
+                }
             }
             else
             {
@@ -211,7 +216,7 @@ namespace prjProject.Models
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             memberName = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i.Name).FirstOrDefault();
-            productNumInCart = dbContext.OrderDetails.Where(i => i.Order.MemberID == memberID).Select(i => i).ToList().Count;
+            productNumInCart = dbContext.OrderDetails.Where(i => i.Order.MemberID == memberID && i.Order.StatusID == 1).Select(i => i).ToList().Count;
         }
 
         public static List<UCtrlShowItemsInCart> AddOrderToUCtrlInCartForm(int memberID)
@@ -236,19 +241,30 @@ namespace prjProject.Models
                 int productSumPrice = Convert.ToInt32(productPrice) * productCount;
                 int orderDetailID = p.OrderDetailID;
                 int productID = p.ProductDetail.Product.ProductID;
+                int productDetailID = p.ProductDetailID;
+                int oldQty = productCount;
                 List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
 
 
-                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(image, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName, orderDetailID);
+                UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(oldQty, productDetailID, image, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName, orderDetailID);
                 list.Add(uCtrl);
             }
             return list;
         }
-        public static UCtrlShowItemsInCart AddOrderToUCtrl(Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, string buyerAddress, string buyerPhone, object shipperName, int orderDetailID = 0)
+
+        public static void RegisterEventForFlpProductInCart(FlowLayoutPanel flpProductInCart)
+        {
+            
+        }
+
+
+        public static UCtrlShowItemsInCart AddOrderToUCtrl(int oldQty, int productDetailID, Image productPhoto, string productName, decimal productPrice, int productCount, int productSumPrice, string buyerAddress, string buyerPhone, object shipperName, int orderDetailID = 0)
         {
             UCtrlShowItemsInCart uCtrl = new UCtrlShowItemsInCart
             {
+                oldQty = oldQty,
                 orderDetailID = orderDetailID,
+                productDetailID = productDetailID,
                 productPhoto = productPhoto,
                 productName = productName,
                 productPrice = $"{productPrice.ToString("C0")}",
@@ -376,9 +392,21 @@ namespace prjProject.Models
             }
         }
 
-        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp, bool isBuyNow, int productDetailID)
+        public static bool IsProductInCartInfoAllChecked(FlowLayoutPanel flp, bool isBuyNow)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            if (flp.Controls.Count == 0)
+            {
+                MessageBox.Show("購物車裡沒有商品了");
+                return false;
+            }
+            int selectedProductCount = CFunctions.SelectedProductCount(flp);
+            if (selectedProductCount == 0)
+            {
+                MessageBox.Show("請至少選擇一個商品");
+                return false;
+            }
+
             foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
             {
                 if (uCtrl.IsChecked)
@@ -387,6 +415,7 @@ namespace prjProject.Models
                     string style = "";
                     int productQty = 0;
                     int orderDetailQty = 0;
+                    int productDetailID = uCtrl.productDetailID;
                     if (isBuyNow)
                     {
                         var q = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
@@ -432,10 +461,23 @@ namespace prjProject.Models
             }
             return true;
         }
-        public static bool IsAllProductSelected(FlowLayoutPanel flp, out int selectedCount)
+        public static bool IsAllProductSelected(FlowLayoutPanel flp)
         {
             bool isAllProductSelected = true;
-            selectedCount = 0;
+            int selectedCount = SelectedProductCount(flp);
+            if (selectedCount == flp.Controls.Count)
+            {
+                isAllProductSelected = true;
+            }
+            else
+            {
+                isAllProductSelected = false;
+            }
+            return isAllProductSelected;
+        }
+        public static int SelectedProductCount(FlowLayoutPanel flp)
+        {
+            int selectedCount = 0;
             foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
             {
                 if (uCtrl.IsChecked)
@@ -447,26 +489,113 @@ namespace prjProject.Models
                     continue;
                 }
             }
-            if (selectedCount == flp.Controls.Count)
-            {
-                isAllProductSelected = true;
-            }
-            else
-            {
-                isAllProductSelected = false;
-            }
-            return isAllProductSelected;
+            return selectedCount;
         }
-        
         public static int GetCouponID(FlowLayoutPanel flp)
         {
             int couponID = 0;
-            foreach (UCtrlForCoupon uCtrl in flp.Controls)
+            if (flp.Controls.Count == 0)
             {
-                iSpanProjectEntities dbContext = new iSpanProjectEntities();
-                couponID = dbContext.Coupons.Where(i => i.CouponName == uCtrl.CouponName).Select(i => i.CouponID).FirstOrDefault();
+                couponID = 7;
+            }
+            else
+            {
+                foreach (UCtrlForCoupon uCtrl in flp.Controls)
+                {
+                    iSpanProjectEntities dbContext = new iSpanProjectEntities();
+                    couponID = dbContext.Coupons.Where(i => i.CouponName == uCtrl.CouponName).Select(i => i.CouponID).FirstOrDefault();
+                }
             }
             return couponID;
         }
+        public static void AddOrderAndOrderDetailToDataBase(FlowLayoutPanel flpProductInCart, FlowLayoutPanel flpSelectedCoupon, int memberID)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            int couponID = CFunctions.GetCouponID(flpSelectedCoupon);
+            var address = (flpProductInCart.Controls[0] as UCtrlShowItemsInCart).buyerAddress ;
+            Order order = new Order
+            {
+                MemberID = memberID,
+                OrderDatetime = DateTime.Now,
+                RecieveAdr = address,
+                FinishDate = DateTime.Now,
+                CouponID = couponID,
+                StatusID = 2
+            };
+            dbContext.Orders.Add(order);
+            dbContext.SaveChanges();
+            var q = dbContext.Orders.Where(i => i.MemberID == memberID && i.StatusID == 2 && i.CouponID == couponID).OrderByDescending(i => i.OrderID).Select(i => i).FirstOrDefault();
+            int orderID = q.OrderID;
+            foreach (UCtrlShowItemsInCart uCtrl in flpProductInCart.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    string shipperName = uCtrl.shipperName.ToString();
+                    int quantity = uCtrl.productCount;
+                    int shipperID = dbContext.Shippers.Where(i => i.ShipperName == shipperName).Select(i => i.ShipperID).FirstOrDefault();
+                    int productDetailID = uCtrl.productDetailID;
+                    int regionID = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i.Product.RegionID).FirstOrDefault();
+                    string outAdr = dbContext.RegionLists.Where(i => i.RegionID == regionID).Select(i => i.Region).FirstOrDefault();
+                    OrderDetail orderDetail = new OrderDetail
+                    {
+                        OrderID = orderID,
+                        ProductDetailID = productDetailID,
+                        ShipperID = shipperID,
+                        Quantity = quantity,
+                        ShippingDate = DateTime.Now,
+                        RecieveDate = DateTime.Now,
+                        OutAdr = outAdr,
+                        ShippingStatusID = 1,
+                    };
+                    dbContext.OrderDetails.Add(orderDetail);
+                    dbContext.SaveChanges();
+                    int oldQuantity = uCtrl.oldQty;
+                    CFunctions.SubtractQtyFromProductDetailDB(productDetailID, oldQuantity, quantity);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            CFunctions.RemoveMemberCouponFromDB(memberID, couponID);
+        }
+
+        public static void SubtractQtyFromProductDetailDB( int productDetailID, int oldQuantity, int newQuantity)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var q = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i).FirstOrDefault();
+            q.Quantity = oldQuantity + q.Quantity - newQuantity;
+            dbContext.SaveChanges();
+        }
+        public static void RemoveMemberCouponFromDB(int memberID, int couponID)
+        {
+            if (couponID == 7) return;
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var q = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.CouponID == couponID).Select(i => i).FirstOrDefault();
+            q.ExpireN_A = false;
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveOrderDetailFromDB(FlowLayoutPanel flp)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            foreach (UCtrlShowItemsInCart uCtrl in flp.Controls)
+            {
+                if (uCtrl.IsChecked)
+                {
+                    int orderDetailID = uCtrl.orderDetailID;
+                    var q = dbContext.OrderDetails.Where(i => i.OrderDetailID == orderDetailID).Select(i => i).FirstOrDefault();
+                    dbContext.OrderDetails.Remove(q);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+
+
     }
 }
