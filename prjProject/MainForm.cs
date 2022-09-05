@@ -17,16 +17,16 @@ namespace prjProject
 {
     public partial class MainForm : Form
     {
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-(
-    int nLeftRect, // x-coordinate of upper-left corner
-    int nTopRect, // y-coordinate of upper-left corner
-    int nRightRect, // x-coordinate of lower-right corner
-    int nBottomRect, // y-coordinate of lower-right corner
-    int nWidthEllipse, // height of ellipse
-    int nHeightEllipse // width of ellipse
- );
+//        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+//        private static extern IntPtr CreateRoundRectRgn
+//(
+//    int nLeftRect, // x-coordinate of upper-left corner
+//    int nTopRect, // y-coordinate of upper-left corner
+//    int nRightRect, // x-coordinate of lower-right corner
+//    int nBottomRect, // y-coordinate of lower-right corner
+//    int nWidthEllipse, // height of ellipse
+//    int nHeightEllipse // width of ellipse
+// );
 
         public MainForm()
         {
@@ -56,8 +56,9 @@ namespace prjProject
             }
         }
 
-        public int memberID { get; set; }
+        public int memberID { get; set; }        
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
+        FlowBarProductType _selectedButton = new FlowBarProductType();
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadAllItem();
@@ -65,6 +66,8 @@ namespace prjProject
         }
         private void LoadAllItem()
         {
+
+            spContainerItem.Visible = true;
             flowpanelItem.Controls.Clear();
             var q = dbContext.Products.Take(50).Select(i => i);
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
@@ -100,22 +103,22 @@ namespace prjProject
                 flowpanelType.Controls.Add(item);
             }
             Application.DoEvents();
+            flowpanelTypeItem.Controls.Clear();
         }
+        //點左側大類別按鈕
         private void BigType_Click(object sender, EventArgs e)
         {
-            FlowBarProductType _selected = (FlowBarProductType)sender;
+            spContainerItem.Visible = false;
             flowpanelType.Controls.Clear();
+
+            FlowBarProductType _selected = (FlowBarProductType)sender;
             int bigtypenum = _selected.TypeNum;
             List<FlowBarProductType> listpt = new List<FlowBarProductType>();
             FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
             lp.ButtonClicked += LastPage_Click;
             flowpanelType.Controls.Add(lp);
 
-            var q = from st in dbContext.SmallTypes
-                    where st.BigTypeID == bigtypenum
-                    orderby st.SmallTypeID
-                    select st;
-
+            var q = dbContext.SmallTypes.Where(st => st.BigTypeID == bigtypenum).OrderBy(st => st.SmallTypeID).Select(st => st);            
             foreach (var item in q)
             {
                 FlowBarProductType lpp = new FlowBarProductType { TypeName = item.SmallTypeName, TypeNum = item.SmallTypeID };
@@ -126,14 +129,14 @@ namespace prjProject
             {
                 flowpanelType.Controls.Add(item);
             }
-            Application.DoEvents();
-            flowpanelItem.Controls.Clear();
+            //商品區處理
+            flowpanelTypeItem.Controls.Clear();
             var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Select(x => x);
             if (!q2.Any()) return;
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q2);
-            foreach (CtrlDisplayItem j in list.Take(100))
+            foreach (CtrlDisplayItem j in list.Take(20))
             {
-                flowpanelItem.Controls.Add(j);
+                flowpanelTypeItem.Controls.Add(j);
                 j.Click += CtrlDisplayItem_Click;
                 foreach (Control control in j.Controls)
                 {
@@ -142,23 +145,35 @@ namespace prjProject
             }
             Application.DoEvents();
         }
+        //點左側副類別按鈕
         private void SmallType_Click(object sender, EventArgs e)
         {
             FlowBarProductType _selected = (FlowBarProductType)sender;
-            flowpanelItem.Controls.Clear();
+            foreach (Control i in flowpanelType.Controls)
+            {
+                if (i is FlowBarProductType&& i!=_selected)
+                {
+                    ((FlowBarProductType)i).BackColor = Color.Black;
+                    ((FlowBarProductType)i)._isclicked = false;
+                }
+            }
+            _selected._isclicked = true;
+            Application.DoEvents();
+            //商品區處理
+            flowpanelTypeItem.Controls.Clear();
             var q = dbContext.Products.Where(x => x.SmallTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Select(x => x);
             if (!q.Any()) return;
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
             foreach (CtrlDisplayItem j in list)
             {
-                flowpanelItem.Controls.Add(j);
+                flowpanelTypeItem.Controls.Add(j);
                 j.Click += CtrlDisplayItem_Click;
                 foreach (Control control in j.Controls)
                 {
                     control.Click += CtrlDisplayItem_Click;
                 }
             }
-            Application.DoEvents();
+
         }
         private void LastPage_Click(object sender, EventArgs e)
         {
@@ -202,6 +217,7 @@ namespace prjProject
             LoginForm form = new LoginForm();
             form.ShowDialog();
             if (memberID != 0) lblWelcome.Visible = true;
+            linkLabelRegister.Visible = false;
         }
 
         private void pbCart_Click(object sender, EventArgs e)
@@ -226,7 +242,15 @@ namespace prjProject
 
         private void linkLabelMemberCenter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (memberID == 0)
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+            }
+            else
+            {
 
+            }
         }
     }
 }
