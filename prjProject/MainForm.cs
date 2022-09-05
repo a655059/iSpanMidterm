@@ -278,6 +278,7 @@ namespace prjProject
             }
         }
 
+
         private void linkLabelHouTai_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             主畫面 form = new 主畫面();
