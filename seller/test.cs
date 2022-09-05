@@ -16,5 +16,10 @@ namespace seller
         {
             InitializeComponent();
         }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+               
+        }
     }
 }
