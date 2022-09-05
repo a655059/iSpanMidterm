@@ -307,7 +307,7 @@ namespace WindowsFormsApp2
             this.button2.TabIndex = 27;
             this.button2.Text = "修改";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.修改_Click);
             // 
             // button3
             // 
@@ -317,6 +317,7 @@ namespace WindowsFormsApp2
             this.button3.TabIndex = 28;
             this.button3.Text = "刪除";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.刪除_Click);
             // 
             // 商品增刪修
             // 
@@ -353,6 +354,7 @@ namespace WindowsFormsApp2
             this.Name = "商品增刪修";
             this.Text = "增刪修";
             this.Load += new System.EventHandler(this.商品增刪修_Load);
+            this.Leave += new System.EventHandler(this.商品增刪修_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
