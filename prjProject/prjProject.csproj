@@ -100,6 +100,18 @@
     <Compile Include="FAQ.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
+    <Compile Include="FlowBarProductType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FlowBarProductType.Designer.cs">
+      <DependentUpon>FlowBarProductType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlowBarProductTypeLastPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FlowBarProductTypeLastPage.Designer.cs">
+      <DependentUpon>FlowBarProductTypeLastPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Follow.cs">
       <DependentUpon>iSpanProject.tt</DependentUpon>
     </Compile>
@@ -209,6 +221,12 @@
     <EmbeddedResource Include="CtrlDisplayItem.resx">
       <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FlowBarProductType.resx">
+      <DependentUpon>FlowBarProductType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlowBarProductTypeLastPage.resx">
+      <DependentUpon>FlowBarProductTypeLastPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +241,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SelectedProductForm.resx">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
@@ -277,6 +296,12 @@
       <DependentUpon>iSpanProject.edmx</DependentUpon>
       <LastGenOutput>iSpanProject.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\next202.png" />
+    <None Include="Resources\BACK20.png" />
+    <None Include="Resources\8664917_window_minimize_icon.png" />
+    <None Include="Resources\8675159_ic_fluent_maximize_regular_icon.png" />
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

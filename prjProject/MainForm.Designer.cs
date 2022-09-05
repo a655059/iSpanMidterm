@@ -30,34 +30,63 @@ namespace prjProject
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lblProductNumInCart = new System.Windows.Forms.Label();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
+            this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
+            this.panelTopBar = new System.Windows.Forms.Panel();
+            this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
             this.pbCart = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblProductNumInCart = new System.Windows.Forms.Label();
+            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.flpBigType = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpProduct = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.spContainerBotton = new System.Windows.Forms.SplitContainer();
+            this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
+            this.spContainerItem = new System.Windows.Forms.SplitContainer();
+            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
+            this.spContainerGuessYouLike = new System.Windows.Forms.SplitContainer();
+            this.lblGuessYouLike = new System.Windows.Forms.Label();
+            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
+            this.spContainerMainPage.Panel1.SuspendLayout();
+            this.spContainerMainPage.Panel2.SuspendLayout();
+            this.spContainerMainPage.SuspendLayout();
+            this.panelTopBar.SuspendLayout();
+            this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).BeginInit();
+            this.spContainerBotton.Panel1.SuspendLayout();
+            this.spContainerBotton.Panel2.SuspendLayout();
+            this.spContainerBotton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).BeginInit();
+            this.spContainerItem.Panel1.SuspendLayout();
+            this.spContainerItem.Panel2.SuspendLayout();
+            this.spContainerItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).BeginInit();
+            this.spContainerGuessYouLike.Panel1.SuspendLayout();
+            this.spContainerGuessYouLike.SuspendLayout();
             this.SuspendLayout();
             // 
+
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,16 +152,102 @@ namespace prjProject
             this.linkLabelLogin.TabStop = true;
             this.linkLabelLogin.Text = "登入";
             this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
+
+            // spContainerMainPage
+            // 
+            this.spContainerMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerMainPage.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerMainPage.Location = new System.Drawing.Point(0, 0);
+            this.spContainerMainPage.Margin = new System.Windows.Forms.Padding(0);
+            this.spContainerMainPage.Name = "spContainerMainPage";
+            this.spContainerMainPage.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // spContainerMainPage.Panel1
+            // 
+            this.spContainerMainPage.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.spContainerMainPage.Panel1.Controls.Add(this.panelTopBar);
+            this.spContainerMainPage.Panel1.Controls.Add(this.panel3);
+            this.spContainerMainPage.Panel1.Controls.Add(this.panel1);
+            this.spContainerMainPage.Panel1.Controls.Add(this.linkLabel2);
+            this.spContainerMainPage.Panel1.Controls.Add(this.lblToSellerForm);
+            // 
+            // spContainerMainPage.Panel2
+            // 
+            this.spContainerMainPage.Panel2.Controls.Add(this.spContainerBotton);
+            this.spContainerMainPage.Size = new System.Drawing.Size(1331, 720);
+            this.spContainerMainPage.SplitterDistance = 128;
+            this.spContainerMainPage.TabIndex = 1;
+            // 
+            // panelTopBar
+            // 
+            this.panelTopBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTopBar.Controls.Add(this.linkLabelMemberCenter);
+            this.panelTopBar.Controls.Add(this.linkLabelHouTai);
+            this.panelTopBar.Controls.Add(this.panelSearch);
+            this.panelTopBar.Controls.Add(this.linkLabelRegister);
+            this.panelTopBar.Controls.Add(this.pbCart);
+            this.panelTopBar.Controls.Add(this.lblProductNumInCart);
+            this.panelTopBar.Controls.Add(this.linkLabelLogin);
+            this.panelTopBar.Controls.Add(this.lblWelcome);
+            this.panelTopBar.Location = new System.Drawing.Point(726, 24);
+            this.panelTopBar.Name = "panelTopBar";
+            this.panelTopBar.Size = new System.Drawing.Size(605, 104);
+            this.panelTopBar.TabIndex = 28;
+            // 
+            // linkLabelHouTai
+            // 
+            this.linkLabelHouTai.AutoSize = true;
+            this.linkLabelHouTai.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelHouTai.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelHouTai.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelHouTai.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelHouTai.Location = new System.Drawing.Point(25, 7);
+            this.linkLabelHouTai.Name = "linkLabelHouTai";
+            this.linkLabelHouTai.Size = new System.Drawing.Size(54, 27);
+            this.linkLabelHouTai.TabIndex = 23;
+            this.linkLabelHouTai.TabStop = true;
+            this.linkLabelHouTai.Text = "後台";
+            this.linkLabelHouTai.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHouTai_LinkClicked);
+            // 
+            // panelSearch
+            // 
+            this.panelSearch.Controls.Add(this.btnSearch);
+            this.panelSearch.Controls.Add(this.tbSearch);
+            this.panelSearch.Location = new System.Drawing.Point(30, 62);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(413, 41);
+            this.panelSearch.TabIndex = 22;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(376, -1);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(33, 33);
+            this.btnSearch.TabIndex = 17;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbSearch.Location = new System.Drawing.Point(-24, -2);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(398, 35);
+            this.tbSearch.TabIndex = 16;
+
             // 
             // linkLabelRegister
             // 
             this.linkLabelRegister.AutoSize = true;
-            this.linkLabelRegister.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelRegister.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelRegister.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Location = new System.Drawing.Point(708, 15);
+            this.linkLabelRegister.Location = new System.Drawing.Point(332, 4);
             this.linkLabelRegister.Name = "linkLabelRegister";
-            this.linkLabelRegister.Size = new System.Drawing.Size(54, 21);
+            this.linkLabelRegister.Size = new System.Drawing.Size(54, 27);
             this.linkLabelRegister.TabIndex = 12;
             this.linkLabelRegister.TabStop = true;
             this.linkLabelRegister.Text = "註冊";
@@ -140,62 +255,144 @@ namespace prjProject
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(711, 66);
+            this.pbCart.Location = new System.Drawing.Point(537, 62);
             this.pbCart.Name = "pbCart";
-            this.pbCart.Size = new System.Drawing.Size(50, 50);
+            this.pbCart.Size = new System.Drawing.Size(38, 37);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCart.TabIndex = 18;
             this.pbCart.TabStop = false;
             this.pbCart.Click += new System.EventHandler(this.pbCart_Click);
             // 
-            // button1
+            // lblProductNumInCart
             // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(630, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(33, 33);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblProductNumInCart.AutoSize = true;
+            this.lblProductNumInCart.Location = new System.Drawing.Point(574, 50);
+            this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblProductNumInCart.Name = "lblProductNumInCart";
+            this.lblProductNumInCart.Size = new System.Drawing.Size(11, 12);
+            this.lblProductNumInCart.TabIndex = 20;
+            this.lblProductNumInCart.Text = "0";
             // 
-            // textBox1
+            // linkLabelLogin
             // 
-            this.textBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(265, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(398, 33);
-            this.textBox1.TabIndex = 16;
+            this.linkLabelLogin.AutoSize = true;
+            this.linkLabelLogin.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.Location = new System.Drawing.Point(408, 4);
+            this.linkLabelLogin.Name = "linkLabelLogin";
+            this.linkLabelLogin.Size = new System.Drawing.Size(54, 27);
+            this.linkLabelLogin.TabIndex = 13;
+            this.linkLabelLogin.TabStop = true;
+            this.linkLabelLogin.Text = "登入";
+            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
             // 
-            // pictureBox1
+            // lblWelcome
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(76, 50);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblWelcome.Location = new System.Drawing.Point(458, 4);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(54, 27);
+            this.lblWelcome.TabIndex = 19;
+            this.lblWelcome.Text = "歡迎";
+            this.lblWelcome.Visible = false;
             // 
-            // label1
+            // panel3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("標楷體", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(154, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 35);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "蝦到爆";
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1331, 24);
+            this.panel3.TabIndex = 27;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.pictureBox5);
+            this.panel4.Controls.Add(this.pictureBox3);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Location = new System.Drawing.Point(1220, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(111, 21);
+            this.panel4.TabIndex = 28;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::prjProject.Properties.Resources._8664917_window_minimize_icon;
+            this.pictureBox5.Location = new System.Drawing.Point(3, -2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(22, 20);
+            this.pictureBox5.TabIndex = 26;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.btnWindowMinimized_Click_1);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::prjProject.Properties.Resources.close;
+            this.pictureBox3.Location = new System.Drawing.Point(85, -1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(25, 21);
+            this.pictureBox3.TabIndex = 23;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
+            this.pictureBox4.Location = new System.Drawing.Point(43, -2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(25, 20);
+            this.pictureBox4.TabIndex = 25;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.btnWindowMaximized_Click_1);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Location = new System.Drawing.Point(12, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(107, 94);
+            this.panel1.TabIndex = 21;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(7, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 35);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "蝦到爆";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(8, -3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(91, 77);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 15;
+            this.pictureBox6.TabStop = false;
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabel2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabel2.ForeColor = System.Drawing.Color.Black;
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(200, 17);
+            this.linkLabel2.Location = new System.Drawing.Point(271, 23);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(98, 21);
+            this.linkLabel2.Size = new System.Drawing.Size(96, 27);
             this.linkLabel2.TabIndex = 11;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "追蹤我們";
@@ -203,112 +400,206 @@ namespace prjProject
             // lblToSellerForm
             // 
             this.lblToSellerForm.AutoSize = true;
-            this.lblToSellerForm.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblToSellerForm.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
+            this.lblToSellerForm.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.Location = new System.Drawing.Point(76, 17);
+            this.lblToSellerForm.Location = new System.Drawing.Point(169, 23);
             this.lblToSellerForm.Name = "lblToSellerForm";
-            this.lblToSellerForm.Size = new System.Drawing.Size(98, 21);
+            this.lblToSellerForm.Size = new System.Drawing.Size(96, 27);
             this.lblToSellerForm.TabIndex = 10;
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
             // 
-            // splitContainer2
+            // spContainerBotton
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.splitContainer2.Name = "splitContainer2";
+            this.spContainerBotton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerBotton.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerBotton.IsSplitterFixed = true;
+            this.spContainerBotton.Location = new System.Drawing.Point(0, 0);
+            this.spContainerBotton.Name = "spContainerBotton";
             // 
-            // splitContainer2.Panel1
+            // spContainerBotton.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.flpBigType);
+            this.spContainerBotton.Panel1.Controls.Add(this.flowpanelType);
             // 
-            // splitContainer2.Panel2
+            // spContainerBotton.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.flpProduct);
-            this.splitContainer2.Size = new System.Drawing.Size(883, 372);
-            this.splitContainer2.SplitterDistance = 89;
-            this.splitContainer2.SplitterWidth = 2;
-            this.splitContainer2.TabIndex = 0;
+            this.spContainerBotton.Panel2.BackColor = System.Drawing.Color.MistyRose;
+            this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
+            this.spContainerBotton.Panel2.Controls.Add(this.flowpanelTypeItem);
+            this.spContainerBotton.Size = new System.Drawing.Size(1331, 588);
+            this.spContainerBotton.SplitterDistance = 168;
+            this.spContainerBotton.TabIndex = 0;
             // 
-            // flpBigType
+            // flowpanelType
             // 
-            this.flpBigType.AutoScroll = true;
-            this.flpBigType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpBigType.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpBigType.Font = new System.Drawing.Font("標楷體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.flpBigType.Location = new System.Drawing.Point(0, 0);
-            this.flpBigType.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.flpBigType.Name = "flpBigType";
-            this.flpBigType.Size = new System.Drawing.Size(89, 372);
-            this.flpBigType.TabIndex = 0;
-            this.flpBigType.WrapContents = false;
+            this.flowpanelType.AutoScroll = true;
+            this.flowpanelType.BackColor = System.Drawing.Color.Black;
+            this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelType.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelType.Name = "flowpanelType";
+            this.flowpanelType.Size = new System.Drawing.Size(168, 588);
+            this.flowpanelType.TabIndex = 0;
             // 
-            // flpProduct
+            // spContainerItem
             // 
-            this.flpProduct.AutoScroll = true;
-            this.flpProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpProduct.Location = new System.Drawing.Point(0, 0);
-            this.flpProduct.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.flpProduct.Name = "flpProduct";
-            this.flpProduct.Size = new System.Drawing.Size(792, 372);
-            this.flpProduct.TabIndex = 0;
+            this.spContainerItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.spContainerItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerItem.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerItem.IsSplitterFixed = true;
+            this.spContainerItem.Location = new System.Drawing.Point(0, 0);
+            this.spContainerItem.Name = "spContainerItem";
+            this.spContainerItem.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // linkLabel1
+            // spContainerItem.Panel1
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(630, 25);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 12);
-            this.linkLabel1.TabIndex = 21;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkLabel1";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.spContainerItem.Panel1.Controls.Add(this.spContainerGuessYouLike);
+            // 
+            // spContainerItem.Panel2
+            // 
+            this.spContainerItem.Panel2.Controls.Add(this.flowpanelItem);
+            this.spContainerItem.Size = new System.Drawing.Size(1159, 588);
+            this.spContainerItem.SplitterDistance = 186;
+            this.spContainerItem.TabIndex = 0;
+            this.spContainerItem.Visible = false;
+            // 
+            // flowpanelItem
+            // 
+            this.flowpanelItem.AutoScroll = true;
+            this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelItem.Name = "flowpanelItem";
+            this.flowpanelItem.Size = new System.Drawing.Size(1157, 396);
+            this.flowpanelItem.TabIndex = 0;
+            // 
+            // linkLabelMemberCenter
+            // 
+            this.linkLabelMemberCenter.AutoSize = true;
+            this.linkLabelMemberCenter.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.Location = new System.Drawing.Point(230, 4);
+            this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
+            this.linkLabelMemberCenter.Size = new System.Drawing.Size(96, 27);
+            this.linkLabelMemberCenter.TabIndex = 24;
+            this.linkLabelMemberCenter.TabStop = true;
+            this.linkLabelMemberCenter.Text = "會員中心";
+            this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
+            // 
+            // spContainerGuessYouLike
+            // 
+            this.spContainerGuessYouLike.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spContainerGuessYouLike.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spContainerGuessYouLike.IsSplitterFixed = true;
+            this.spContainerGuessYouLike.Location = new System.Drawing.Point(0, 0);
+            this.spContainerGuessYouLike.Name = "spContainerGuessYouLike";
+            this.spContainerGuessYouLike.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // spContainerGuessYouLike.Panel1
+            // 
+            this.spContainerGuessYouLike.Panel1.Controls.Add(this.lblGuessYouLike);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1157, 184);
+            this.spContainerGuessYouLike.SplitterDistance = 39;
+            this.spContainerGuessYouLike.TabIndex = 0;
+            // 
+            // lblGuessYouLike
+            // 
+            this.lblGuessYouLike.AutoSize = true;
+            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblGuessYouLike.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblGuessYouLike.Location = new System.Drawing.Point(0, 0);
+            this.lblGuessYouLike.Name = "lblGuessYouLike";
+            this.lblGuessYouLike.Size = new System.Drawing.Size(154, 37);
+            this.lblGuessYouLike.TabIndex = 0;
+            this.lblGuessYouLike.Text = "猜你喜歡...";
+            // 
+            // flowpanelTypeItem
+            // 
+            this.flowpanelTypeItem.AutoScroll = true;
+            this.flowpanelTypeItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelTypeItem.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelTypeItem.Name = "flowpanelTypeItem";
+            this.flowpanelTypeItem.Size = new System.Drawing.Size(1159, 588);
+            this.flowpanelTypeItem.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 509);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(1331, 720);
+            this.Controls.Add(this.spContainerMainPage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.spContainerMainPage.Panel1.ResumeLayout(false);
+            this.spContainerMainPage.Panel1.PerformLayout();
+            this.spContainerMainPage.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).EndInit();
+            this.spContainerMainPage.ResumeLayout(false);
+            this.panelTopBar.ResumeLayout(false);
+            this.panelTopBar.PerformLayout();
+            this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.spContainerBotton.Panel1.ResumeLayout(false);
+            this.spContainerBotton.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).EndInit();
+            this.spContainerBotton.ResumeLayout(false);
+            this.spContainerItem.Panel1.ResumeLayout(false);
+            this.spContainerItem.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).EndInit();
+            this.spContainerItem.ResumeLayout(false);
+            this.spContainerGuessYouLike.Panel1.ResumeLayout(false);
+            this.spContainerGuessYouLike.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).EndInit();
+            this.spContainerGuessYouLike.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.LinkLabel linkLabelLogin;
+        private System.Windows.Forms.SplitContainer spContainerMainPage;
+        private System.Windows.Forms.Panel panelTopBar;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.LinkLabel linkLabelRegister;
         private System.Windows.Forms.PictureBox pbCart;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblProductNumInCart;
+        private System.Windows.Forms.LinkLabel linkLabelLogin;
+        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel lblToSellerForm;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.FlowLayoutPanel flpBigType;
-        private System.Windows.Forms.FlowLayoutPanel flpProduct;
-        private System.Windows.Forms.Label lblProductNumInCart;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelHouTai;
+        private System.Windows.Forms.SplitContainer spContainerBotton;
+        private System.Windows.Forms.FlowLayoutPanel flowpanelType;
+        private System.Windows.Forms.SplitContainer spContainerItem;
+        private System.Windows.Forms.FlowLayoutPanel flowpanelItem;
+        private System.Windows.Forms.LinkLabel linkLabelMemberCenter;
+        private System.Windows.Forms.SplitContainer spContainerGuessYouLike;
+        private System.Windows.Forms.Label lblGuessYouLike;
+        private System.Windows.Forms.FlowLayoutPanel flowpanelTypeItem;
     }
 }
 

@@ -14,21 +14,57 @@ namespace WindowsFormsApp2
     {
         public 產品管理()
         {
-            InitializeComponent();
-            var Q = DBiSpan.Products.Select(n => n).ToList();
-            dataGridView1.DataSource = Q;
-            var W = DBiSpan.ProductDetails.Select(n => n).ToList();
-            dataGridView2.DataSource = W;
+            InitializeComponent();                       
         }
         iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1();
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //商品增刪修 update = new 商品增刪修();
-            //string select = dataGridView1.SelectedRows.ToString();
-            //var Q = DBiSpan.Products.Where(n => n.ProductName == select).Select(n => n);
+        
+        private void 新增_Click(object sender, EventArgs e)
+        {            
             商品增刪修 WW = new 商品增刪修();
             WW.Show();
+        }
+
+        private void 修改刪除_Click(object sender, EventArgs e)
+        {
+            var select = dataGridView1.CurrentRow.Cells["ProductID"].Value;
+
+            商品增刪修 WW = new 商品增刪修();
+            WW.pid = Convert.ToInt32(select);
+            WW.isproductupdate = true;
+            WW.Show();
+        }
+
+        private void 產品管理_Load(object sender, EventArgs e)
+        {
+            啟動表單();
+        }
+
+        public void 啟動表單()
+        {
+            var Q = DBiSpan.Products.Select(n =>
+                        new
+                        {
+                            n.ProductID,
+                            n.ProductName,
+                            n.SmallTypeID,
+                            n.MemberID,
+                            n.RegionID,
+                            n.AdFee,
+                            n.Description,
+                            n.ShipperID
+                        }).ToList();
+            dataGridView1.DataSource = Q;
+            var W = DBiSpan.ProductDetails.Select(n => new
+            {
+                n.ProductDetailID,
+                n.ProductID,
+                n.Style,
+                n.Quantity,
+                n.UnitPrice,
+                n.Pic
+            }).ToList();
+            dataGridView2.DataSource = W;
         }
     }
 }
