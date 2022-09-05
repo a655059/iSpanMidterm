@@ -16,5 +16,37 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
         }
+        iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1();
+        private void 訂單管理_Load(object sender, EventArgs e)
+        {
+            var Q = DBiSpan.Orders.Select(n => new{
+            n.OrderID,
+            n.MemberID,
+            n.OrderDatetime,
+            n.RecieveAdr,
+            n.FinishDate,
+            n.CouponID,
+            n.StatusID
+            }).ToList();
+            dataGridView1.DataSource = Q;
+            var QQ = DBiSpan.OrderDetails.Select(n => new{
+               n.OrderDetailID,
+               n.OrderID,
+                n.ProductDetailID,
+                n.ShipperID,
+                n.Quantity,
+                n.ShippingDate,
+                n.RecieveDate,
+                n.OutAdr,
+                n.ShippingStatusID
+            }).ToList();
+            dataGridView2.DataSource = QQ;
+        }
+        
+        private void 修改刪除_Click(object sender, EventArgs e)
+        {
+            var select = dataGridView1.CurrentRow.Cells["OrderID"].Value;
+
+        }
     }
 }

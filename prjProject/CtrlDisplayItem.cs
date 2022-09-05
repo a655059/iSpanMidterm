@@ -33,11 +33,11 @@ namespace pgjMidtermProject
         {
             get
             {
-                return lblItemDescription.Text;
+                return tbDescription.Text;
             }
             set
             {
-                lblItemDescription.Text = value;
+                tbDescription.Text = value;
             }
         }
         public string itemPrice
@@ -55,11 +55,11 @@ namespace pgjMidtermProject
         {
             get
             {
-                return lblitemName.Text;
+                return tbName.Text;
             }
             set
             {
-                lblitemName.Text = value;
+                tbName.Text = value;
             }
         }
         public string SoldOut

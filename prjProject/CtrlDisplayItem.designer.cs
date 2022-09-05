@@ -30,82 +30,89 @@ namespace pgjMidtermProject
         private void InitializeComponent()
         {
             this.pbItemPhoto = new System.Windows.Forms.PictureBox();
-            this.lblItemDescription = new System.Windows.Forms.Label();
-            this.lblItemPrice = new System.Windows.Forms.Label();
-            this.lblitemName = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.lblSoldOut = new System.Windows.Forms.Label();
+            this.lblItemPrice = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // pbItemPhoto
             // 
-            this.pbItemPhoto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pbItemPhoto.Location = new System.Drawing.Point(0, 0);
-            this.pbItemPhoto.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.pbItemPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbItemPhoto.Location = new System.Drawing.Point(4, 3);
+            this.pbItemPhoto.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pbItemPhoto.Name = "pbItemPhoto";
-            this.pbItemPhoto.Size = new System.Drawing.Size(338, 240);
+            this.pbItemPhoto.Size = new System.Drawing.Size(147, 110);
             this.pbItemPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbItemPhoto.TabIndex = 0;
+            this.pbItemPhoto.TabIndex = 6;
             this.pbItemPhoto.TabStop = false;
             // 
-            // lblItemDescription
+            // tbName
             // 
-            this.lblItemDescription.AutoSize = true;
-            this.lblItemDescription.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblItemDescription.Location = new System.Drawing.Point(2, 300);
-            this.lblItemDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblItemDescription.Name = "lblItemDescription";
-            this.lblItemDescription.Size = new System.Drawing.Size(143, 32);
-            this.lblItemDescription.TabIndex = 1;
-            this.lblItemDescription.Text = "商品描述";
-            // 
-            // lblItemPrice
-            // 
-            this.lblItemPrice.AutoSize = true;
-            this.lblItemPrice.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblItemPrice.ForeColor = System.Drawing.Color.Red;
-            this.lblItemPrice.Location = new System.Drawing.Point(2, 344);
-            this.lblItemPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblItemPrice.Name = "lblItemPrice";
-            this.lblItemPrice.Size = new System.Drawing.Size(143, 32);
-            this.lblItemPrice.TabIndex = 2;
-            this.lblItemPrice.Text = "商品價格";
-            // 
-            // lblitemName
-            // 
-            this.lblitemName.AutoSize = true;
-            this.lblitemName.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblitemName.Location = new System.Drawing.Point(2, 258);
-            this.lblitemName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblitemName.Name = "lblitemName";
-            this.lblitemName.Size = new System.Drawing.Size(143, 32);
-            this.lblitemName.TabIndex = 3;
-            this.lblitemName.Text = "商品描述";
+            this.tbName.BackColor = System.Drawing.Color.White;
+            this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbName.Enabled = false;
+            this.tbName.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbName.Location = new System.Drawing.Point(10, 116);
+            this.tbName.MinimumSize = new System.Drawing.Size(139, 44);
+            this.tbName.Multiline = true;
+            this.tbName.Name = "tbName";
+            this.tbName.ReadOnly = true;
+            this.tbName.Size = new System.Drawing.Size(139, 56);
+            this.tbName.TabIndex = 9;
+            this.tbName.Text = "123";
             // 
             // lblSoldOut
             // 
             this.lblSoldOut.AutoSize = true;
             this.lblSoldOut.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblSoldOut.ForeColor = System.Drawing.Color.Red;
-            this.lblSoldOut.Location = new System.Drawing.Point(9, 8);
-            this.lblSoldOut.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblSoldOut.Location = new System.Drawing.Point(6, 5);
             this.lblSoldOut.Name = "lblSoldOut";
-            this.lblSoldOut.Size = new System.Drawing.Size(0, 42);
-            this.lblSoldOut.TabIndex = 4;
+            this.lblSoldOut.Size = new System.Drawing.Size(0, 21);
+            this.lblSoldOut.TabIndex = 8;
+            // 
+            // lblItemPrice
+            // 
+            this.lblItemPrice.AutoSize = true;
+            this.lblItemPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblItemPrice.ForeColor = System.Drawing.Color.Red;
+            this.lblItemPrice.Location = new System.Drawing.Point(6, 227);
+            this.lblItemPrice.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblItemPrice.Name = "lblItemPrice";
+            this.lblItemPrice.Size = new System.Drawing.Size(73, 20);
+            this.lblItemPrice.TabIndex = 7;
+            this.lblItemPrice.Text = "商品價格";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.BackColor = System.Drawing.Color.White;
+            this.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDescription.Enabled = false;
+            this.tbDescription.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbDescription.Location = new System.Drawing.Point(10, 178);
+            this.tbDescription.MinimumSize = new System.Drawing.Size(139, 44);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ReadOnly = true;
+            this.tbDescription.Size = new System.Drawing.Size(139, 46);
+            this.tbDescription.TabIndex = 10;
+            this.tbDescription.Text = "123";
             // 
             // CtrlDisplayItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.lblSoldOut);
-            this.Controls.Add(this.lblitemName);
-            this.Controls.Add(this.lblItemPrice);
-            this.Controls.Add(this.lblItemDescription);
+            this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.pbItemPhoto);
-            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.lblSoldOut);
+            this.Controls.Add(this.lblItemPrice);
             this.Name = "CtrlDisplayItem";
-            this.Size = new System.Drawing.Size(338, 428);
+            this.Size = new System.Drawing.Size(156, 252);
             ((System.ComponentModel.ISupportInitialize)(this.pbItemPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,9 +122,9 @@ namespace pgjMidtermProject
         #endregion
 
         private System.Windows.Forms.PictureBox pbItemPhoto;
-        private System.Windows.Forms.Label lblItemDescription;
-        private System.Windows.Forms.Label lblItemPrice;
-        private System.Windows.Forms.Label lblitemName;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label lblSoldOut;
+        private System.Windows.Forms.Label lblItemPrice;
+        private System.Windows.Forms.TextBox tbDescription;
     }
 }
