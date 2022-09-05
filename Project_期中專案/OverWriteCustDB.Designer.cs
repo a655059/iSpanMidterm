@@ -109,6 +109,7 @@ namespace Project_期中專案
             this.cmbo_city.TabIndex = 109;
             this.cmbo_city.UseWaitCursor = true;
             this.cmbo_city.SelectedIndexChanged += new System.EventHandler(this.cmbo_city_SelectedIndexChanged);
+            this.cmbo_city.Click += new System.EventHandler(this.cmbo_city_Click);
             // 
             // btn_pic
             // 
