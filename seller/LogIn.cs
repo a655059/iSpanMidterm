@@ -21,7 +21,7 @@ namespace seller
         }
 
        
-        iSpanProjectEntities6 isp4 = new iSpanProjectEntities6();
+        iSpanProjectEntities8 isp4 = new iSpanProjectEntities8();
 
         //bool PWisCorrect;
         private void OK_Click(object sender, EventArgs e)

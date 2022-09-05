@@ -17,7 +17,7 @@ namespace seller
         {
             InitializeComponent();
         }
-        iSpanProjectEntities6 isp4 = new iSpanProjectEntities6();
+        iSpanProjectEntities8 isp4 = new iSpanProjectEntities8();
         private void buyer_Load(object sender, EventArgs e)
         {
             renew();

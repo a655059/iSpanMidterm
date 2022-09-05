@@ -29,6 +29,7 @@ namespace seller
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ofd_product = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -40,6 +41,8 @@ namespace seller
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmb_shipstatus = new System.Windows.Forms.ComboBox();
             this.picb_format = new System.Windows.Forms.PictureBox();
             this.btn_open_formatpic = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -69,6 +72,9 @@ namespace seller
             this.color = new System.Windows.Forms.Label();
             this.richTextBox_descript = new System.Windows.Forms.RichTextBox();
             this.txt_pdname = new System.Windows.Forms.TextBox();
+            this.btn_shipper_new = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -91,7 +97,7 @@ namespace seller
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -111,7 +117,7 @@ namespace seller
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -128,6 +134,10 @@ namespace seller
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer2.Panel2.Controls.Add(this.btn_shipper_new);
+            this.splitContainer2.Panel2.Controls.Add(this.label13);
+            this.splitContainer2.Panel2.Controls.Add(this.cmb_shipstatus);
             this.splitContainer2.Panel2.Controls.Add(this.picb_format);
             this.splitContainer2.Panel2.Controls.Add(this.btn_open_formatpic);
             this.splitContainer2.Panel2.Controls.Add(this.label12);
@@ -167,7 +177,7 @@ namespace seller
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Enabled = false;
             this.dataGridView3.Location = new System.Drawing.Point(18, 276);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 27;
@@ -179,7 +189,7 @@ namespace seller
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Enabled = false;
             this.dataGridView2.Location = new System.Drawing.Point(18, 142);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 27;
@@ -192,7 +202,7 @@ namespace seller
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(18, 530);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(395, 91);
             this.flowLayoutPanel2.TabIndex = 56;
@@ -202,7 +212,7 @@ namespace seller
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(18, 424);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(395, 92);
             this.flowLayoutPanel1.TabIndex = 55;
@@ -251,6 +261,26 @@ namespace seller
             this.dataGridView1.Size = new System.Drawing.Size(395, 74);
             this.dataGridView1.TabIndex = 48;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(769, 23);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(98, 22);
+            this.label13.TabIndex = 88;
+            this.label13.Text = "商品狀態";
+            // 
+            // cmb_shipstatus
+            // 
+            this.cmb_shipstatus.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmb_shipstatus.FormattingEnabled = true;
+            this.cmb_shipstatus.Location = new System.Drawing.Point(749, 58);
+            this.cmb_shipstatus.Name = "cmb_shipstatus";
+            this.cmb_shipstatus.Size = new System.Drawing.Size(140, 29);
+            this.cmb_shipstatus.TabIndex = 87;
             // 
             // picb_format
             // 
@@ -436,7 +466,7 @@ namespace seller
             this.cmb_shipper.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_shipper.FormattingEnabled = true;
             this.cmb_shipper.Location = new System.Drawing.Point(530, 110);
-            this.cmb_shipper.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_shipper.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_shipper.Name = "cmb_shipper";
             this.cmb_shipper.Size = new System.Drawing.Size(191, 30);
             this.cmb_shipper.TabIndex = 60;
@@ -457,7 +487,7 @@ namespace seller
             this.cmb_region.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_region.FormattingEnabled = true;
             this.cmb_region.Location = new System.Drawing.Point(531, 61);
-            this.cmb_region.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_region.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_region.Name = "cmb_region";
             this.cmb_region.Size = new System.Drawing.Size(191, 30);
             this.cmb_region.TabIndex = 58;
@@ -478,7 +508,7 @@ namespace seller
             this.cmb_smtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_smtype.FormattingEnabled = true;
             this.cmb_smtype.Location = new System.Drawing.Point(531, 18);
-            this.cmb_smtype.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_smtype.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_smtype.Name = "cmb_smtype";
             this.cmb_smtype.Size = new System.Drawing.Size(191, 30);
             this.cmb_smtype.TabIndex = 56;
@@ -540,7 +570,7 @@ namespace seller
             // 
             this.richTextBox_descript.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.richTextBox_descript.Location = new System.Drawing.Point(172, 155);
-            this.richTextBox_descript.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox_descript.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox_descript.Name = "richTextBox_descript";
             this.richTextBox_descript.Size = new System.Drawing.Size(214, 78);
             this.richTextBox_descript.TabIndex = 48;
@@ -554,6 +584,30 @@ namespace seller
             this.txt_pdname.Name = "txt_pdname";
             this.txt_pdname.Size = new System.Drawing.Size(214, 40);
             this.txt_pdname.TabIndex = 47;
+            // 
+            // btn_shipper_new
+            // 
+            this.btn_shipper_new.Location = new System.Drawing.Point(766, 276);
+            this.btn_shipper_new.Name = "btn_shipper_new";
+            this.btn_shipper_new.Size = new System.Drawing.Size(101, 34);
+            this.btn_shipper_new.TabIndex = 89;
+            this.btn_shipper_new.Text = "新增物流方式";
+            this.btn_shipper_new.UseVisualStyleBackColor = true;
+            this.btn_shipper_new.Click += new System.EventHandler(this.btn_shipper_new_Click);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoScroll = true;
+            this.flowLayoutPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(741, 98);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(166, 149);
+            this.flowLayoutPanel3.TabIndex = 90;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // 上架
             // 
@@ -623,5 +677,10 @@ namespace seller
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cmb_shipstatus;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button btn_shipper_new;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

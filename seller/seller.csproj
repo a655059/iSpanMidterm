@@ -125,6 +125,9 @@
     <Compile Include="MemberAccount.cs">
       <DependentUpon>ispanproj.tt</DependentUpon>
     </Compile>
+    <Compile Include="MemStatu.cs">
+      <DependentUpon>ispanproj.tt</DependentUpon>
+    </Compile>
     <Compile Include="OfficialCoupon.cs">
       <DependentUpon>ispanproj.tt</DependentUpon>
     </Compile>
@@ -149,6 +152,9 @@
     <Compile Include="ProductPic.cs">
       <DependentUpon>ispanproj.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductStatu.cs">
+      <DependentUpon>ispanproj.tt</DependentUpon>
+    </Compile>
     <Compile Include="RegionList.cs">
       <DependentUpon>ispanproj.tt</DependentUpon>
     </Compile>
@@ -159,6 +165,9 @@
       <DependentUpon>register.cs</DependentUpon>
     </Compile>
     <Compile Include="Shipper.cs">
+      <DependentUpon>ispanproj.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipperToProduct.cs">
       <DependentUpon>ispanproj.tt</DependentUpon>
     </Compile>
     <Compile Include="ShippingStatus.cs">
@@ -175,6 +184,12 @@
     </Compile>
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ucl商品狀態.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ucl商品狀態.Designer.cs">
+      <DependentUpon>Ucl商品狀態.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -223,6 +238,7 @@
     <Compile Include="賣家中心.Designer.cs">
       <DependentUpon>賣家中心.cs</DependentUpon>
     </Compile>
+    <Compile Include="運貨方式.cs" />
     <EmbeddedResource Include="buyer.resx">
       <DependentUpon>buyer.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ucl商品狀態.resx">
+      <DependentUpon>Ucl商品狀態.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -290,6 +309,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ispanproj.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ispanproj.edmx</DependentUpon>
@@ -300,9 +322,6 @@
       <DependentUpon>ispanproj.edmx</DependentUpon>
       <LastGenOutput>ispanproj.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
