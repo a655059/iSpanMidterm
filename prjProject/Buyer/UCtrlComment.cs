@@ -31,10 +31,29 @@ namespace prjProject
             get { return txtComment.Text; }
             set { txtComment.Text = value; }
         }
-        //public object commentPhoto
-        //{
-        //    get { return flpCommentPhoto.Controls; }
-        //    set { flpCommentPhoto.Controls = value; }
-        //}
+        public int star
+        {
+            set
+            {
+                for (int i = 0; i <= value; i++)
+                {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Width = 10;
+                    pictureBox.Height = 10;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Image = Image.FromFile("../../Images/twinkleStar.png");
+                    panel1.Controls.Add(pictureBox);
+                }
+                for (int i = value; i + 1 <= 4; i++)
+                {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Width = 10;
+                    pictureBox.Height = 10;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Image = Image.FromFile("../../Images/star.png");
+                    panel1.Controls.Add(pictureBox);
+                }
+            }
+        }
     }
 }

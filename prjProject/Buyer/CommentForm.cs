@@ -140,6 +140,8 @@ namespace prjProject
                         dbContext.CommentPics.Add(commentPic);
                         dbContext.SaveChanges();
                     }
+                    MessageBox.Show("感謝你的評論");
+
                 }
             }
             else
