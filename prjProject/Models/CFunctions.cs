@@ -413,7 +413,7 @@ namespace prjProject.Models
             {
                 string couponName = uCtrl.CouponName;
                 var q = dbContext.Coupons.Where(i => i.CouponName == couponName).Select(i => i.Discount).FirstOrDefault();
-                tempPrice *= (1 - q);
+                tempPrice *= q;
             }
             float discount = tempPrice - oldTotalPrice;
             return discount;
@@ -534,7 +534,7 @@ namespace prjProject.Models
             int couponID = 0;
             if (flp.Controls.Count == 0)
             {
-                couponID = 7;
+                couponID = 2;
             }
             else
             {
@@ -607,10 +607,10 @@ namespace prjProject.Models
         }
         public static void RemoveMemberCouponFromDB(int memberID, int couponID)
         {
-            if (couponID == 7) return;
+            if (couponID == 2) return;
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.CouponID == couponID).Select(i => i).FirstOrDefault();
-            q.ExpireN_A = false;
+            q.ExpireN_A = true;
             dbContext.SaveChanges();
         }
 
@@ -633,16 +633,40 @@ namespace prjProject.Models
             }
         }
         
-        public static void ShowComments(int productID)
+        public static List<UCtrlComment> GetComments(int productID)
         {
+            List<UCtrlComment> list = new List<UCtrlComment>();
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i=>i);
             foreach (var c in comments)
             {
-
+                var commentPhotos = dbContext.CommentPics.Where(i => i.CommentID == c.CommentID).Select(i => i.CommentPic1).ToList();
                 UCtrlComment uCtrl = new UCtrlComment();
-                //uCtrl.
+                uCtrl.commentID = c.CommentID;
+                try
+                {
+                    byte[] memberPhoto = c.MemberAccount.MemPic;
+                    MemoryStream ms = new MemoryStream(memberPhoto);
+                    uCtrl.memberPhoto = Image.FromStream(ms);
+                }
+                catch (Exception ex)
+                {
+                    uCtrl.memberPhoto = Image.FromFile("../../Images/cross.png");
+                }
+                uCtrl.memberName = c.MemberAccount.Name;
+                uCtrl.comment = c.Comment1;
+                uCtrl.star = c.Star-1;
+                if (commentPhotos.Count > 0)
+                {
+                    uCtrl.HasCommentPhoto = true;
+                }
+                else
+                {
+                    uCtrl.HasCommentPhoto = false;
+                }
+                list.Add(uCtrl);
             }
+            return list;
         }
         
     }

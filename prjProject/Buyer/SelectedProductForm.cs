@@ -294,7 +294,7 @@ namespace prjProject
                     OrderDatetime = DateTime.Now,
                     RecieveAdr = memberAddress,
                     FinishDate = DateTime.Now,
-                    CouponID = 7,
+                    CouponID = 2,
                     StatusID = 1,
                     ProductDetailID = detailID,
                     ShipperID = 2,

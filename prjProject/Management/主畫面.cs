@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Management;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,7 @@ namespace WindowsFormsApp2
             訂單管理 訂單 = new 訂單管理();
             常見問題 集運 = new 常見問題();
             酷碰 酷碰 = new 酷碰();
+            申訴管理 申訴管理 = new 申訴管理();
 
             if (comboBox1.SelectedItem == "帳號管理")
             {
@@ -60,6 +62,13 @@ namespace WindowsFormsApp2
                 酷碰.TopLevel = false;
                 panel1.Controls.Add(酷碰);
                 酷碰.Show();
+            }
+            else if (comboBox1.SelectedItem == "申訴管理")
+            {
+                panel1.Controls.Clear();
+                申訴管理.TopLevel = false;
+                panel1.Controls.Add(申訴管理);
+                申訴管理.Show();
             }
             else
                 panel1.Controls.Clear();

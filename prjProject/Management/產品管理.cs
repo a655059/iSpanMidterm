@@ -33,7 +33,7 @@ namespace WindowsFormsApp2
             商品增刪修 WW = new 商品增刪修();
             WW.pid = Convert.ToInt32(select);
             WW.isproductupdate = true;
-            WW.Show();
+            WW.ShowDialog();
         }
 
         private void 產品管理_Load(object sender, EventArgs e)

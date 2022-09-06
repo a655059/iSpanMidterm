@@ -23,7 +23,7 @@ namespace prjProject.Entity
     
         public int RegionID { get; set; }
         public string RegionName { get; set; }
-        public Nullable<int> CountryID { get; set; }
+        public int CountryID { get; set; }
     
         public virtual CountryList CountryList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

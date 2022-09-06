@@ -73,11 +73,29 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buyer\Event_Coupon.cs">
+    <Compile Include="UserControl\照片控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\照片控制項.Designer.cs">
+      <DependentUpon>照片控制項.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\細項控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\細項控制項.Designer.cs">
+      <DependentUpon>細項控制項.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\物流控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\物流控制項.Designer.cs">
+      <DependentUpon>物流控制項.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyer\CommentPhotoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Buyer\Event_Coupon.Designer.cs">
-      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    <Compile Include="Buyer\CommentPhotoForm.Designer.cs">
+      <DependentUpon>CommentPhotoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\AD.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
@@ -181,6 +199,24 @@
     <Compile Include="Entity\SmallType.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Member\memberLike.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\memberLike.Designer.cs">
+      <DependentUpon>memberLike.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UCtrlComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCtrlComment.Designer.cs">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyer\Event_Coupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyer\Event_Coupon.Designer.cs">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\主畫面.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +229,7 @@
     <Compile Include="Management\商品增刪修.Designer.cs">
       <DependentUpon>商品增刪修.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\商品細項.cs" />
     <Compile Include="Management\問題表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,11 +254,19 @@
     <Compile Include="Management\會員查詢.Designer.cs">
       <DependentUpon>會員查詢.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\照片區.cs" />
+    <Compile Include="Management\物流.cs" />
     <Compile Include="Management\產品管理.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Management\產品管理.Designer.cs">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\申訴修改刪除.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\申訴修改刪除.Designer.cs">
+      <DependentUpon>申訴修改刪除.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\申訴管理.cs">
       <SubType>Form</SubType>
@@ -264,6 +309,12 @@
     </Compile>
     <Compile Include="Member\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\memberCoupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\memberCoupon.Designer.cs">
+      <DependentUpon>memberCoupon.cs</DependentUpon>
     </Compile>
     <Compile Include="Member\member_center.cs">
       <SubType>Form</SubType>
@@ -383,12 +434,6 @@
     <Compile Include="Buyer\SelectedProductForm.Designer.cs">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buyer\UCtrlComment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Buyer\UCtrlComment.Designer.cs">
-      <DependentUpon>UCtrlComment.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\Ucl商品狀態.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -434,6 +479,24 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\照片控制項.resx">
+      <DependentUpon>照片控制項.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\細項控制項.resx">
+      <DependentUpon>細項控制項.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\物流控制項.resx">
+      <DependentUpon>物流控制項.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\CommentPhotoForm.resx">
+      <DependentUpon>CommentPhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\memberLike.resx">
+      <DependentUpon>memberLike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UCtrlComment.resx">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Buyer\Event_Coupon.resx">
       <DependentUpon>Event_Coupon.cs</DependentUpon>
     </EmbeddedResource>
@@ -458,6 +521,9 @@
     <EmbeddedResource Include="Management\產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\申訴修改刪除.resx">
+      <DependentUpon>申訴修改刪除.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\申訴管理.resx">
       <DependentUpon>申訴管理.cs</DependentUpon>
     </EmbeddedResource>
@@ -478,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Member\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\memberCoupon.resx">
+      <DependentUpon>memberCoupon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member\member_center.resx">
       <DependentUpon>member_center.cs</DependentUpon>
@@ -542,9 +611,6 @@
     </Compile>
     <EmbeddedResource Include="Buyer\SelectedProductForm.resx">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Buyer\UCtrlComment.resx">
-      <DependentUpon>UCtrlComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Ucl商品狀態.resx">
       <DependentUpon>Ucl商品狀態.cs</DependentUpon>
