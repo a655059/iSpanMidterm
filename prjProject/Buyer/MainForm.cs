@@ -196,7 +196,6 @@ namespace prjProject
             spContainerItem.Visible = true;
             gueseYouLike();
             searchbarReset();
-
         }
         private void gueseYouLike()
         {
@@ -318,7 +317,7 @@ namespace prjProject
         {            
             if (_isInType)
             {
-                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0) {
+                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0) {                    
                     flowpanelType.Controls.Clear();
                     FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
                     lp.ButtonClicked += LastPage_Click;
@@ -326,7 +325,7 @@ namespace prjProject
 
                     spContainerItem.Visible = false;
                     flowpanelTypeItem.Controls.Clear();
-                    foreach (CtrlDisplayItem j in SearchSys(_selectedName))
+                    foreach (CtrlDisplayItem j in SearchSys(tbSearch.Text))
                     {
                         flowpanelTypeItem.Controls.Add(j);
                         j.Click += CtrlDisplayItem_Click;
@@ -392,15 +391,26 @@ namespace prjProject
 
         private List<CtrlDisplayItem> SearchSys(string s)
         {
-            var q = from p in dbContext.Products
-                    where p.ProductName.ToUpper().Contains(s.ToUpper()) 
-                    select p;
+            if (_isInType) {
+                var q = from p in dbContext.Products
+                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName==_selectedName
+                        select p;
                 List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
                 return list;
+            }
+            else 
+            {
+                var q = from p in dbContext.Products
+                        where p.ProductName.ToUpper().Contains(s.ToUpper())
+                        select p;
+                List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
+                return list;
+            }
         }
         private void searchbarReset()
         {
             tbSearch.Text = "從全部商品中搜尋...";
+            _selectedName= "從全部商品中搜尋...";
             tbSearch.ForeColor = Color.LightGray;
             textboxHasText = false;            
             _isInType = false;
