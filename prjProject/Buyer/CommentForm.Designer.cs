@@ -95,8 +95,8 @@ namespace prjProject
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1110, 647);
-            this.splitContainer1.SplitterDistance = 100;
+            this.splitContainer1.Size = new System.Drawing.Size(1110, 873);
+            this.splitContainer1.SplitterDistance = 134;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -244,7 +244,7 @@ namespace prjProject
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1110, 279);
+            this.panel1.Size = new System.Drawing.Size(1110, 283);
             this.panel1.TabIndex = 5;
             // 
             // lblStar
@@ -289,6 +289,7 @@ namespace prjProject
             // 
             // txtWriteComment
             // 
+            this.txtWriteComment.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtWriteComment.Location = new System.Drawing.Point(144, 96);
             this.txtWriteComment.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtWriteComment.Multiline = true;
@@ -410,16 +411,17 @@ namespace prjProject
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(-72, 342);
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 284);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(926, 148);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1110, 450);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // CommentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 647);
+            this.ClientSize = new System.Drawing.Size(1110, 873);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "CommentForm";
