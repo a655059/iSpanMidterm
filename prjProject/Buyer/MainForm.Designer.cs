@@ -60,8 +60,8 @@ namespace prjProject
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
             this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
@@ -340,6 +340,7 @@ namespace prjProject
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 15;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // linkLabel2
             // 
@@ -479,6 +480,14 @@ namespace prjProject
             this.flowpanelItem.Size = new System.Drawing.Size(1506, 459);
             this.flowpanelItem.TabIndex = 0;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.flowpanelTypeItem);
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1413, 766);
+            this.panel5.TabIndex = 1;
+            // 
             // flowpanelTypeItem
             // 
             this.flowpanelTypeItem.AutoScroll = true;
@@ -487,14 +496,6 @@ namespace prjProject
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
             this.flowpanelTypeItem.Size = new System.Drawing.Size(1413, 766);
             this.flowpanelTypeItem.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.flowpanelTypeItem);
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1413, 766);
-            this.panel5.TabIndex = 1;
             // 
             // MainForm
             // 

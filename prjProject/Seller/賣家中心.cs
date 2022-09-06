@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,7 @@ namespace seller
             account = acc;
         }
 
-        iSpanProjectEntities8 isp = new iSpanProjectEntities8();
+        iSpanProjectEntities isp = new iSpanProjectEntities();
         private void 賣家中心_Load(object sender, EventArgs e)
         {
             label2.Text = account;      

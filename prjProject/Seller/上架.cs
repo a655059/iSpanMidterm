@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace seller
     {
         public string account;
         public int product_id;
-        iSpanProjectEntities8 isp = new iSpanProjectEntities8();
+        iSpanProjectEntities isp = new iSpanProjectEntities();
 
         public 上架()
         {

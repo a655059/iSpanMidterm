@@ -1,4 +1,5 @@
-﻿using prjProject.Models;
+﻿using prjProject.Entity;
+using prjProject.Models;
 using Project_期中專案;
 using System;
 using System.Collections.Generic;

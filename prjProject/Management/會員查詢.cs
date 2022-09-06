@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
         }
-        iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1();
+        iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
         public string acc { get; set; }
         
         private void btnselect_Click(object sender, EventArgs e)

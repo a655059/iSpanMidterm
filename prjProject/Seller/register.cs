@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace seller
 
         }
 
-        iSpanProjectEntities8 isp4 = new iSpanProjectEntities8();
+        iSpanProjectEntities isp4 = new iSpanProjectEntities();
         private void register_Load(object sender, EventArgs e)
         {
            

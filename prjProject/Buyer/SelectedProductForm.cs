@@ -1,4 +1,5 @@
-﻿using prjProject.Models;
+﻿using prjProject.Entity;
+using prjProject.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace prjProject
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
         private void SelectedProductForm_Load(object sender, EventArgs e)
         {
-            string[] allRegion = dbContext.RegionLists.Select(i => i.Region).ToArray();
+            string[] allRegion = dbContext.RegionLists.Select(i => i.RegionName).ToArray();
             cbbRegion.Items.AddRange(allRegion);
             
             memberID = CFunctions.GetMemberInfoFromHomePage();
@@ -52,7 +53,7 @@ namespace prjProject
             {
                 var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
                 lblWelcome.Text = q1.Name;
-                string memberRegion = q1.RegionList.Region;
+                string memberRegion = q1.RegionList.RegionName;
                 cbbRegion.SelectedItem = memberRegion;
             }
             var q = dbContext.ProductPics.Where(i => i.ProductID == productID).Select(i => new { productName = i.Product.ProductName, productPhoto = i.picture }).ToList();
@@ -152,7 +153,7 @@ namespace prjProject
             string style = label.Text;
             var q = dbContext.ProductDetails.Where(i => i.Style == style && i.ProductID == productID).Select(i => i).FirstOrDefault();
             productDetailID = q.ProductDetailID;
-            productRegion = q.Product.RegionList.Region;
+            productRegion = q.Product.RegionList.RegionName;
             
             lblPrice.Text = q.UnitPrice.ToString("c0");
             

@@ -1,4 +1,5 @@
-﻿using prjProject.Models;
+﻿using prjProject.Entity;
+using prjProject.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace prjProject
                 string buyerAddress = q3.Address;
                 string buyerPhone = q3.Phone;
                 int productID = q.ProductID;
-                List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
+                List<string> shipperName = dbContext.ShipperToProducts.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
                 UCtrlShowItemsInCart uCtrl = CFunctions.AddOrderToUCtrl(0, productDetailID, productPhoto, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName);
                 flpProductInCart.Controls.Add(uCtrl);
             }
@@ -358,6 +359,10 @@ namespace prjProject
             }
             IsCouponCandidateOpened = !IsCouponCandidateOpened;
         }
-        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Entity;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -126,7 +127,7 @@ namespace prjProject.Models
                     f.ProductNumInCart = productNumInCart.ToString();
 
                     CFunctions.SetHeart(f);
-                    f.memberRegion = q.RegionList.Region;
+                    f.memberRegion = q.RegionList.RegionName;
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
@@ -269,7 +270,7 @@ namespace prjProject.Models
                 int productID = p.ProductDetail.Product.ProductID;
                 int productDetailID = p.ProductDetailID;
                 int oldQty = productCount;
-                List<string> shipperName = dbContext.ProductShippers.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
+                List<string> shipperName = dbContext.ShipperToProducts.Where(i => i.ProductID == productID).Select(i => i.Shipper.ShipperName).ToList();
 
 
                 UCtrlShowItemsInCart uCtrl = AddOrderToUCtrl(oldQty, productDetailID, image, productName, productPrice, productCount, productSumPrice, buyerAddress, buyerPhone, shipperName, orderDetailID);
@@ -558,7 +559,7 @@ namespace prjProject.Models
                     int shipperID = dbContext.Shippers.Where(i => i.ShipperName == shipperName).Select(i => i.ShipperID).FirstOrDefault();
                     int productDetailID = uCtrl.productDetailID;
                     int regionID = dbContext.ProductDetails.Where(i => i.ProductDetailID == productDetailID).Select(i => i.Product.RegionID).FirstOrDefault();
-                    string outAdr = dbContext.RegionLists.Where(i => i.RegionID == regionID).Select(i => i.Region).FirstOrDefault();
+                    string outAdr = dbContext.RegionLists.Where(i => i.RegionID == regionID).Select(i => i.RegionName).FirstOrDefault();
                     OrderDetail orderDetail = new OrderDetail
                     {
                         OrderID = orderID,

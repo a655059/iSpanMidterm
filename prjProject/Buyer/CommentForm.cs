@@ -1,4 +1,5 @@
-﻿using prjProject.Models;
+﻿using prjProject.Entity;
+using prjProject.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -146,6 +147,11 @@ namespace prjProject
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

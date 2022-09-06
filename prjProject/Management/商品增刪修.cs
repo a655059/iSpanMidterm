@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjProject.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,7 +43,7 @@ namespace WindowsFormsApp2
                 cbship.Items.Add(i);
             }
         }
-        iSpanProjectEntities1 DBiSpan = new iSpanProjectEntities1();
+        iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
 
         產品管理 產品介面 = new 產品管理();
         public int pid { get; set; } //為了讓上一張form資料連接這張form

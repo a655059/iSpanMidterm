@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Entity;
 using prjProject.Models;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,11 @@ namespace prjProject
         private void SmallType_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
