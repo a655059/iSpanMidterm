@@ -93,8 +93,8 @@ namespace prjProject
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(888, 530);
-            this.splitContainer1.SplitterDistance = 82;
+            this.splitContainer1.Size = new System.Drawing.Size(1110, 647);
+            this.splitContainer1.SplitterDistance = 100;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -242,7 +242,7 @@ namespace prjProject
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(888, 279);
+            this.panel1.Size = new System.Drawing.Size(1110, 279);
             this.panel1.TabIndex = 5;
             // 
             // lblStar
@@ -410,7 +410,7 @@ namespace prjProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 530);
+            this.ClientSize = new System.Drawing.Size(1110, 647);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "CommentForm";

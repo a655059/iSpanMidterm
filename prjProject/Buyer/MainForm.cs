@@ -210,11 +210,12 @@ namespace prjProject
                                where q.ProductStatusID == 0
                                select q.ProductID;
 
-            int Counter = 5;
+
+            int Couter = 5;            
             if (productquery.Count() <= 0) return;
-            else if (productquery.Count() < Counter) Counter = productquery.Count();
-            int[] randomArray = new int[Counter];
-            for (int i = 0; i < Counter; i++)
+            else if (productquery.Count() < Couter) Couter = productquery.Count();
+            int[] randomArray = new int[Couter];
+            for (int i = 0; i < Couter; i++)
             {
                 int index = find5.Next(productquery.Count());
                 randomArray[i] = productquery.ToList()[index];
@@ -324,6 +325,8 @@ namespace prjProject
             else
             {
                 member_center form = new member_center();
+                form.memberName =memberName;
+                form.memeberID = memberID;
                 form.ShowDialog();
             }
         }

@@ -632,7 +632,18 @@ namespace prjProject.Models
                 }
             }
         }
+        
+        public static void ShowComments(int productID)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i=>i);
+            foreach (var c in comments)
+            {
 
+                UCtrlComment uCtrl = new UCtrlComment();
+                //uCtrl.
+            }
+        }
         
     }
 }

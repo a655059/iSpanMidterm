@@ -207,9 +207,16 @@ namespace prjProject
         {
             timer1.Stop();
             Label label = (Label)sender;
-            byte[] bytes = dbContext.ProductDetails.Where(i => i.Style == label.Text && i.ProductID == productID).Select(i => i.Pic).FirstOrDefault();
-            MemoryStream ms = new MemoryStream(bytes);
-            pbProductPhoto.Image = Image.FromStream(ms);
+            try
+            {
+                byte[] bytes = dbContext.ProductDetails.Where(i => i.Style == label.Text && i.ProductID == productID).Select(i => i.Pic).FirstOrDefault();
+                MemoryStream ms = new MemoryStream(bytes);
+                pbProductPhoto.Image = Image.FromStream(ms);
+            }
+            catch (Exception ex2)
+            {
+                pbProductPhoto.Image = Image.FromFile("../../Images/cross.png");
+            }
         }
 
         private int productDetailID = 0;

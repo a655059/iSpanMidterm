@@ -265,12 +265,6 @@
     <Compile Include="Member\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Member\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Member\member_center.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +282,12 @@
     </Compile>
     <Compile Include="Member\OverWriteCustDB.Designer.cs">
       <DependentUpon>OverWriteCustDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\PdSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\PdSearch.designer.cs">
+      <DependentUpon>PdSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\mem_Acc.cs" />
     <Compile Include="Models\商品_總.cs" />
@@ -479,9 +479,6 @@
     <EmbeddedResource Include="Member\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Member\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Member\member_center.resx">
       <DependentUpon>member_center.cs</DependentUpon>
     </EmbeddedResource>
@@ -490,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Member\OverWriteCustDB.resx">
       <DependentUpon>OverWriteCustDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\PdSearch.resx">
+      <DependentUpon>PdSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Seller\buyer.resx">
       <DependentUpon>buyer.cs</DependentUpon>
