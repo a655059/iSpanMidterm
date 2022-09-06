@@ -73,6 +73,19 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="Buyer\CommentPhotoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyer\CommentPhotoForm.Designer.cs">
+      <DependentUpon>CommentPhotoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UCtrlComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCtrlComment.Designer.cs">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
+
     <Compile Include="Buyer\Event_Coupon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,12 +396,6 @@
     <Compile Include="Buyer\SelectedProductForm.Designer.cs">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buyer\UCtrlComment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Buyer\UCtrlComment.Designer.cs">
-      <DependentUpon>UCtrlComment.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\Ucl商品狀態.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -434,6 +441,11 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\CommentPhotoForm.resx">
+      <DependentUpon>CommentPhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UCtrlComment.resx">
+      <DependentUpon>UCtrlComment.cs</DependentUpon>
     <EmbeddedResource Include="Buyer\Event_Coupon.resx">
       <DependentUpon>Event_Coupon.cs</DependentUpon>
     </EmbeddedResource>
@@ -542,9 +554,6 @@
     </Compile>
     <EmbeddedResource Include="Buyer\SelectedProductForm.resx">
       <DependentUpon>SelectedProductForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Buyer\UCtrlComment.resx">
-      <DependentUpon>UCtrlComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\Ucl商品狀態.resx">
       <DependentUpon>Ucl商品狀態.cs</DependentUpon>
