@@ -205,14 +205,15 @@ namespace prjProject
             spContainerItem.Visible = true;
             flowpanelAD.Controls.Clear();
             Random find5 = new Random();
-            int[] randomArray = new int[5];
+            
             var productquery = from q in dbContext.Products
                                where q.ProductStatusID == 0
                                select q.ProductID;
-            int Couter = 5;
+
+            int Couter = 5;            
             if (productquery.Count() <= 0) return;
             else if (productquery.Count() < Couter) Couter = productquery.Count();
-
+            int[] randomArray = new int[Couter];
             for (int i = 0; i < Couter; i++)
             {
                 int index = find5.Next(productquery.Count());
@@ -336,7 +337,8 @@ namespace prjProject
 
                     spContainerItem.Visible = false;
                     flowpanelTypeItem.Controls.Clear();
-                    foreach (CtrlDisplayItem j in SearchSys(tbSearch.Text))
+                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
+                    foreach (CtrlDisplayItem j in list)
                     {
                         flowpanelTypeItem.Controls.Add(j);
                         j.Click += CtrlDisplayItem_Click;
@@ -363,7 +365,8 @@ namespace prjProject
 
                     spContainerItem.Visible = false;
                     flowpanelTypeItem.Controls.Clear();
-                    foreach (CtrlDisplayItem j in SearchSys(tbSearch.Text))
+                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
+                    foreach (CtrlDisplayItem j in list)
                     {
                         flowpanelTypeItem.Controls.Add(j);
                         j.Click += CtrlDisplayItem_Click;
@@ -455,7 +458,7 @@ namespace prjProject
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!_isInType)
+            if (spContainerItem.Visible == true)
             {
                 gueseYouLike();
             }
