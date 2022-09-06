@@ -19,6 +19,11 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public string commentCount
+        {
+            get { return linkLabelComment.Text; }
+            set { linkLabelComment.Text = value; }
+        }
         public object[] countries
         {
             set
@@ -283,6 +288,18 @@ namespace prjProject
         {
             if (memberID > 0)
             {
+                int sellerID = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i.MemberID).FirstOrDefault();
+                if (sellerID == memberID)
+                {
+                    if (MessageBox.Show("你確定要買你自己上架的商品嗎?", "不給你買", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        MessageBox.Show("規定你不能買自己賣的東西");
+                        return;
+                    }
+                    else {
+                        return;
+                    }
+                }
                 if (!CFunctions.IsAllInfoChecked(productDetailID, productRegion, nudCount.Value, out int detailID, out string outAdr, out int qty))
                 {
                     return;
