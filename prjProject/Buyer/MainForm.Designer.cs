@@ -29,8 +29,10 @@ namespace prjProject
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
             this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
@@ -47,9 +49,6 @@ namespace prjProject
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
             this.spContainerBotton = new System.Windows.Forms.SplitContainer();
@@ -59,13 +58,16 @@ namespace prjProject
             this.lblGuessYouLike = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowpanelItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
             this.spContainerMainPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelTopBar.SuspendLayout();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
@@ -74,8 +76,6 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).BeginInit();
             this.spContainerBotton.Panel1.SuspendLayout();
             this.spContainerBotton.Panel2.SuspendLayout();
@@ -89,6 +89,8 @@ namespace prjProject
             this.spContainerGuessYouLike.Panel2.SuspendLayout();
             this.spContainerGuessYouLike.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,9 +106,9 @@ namespace prjProject
             // spContainerMainPage.Panel1
             // 
             this.spContainerMainPage.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.spContainerMainPage.Panel1.Controls.Add(this.pictureBox1);
             this.spContainerMainPage.Panel1.Controls.Add(this.panelTopBar);
             this.spContainerMainPage.Panel1.Controls.Add(this.panel3);
-            this.spContainerMainPage.Panel1.Controls.Add(this.panel1);
             this.spContainerMainPage.Panel1.Controls.Add(this.linkLabel2);
             this.spContainerMainPage.Panel1.Controls.Add(this.lblToSellerForm);
             // 
@@ -116,6 +118,17 @@ namespace prjProject
             this.spContainerMainPage.Size = new System.Drawing.Size(1680, 900);
             this.spContainerMainPage.SplitterDistance = 128;
             this.spContainerMainPage.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::prjProject.Properties.Resources.LOGO3;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 25);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panelTopBar
             // 
@@ -311,38 +324,6 @@ namespace prjProject
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.btnWindowMaximized_Click_1);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Location = new System.Drawing.Point(12, 26);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(107, 94);
-            this.panel1.TabIndex = 21;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(7, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 35);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "蝦到爆";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(8, -3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(91, 77);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 15;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
@@ -419,7 +400,7 @@ namespace prjProject
             // 
             // spContainerItem.Panel2
             // 
-            this.spContainerItem.Panel2.Controls.Add(this.flowpanelItem);
+            this.spContainerItem.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.spContainerItem.Size = new System.Drawing.Size(1508, 768);
             this.spContainerItem.SplitterDistance = 303;
             this.spContainerItem.TabIndex = 0;
@@ -473,14 +454,32 @@ namespace prjProject
             this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
             this.flowpanelAD.TabIndex = 0;
             // 
-            // flowpanelItem
+            // tableLayoutPanel1
             // 
-            this.flowpanelItem.AutoScroll = true;
-            this.flowpanelItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelItem.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelItem.Name = "flowpanelItem";
-            this.flowpanelItem.Size = new System.Drawing.Size(1506, 459);
-            this.flowpanelItem.TabIndex = 0;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1506, 459);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Location = new System.Drawing.Point(1006, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(496, 451);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel5
             // 
@@ -499,6 +498,10 @@ namespace prjProject
             this.flowpanelTypeItem.Size = new System.Drawing.Size(1413, 766);
             this.flowpanelTypeItem.TabIndex = 1;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -515,6 +518,7 @@ namespace prjProject
             this.spContainerMainPage.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).EndInit();
             this.spContainerMainPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelSearch.ResumeLayout(false);
@@ -525,9 +529,6 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.spContainerBotton.Panel1.ResumeLayout(false);
             this.spContainerBotton.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).EndInit();
@@ -542,6 +543,8 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.spContainerGuessYouLike)).EndInit();
             this.spContainerGuessYouLike.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -564,16 +567,12 @@ namespace prjProject
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel lblToSellerForm;
         private System.Windows.Forms.LinkLabel linkLabelHouTai;
         private System.Windows.Forms.SplitContainer spContainerBotton;
         private System.Windows.Forms.FlowLayoutPanel flowpanelType;
         private System.Windows.Forms.SplitContainer spContainerItem;
-        private System.Windows.Forms.FlowLayoutPanel flowpanelItem;
         private System.Windows.Forms.LinkLabel linkLabelMemberCenter;
         private System.Windows.Forms.SplitContainer spContainerGuessYouLike;
         private System.Windows.Forms.Label lblGuessYouLike;
@@ -581,6 +580,10 @@ namespace prjProject
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpanelAD;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

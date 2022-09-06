@@ -73,6 +73,114 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buyer\Event_Coupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyer\Event_Coupon.Designer.cs">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AD.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ArguePic.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Argument.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ArgumentType.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\BigType.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Comment.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CommentPic.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CountryList.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Coupon.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\FAQ.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\FAQType.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Follow.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\iSpanModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>iSpanModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\iSpanModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\iSpanModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>iSpanModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Like.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\MemberAccount.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\MemStatu.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\OfficialCoupon.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Order.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\OrderDetail.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\OrderStatus.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Payment.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Product.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ProductDetail.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ProductPic.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ProductStatu.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\RegionList.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Shipper.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ShipperToProduct.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ShippingStatus.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SmallType.cs">
+      <DependentUpon>iSpanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Management\主畫面.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +222,12 @@
     </Compile>
     <Compile Include="Management\產品管理.Designer.cs">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\申訴管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\申訴管理.designer.cs">
+      <DependentUpon>申訴管理.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\訂單增刪修.cs">
       <SubType>Form</SubType>
@@ -235,108 +349,6 @@
     <Compile Include="UserControl\CtrlDisplayItem.designer.cs">
       <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entity\AD.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ArguePic.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Argument.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ArgumentType.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\BigType.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Comment.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\CommentPic.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\CountryList.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Coupon.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\FAQ.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\FAQType.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Follow.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\iSpanModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>iSpanModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\iSpanModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\iSpanModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>iSpanModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Like.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\MemberAccount.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\MemStatu.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OfficialCoupon.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Order.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OrderDetail.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\OrderStatus.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Payment.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Product.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ProductDetail.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ProductPic.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ProductStatu.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\RegionList.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Shipper.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ShipperToProduct.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\ShippingStatus.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\SmallType.cs">
-      <DependentUpon>iSpanModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\FlowBarProductType.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -422,6 +434,9 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\Event_Coupon.resx">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\主畫面.resx">
       <DependentUpon>主畫面.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management\產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\申訴管理.resx">
+      <DependentUpon>申訴管理.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\訂單增刪修.resx">
       <DependentUpon>訂單增刪修.cs</DependentUpon>
@@ -570,9 +588,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\logo2.png" />
     <None Include="Resources\next202.png" />
@@ -582,6 +598,8 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Coupon.png" />
+    <None Include="Resources\LOGO3.png" />
     <Content Include="Entity\iSpanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>iSpanModel.edmx</DependentUpon>
@@ -592,6 +610,7 @@
       <DependentUpon>iSpanModel.edmx</DependentUpon>
       <LastGenOutput>iSpanModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Images\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
