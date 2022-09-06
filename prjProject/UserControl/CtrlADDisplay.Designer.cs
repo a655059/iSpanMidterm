@@ -30,9 +30,9 @@ namespace prjProject
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbItemPhoto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbItemPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -44,26 +44,26 @@ namespace prjProject
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // pbItemPhoto
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(494, 451);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.pbItemPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbItemPhoto.Location = new System.Drawing.Point(0, 0);
+            this.pbItemPhoto.Name = "pbItemPhoto";
+            this.pbItemPhoto.Size = new System.Drawing.Size(494, 451);
+            this.pbItemPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbItemPhoto.TabIndex = 1;
+            this.pbItemPhoto.TabStop = false;
             // 
             // CtrlADDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pbItemPhoto);
             this.Controls.Add(this.pictureBox1);
             this.Name = "CtrlADDisplay";
             this.Size = new System.Drawing.Size(494, 451);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbItemPhoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -71,6 +71,6 @@ namespace prjProject
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbItemPhoto;
     }
 }
