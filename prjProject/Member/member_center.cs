@@ -51,5 +51,13 @@ namespace Project_期中專案
             cou.memberName = this.memberName;
             cou.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            memberLike like = new memberLike();
+            like.memberName = this.memberName;
+            like.memberID = this.memeberID;
+            like.ShowDialog();
+        }
     }
 }
