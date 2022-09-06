@@ -15,6 +15,7 @@ namespace Project_期中專案
     public partial class member_cre : Form
     {
         bool isClosed = true;
+        public int memberID;
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
         public member_cre()
         {
@@ -27,7 +28,7 @@ namespace Project_期中專案
 
             //member_center center = (member_center)this.Owner;
 
-            var account1 = txtAccount.Text;
+            string account1 = txtAccount.Text;
             
 
             var q = from i in dbContext.MemberAccounts
@@ -49,13 +50,13 @@ namespace Project_期中專案
                     {
                         if (form.GetType() == typeof(MainForm))
                         {
-                            ((MainForm)form).memberID = account1;
+                            ((MainForm)form).memberID = memberID;
                         }
+                        MessageBox.Show("登入成功!");
+                        isClosed = false;
+                        Close();
+                        return;
                     }
-                    MessageBox.Show("登入成功!");
-                    isClosed = false;
-                    Close();
-                    return;
                 }
                 else MessageBox.Show("密碼有錯");
             }

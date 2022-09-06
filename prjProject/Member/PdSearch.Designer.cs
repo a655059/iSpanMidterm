@@ -59,6 +59,7 @@ namespace Project_期中專案
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(461, 529);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label1
             // 
@@ -156,9 +157,9 @@ namespace Project_期中專案
             this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label9.Location = new System.Drawing.Point(12, 386);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(105, 20);
+            this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 10;
-            this.label9.Text = "出貨廠家編號";
+            this.label9.Text = "出貨情況";
             // 
             // txt_id
             // 
@@ -172,8 +173,9 @@ namespace Project_期中專案
             // 
             this.txt_datime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_datime.Location = new System.Drawing.Point(163, 164);
+            this.txt_datime.Multiline = true;
             this.txt_datime.Name = "txt_datime";
-            this.txt_datime.Size = new System.Drawing.Size(100, 29);
+            this.txt_datime.Size = new System.Drawing.Size(100, 22);
             this.txt_datime.TabIndex = 12;
             // 
             // txt_pdid
@@ -188,8 +190,9 @@ namespace Project_期中專案
             // 
             this.txt_retime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_retime.Location = new System.Drawing.Point(163, 205);
+            this.txt_retime.Multiline = true;
             this.txt_retime.Name = "txt_retime";
-            this.txt_retime.Size = new System.Drawing.Size(100, 29);
+            this.txt_retime.Size = new System.Drawing.Size(100, 22);
             this.txt_retime.TabIndex = 13;
             // 
             // txt_coupid
@@ -204,8 +207,9 @@ namespace Project_期中專案
             // 
             this.txt_finday.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_finday.Location = new System.Drawing.Point(163, 293);
+            this.txt_finday.Multiline = true;
             this.txt_finday.Name = "txt_finday";
-            this.txt_finday.Size = new System.Drawing.Size(100, 29);
+            this.txt_finday.Size = new System.Drawing.Size(100, 22);
             this.txt_finday.TabIndex = 15;
             // 
             // txt_statid

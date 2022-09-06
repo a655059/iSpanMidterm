@@ -209,6 +209,7 @@ namespace prjProject
             this.linkLabelRegister.TabIndex = 12;
             this.linkLabelRegister.TabStop = true;
             this.linkLabelRegister.Text = "註冊";
+            this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegister_LinkClicked);
             // 
             // pbCart
             // 

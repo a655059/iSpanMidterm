@@ -310,6 +310,8 @@ namespace prjProject
             else
             {
                 member_center form = new member_center();
+                form.memberName =memberName;
+                form.memeberID = memberID;
                 form.ShowDialog();
             }
         }
@@ -423,6 +425,12 @@ namespace prjProject
                 賣家中心 form = new 賣家中心();
                 form.ShowDialog();
             }
+        }
+
+        private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
         }
     }
 }
