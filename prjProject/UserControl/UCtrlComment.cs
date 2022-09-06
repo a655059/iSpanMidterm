@@ -8,14 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjProject
+namespace prjProject.Buyer
 {
-    public partial class UCtrlComment : Form
+    public partial class UCtrlComment : UserControl
     {
         public UCtrlComment()
         {
             InitializeComponent();
         }
+        public bool HasCommentPhoto
+        {
+            set
+            {
+                linkLabelCommentPhoto.Visible = value;
+            }
+        }
+        public int commentID { get; set; }
         public Image memberPhoto
         {
             get { return pbMemberPhoto.Image; }
@@ -38,20 +46,20 @@ namespace prjProject
                 for (int i = 0; i <= value; i++)
                 {
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.Width = 10;
-                    pictureBox.Height = 10;
+                    pictureBox.Width = 30;
+                    pictureBox.Height = 30;
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox.Image = Image.FromFile("../../Images/twinkleStar.png");
-                    panel1.Controls.Add(pictureBox);
+                    flpStar.Controls.Add(pictureBox);
                 }
                 for (int i = value; i + 1 <= 4; i++)
                 {
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.Width = 10;
-                    pictureBox.Height = 10;
+                    pictureBox.Width = 30;
+                    pictureBox.Height = 30;
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox.Image = Image.FromFile("../../Images/star.png");
-                    panel1.Controls.Add(pictureBox);
+                    flpStar.Controls.Add(pictureBox);
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Buyer;
 using prjProject.Entity;
 using System;
 using System.Collections.Generic;
@@ -627,16 +628,40 @@ namespace prjProject.Models
             }
         }
         
-        public static void ShowComments(int productID)
+        public static List<UCtrlComment> ShowComments(int productID)
         {
+            List<UCtrlComment> list = new List<UCtrlComment>();
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i=>i);
             foreach (var c in comments)
             {
-
+                var commentPhotos = dbContext.CommentPics.Where(i => i.CommentID == c.CommentID).Select(i => i.CommentPic1).ToList();
                 UCtrlComment uCtrl = new UCtrlComment();
-                //uCtrl.
+                uCtrl.commentID = c.CommentID;
+                try
+                {
+                    byte[] memberPhoto = c.MemberAccount.MemPic;
+                    MemoryStream ms = new MemoryStream(memberPhoto);
+                    uCtrl.memberPhoto = Image.FromStream(ms);
+                }
+                catch (Exception ex)
+                {
+                    uCtrl.memberPhoto = Image.FromFile("../../Images/cross.png");
+                }
+                uCtrl.memberName = c.MemberAccount.Name;
+                uCtrl.comment = c.Comment1;
+                uCtrl.star = c.Star-1;
+                if (commentPhotos.Count > 0)
+                {
+                    uCtrl.HasCommentPhoto = true;
+                }
+                else
+                {
+                    uCtrl.HasCommentPhoto = false;
+                }
+                list.Add(uCtrl);
             }
+            return list;
         }
         
     }
