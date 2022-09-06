@@ -369,6 +369,7 @@ namespace prjProject
             this.lblToSellerForm.TabIndex = 10;
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
+            this.lblToSellerForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblToSellerForm_LinkClicked);
             // 
             // spContainerBotton
             // 
