@@ -1,4 +1,5 @@
-﻿using prjProject.Entity;
+﻿using prjProject;
+using prjProject.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,7 +49,7 @@ namespace Project_期中專案
                     {
                         if (form.GetType() == typeof(MainForm))
                         {
-                            ((MainForm)form).account = account1;
+                            ((MainForm)form).memberID = account1;
                         }
                     }
                     MessageBox.Show("登入成功!");
