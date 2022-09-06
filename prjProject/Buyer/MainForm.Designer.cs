@@ -32,7 +32,7 @@ namespace prjProject
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
             this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
@@ -59,7 +59,9 @@ namespace prjProject
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.flowAD2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.EventAD1 = new System.Windows.Forms.PictureBox();
+            this.flowAD1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -67,7 +69,7 @@ namespace prjProject
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
             this.spContainerMainPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelTopBar.SuspendLayout();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
@@ -90,7 +92,7 @@ namespace prjProject
             this.spContainerGuessYouLike.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,7 +108,7 @@ namespace prjProject
             // spContainerMainPage.Panel1
             // 
             this.spContainerMainPage.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.spContainerMainPage.Panel1.Controls.Add(this.pictureBox1);
+            this.spContainerMainPage.Panel1.Controls.Add(this.pbLogo);
             this.spContainerMainPage.Panel1.Controls.Add(this.panelTopBar);
             this.spContainerMainPage.Panel1.Controls.Add(this.panel3);
             this.spContainerMainPage.Panel1.Controls.Add(this.linkLabel2);
@@ -119,16 +121,15 @@ namespace prjProject
             this.spContainerMainPage.SplitterDistance = 128;
             this.spContainerMainPage.TabIndex = 1;
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.Image = global::prjProject.Properties.Resources.LOGO3;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(114, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
+            this.pbLogo.Location = new System.Drawing.Point(10, 25);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(114, 100);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 29;
+            this.pbLogo.TabStop = false;
             // 
             // panelTopBar
             // 
@@ -461,7 +462,9 @@ namespace prjProject
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowAD2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.EventAD1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowAD1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -470,16 +473,32 @@ namespace prjProject
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1506, 459);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // pictureBox2
+            // flowAD2
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(1006, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(496, 451);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.flowAD2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowAD2.Location = new System.Drawing.Point(505, 4);
+            this.flowAD2.Name = "flowAD2";
+            this.flowAD2.Size = new System.Drawing.Size(494, 451);
+            this.flowAD2.TabIndex = 2;
+            // 
+            // EventAD1
+            // 
+            this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EventAD1.Location = new System.Drawing.Point(1006, 4);
+            this.EventAD1.Name = "EventAD1";
+            this.EventAD1.Size = new System.Drawing.Size(496, 451);
+            this.EventAD1.TabIndex = 0;
+            this.EventAD1.TabStop = false;
+            this.EventAD1.Click += new System.EventHandler(this.EventAD1_Click);
+            // 
+            // flowAD1
+            // 
+            this.flowAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowAD1.Location = new System.Drawing.Point(4, 4);
+            this.flowAD1.Name = "flowAD1";
+            this.flowAD1.Size = new System.Drawing.Size(494, 451);
+            this.flowAD1.TabIndex = 1;
             // 
             // panel5
             // 
@@ -518,7 +537,7 @@ namespace prjProject
             this.spContainerMainPage.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).EndInit();
             this.spContainerMainPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelSearch.ResumeLayout(false);
@@ -544,7 +563,7 @@ namespace prjProject
             this.spContainerGuessYouLike.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -580,10 +599,12 @@ namespace prjProject
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpanelAD;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox EventAD1;
+        private System.Windows.Forms.FlowLayoutPanel flowAD2;
+        private System.Windows.Forms.FlowLayoutPanel flowAD1;
     }
 }
 

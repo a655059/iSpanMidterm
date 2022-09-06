@@ -227,12 +227,9 @@ namespace prjProject
                         index = find5.Next(productquery.Count());
                         randomArray[i] = productquery.ToList()[index];
                         j = 0;
-                    }
-                    
+                    }                    
                 }
-
             }
-
             List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
             foreach (int idx in randomArray)
             {
@@ -250,7 +247,6 @@ namespace prjProject
                     control.Click += CtrlDisplayItem_Click;
                 }
             }
-
         }
         private void CtrlDisplayItem_Click(object sender, EventArgs e)
         {
@@ -457,11 +453,7 @@ namespace prjProject
                 form.ShowDialog();
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        //AD輪播timer
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -470,6 +462,7 @@ namespace prjProject
                 gueseYouLike();
             }
         }
+        //檢查會員
         private void memCheck(int i)
         {
             if (i == 0) return;
@@ -481,8 +474,8 @@ namespace prjProject
                 linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
             }
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        //
+        private void EventAD1_Click(object sender, EventArgs e)
         {
             if (memberID == 0)
             {
@@ -499,11 +492,16 @@ namespace prjProject
                 form.ShowDialog();
             }
         }
+        //註冊頁面連結
 
         private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form1 createAcc = new Form1();
             createAcc.ShowDialog();
+        }
+        private void inpuAD(FlowLayoutPanel f)
+        {
+                        
         }
     }
 }

@@ -79,6 +79,12 @@
     <Compile Include="Buyer\Event_Coupon.Designer.cs">
       <DependentUpon>Event_Coupon.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\CtrlADDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\CtrlADDisplay.Designer.cs">
+      <DependentUpon>CtrlADDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\AD.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
     </Compile>
@@ -514,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Seller\賣家中心.resx">
       <DependentUpon>賣家中心.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\CtrlADDisplay.resx">
+      <DependentUpon>CtrlADDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\CtrlDisplayItem.resx">
       <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
