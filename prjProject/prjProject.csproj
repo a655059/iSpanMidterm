@@ -73,6 +73,12 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buyer\Event_Coupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyer\Event_Coupon.Designer.cs">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\主畫面.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -428,6 +434,9 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\Event_Coupon.resx">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\主畫面.resx">
       <DependentUpon>主畫面.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +608,8 @@
       <DependentUpon>iSpanModel.edmx</DependentUpon>
       <LastGenOutput>iSpanModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Coupon.png" />
+    <None Include="Resources\LOGO3.png" />
     <Content Include="Images\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
