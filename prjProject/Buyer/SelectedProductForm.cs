@@ -19,6 +19,32 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public object[] countries
+        {
+            set
+            {
+                cbbCountry.Items.Clear();
+                cbbCountry.Items.AddRange(value);
+            }
+        }
+        public string memberCountryName
+        {
+            get { return cbbCountry.SelectedItem.ToString(); }
+            set { cbbCountry.SelectedItem = value; }
+        }
+        public object[] regions
+        {
+            set
+            {
+                cbbRegion.Items.Clear();
+                cbbRegion.Items.AddRange(value);
+            }
+        }
+        public string memberRegionName
+        {
+            get { return cbbRegion.SelectedItem.ToString(); }
+            set { cbbRegion.SelectedItem = value; }
+        }
         public string memberName
         {
             get { return lblWelcome.Text; }
@@ -47,13 +73,22 @@ namespace prjProject
         {
             string[] allRegion = dbContext.RegionLists.Select(i => i.RegionName).ToArray();
             cbbRegion.Items.AddRange(allRegion);
-            
+            string[] allCountry = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
+            cbbCountry.Items.AddRange(allCountry);
             memberID = CFunctions.GetMemberInfoFromHomePage();
             if (memberID > 0)
             {
                 var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
                 lblWelcome.Text = q1.Name;
+                int memberRegionID = q1.RegionID;
+                string memberCountry = q1.RegionList.CountryList.CountryName;
+                int memberCountryID = q1.RegionList.CountryList.CountryID;
                 string memberRegion = q1.RegionList.RegionName;
+                cbbCountry.SelectedItem = memberCountry;
+                allRegion = dbContext.RegionLists.Where(i => i.CountryID == memberCountryID).Select(i => i.RegionName).ToArray();
+                cbbRegion.Items.Clear();
+                cbbRegion.Items.AddRange(allRegion);
+                cbbRegion.SelectedItem = memberRegion;
                 cbbRegion.SelectedItem = memberRegion;
             }
             
