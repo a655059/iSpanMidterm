@@ -77,6 +77,8 @@ namespace prjProject
             //LoadAllItem();
             LoadBigTypeList();
             searchbarReset();
+            inpuAD(flowAD1);
+            inpuAD(flowAD2);
         }
         //private void LoadAllItem()
         //{
@@ -501,7 +503,22 @@ namespace prjProject
         }
         private void inpuAD(FlowLayoutPanel f)
         {
-                        
+            var adlist = from l in dbContext.Products
+                         where l.AdFee >= 0 &&l.ProductStatusID==0
+                         select l;
+            if (adlist.Count() == 0) return;
+            Random r = new Random();
+            int idx = r.Next(adlist.Count());
+            List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(adlist);
+            foreach (CtrlDisplayItem j in list)
+            {                
+                j.Click += CtrlDisplayItem_Click;
+                foreach (Control control in j.Controls)
+                {
+                    control.Click += CtrlDisplayItem_Click;
+                }
+            }
+            f.Controls.Add(list[idx]);
         }
     }
 }
