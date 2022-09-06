@@ -75,6 +75,7 @@ namespace Project_期中專案
             this.button4.TabIndex = 3;
             this.button4.Text = "按讚好物";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 

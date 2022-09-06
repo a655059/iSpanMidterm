@@ -100,15 +100,17 @@ namespace prjProject.Member
             // txt_couStar
             // 
             this.txt_couStar.Location = new System.Drawing.Point(253, 177);
+            this.txt_couStar.Multiline = true;
             this.txt_couStar.Name = "txt_couStar";
-            this.txt_couStar.Size = new System.Drawing.Size(100, 22);
+            this.txt_couStar.Size = new System.Drawing.Size(203, 22);
             this.txt_couStar.TabIndex = 6;
             // 
             // txt_couEnd
             // 
             this.txt_couEnd.Location = new System.Drawing.Point(253, 246);
+            this.txt_couEnd.Multiline = true;
             this.txt_couEnd.Name = "txt_couEnd";
-            this.txt_couEnd.Size = new System.Drawing.Size(100, 22);
+            this.txt_couEnd.Size = new System.Drawing.Size(203, 22);
             this.txt_couEnd.TabIndex = 7;
             // 
             // txt_couDiscount

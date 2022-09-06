@@ -43,6 +43,7 @@ namespace prjProject
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
+            this.cbbCountry = new System.Windows.Forms.ComboBox();
             this.pbHeart = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblProductDescription = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@ namespace prjProject
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pbProductPhoto = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cbbCountry = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -264,6 +264,16 @@ namespace prjProject
             this.lblToSellerForm.TabIndex = 20;
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
+            // 
+            // cbbCountry
+            // 
+            this.cbbCountry.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbbCountry.FormattingEnabled = true;
+            this.cbbCountry.Location = new System.Drawing.Point(514, 148);
+            this.cbbCountry.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.cbbCountry.Name = "cbbCountry";
+            this.cbbCountry.Size = new System.Drawing.Size(81, 24);
+            this.cbbCountry.TabIndex = 23;
             // 
             // pbHeart
             // 
@@ -610,16 +620,6 @@ namespace prjProject
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // cbbCountry
-            // 
-            this.cbbCountry.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cbbCountry.FormattingEnabled = true;
-            this.cbbCountry.Location = new System.Drawing.Point(514, 148);
-            this.cbbCountry.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.cbbCountry.Name = "cbbCountry";
-            this.cbbCountry.Size = new System.Drawing.Size(81, 24);
-            this.cbbCountry.TabIndex = 23;
             // 
             // SelectedProductForm
             // 

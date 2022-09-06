@@ -116,9 +116,9 @@ namespace Project_期中專案
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label5.Location = new System.Drawing.Point(12, 217);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 20);
+            this.label5.Size = new System.Drawing.Size(73, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "訂單收到時間";
+            this.label5.Text = "訂單地址";
             // 
             // label7
             // 
@@ -153,7 +153,7 @@ namespace Project_期中專案
             // txt_id
             // 
             this.txt_id.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_id.Location = new System.Drawing.Point(163, 121);
+            this.txt_id.Location = new System.Drawing.Point(163, 131);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(100, 29);
             this.txt_id.TabIndex = 11;
@@ -161,7 +161,7 @@ namespace Project_期中專案
             // txt_datime
             // 
             this.txt_datime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_datime.Location = new System.Drawing.Point(163, 164);
+            this.txt_datime.Location = new System.Drawing.Point(163, 174);
             this.txt_datime.Multiline = true;
             this.txt_datime.Name = "txt_datime";
             this.txt_datime.Size = new System.Drawing.Size(100, 22);
@@ -170,7 +170,7 @@ namespace Project_期中專案
             // txt_retime
             // 
             this.txt_retime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_retime.Location = new System.Drawing.Point(163, 205);
+            this.txt_retime.Location = new System.Drawing.Point(163, 217);
             this.txt_retime.Multiline = true;
             this.txt_retime.Name = "txt_retime";
             this.txt_retime.Size = new System.Drawing.Size(100, 22);

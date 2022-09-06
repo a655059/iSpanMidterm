@@ -181,6 +181,12 @@
     <Compile Include="Entity\SmallType.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Member\memberLike.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\memberLike.Designer.cs">
+      <DependentUpon>memberLike.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCtrlComment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -448,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Buyer\CommentPhotoForm.resx">
       <DependentUpon>CommentPhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\memberLike.resx">
+      <DependentUpon>memberLike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCtrlComment.resx">
       <DependentUpon>UCtrlComment.cs</DependentUpon>
