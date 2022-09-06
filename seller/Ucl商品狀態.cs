@@ -10,16 +10,20 @@ using System.Windows.Forms;
 
 namespace seller
 {
-    public partial class test : Form
+    public partial class Ucl商品狀態 : UserControl
     {
-        public test()
+        public Ucl商品狀態()
         {
             InitializeComponent();
         }
 
-        private void refresh_Click(object sender, EventArgs e)
-        {
-               
+        public string shippername {
+            //get { }
+            set
+            {
+                this.lbl_商品運送狀態.Text = value;
+                /*his.textBox1.Text = value;*/
+            }
         }
     }
 }

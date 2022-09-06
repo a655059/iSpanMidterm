@@ -24,7 +24,7 @@ namespace seller
             account = acc;
         }
 
-        iSpanProjectEntities6 isp = new iSpanProjectEntities6();
+        iSpanProjectEntities8 isp = new iSpanProjectEntities8();
         private void 賣家中心_Load(object sender, EventArgs e)
         {
             label2.Text = account;      
@@ -50,7 +50,7 @@ namespace seller
             if (q.Count() > 0)           //代表賣家有商品 可以顯示
             {
 
-                foreach(var pid in q)       //抓取特定賣家的id存入list中使用
+                foreach(var pid in q.Take(10))       //抓取特定賣家的id存入list中使用
                 {
                     prod.Add(pid.ProductID);
                 }

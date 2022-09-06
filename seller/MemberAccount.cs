@@ -40,6 +40,7 @@ namespace seller
         public System.DateTime Birthday { get; set; }
         public string Bio { get; set; }
         public byte[] MemPic { get; set; }
+        public int MemStatusID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
@@ -49,6 +50,7 @@ namespace seller
         public virtual ICollection<Follow> Follows1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Like> Likes { get; set; }
+        public virtual MemStatu MemStatu { get; set; }
         public virtual RegionList RegionList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

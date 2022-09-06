@@ -13,10 +13,10 @@ namespace seller
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class iSpanProjectEntities6 : DbContext
+    public partial class iSpanProjectEntities8 : DbContext
     {
-        public iSpanProjectEntities6()
-            : base("name=iSpanProjectEntities6")
+        public iSpanProjectEntities8()
+            : base("name=iSpanProjectEntities8")
         {
         }
     
@@ -39,6 +39,7 @@ namespace seller
         public virtual DbSet<Follow> Follows { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<MemberAccount> MemberAccounts { get; set; }
+        public virtual DbSet<MemStatu> MemStatus { get; set; }
         public virtual DbSet<OfficialCoupon> OfficialCoupons { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -47,8 +48,10 @@ namespace seller
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductDetail> ProductDetails { get; set; }
         public virtual DbSet<ProductPic> ProductPics { get; set; }
+        public virtual DbSet<ProductStatu> ProductStatus { get; set; }
         public virtual DbSet<RegionList> RegionLists { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
+        public virtual DbSet<ShipperToProduct> ShipperToProducts { get; set; }
         public virtual DbSet<ShippingStatus> ShippingStatuses { get; set; }
         public virtual DbSet<SmallType> SmallTypes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

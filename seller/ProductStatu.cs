@@ -12,22 +12,18 @@ namespace seller
     using System;
     using System.Collections.Generic;
     
-    public partial class Shipper
+    public partial class ProductStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shipper()
+        public ProductStatu()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
-            this.ShipperToProducts = new HashSet<ShipperToProduct>();
+            this.Products = new HashSet<Product>();
         }
     
-        public int ShipperID { get; set; }
-        public string ShipperName { get; set; }
-        public string Phone { get; set; }
+        public int ProductStatusID { get; set; }
+        public string ProductStatusName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShipperToProduct> ShipperToProducts { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

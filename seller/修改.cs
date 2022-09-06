@@ -22,7 +22,7 @@ namespace seller
             InitializeComponent();
             account = ac;
         }
-        iSpanProjectEntities6 isp4 = new iSpanProjectEntities6();
+        iSpanProjectEntities8 isp4 = new iSpanProjectEntities8();
         private void 修改_Load(object sender, EventArgs e)
         {
             renew();
