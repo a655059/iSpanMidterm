@@ -16,5 +16,18 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public int productID { get; set; }
+
+        public Image itemPhoto
+        {
+            get
+            {
+                return pbItemPhoto.Image;
+            }
+            set
+            {
+                pbItemPhoto.Image = value;
+            }
+        }
     }
 }
