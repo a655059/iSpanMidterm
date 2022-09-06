@@ -25,6 +25,8 @@ namespace seller
             account = acc;
         }
 
+        public int memberID { get; set; }
+
         iSpanProjectEntities isp = new iSpanProjectEntities();
         private void 賣家中心_Load(object sender, EventArgs e)
         {
@@ -32,14 +34,17 @@ namespace seller
             label4.Text = account;
             int mem_id = 0;
 
-            var j = (from i in isp.MemberAccounts       //找出對應帳號的id
-                    where i.MemberAcc == account
-                    select i).ToList();
-            mem_id = j[0].MemberID;
+
+            MessageBox.Show("" + this.memberID);
+            //((MainForm)
+            //var j = (from i in isp.MemberAccounts       //找出對應帳號的id
+            //        where i.MemberAcc == account
+            //        select i).ToList();
+            //mem_id = j[0].MemberID;
             
 
             var q = from a in isp.Products      //透過id找出賣家所要販賣的商品
-                    where a.MemberID == mem_id
+                    where a.MemberID == this.memberID
                     select a;
 
 

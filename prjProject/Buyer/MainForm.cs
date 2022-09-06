@@ -421,6 +421,7 @@ namespace prjProject
             else
             {
                 賣家中心 form = new 賣家中心();
+                form.memberID = memberID;
                 form.ShowDialog();
             }
         }
