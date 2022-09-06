@@ -48,6 +48,7 @@ namespace Project_期中專案
             this.txt_finday = new System.Windows.Forms.TextBox();
             this.txt_statid = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +160,7 @@ namespace Project_期中專案
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 10;
-            this.label9.Text = "出貨情況";
+            this.label9.Text = "訂單情況";
             // 
             // txt_id
             // 
@@ -230,11 +231,23 @@ namespace Project_期中專案
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.button2.Location = new System.Drawing.Point(16, 518);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "簽收";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // PdSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 579);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_statid);
             this.Controls.Add(this.txt_coupid);
@@ -284,5 +297,6 @@ namespace Project_期中專案
         private System.Windows.Forms.TextBox txt_finday;
         private System.Windows.Forms.TextBox txt_statid;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

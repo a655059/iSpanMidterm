@@ -1,4 +1,5 @@
 ﻿using prjProject.Entity;
+using prjProject.Member;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,14 @@ namespace Project_期中專案
             pd.memberID = this.memeberID;
             pd.memberName = this.memberName;
             pd.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            memberCoupon cou = new memberCoupon();
+            cou.memberID = this.memeberID;
+            cou.memberName = this.memberName;
+            cou.ShowDialog();
         }
     }
 }

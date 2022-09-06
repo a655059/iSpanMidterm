@@ -27,16 +27,16 @@ namespace Project_期中專案
         private void PdSearch_Load(object sender, EventArgs e)
         {
             mem_Name.Text = memberName;
-           
-            var q1 = (from i in dbContext.MemberAccounts
-                      where i.MemberID == memberID
-                      select i).ToList();
-            int memid = q1[0].MemberID;
+            myMemberShow();
+            //var q1 = (from i in dbContext.MemberAccounts
+            //          where i.MemberID == memberID
+            //          select i).ToList();
+            //int memid = q1[0].MemberID;
 
-            var q = from i in dbContext.Orders
-                    where i.MemberID == memid
-                    select i;
-            this.dataGridView1.DataSource = q.ToList();
+            //var q = from i in dbContext.Orders
+            //        where i.MemberID == memid
+            //        select i;
+            //this.dataGridView1.DataSource = q.ToList();
 //==============================================================
             //int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["OrderID"].Value.ToString());
             //var or = (from i in dbContext.Orders
@@ -47,6 +47,18 @@ namespace Project_期中專案
             
 
 
+        }
+        void myMemberShow()
+        {
+            var q1 = (from i in dbContext.MemberAccounts
+                      where i.MemberID == memberID
+                      select i).ToList();
+            int memid = q1[0].MemberID;
+
+            var q = from i in dbContext.Orders
+                    where i.MemberID == memid
+                    select i;
+            this.dataGridView1.DataSource = q.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -75,6 +87,25 @@ namespace Project_期中專案
             this.txt_finday.Text = or.FinishDate.ToString();
             this.txt_coupid.Text = or.CouponID.ToString();
             this.txt_statid.Text = st[0].OrderStatusName;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result=MessageBox.Show("請確認是否收到商品","訂單情況",MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                
+                int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["OrderID"].Value.ToString());
+                var or = (from i in dbContext.Orders
+                          where i.OrderID == nowId
+                          select i).FirstOrDefault();
+                or.StatusID = 6;
+                this.dbContext.SaveChanges();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
     }
 }

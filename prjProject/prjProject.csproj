@@ -151,6 +151,12 @@
     <Compile Include="Member\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Member\memberCoupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\memberCoupon.Designer.cs">
+      <DependentUpon>memberCoupon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Member\member_center.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Member\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\memberCoupon.resx">
+      <DependentUpon>memberCoupon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member\member_center.resx">
       <DependentUpon>member_center.cs</DependentUpon>
