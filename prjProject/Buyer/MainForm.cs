@@ -320,6 +320,8 @@ namespace prjProject
             else
             {
                 member_center form = new member_center();
+                form.memberName =memberName;
+                form.memeberID = memberID;
                 form.ShowDialog();
             }
         }
