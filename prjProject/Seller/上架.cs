@@ -14,7 +14,7 @@ namespace seller
 {
     public partial class 上架 : Form
     {
-        public string account;
+        //public string account;
         public int product_id;
         iSpanProjectEntities isp = new iSpanProjectEntities();
 
@@ -26,10 +26,10 @@ namespace seller
         public 上架(string acc)
         {
             InitializeComponent();
-            account = acc;
+            //account = acc;
         }
 
-
+        public int memberID { get; set; }
         private void 上架_Load(object sender, EventArgs e)
         {
 
@@ -74,13 +74,8 @@ namespace seller
         void renew()
         {
 
-            var q = (from a in isp.MemberAccounts
-                     where a.MemberAcc == account
-                     select a).ToList();
-
-            int memid = q[0].MemberID;
             var s = from d in isp.Products
-                    where d.MemberID == memid
+                    where d.MemberID == this.memberID
                     select d;
 
             dataGridView1.DataSource = s.ToList();  //抓特定賣家的販賣商品
@@ -102,12 +97,7 @@ namespace seller
 
             Product pd = new Product();
 
-
-            var q = (from p in isp.MemberAccounts           //找到對應的賣家帳號
-                     where p.MemberAcc == account
-                     select p).ToList();
-            pd.MemberID = q[0].MemberID;
-
+            pd.MemberID = this.memberID;
             pd.ProductName = txt_pdname.Text;
             pd.Description = richTextBox_descript.Text;
             pd.AdFee = Convert.ToDecimal(txt_adfee.Text);
@@ -132,11 +122,13 @@ namespace seller
             {
                 ShipperToProduct sptopd = new ShipperToProduct();
                 sptopd.ProductID = product_id;
+                string shpname = shiper[i].shipper;
                 var spid = (from a in isp.Shippers
-                           where a.ShipperName == shiper[i].shipper
-                           select a).ToList();
-                
-                sptopd.ShipperID = spid[0].ShipperID;
+                            where a.ShipperName == shpname
+                            select a).ToList();
+
+                int shpid = spid[0].ShipperID;
+                sptopd.ShipperID = shpid;
                 this.isp.ShipperToProducts.Add(sptopd);
             }
 
@@ -206,11 +198,7 @@ namespace seller
 
         private void alter_Click(object sender, EventArgs e)            //再產生對應新規格會卡住  要修改數量
         {
-            //dataGridView1.CurrentRow.Cells[""]
-
-
-            //修改 alter = new 修改(account);
-            //alter.Show();
+           
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
 
@@ -233,27 +221,33 @@ namespace seller
                     where b.ProductID == pdid
                     select b;
 
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes = ms.GetBuffer();
+
+
             foreach (var pdtt in pddetail)
             {
                 pdtt.Style = txt_style.Text;
                 pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
                 pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+                pdtt.Pic = bytes;
             }
 
-            var c = from d in isp.ProductPics
+            var c = from d in isp.ProductPics       //抓取id
                     where d.ProductID == pdid
                     select d;
 
-
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            this.picb_product.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] bytes = ms.GetBuffer();
+            //----------------------------------------------------------------------------------------
+            System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+            this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes1 = ms1.GetBuffer();
             foreach (var ppic in c)
             {
-                ppic.picture = bytes;
+                ppic.picture = bytes1;
             }
             this.isp.SaveChanges();
-
+            //----------------------------------------------------------------------------------------
             var j = (from s in isp.SmallTypes
                      where s.SmallTypeName == cmb_smtype.Text
                      select s).ToList();
@@ -275,6 +269,7 @@ namespace seller
                 prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
                 prds.SmallTypeID = j[0].SmallTypeID;
                 prds.RegionID = i[0].RegionID;
+                prds.ShipperID = shipid[0].ShipperID;
             }
 
             this.isp.SaveChanges();
@@ -355,8 +350,8 @@ namespace seller
 
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            if (ms.Length > 0)
-            {
+            //if (ms.Length > 0)
+            //{
                 this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] bytes = ms.GetBuffer();
 
@@ -364,7 +359,7 @@ namespace seller
                 {
                     pd_dtail.pic = bytes;
                 }
-            }
+            //}
 
 
             pd_detail.Add(pd_dtail);
@@ -542,7 +537,7 @@ namespace seller
             picb_product.Image = Image.FromStream(stream);
             stream.Close();
             //---------------------------------------------------------------
-
+            byte[] data1 = null;
             var detai = (from a in isp.ProductDetails
                          where a.ProductID == index
                          select a).ToList();
@@ -550,9 +545,9 @@ namespace seller
             txt_style.Text = detai[0].Style;
             txt_quantity.Text = detai[0].Quantity.ToString();
             txt_unitprice.Text = detai[0].UnitPrice.ToString();
-            data = detai[0].Pic;
+            data1 = detai[0].Pic;
 
-            MemoryStream stream_format = new MemoryStream(data);
+            MemoryStream stream_format = new MemoryStream(data1);
             picb_format.Image = Image.FromStream(stream_format);
             stream.Close();
         }

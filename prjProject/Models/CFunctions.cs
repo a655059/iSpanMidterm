@@ -111,6 +111,11 @@ namespace prjProject.Models
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
             var productNumInCart = dbContext.OrderDetails.Where(i => i.Order.MemberID == memberID && i.Order.StatusID == 1).Select(i => i).ToList().Count;
+            string memberRegion = q.RegionList.RegionName;
+            string memberCountry = q.RegionList.CountryList.CountryName;
+            int memberCountryID = Convert.ToInt32(q.RegionList.CountryID);
+            var memberRegions = dbContext.RegionLists.Where(i => i.CountryID == memberCountryID).Select(i => i.RegionName).ToArray();
+            var countryNames = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType() == typeof(MainForm))
@@ -126,7 +131,10 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
-
+                    f.countries = countryNames;
+                    f.memberCountryName = memberCountry;
+                    f.regions = memberRegions;
+                    f.memberRegionName = memberRegion;
                     CFunctions.SetHeart(f);
                     f.memberRegion = q.RegionList.RegionName;
                 } 

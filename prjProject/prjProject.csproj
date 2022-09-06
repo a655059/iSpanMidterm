@@ -121,6 +121,12 @@
     <Compile Include="Management\產品管理.Designer.cs">
       <DependentUpon>產品管理.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\申訴管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\申訴管理.designer.cs">
+      <DependentUpon>申訴管理.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\訂單增刪修.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -452,6 +458,9 @@
     <EmbeddedResource Include="Management\產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\申訴管理.resx">
+      <DependentUpon>申訴管理.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\訂單增刪修.resx">
       <DependentUpon>訂單增刪修.cs</DependentUpon>
     </EmbeddedResource>
@@ -579,9 +588,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\logo2.png" />
     <None Include="Resources\next202.png" />
@@ -603,6 +610,7 @@
     </Content>
     <None Include="Resources\Coupon.png" />
     <None Include="Resources\LOGO3.png" />
+    <Content Include="Images\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
