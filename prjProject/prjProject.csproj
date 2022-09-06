@@ -664,6 +664,7 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\EVENTCOUPON.png" />
     <None Include="Resources\Coupon.png" />
     <None Include="Resources\LOGO3.png" />
     <Content Include="Entity\iSpanModel.Context.tt">
