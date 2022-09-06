@@ -388,7 +388,7 @@ namespace prjProject
             this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
             this.spContainerBotton.Panel2.Controls.Add(this.panel5);
             this.spContainerBotton.Size = new System.Drawing.Size(1680, 768);
-            this.spContainerBotton.SplitterDistance = 168;
+            this.spContainerBotton.SplitterDistance = 150;
             this.spContainerBotton.TabIndex = 0;
             // 
             // flowpanelType
@@ -398,7 +398,7 @@ namespace prjProject
             this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelType.Location = new System.Drawing.Point(0, 0);
             this.flowpanelType.Name = "flowpanelType";
-            this.flowpanelType.Size = new System.Drawing.Size(168, 768);
+            this.flowpanelType.Size = new System.Drawing.Size(150, 768);
             this.flowpanelType.TabIndex = 0;
             // 
             // spContainerItem
@@ -418,7 +418,7 @@ namespace prjProject
             // spContainerItem.Panel2
             // 
             this.spContainerItem.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.spContainerItem.Size = new System.Drawing.Size(1508, 768);
+            this.spContainerItem.Size = new System.Drawing.Size(1526, 768);
             this.spContainerItem.SplitterDistance = 303;
             this.spContainerItem.TabIndex = 0;
             this.spContainerItem.Visible = false;
@@ -439,14 +439,15 @@ namespace prjProject
             // spContainerGuessYouLike.Panel2
             // 
             this.spContainerGuessYouLike.Panel2.Controls.Add(this.panel2);
-            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1506, 301);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1524, 301);
             this.spContainerGuessYouLike.SplitterDistance = 39;
+            this.spContainerGuessYouLike.SplitterWidth = 1;
             this.spContainerGuessYouLike.TabIndex = 0;
             // 
             // lblGuessYouLike
             // 
             this.lblGuessYouLike.AutoSize = true;
-            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblGuessYouLike.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblGuessYouLike.Location = new System.Drawing.Point(0, 0);
             this.lblGuessYouLike.Name = "lblGuessYouLike";
@@ -458,9 +459,9 @@ namespace prjProject
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.Controls.Add(this.flowpanelAD);
-            this.panel2.Location = new System.Drawing.Point(351, 3);
+            this.panel2.Location = new System.Drawing.Point(360, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 252);
+            this.panel2.Size = new System.Drawing.Size(830, 258);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -468,7 +469,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 258);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -486,14 +487,14 @@ namespace prjProject
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1506, 459);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 459);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // spADcontainer2
             // 
             this.spADcontainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spADcontainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.spADcontainer2.Location = new System.Drawing.Point(505, 4);
+            this.spADcontainer2.Location = new System.Drawing.Point(511, 4);
             this.spADcontainer2.Name = "spADcontainer2";
             this.spADcontainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -505,8 +506,9 @@ namespace prjProject
             // spADcontainer2.Panel2
             // 
             this.spADcontainer2.Panel2.Controls.Add(this.pbAD2);
-            this.spADcontainer2.Size = new System.Drawing.Size(494, 451);
+            this.spADcontainer2.Size = new System.Drawing.Size(500, 451);
             this.spADcontainer2.SplitterDistance = 57;
+            this.spADcontainer2.SplitterWidth = 1;
             this.spADcontainer2.TabIndex = 2;
             // 
             // adtrigger2
@@ -528,7 +530,7 @@ namespace prjProject
             this.tbAD2.Location = new System.Drawing.Point(0, 0);
             this.tbAD2.Multiline = true;
             this.tbAD2.Name = "tbAD2";
-            this.tbAD2.Size = new System.Drawing.Size(494, 57);
+            this.tbAD2.Size = new System.Drawing.Size(500, 57);
             this.tbAD2.TabIndex = 0;
             this.tbAD2.Text = "dddd";
             this.tbAD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -539,7 +541,7 @@ namespace prjProject
             this.pbAD2.ErrorImage = global::prjProject.Properties.Resources.cross;
             this.pbAD2.Location = new System.Drawing.Point(0, 0);
             this.pbAD2.Name = "pbAD2";
-            this.pbAD2.Size = new System.Drawing.Size(494, 390);
+            this.pbAD2.Size = new System.Drawing.Size(500, 393);
             this.pbAD2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAD2.TabIndex = 1;
             this.pbAD2.TabStop = false;
@@ -549,9 +551,11 @@ namespace prjProject
             // 
             this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EventAD1.Location = new System.Drawing.Point(1006, 4);
+            this.EventAD1.Image = global::prjProject.Properties.Resources.EVENTCOUPON;
+            this.EventAD1.Location = new System.Drawing.Point(1018, 4);
             this.EventAD1.Name = "EventAD1";
-            this.EventAD1.Size = new System.Drawing.Size(496, 451);
+            this.EventAD1.Size = new System.Drawing.Size(502, 451);
+            this.EventAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.EventAD1.TabIndex = 0;
             this.EventAD1.TabStop = false;
             this.EventAD1.Click += new System.EventHandler(this.EventAD1_Click);
@@ -572,8 +576,9 @@ namespace prjProject
             // spADcontainer1.Panel2
             // 
             this.spADcontainer1.Panel2.Controls.Add(this.pbAD1);
-            this.spADcontainer1.Size = new System.Drawing.Size(494, 451);
+            this.spADcontainer1.Size = new System.Drawing.Size(500, 451);
             this.spADcontainer1.SplitterDistance = 57;
+            this.spADcontainer1.SplitterWidth = 1;
             this.spADcontainer1.TabIndex = 1;
             // 
             // adtrigger1
@@ -595,7 +600,7 @@ namespace prjProject
             this.tbAD1.Location = new System.Drawing.Point(0, 0);
             this.tbAD1.Multiline = true;
             this.tbAD1.Name = "tbAD1";
-            this.tbAD1.Size = new System.Drawing.Size(494, 57);
+            this.tbAD1.Size = new System.Drawing.Size(500, 57);
             this.tbAD1.TabIndex = 0;
             this.tbAD1.Text = "dddd";
             this.tbAD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -606,7 +611,7 @@ namespace prjProject
             this.pbAD1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbAD1.ErrorImage")));
             this.pbAD1.Location = new System.Drawing.Point(0, 0);
             this.pbAD1.Name = "pbAD1";
-            this.pbAD1.Size = new System.Drawing.Size(494, 390);
+            this.pbAD1.Size = new System.Drawing.Size(500, 393);
             this.pbAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAD1.TabIndex = 0;
             this.pbAD1.TabStop = false;
