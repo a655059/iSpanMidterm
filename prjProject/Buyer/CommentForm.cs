@@ -43,7 +43,10 @@ namespace prjProject
         private void CommentForm_Load(object sender, EventArgs e)
         {
             memberID = CFunctions.GetMemberInfoFromHomePage();
-            
+            if (memberID > 0)
+            {
+                CFunctions.SendMemberInfoToEachForm(memberID);
+            }
             for (int i = 0; i < 5; i++)
             {
                 PictureBox pictureBox = new PictureBox();
@@ -54,12 +57,28 @@ namespace prjProject
                 flpStar.Controls.Add(pictureBox);
                 pictureBox.Click += Star_Click;
             }
-            List<UCtrlComment> list = CFunctions.ShowComments(productID);
+            List<UCtrlComment> list = CFunctions.GetComments(productID);
             foreach (UCtrlComment uCtrl in list)
             {
                 flowLayoutPanel1.Controls.Add(uCtrl);
-
+                foreach (Control control in uCtrl.Controls)
+                {
+                    if (control.GetType() == typeof(LinkLabel))
+                    {
+                        LinkLabel linkLabel = (LinkLabel)control;
+                        linkLabel.Click += ShowCommentPhoto_Click;
+                    }
+                }
             }
+        }
+
+        private void ShowCommentPhoto_Click(object sender, EventArgs e)
+        {
+            LinkLabel linkLabel = (LinkLabel)sender;
+            UCtrlComment uCtrl = (UCtrlComment)linkLabel.Parent;
+            CommentPhotoForm form = new CommentPhotoForm();
+            form.commentID = uCtrl.commentID;
+            form.ShowDialog();
         }
 
         private void Star_Click(object sender, EventArgs e)
