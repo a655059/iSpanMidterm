@@ -17,11 +17,12 @@ namespace Project_期中專案
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
 
         //public string txt{set{ label2.Text = value; } }
-        public string account2
+        public string memberName
         {
             get { return lab_showname.Text; }
             set { lab_showname.Text = value; }
         }
+        public int memeberID { get; set; }
         public member_center()
         {
             InitializeComponent();
@@ -30,13 +31,16 @@ namespace Project_期中專案
         private void button1_Click(object sender, EventArgs e)
         {
             OverWriteCustDB ov1 = new OverWriteCustDB();
-            ov1.account2 = this.account2;
+            ov1.memberID = this.memeberID;
             ov1.ShowDialog();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            PdSearch pd = new PdSearch();
+            pd.memberID = this.memeberID;
+            pd.memberName = this.memberName;
+            pd.ShowDialog();
         }
     }
 }

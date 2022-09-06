@@ -152,6 +152,11 @@ namespace prjProject.Models
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
                 }
+                else if (form.GetType() == typeof(Event_Coupon))
+                {
+                    Event_Coupon f = (Event_Coupon)form;
+                    f.memberID = memberID;
+                }
                 else
                 {
                     continue;

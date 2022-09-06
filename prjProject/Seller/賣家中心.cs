@@ -25,81 +25,99 @@ namespace seller
             account = acc;
         }
 
-        iSpanProjectEntities isp = new iSpanProjectEntities();
-        private void 賣家中心_Load(object sender, EventArgs e)
-        {
-            label2.Text = account;      
-            label4.Text = account;
-            int mem_id = 0;
+        public int memberID { get; set; }
 
-            var j = (from i in isp.MemberAccounts       //找出對應帳號的id
-                    where i.MemberAcc == account
-                    select i).ToList();
-            mem_id = j[0].MemberID;
-            
+        iSpanProjectEntities isp = new iSpanProjectEntities();
+        List<int> prod = new List<int>();
+        int count = 0;
+        int step = 0;
+
+        private void btn_prev_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_next_Click(object sender, EventArgs e)
+        {
 
             var q = from a in isp.Products      //透過id找出賣家所要販賣的商品
-                    where a.MemberID == mem_id
+                    where a.MemberID == this.memberID
                     select a;
 
 
-            lbl_sel_count.Text = q.Count().ToString();
-
-            List<int> prod = new List<int>();
+        }
 
 
-            if (q.Count() > 0)           //代表賣家有商品 可以顯示
-            {
+        void prevnext() {
 
-                foreach(var pid in q.Take(10))       //抓取特定賣家的id存入list中使用
-                {
-                    prod.Add(pid.ProductID);
-                }
+            //var q = from a in isp.Products      //透過id找出賣家所要販賣的商品
+            //        where a.MemberID == this.memberID
+            //        select a;
 
 
-                for (int i = 0; i < prod.Count(); i++)          //根據list中的proid內容把值放入usercontrol顯示
-                {
-                    UserControl_賣家總覽 seller = new UserControl_賣家總覽();
-                    int produ = prod[i];
-
-                    var main_picture = (from a in isp.ProductPics               //抓取販賣商品的圖片
-                                        where a.ProductID == produ
-                                        select a).ToList();
-
-                    if(main_picture.Count() > 0)
-                    {
-                        seller.picture = main_picture[0].picture;
-                    }
-                    
-
-                    var descript = (from a in isp.Products          //抓取商品的描述
-                                    where a.ProductID == produ
-                                    select a).ToList();
-
-                    seller.desciption = descript[0].Description;
-                    this.flowLayoutPanel1.Controls.Add(seller);
-
-                    Application.DoEvents();
-                }
+            //lbl_sel_count.Text = q.Count().ToString();
 
 
-            }
-
-           
-            //var product = from a in isp.Products  //抓取
-            //              select a;
-            
-            //foreach(var pd in product)
+            //if (q.Count() > 0)           //代表賣家有商品 可以顯示
             //{
-            //    prod.Add(pd.ProductID);
+            //    foreach (var pid in q.Take(10))       //抓取特定賣家的id存入list中使用
+            //    {
+            //        prod.Add(pid.ProductID);
+            //    }
+
+            //    show();
+
             //}
 
         }
 
+
+        private void 賣家中心_Load(object sender, EventArgs e)
+        {
+            label2.Text = account;      
+            label4.Text = account;
+
+            //MessageBox.Show("" + this.memberID);
+
+            prevnext();
+
+        }
+
+
+        void show() {
+            for (int i = 0; i < prod.Count(); i++)          //根據list中的proid內容把值放入usercontrol顯示
+            {
+                UserControl_賣家總覽 seller = new UserControl_賣家總覽();
+                int produ = prod[i];
+
+                var main_picture = (from a in isp.ProductPics               //抓取販賣商品的圖片
+                                    where a.ProductID == produ
+                                    select a).ToList();
+
+                if (main_picture.Count() > 0)
+                {
+                    seller.picture = main_picture[0].picture;
+                }
+
+
+                var descript = (from a in isp.Products          //抓取商品的描述
+                                where a.ProductID == produ
+                                select a).ToList();
+
+                seller.desciption = descript[0].ProductName;
+                //seller.desciption = descript[0].Description;
+                this.flowLayoutPanel1.Controls.Add(seller);
+
+                Application.DoEvents();
+            }
+        }
+
         private void lklb_upload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            上架 sel = new 上架(account);
+            上架 sel = new 上架(/*account*/);
+            sel.memberID = this.memberID;
             sel.Show();
         }
+
     }
 }

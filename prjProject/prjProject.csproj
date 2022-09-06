@@ -73,6 +73,7 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Buyer\CommentPhotoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,168 +85,12 @@
     </Compile>
     <Compile Include="UserControl\UCtrlComment.Designer.cs">
       <DependentUpon>UCtrlComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\主畫面.cs">
+
+    <Compile Include="Buyer\Event_Coupon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Management\主畫面.Designer.cs">
-      <DependentUpon>主畫面.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\商品增刪修.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\商品增刪修.Designer.cs">
-      <DependentUpon>商品增刪修.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\問題表.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\問題表.Designer.cs">
-      <DependentUpon>問題表.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\常見問題.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\常見問題.Designer.cs">
-      <DependentUpon>常見問題.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\新增個資.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\新增個資.Designer.cs">
-      <DependentUpon>新增個資.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\會員查詢.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\會員查詢.Designer.cs">
-      <DependentUpon>會員查詢.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\產品管理.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\產品管理.Designer.cs">
-      <DependentUpon>產品管理.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\訂單增刪修.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\訂單增刪修.Designer.cs">
-      <DependentUpon>訂單增刪修.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\訂單管理.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\訂單管理.Designer.cs">
-      <DependentUpon>訂單管理.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\酷碰.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\酷碰.Designer.cs">
-      <DependentUpon>酷碰.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Management\酷碰增刪修.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Management\酷碰增刪修.Designer.cs">
-      <DependentUpon>酷碰增刪修.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\ForgetPas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\ForgetPas.Designer.cs">
-      <DependentUpon>ForgetPas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\member_center.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\member_center.Designer.cs">
-      <DependentUpon>member_center.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\member_cre.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\member_cre.Designer.cs">
-      <DependentUpon>member_cre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Member\OverWriteCustDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Member\OverWriteCustDB.Designer.cs">
-      <DependentUpon>OverWriteCustDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\mem_Acc.cs" />
-    <Compile Include="Models\商品_總.cs" />
-    <Compile Include="Models\商品圖.cs" />
-    <Compile Include="Models\商品細項.cs" />
-    <Compile Include="Models\帳密.cs" />
-    <Compile Include="Models\運貨方式.cs" />
-    <Compile Include="Seller\buyer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\buyer.Designer.cs">
-      <DependentUpon>buyer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\Frm_main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\Frm_main.Designer.cs">
-      <DependentUpon>Frm_main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\LogIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\LogIn.Designer.cs">
-      <DependentUpon>LogIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\register.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\register.Designer.cs">
-      <DependentUpon>register.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\上架.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\上架.Designer.cs">
-      <DependentUpon>上架.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\修改.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\修改.Designer.cs">
-      <DependentUpon>修改.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\賣家中心.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\賣家中心.Designer.cs">
-      <DependentUpon>賣家中心.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\CtrlDisplayItem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\CtrlDisplayItem.designer.cs">
-      <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
+    <Compile Include="Buyer\Event_Coupon.Designer.cs">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\AD.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
@@ -349,6 +194,174 @@
     <Compile Include="Entity\SmallType.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Management\主畫面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\主畫面.Designer.cs">
+      <DependentUpon>主畫面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\商品增刪修.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\商品增刪修.Designer.cs">
+      <DependentUpon>商品增刪修.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\問題表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\問題表.Designer.cs">
+      <DependentUpon>問題表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\常見問題.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\常見問題.Designer.cs">
+      <DependentUpon>常見問題.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\新增個資.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\新增個資.Designer.cs">
+      <DependentUpon>新增個資.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\會員查詢.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\會員查詢.Designer.cs">
+      <DependentUpon>會員查詢.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\產品管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\產品管理.Designer.cs">
+      <DependentUpon>產品管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\申訴管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\申訴管理.designer.cs">
+      <DependentUpon>申訴管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\訂單增刪修.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\訂單增刪修.Designer.cs">
+      <DependentUpon>訂單增刪修.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\訂單管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\訂單管理.Designer.cs">
+      <DependentUpon>訂單管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\酷碰.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\酷碰.Designer.cs">
+      <DependentUpon>酷碰.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\酷碰增刪修.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\酷碰增刪修.Designer.cs">
+      <DependentUpon>酷碰增刪修.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\ForgetPas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\ForgetPas.Designer.cs">
+      <DependentUpon>ForgetPas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\member_center.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\member_center.Designer.cs">
+      <DependentUpon>member_center.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\member_cre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\member_cre.Designer.cs">
+      <DependentUpon>member_cre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\OverWriteCustDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\OverWriteCustDB.Designer.cs">
+      <DependentUpon>OverWriteCustDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\PdSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\PdSearch.designer.cs">
+      <DependentUpon>PdSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mem_Acc.cs" />
+    <Compile Include="Models\商品_總.cs" />
+    <Compile Include="Models\商品圖.cs" />
+    <Compile Include="Models\商品細項.cs" />
+    <Compile Include="Models\帳密.cs" />
+    <Compile Include="Models\運貨方式.cs" />
+    <Compile Include="Seller\buyer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\buyer.Designer.cs">
+      <DependentUpon>buyer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\Frm_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\Frm_main.Designer.cs">
+      <DependentUpon>Frm_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\LogIn.Designer.cs">
+      <DependentUpon>LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\register.Designer.cs">
+      <DependentUpon>register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\上架.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\上架.Designer.cs">
+      <DependentUpon>上架.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\修改.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\修改.Designer.cs">
+      <DependentUpon>修改.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seller\賣家中心.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\賣家中心.Designer.cs">
+      <DependentUpon>賣家中心.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\CtrlDisplayItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\CtrlDisplayItem.designer.cs">
+      <DependentUpon>CtrlDisplayItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\FlowBarProductType.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -433,6 +446,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCtrlComment.resx">
       <DependentUpon>UCtrlComment.cs</DependentUpon>
+    <EmbeddedResource Include="Buyer\Event_Coupon.resx">
+      <DependentUpon>Event_Coupon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\主畫面.resx">
       <DependentUpon>主畫面.cs</DependentUpon>
@@ -455,6 +470,9 @@
     <EmbeddedResource Include="Management\產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\申訴管理.resx">
+      <DependentUpon>申訴管理.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\訂單增刪修.resx">
       <DependentUpon>訂單增刪修.cs</DependentUpon>
     </EmbeddedResource>
@@ -473,9 +491,6 @@
     <EmbeddedResource Include="Member\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Member\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Member\member_center.resx">
       <DependentUpon>member_center.cs</DependentUpon>
     </EmbeddedResource>
@@ -484,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Member\OverWriteCustDB.resx">
       <DependentUpon>OverWriteCustDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\PdSearch.resx">
+      <DependentUpon>PdSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Seller\buyer.resx">
       <DependentUpon>buyer.cs</DependentUpon>
@@ -589,6 +607,8 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Coupon.png" />
+    <None Include="Resources\LOGO3.png" />
     <Content Include="Entity\iSpanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>iSpanModel.edmx</DependentUpon>

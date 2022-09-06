@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Buyer;
 using prjProject.Entity;
 using prjProject.Models;
 using Project_期中專案;
@@ -36,6 +37,9 @@ namespace prjProject
         {
             InitializeComponent();
             //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            timer1.Interval = 5000;
+            timer1.Enabled = true;
+            timer1.Start();
         }
         public string memberName
         {
@@ -60,10 +64,9 @@ namespace prjProject
             }
         }
 
-        public int memberID { get; set; }        
+        public int memberID { get; set; }
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
-        FlowBarProductType _selectedButton = new FlowBarProductType();
-        int _page;
+        //int _page;
         //搜索系統
         string _selectedName = "";
         bool textboxHasText = false;
@@ -71,28 +74,28 @@ namespace prjProject
         private void MainForm_Load(object sender, EventArgs e)
         {
             gueseYouLike();
-            LoadAllItem();
+            //LoadAllItem();
             LoadBigTypeList();
             searchbarReset();
         }
-        private void LoadAllItem()
-        {
+        //private void LoadAllItem()
+        //{
 
-            spContainerItem.Visible = true;
-            flowpanelItem.Controls.Clear();
-            var q = dbContext.Products.Take(50).Select(i => i);
-            List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
-            foreach (CtrlDisplayItem i in list)
-            {
-                flowpanelItem.Controls.Add(i);
-                i.Click += CtrlDisplayItem_Click;
-                foreach (Control control in i.Controls)
-                {
-                    control.Click += CtrlDisplayItem_Click;
-                }
-            }
-            Application.DoEvents();
-        }
+        //    spContainerItem.Visible = true;
+        //    flowpanelItem.Controls.Clear();
+        //    var q = dbContext.Products.Take(50).Select(i => i);
+        //    List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
+        //    foreach (CtrlDisplayItem i in list)
+        //    {
+        //        flowpanelItem.Controls.Add(i);
+        //        i.Click += CtrlDisplayItem_Click;
+        //        foreach (Control control in i.Controls)
+        //        {
+        //            control.Click += CtrlDisplayItem_Click;
+        //        }
+        //    }
+        //    Application.DoEvents();
+        //}
         private void LoadBigTypeList()
         {
             flowpanelType.Controls.Clear();
@@ -134,7 +137,7 @@ namespace prjProject
             lp.ButtonClicked += LastPage_Click;
             flowpanelType.Controls.Add(lp);
             //新增左側小類別按鈕
-            var q = dbContext.SmallTypes.Where(st => st.BigTypeID == bigtypenum).OrderBy(st => st.SmallTypeID).Select(st => st);            
+            var q = dbContext.SmallTypes.Where(st => st.BigTypeID == bigtypenum).OrderBy(st => st.SmallTypeID).Select(st => st);
             foreach (var item in q)
             {
                 FlowBarProductType lpp = new FlowBarProductType { TypeName = item.SmallTypeName, TypeNum = item.SmallTypeID };
@@ -147,7 +150,7 @@ namespace prjProject
             }
             //商品區處理
             flowpanelTypeItem.Controls.Clear();
-            var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Take(50).Select(x => x);
+            var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Take(50).Select(x => x);
             if (!q2.Any()) return;
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q2);
             foreach (CtrlDisplayItem j in list)
@@ -167,7 +170,7 @@ namespace prjProject
             FlowBarProductType _selected = (FlowBarProductType)sender;
             foreach (Control i in flowpanelType.Controls)
             {
-                if (i is FlowBarProductType&& i!=_selected)
+                if (i is FlowBarProductType && i != _selected)
                 {
                     ((FlowBarProductType)i).BackColor = Color.Black;
                     ((FlowBarProductType)i)._isclicked = false;
@@ -177,7 +180,7 @@ namespace prjProject
             Application.DoEvents();
             //商品區處理
             flowpanelTypeItem.Controls.Clear();
-            var q = dbContext.Products.Where(x => x.SmallTypeID == _selected.TypeNum).OrderBy(x => x.SmallTypeID).Select(x => x);
+            var q = dbContext.Products.Where(x => x.SmallTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Select(x => x);
             if (!q.Any()) return;
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
             foreach (CtrlDisplayItem j in list)
@@ -191,32 +194,43 @@ namespace prjProject
             }
         }
         private void LastPage_Click(object sender, EventArgs e)
-        {            
+        {
             LoadBigTypeList();
             spContainerItem.Visible = true;
             gueseYouLike();
             searchbarReset();
-
         }
         private void gueseYouLike()
         {
+            spContainerItem.Visible = true;
             flowpanelAD.Controls.Clear();
             Random find5 = new Random();
-            int[] randomArray = new int[5];
+
             var productquery = from q in dbContext.Products
+                               where q.ProductStatusID == 0
                                select q.ProductID;
-            for(int i = 0; i < 5; i++)
+
+
+            int Counter = 5;            
+            if (productquery.Count() <= 0) return;
+            else if (productquery.Count() < Counter) Counter = productquery.Count();
+            int[] randomArray = new int[Counter];
+            for (int i = 0; i < Counter; i++)
             {
-                int index =find5.Next(productquery.Count());
+                int index = find5.Next(productquery.Count());
                 randomArray[i] = productquery.ToList()[index];
-                for(int j = 1; j < i; j++)
+
+                for (int j = 0; j < i; j++)
                 {
-                    while (randomArray[j] == randomArray[i])    
+                    while (randomArray[j] == randomArray[i])
                     {
-                        j = 0;  
+                        index = find5.Next(productquery.Count());
                         randomArray[i] = productquery.ToList()[index];
+                        j = 0;
                     }
+                    
                 }
+
             }
 
             List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
@@ -226,7 +240,7 @@ namespace prjProject
                            where p.ProductID == idx
                            select p;
                 list.Add(CFunctions.GetProductsForShow(pidx)[0]);
-            }           
+            }
             foreach (CtrlDisplayItem j in list)
             {
                 flowpanelAD.Controls.Add(j);
@@ -272,12 +286,7 @@ namespace prjProject
         {
             LoginForm form = new LoginForm();
             form.ShowDialog();
-            if (memberID != 0) { 
-                lblName.Visible = true;
-                linkLabelRegister.Visible = false;
-                linkLabelLogin.Text = "歡迎";
-                linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
-            }
+            memCheck(memberID);
         }
 
         private void pbCart_Click(object sender, EventArgs e)
@@ -286,6 +295,10 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
+                memCheck(memberID);
+                if (memberID == 0) return;
+                CartForm form2 = new CartForm();
+                form2.ShowDialog();
             }
             else
             {
@@ -293,8 +306,6 @@ namespace prjProject
                 form.ShowDialog();
             }
         }
-
-
         private void linkLabelHouTai_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             主畫面 form = new 主畫面();
@@ -306,19 +317,26 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
+                memCheck(memberID);
+                if (memberID == 0) return;
+                member_center form2 = new member_center();
+                form2.ShowDialog();
             }
             else
             {
                 member_center form = new member_center();
+                form.memberName =memberName;
+                form.memeberID = memberID;
                 form.ShowDialog();
             }
         }
         //搜索功能
         private void btnSearch_Click(object sender, EventArgs e)
-        {            
+        {
             if (_isInType)
             {
-                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0) {
+                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0)
+                {
                     flowpanelType.Controls.Clear();
                     FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
                     lp.ButtonClicked += LastPage_Click;
@@ -326,7 +344,8 @@ namespace prjProject
 
                     spContainerItem.Visible = false;
                     flowpanelTypeItem.Controls.Clear();
-                    foreach (CtrlDisplayItem j in SearchSys(_selectedName))
+                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
+                    foreach (CtrlDisplayItem j in list)
                     {
                         flowpanelTypeItem.Controls.Add(j);
                         j.Click += CtrlDisplayItem_Click;
@@ -344,7 +363,7 @@ namespace prjProject
             }
             else
             {
-                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count!=0)
+                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0)
                 {
                     flowpanelType.Controls.Clear();
                     FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
@@ -353,7 +372,8 @@ namespace prjProject
 
                     spContainerItem.Visible = false;
                     flowpanelTypeItem.Controls.Clear();
-                    foreach (CtrlDisplayItem j in SearchSys(tbSearch.Text))
+                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
+                    foreach (CtrlDisplayItem j in list)
                     {
                         flowpanelTypeItem.Controls.Add(j);
                         j.Click += CtrlDisplayItem_Click;
@@ -370,14 +390,14 @@ namespace prjProject
                 }
             }
         }
-        //搜尋
+        //搜尋鍵
         private void tbSearch_Enter(object sender, EventArgs e)
         {
             if (textboxHasText == false)
                 tbSearch.Text = "";
 
-            tbSearch.ForeColor= Color.Black;
-        }        
+            tbSearch.ForeColor = Color.Black;
+        }
         private void tbSearch_Leave(object sender, EventArgs e)
         {
             if (tbSearch.Text == "")
@@ -389,40 +409,101 @@ namespace prjProject
             else
                 textboxHasText = true;
         }
-
+        //關鍵字查詢
         private List<CtrlDisplayItem> SearchSys(string s)
         {
-            var q = from p in dbContext.Products
-                    where p.ProductName.ToUpper().Contains(s.ToUpper()) 
-                    select p;
+            if (_isInType)
+            {
+                var q = from p in dbContext.Products
+                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName == _selectedName && p.ProductStatusID == 0
+                        select p;
                 List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
                 return list;
+            }
+            else
+            {
+                var q = from p in dbContext.Products
+                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.ProductStatusID == 0
+                        select p;
+                List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
+                return list;
+            }
         }
+        //重置搜尋
         private void searchbarReset()
         {
             tbSearch.Text = "從全部商品中搜尋...";
+            _selectedName = "從全部商品中搜尋...";
             tbSearch.ForeColor = Color.LightGray;
-            textboxHasText = false;            
+            textboxHasText = false;
             _isInType = false;
         }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //連結至賣家中心
         private void lblToSellerForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (memberID == 0)
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
+                memCheck(memberID);
+                if (memberID == 0) return;
+                賣家中心 form2 = new 賣家中心();
+                form2.ShowDialog();
             }
             else
             {
                 賣家中心 form = new 賣家中心();
+                form.memberID = memberID;
                 form.ShowDialog();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (spContainerItem.Visible == true)
+            {
+                gueseYouLike();
+            }
+        }
+        private void memCheck(int i)
+        {
+            if (i == 0) return;
+            else
+            {
+                lblName.Visible = true;
+                linkLabelRegister.Visible = false;
+                linkLabelLogin.Text = "歡迎";
+                linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (memberID == 0)
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+                memCheck(memberID);
+                if (memberID == 0) return;
+                Event_Coupon form2 = new Event_Coupon();
+                form2.ShowDialog();
+            }
+            else
+            {
+                Event_Coupon form = new Event_Coupon();
+                form.ShowDialog();
+            }
+        }
+
+        private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 createAcc = new Form1();
+            createAcc.ShowDialog();
         }
     }
 }
