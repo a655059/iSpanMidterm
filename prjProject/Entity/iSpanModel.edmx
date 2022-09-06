@@ -235,7 +235,7 @@
           </Key>
           <Property Name="RegionID" Type="int" Nullable="false" />
           <Property Name="RegionName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryID" Type="int" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Shipper">
           <Key>
@@ -557,7 +557,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RegionList_CountryList">
-          <End Role="CountryList" Type="Self.CountryList" Multiplicity="0..1" />
+          <End Role="CountryList" Type="Self.CountryList" Multiplicity="1" />
           <End Role="RegionList" Type="Self.RegionList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CountryList">
@@ -1100,7 +1100,7 @@
           </Key>
           <Property Name="RegionID" Type="Int32" Nullable="false" />
           <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CountryList" Relationship="Self.FK_RegionList_CountryList" FromRole="RegionList" ToRole="CountryList" />
           <NavigationProperty Name="MemberAccounts" Relationship="Self.FK_MemberAccount_RegionList" FromRole="RegionList" ToRole="MemberAccount" />
           <NavigationProperty Name="Products" Relationship="Self.FK_SalesCourt_RegionList" FromRole="RegionList" ToRole="Product" />
@@ -1228,7 +1228,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RegionList_CountryList">
-          <End Role="CountryList" Type="Self.CountryList" Multiplicity="0..1" />
+          <End Role="CountryList" Type="Self.CountryList" Multiplicity="1" />
           <End Role="RegionList" Type="Self.RegionList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CountryList">
