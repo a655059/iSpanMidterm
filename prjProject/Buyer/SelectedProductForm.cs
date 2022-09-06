@@ -56,24 +56,33 @@ namespace prjProject
                 string memberRegion = q1.RegionList.RegionName;
                 cbbRegion.SelectedItem = memberRegion;
             }
-            var q = dbContext.ProductPics.Where(i => i.ProductID == productID).Select(i => new { productName = i.Product.ProductName, productPhoto = i.picture }).ToList();
-            MemoryStream ms = new MemoryStream(q[0].productPhoto);
-            pbProductPhoto.Image = Image.FromStream(ms);
-            for (int i = 0; i < q.ToList().Count; i++)
-            {
-                MemoryStream ms1 = new MemoryStream(q[i].productPhoto);
-                productPhotoList.Add(Image.FromStream(ms1));
-                PictureBox pb = new PictureBox();
-                pb.Image = Image.FromStream(ms1);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Name = $"pb{i}";
-                flowLayoutPanel1.Controls.Add(pb);
-                pb.MouseEnter += ProductPhoto_MouseEnter;
-                pb.MouseLeave += Pb_MouseLeave;
-            }
-            string productName = q[0].productName;
-            lblProductName.Text = productName;
+            
 
+            var productPictures = dbContext.ProductPics.Where(i => i.ProductID == productID).Select(i => i).ToList();
+            if (productPictures.Count == 0)
+            {
+                pbProductPhoto.Image = Image.FromFile("../../Images/cross.png");
+                pbProductPhoto.SizeMode = PictureBoxSizeMode.Normal;
+            }
+            else
+            {
+                MemoryStream ms = new MemoryStream(productPictures[0].picture);
+                pbProductPhoto.Image = Image.FromStream(ms);
+                for (int i = 0; i < productPictures.Count; i++)
+                {
+                    MemoryStream ms1 = new MemoryStream(productPictures[i].picture);
+                    productPhotoList.Add(Image.FromStream(ms1));
+                    PictureBox pb = new PictureBox();
+                    pb.Image = Image.FromStream(ms1);
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pb.Name = $"pb{i}";
+                    flowLayoutPanel1.Controls.Add(pb);
+                    pb.MouseEnter += ProductPhoto_MouseEnter;
+                    pb.MouseLeave += Pb_MouseLeave;
+                }
+            }
+            string productName = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i.ProductName).FirstOrDefault();
+            lblProductName.Text = productName;
 
             var q2 = dbContext.ProductDetails.Where(i => i.ProductID == productID).Select(i => i);
             foreach (var p in q2)
@@ -98,36 +107,59 @@ namespace prjProject
                 label.MouseLeave += Style_MouseLeave;
                 flpStyle.Controls.Add(label);
             }
-
-            List<decimal> priceList = q2.Select(i => i.UnitPrice).ToList();
-            priceList.Sort();
-            decimal maxPrice = priceList[priceList.Count - 1];
-            decimal minPrice = priceList[0];
-            string price = "";
-            if (maxPrice == minPrice)
+            try
             {
-                price = $"{minPrice.ToString("C0")}";
+                List<decimal> priceList = q2.Select(i => i.UnitPrice).ToList();
+                priceList.Sort();
+                decimal maxPrice = priceList[priceList.Count - 1];
+                decimal minPrice = priceList[0];
+                string price = "";
+                if (maxPrice == minPrice)
+                {
+                    price = $"{minPrice.ToString("C0")}";
+                }
+                else
+                {
+                    price = $"{minPrice.ToString("C0")} - {maxPrice.ToString("C0")}";
+                }
+                lblPrice.Text = price;
             }
-            else
+            catch (Exception ex)
             {
-                price = $"{minPrice.ToString("C0")} - {maxPrice.ToString("C0")}";
+                lblPrice.Text = "";
             }
-            lblPrice.Text = price;
 
             var q3 = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i);
             string sellerName = q3.Select(i => i.MemberAccount.Name).FirstOrDefault();
             lblSellerName.Text = $"{sellerName}的賣場";
             byte[] sellerPhoto = q3.Select(i => i.MemberAccount.MemPic).FirstOrDefault();
-            MemoryStream ms2 = new MemoryStream(sellerPhoto);
-            pbSellerPhoto.Image = Image.FromStream(ms2);
+            if (sellerPhoto == null)
+            {
+                pbSellerPhoto.Image = Image.FromFile("../../Images/cross.png");
+                pbSellerPhoto.SizeMode = PictureBoxSizeMode.Normal;
+            }
+            else
+            {
+                MemoryStream ms2 = new MemoryStream(sellerPhoto);
+                pbSellerPhoto.Image = Image.FromStream(ms2);
+            }
+            
             string productDescription = q3.FirstOrDefault().Description;
             lblProductDescription.Text = productDescription;
             int sellerID = q3.FirstOrDefault().MemberID;
             int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerID).Select(i => i).ToList().Count;
             lblSellerProductNum.Text = sellerProductNum.ToString();
             CFunctions.SetHeart(this);
-            int soldCount = dbContext.OrderDetails.Where(i => i.ProductDetail.ProductID == productID && i.Order.StatusID == 2).Select(i => i.Quantity).Sum();
-            lblSoldCount.Text = soldCount.ToString();
+            var q = dbContext.OrderDetails.Where(i => i.ProductDetail.ProductID == productID && i.Order.StatusID == 6).Select(i => i.Quantity).ToList();
+            int soldCount = q.Sum();
+            if (soldCount == 0)
+            {
+                lblSoldCount.Text = "0";
+            }
+            else
+            {
+                lblSoldCount.Text = soldCount.ToString();
+            }
             linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
         }
 
@@ -186,10 +218,17 @@ namespace prjProject
         private int productPhotoIndex = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            productPhotoIndex++;
-            if (productPhotoIndex >= productPhotoList.Count)
-                productPhotoIndex = 0;
-            pbProductPhoto.Image = productPhotoList[productPhotoIndex];
+            try
+            {
+                productPhotoIndex++;
+                if (productPhotoIndex >= productPhotoList.Count)
+                    productPhotoIndex = 0;
+                pbProductPhoto.Image = productPhotoList[productPhotoIndex];
+            }
+            catch(Exception ex)
+            {
+                timer1.Stop();
+            }
         }
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
