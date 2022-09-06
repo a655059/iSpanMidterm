@@ -2,6 +2,7 @@
 using prjProject.Entity;
 using prjProject.Models;
 using Project_期中專案;
+using seller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -408,6 +409,20 @@ namespace prjProject
         private void pictureBox6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblToSellerForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (memberID == 0)
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+            }
+            else
+            {
+                賣家中心 form = new 賣家中心();
+                form.ShowDialog();
+            }
         }
     }
 }
