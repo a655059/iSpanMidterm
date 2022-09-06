@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="CommentPicID" />
           </Key>
-          <Property Name="CommentPicID" Type="int" Nullable="false" />
+          <Property Name="CommentPicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CommentID" Type="int" Nullable="false" />
           <Property Name="CommentPic" Type="varbinary(max)" Nullable="false" />
         </EntityType>
@@ -879,7 +879,7 @@
           <Key>
             <PropertyRef Name="CommentPicID" />
           </Key>
-          <Property Name="CommentPicID" Type="Int32" Nullable="false" />
+          <Property Name="CommentPicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CommentID" Type="Int32" Nullable="false" />
           <Property Name="CommentPic1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Comment" Relationship="Self.FK_CommentPic_Comment" FromRole="CommentPic" ToRole="Comment" />
