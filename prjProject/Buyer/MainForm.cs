@@ -205,27 +205,31 @@ namespace prjProject
             spContainerItem.Visible = true;
             flowpanelAD.Controls.Clear();
             Random find5 = new Random();
-            
+
             var productquery = from q in dbContext.Products
                                where q.ProductStatusID == 0
                                select q.ProductID;
 
-            int Couter = 5;            
+            int Counter = 5;
             if (productquery.Count() <= 0) return;
-            else if (productquery.Count() < Couter) Couter = productquery.Count();
-            int[] randomArray = new int[Couter];
-            for (int i = 0; i < Couter; i++)
+            else if (productquery.Count() < Counter) Counter = productquery.Count();
+            int[] randomArray = new int[Counter];
+            for (int i = 0; i < Counter; i++)
             {
                 int index = find5.Next(productquery.Count());
                 randomArray[i] = productquery.ToList()[index];
-                for (int j = 1; j < i; j++)
+
+                for (int j = 0; j < i; j++)
                 {
                     while (randomArray[j] == randomArray[i])
                     {
-                        j = 0;
+                        index = find5.Next(productquery.Count());
                         randomArray[i] = productquery.ToList()[index];
+                        j = 0;
                     }
+                    
                 }
+
             }
 
             List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
