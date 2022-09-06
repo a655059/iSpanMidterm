@@ -37,9 +37,10 @@ namespace WindowsFormsApp2
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(270, 0);
+            this.panel1.Location = new System.Drawing.Point(180, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1654, 1050);
+            this.panel1.Size = new System.Drawing.Size(1103, 700);
             this.panel1.TabIndex = 1;
             // 
             // comboBox1
@@ -63,11 +64,12 @@ namespace WindowsFormsApp2
             // 
             // 主畫面
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.ClientSize = new System.Drawing.Size(1283, 700);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "主畫面";
             this.Text = "主畫面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

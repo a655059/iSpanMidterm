@@ -14,7 +14,7 @@ namespace seller
 {
     public partial class 上架 : Form
     {
-        public string account;
+        //public string account;
         public int product_id;
         iSpanProjectEntities isp = new iSpanProjectEntities();
 
@@ -26,29 +26,84 @@ namespace seller
         public 上架(string acc)
         {
             InitializeComponent();
-            account = acc;
+            //account = acc;
+        }
+
+        public int memberID { get; set; }
+
+
+        private void cmb_country_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.cmb_region.Items.Clear();
+            cmb_region.Visible = true;
+            label5.Visible = true;
+
+            var countryid = (from a in isp.CountryLists
+                             where a.CountryName == cmb_country.Text
+                             select a).ToList();
+            int ctid = countryid[0].CountryID;
+            var region = from a in isp.RegionLists
+                         where a.CountryID == ctid
+                         select a;
+
+            foreach (var rgnion in region)
+            {
+                this.cmb_region.Items.Add(rgnion.RegionName);
+            }
+
+            
         }
 
 
+        private void cmb_bigtype_SelectedIndexChanged(object sender, EventArgs e)//只有在選好之後才知道大項的內容
+        {
+            this.cmb_smtype.Items.Clear();
+            //cmb_bigtype.Enabled = true;
+            cmb_smtype.Visible = true;
+            label3.Visible = true;
+
+            //string bg_text = cmb_bigtype.Text;
+            var bigid = (from a in isp.BigTypes                     //這邊記錄的大類只是為了要往後找小類  儲存的時候可以只存小類  透過小類的表對應到 大類來輸出值
+                         where a.BigTypeName == cmb_bigtype.Text
+                         select a).ToList();
+
+            int bigtid = bigid[0].BigTypeID;
+            var stype = from a in isp.SmallTypes
+                        where a.BigTypeID == bigtid
+                        select a;
+
+            foreach (var stname in stype)
+            {
+                this.cmb_smtype.Items.Add(stname.SmallTypeName);
+            }
+
+
+
+        }
         private void 上架_Load(object sender, EventArgs e)
         {
+            //----------------------------------------------------------------
+            var bg = from a in isp.BigTypes
+                     select a;
 
-            //做好選單中的選項
-            var m = from b in isp.SmallTypes
-                    select b;
-
-            foreach (var st in m)
+            foreach(var big in bg)
             {
-                this.cmb_smtype.Items.Add(st.SmallTypeName);
+                this.cmb_bigtype.Items.Add(big.BigTypeName);
             }
+            cmb_smtype.Visible = false;
+            label3.Visible = false;
 
-            var q = from a in isp.RegionLists
-                    select a;
 
-            foreach (var pd in q)
+            var ct = from a in isp.CountryLists
+                     select a;
+
+            foreach(var country in ct)
             {
-                this.cmb_region.Items.Add(pd.RegionName);
+                this.cmb_country.Items.Add(country.CountryName);
             }
+            label5.Visible = false;
+            cmb_region.Visible = false;
+           // cmb_region.Enabled = false;
 
             var p = from c in isp.Shippers
                     select c;
@@ -57,12 +112,12 @@ namespace seller
             {
                 this.cmb_shipper.Items.Add(sp.ShipperName);
             }
-
-            var status = from a in isp.ProductStatus
+            //----------------------------------------------------------------
+            var status = from a in isp.ProductStatus            //商品是否上架
                          select a;
             foreach (var sts in status)
             {
-                this.cmb_shipstatus.Items.Add(sts.ProductStatusName);
+                this.cmb_productstatus.Items.Add(sts.ProductStatusName);
             }
 
             renew();
@@ -74,13 +129,8 @@ namespace seller
         void renew()
         {
 
-            var q = (from a in isp.MemberAccounts
-                     where a.MemberAcc == account
-                     select a).ToList();
-
-            int memid = q[0].MemberID;
             var s = from d in isp.Products
-                    where d.MemberID == memid
+                    where d.MemberID == this.memberID
                     select d;
 
             dataGridView1.DataSource = s.ToList();  //抓特定賣家的販賣商品
@@ -102,12 +152,9 @@ namespace seller
 
             Product pd = new Product();
 
-
-            var q = (from p in isp.MemberAccounts           //找到對應的賣家帳號
-                     where p.MemberAcc == account
-                     select p).ToList();
-            pd.MemberID = q[0].MemberID;
-
+            //pd.pr
+            
+            pd.MemberID = this.memberID;
             pd.ProductName = txt_pdname.Text;
             pd.Description = richTextBox_descript.Text;
             pd.AdFee = Convert.ToDecimal(txt_adfee.Text);
@@ -123,6 +170,11 @@ namespace seller
                      select r).ToList();
             pd.RegionID = v[0].RegionID;
 
+            var productstatus = (from a in isp.ProductStatus
+                                where a.ProductStatusName == cmb_productstatus.Text
+                                select a).ToList();
+            pd.ProductStatusID = productstatus[0].ProductStatusID;
+
 
             this.isp.Products.Add(pd);
             this.isp.SaveChanges();
@@ -132,11 +184,13 @@ namespace seller
             {
                 ShipperToProduct sptopd = new ShipperToProduct();
                 sptopd.ProductID = product_id;
+                string shpname = shiper[i].shipper;
                 var spid = (from a in isp.Shippers
-                           where a.ShipperName == shiper[i].shipper
-                           select a).ToList();
-                
-                sptopd.ShipperID = spid[0].ShipperID;
+                            where a.ShipperName == shpname
+                            select a).ToList();
+
+                int shpid = spid[0].ShipperID;
+                sptopd.ShipperID = shpid;
                 this.isp.ShipperToProducts.Add(sptopd);
             }
 
@@ -206,11 +260,7 @@ namespace seller
 
         private void alter_Click(object sender, EventArgs e)            //再產生對應新規格會卡住  要修改數量
         {
-            //dataGridView1.CurrentRow.Cells[""]
-
-
-            //修改 alter = new 修改(account);
-            //alter.Show();
+           
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
 
@@ -233,27 +283,33 @@ namespace seller
                     where b.ProductID == pdid
                     select b;
 
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes = ms.GetBuffer();
+
+
             foreach (var pdtt in pddetail)
             {
                 pdtt.Style = txt_style.Text;
                 pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
                 pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+                pdtt.Pic = bytes;
             }
 
-            var c = from d in isp.ProductPics
+            var c = from d in isp.ProductPics       //抓取id
                     where d.ProductID == pdid
                     select d;
 
-
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            this.picb_product.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] bytes = ms.GetBuffer();
+            //----------------------------------------------------------------------------------------
+            System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+            this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes1 = ms1.GetBuffer();
             foreach (var ppic in c)
             {
-                ppic.picture = bytes;
+                ppic.picture = bytes1;
             }
             this.isp.SaveChanges();
-
+            //----------------------------------------------------------------------------------------
             var j = (from s in isp.SmallTypes
                      where s.SmallTypeName == cmb_smtype.Text
                      select s).ToList();
@@ -275,6 +331,7 @@ namespace seller
                 prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
                 prds.SmallTypeID = j[0].SmallTypeID;
                 prds.RegionID = i[0].RegionID;
+                prds.ShipperID = shipid[0].ShipperID;
             }
 
             this.isp.SaveChanges();
@@ -355,8 +412,8 @@ namespace seller
 
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            if (ms.Length > 0)
-            {
+            //if (ms.Length > 0)
+            //{
                 this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] bytes = ms.GetBuffer();
 
@@ -364,7 +421,7 @@ namespace seller
                 {
                     pd_dtail.pic = bytes;
                 }
-            }
+            //}
 
 
             pd_detail.Add(pd_dtail);
@@ -493,6 +550,9 @@ namespace seller
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)      //產生對應的可修改選項
         {
+
+            
+            //-----------------------------------------------------------------------
             int index = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
             var q = from a in isp.ProductDetails
@@ -506,11 +566,27 @@ namespace seller
                           select a;
             dataGridView3.DataSource = viewpic.ToList();
             //-----------------------------------------------------------------------
+            var shiptoprod = (from a in isp.ShipperToProducts
+                             where a.ProductID == index
+                             select a).ToList();
+
+            int shipid = shiptoprod[0].ShipperID;
+            var shipname = (from a in isp.Shippers
+                           where a.ShipperID == shipid
+                           select a).ToList();
+            cmb_shipper.Text = shipname[0].ShipperName;
+            //-----------------------------------------------------------------------
             var deta = (from a in isp.Products
                         where a.ProductID == index
                         select a).ToList();
             int smallid = deta[0].SmallTypeID;
             int regionid = deta[0].RegionID;
+
+            int psd = deta[0].ProductStatusID;          //商品上架狀態.................................
+            var pstatus = (from a in isp.ProductStatus
+                          where a.ProductStatusID == psd
+                          select a).ToList();
+
 
             foreach (var details in deta)
             {
@@ -518,17 +594,29 @@ namespace seller
                 txt_adfee.Text = details.AdFee.ToString();
                 richTextBox_descript.Text = details.Description;
             }
-            var small = (from a in isp.SmallTypes
+
+            var small = (from a in isp.SmallTypes           //大小類
                          where a.SmallTypeID == smallid
                          select a).ToList();
 
             cmb_smtype.Text = small[0].SmallTypeName;
+            int smid = small[0].BigTypeID;
+            var big = (from a in isp.BigTypes
+                      where a.BigTypeID == smid
+                      select a).ToList();
+            cmb_bigtype.Text = big[0].BigTypeName;
 
-            var region = (from a in isp.RegionLists
+            var region = (from a in isp.RegionLists     // 縣市 區
                           where a.RegionID == regionid
                           select a).ToList();
 
             cmb_region.Text = region[0].RegionName;
+            int? ctid = region[0].CountryID;
+            var country = (from a in isp.CountryLists
+                          where a.CountryID == ctid
+                          select a).ToList();
+            cmb_country.Text = country[0].CountryName;
+
             //---------------------------------------------------------------
             byte[] data = null;
 
@@ -542,7 +630,7 @@ namespace seller
             picb_product.Image = Image.FromStream(stream);
             stream.Close();
             //---------------------------------------------------------------
-
+            byte[] data1 = null;
             var detai = (from a in isp.ProductDetails
                          where a.ProductID == index
                          select a).ToList();
@@ -550,14 +638,19 @@ namespace seller
             txt_style.Text = detai[0].Style;
             txt_quantity.Text = detai[0].Quantity.ToString();
             txt_unitprice.Text = detai[0].UnitPrice.ToString();
-            data = detai[0].Pic;
+            data1 = detai[0].Pic;
 
-            MemoryStream stream_format = new MemoryStream(data);
+            MemoryStream stream_format = new MemoryStream(data1);
             picb_format.Image = Image.FromStream(stream_format);
             stream.Close();
         }
 
         private void cmb_smtype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

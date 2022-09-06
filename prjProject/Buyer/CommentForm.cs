@@ -1,4 +1,5 @@
-﻿using prjProject.Entity;
+﻿using prjProject.Buyer;
+using prjProject.Entity;
 using prjProject.Models;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,12 @@ namespace prjProject
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 flpStar.Controls.Add(pictureBox);
                 pictureBox.Click += Star_Click;
+            }
+            List<UCtrlComment> list = CFunctions.ShowComments(productID);
+            foreach (UCtrlComment uCtrl in list)
+            {
+                flowLayoutPanel1.Controls.Add(uCtrl);
+
             }
         }
 
@@ -140,6 +147,8 @@ namespace prjProject
                         dbContext.CommentPics.Add(commentPic);
                         dbContext.SaveChanges();
                     }
+                    MessageBox.Show("感謝你的評論");
+
                 }
             }
             else

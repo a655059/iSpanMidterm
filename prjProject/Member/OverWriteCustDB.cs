@@ -19,6 +19,7 @@ namespace Project_期中專案
             get;
             set;
         }
+        public int memberID { get; set; }
         byte[] bytes;
         public OverWriteCustDB()
         {
@@ -34,7 +35,7 @@ namespace Project_期中專案
         {
             MemberAccount list = new MemberAccount();
             var q = (from i in dbindex.MemberAccounts
-                     where i.MemberAcc == account2
+                     where i.MemberID == memberID
                      select i).FirstOrDefault();
 
             var q1 = from i in dbindex.CountryLists.AsEnumerable()
@@ -48,17 +49,21 @@ namespace Project_期中專案
             cmb_are.Text =q.RegionList.RegionName;
             txt_phon.Text = q.Phone;
             txt_mail.Text = q.Email;
-            txt_backMail.Text = q.BackUpEmail;
             txtadd.Text = q.Address;
-            txt_nickName.Text = q.NickName;
             txt_name.Text = q.Name;
             DTP_BIR.Value = q.Birthday;
+            if (q.MemPic == null||q.NickName==null||q.BackUpEmail==null||q.Bio==null||q.MemPic==null) return;
+            else 
+            {
+            txt_backMail.Text = q.BackUpEmail;
+            txt_nickName.Text = q.NickName;
             System.IO.MemoryStream ms = new System.IO.MemoryStream(q.MemPic);
-            this.pic_box.Image = Image.FromStream(ms);
+            this.pic_box.Image = Image.FromStream(ms); 
             bytes = q.MemPic;
             txt_bio.Text = q.Bio;
-
             Application.DoEvents();
+            };
+
         }
 
         private void OverWriteCustDB_Load(object sender, EventArgs e)
@@ -105,7 +110,7 @@ namespace Project_期中專案
             
             //MemberAccount q = new MemberAccount() { };
             var q = (from i in dbindex.MemberAccounts
-                    where i.MemberAcc == txtAccount.Text
+                    where i.MemberID == memberID
                     select i).FirstOrDefault();
             if (q == null)
                 return;
@@ -113,7 +118,10 @@ namespace Project_期中專案
                      where i.RegionName == cmb_are.Text
                      select i;
             var q2 = q1.ToList();
-
+            //if (txt_bio.Text == null || txt_nickName == null || txt_backMail == null || pic_box == null)
+            //{
+            //    return;
+            //}
             q.MemberAcc = txtAccount.Text;
             q.MemberPw = txtPassworld.Text;
             q.TWorNOT = ckbox_yes.Checked;
@@ -127,10 +135,11 @@ namespace Project_期中專案
             q.Birthday = DTP_BIR.Value;
             q.Bio = txt_bio.Text;
             q.MemPic = bytes;
-
             //this.dbindex.MemberAccount.Add(q);
             this.dbindex.SaveChanges();
             MessageBox.Show("修改成功");
+            
+
         }
 
         private void btn_pic_Click(object sender, EventArgs e)

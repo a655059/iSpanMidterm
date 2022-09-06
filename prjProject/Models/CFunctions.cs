@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Buyer;
 using prjProject.Entity;
 using System;
 using System.Collections.Generic;
@@ -110,6 +111,11 @@ namespace prjProject.Models
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
             var productNumInCart = dbContext.OrderDetails.Where(i => i.Order.MemberID == memberID && i.Order.StatusID == 1).Select(i => i).ToList().Count;
+            string memberRegion = q.RegionList.RegionName;
+            string memberCountry = q.RegionList.CountryList.CountryName;
+            int memberCountryID = Convert.ToInt32(q.RegionList.CountryID);
+            var memberRegions = dbContext.RegionLists.Where(i => i.CountryID == memberCountryID).Select(i => i.RegionName).ToArray();
+            var countryNames = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType() == typeof(MainForm))
@@ -125,7 +131,10 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
-
+                    f.countries = countryNames;
+                    f.memberCountryName = memberCountry;
+                    f.regions = memberRegions;
+                    f.memberRegionName = memberRegion;
                     CFunctions.SetHeart(f);
                     f.memberRegion = q.RegionList.RegionName;
                 } 
@@ -142,6 +151,11 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
+                }
+                else if (form.GetType() == typeof(Event_Coupon))
+                {
+                    Event_Coupon f = (Event_Coupon)form;
+                    f.memberID = memberID;
                 }
                 else
                 {
@@ -618,7 +632,42 @@ namespace prjProject.Models
                 }
             }
         }
-
+        
+        public static List<UCtrlComment> ShowComments(int productID)
+        {
+            List<UCtrlComment> list = new List<UCtrlComment>();
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i=>i);
+            foreach (var c in comments)
+            {
+                var commentPhotos = dbContext.CommentPics.Where(i => i.CommentID == c.CommentID).Select(i => i.CommentPic1).ToList();
+                UCtrlComment uCtrl = new UCtrlComment();
+                uCtrl.commentID = c.CommentID;
+                try
+                {
+                    byte[] memberPhoto = c.MemberAccount.MemPic;
+                    MemoryStream ms = new MemoryStream(memberPhoto);
+                    uCtrl.memberPhoto = Image.FromStream(ms);
+                }
+                catch (Exception ex)
+                {
+                    uCtrl.memberPhoto = Image.FromFile("../../Images/cross.png");
+                }
+                uCtrl.memberName = c.MemberAccount.Name;
+                uCtrl.comment = c.Comment1;
+                uCtrl.star = c.Star-1;
+                if (commentPhotos.Count > 0)
+                {
+                    uCtrl.HasCommentPhoto = true;
+                }
+                else
+                {
+                    uCtrl.HasCommentPhoto = false;
+                }
+                list.Add(uCtrl);
+            }
+            return list;
+        }
         
     }
 }

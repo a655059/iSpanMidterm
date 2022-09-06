@@ -30,16 +30,14 @@ namespace Project_期中專案
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.lab_showname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,8 +55,6 @@ namespace Project_期中專案
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button7);
-            this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
@@ -71,24 +67,6 @@ namespace Project_期中專案
             this.splitContainer1.SplitterDistance = 264;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(12, 483);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(159, 57);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "我是賣家";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(12, 393);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(159, 57);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "我的錢包";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(12, 307);
@@ -97,7 +75,6 @@ namespace Project_期中專案
             this.button4.TabIndex = 3;
             this.button4.Text = "按讚好物";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -107,6 +84,7 @@ namespace Project_期中專案
             this.button3.TabIndex = 2;
             this.button3.Text = "我的優惠眷";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -116,6 +94,7 @@ namespace Project_期中專案
             this.button2.TabIndex = 1;
             this.button2.Text = "訂單查詢";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -143,6 +122,16 @@ namespace Project_期中專案
             this.splitContainer2.SplitterDistance = 151;
             this.splitContainer2.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Location = new System.Drawing.Point(406, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 27);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "您好,";
+            // 
             // lab_showname
             // 
             this.lab_showname.AutoSize = true;
@@ -162,16 +151,6 @@ namespace Project_期中專案
             this.label1.Size = new System.Drawing.Size(168, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "會員中心";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(406, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 27);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "您好,";
             // 
             // member_center
             // 
@@ -196,13 +175,11 @@ namespace Project_期中專案
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label lab_showname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
