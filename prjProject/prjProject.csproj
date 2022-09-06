@@ -73,23 +73,23 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\UserControl1.cs">
+    <Compile Include="UserControl\照片控制項.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Management\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="UserControl\照片控制項.Designer.cs">
+      <DependentUpon>照片控制項.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\UserControl2.cs">
+    <Compile Include="UserControl\細項控制項.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Management\UserControl2.Designer.cs">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <Compile Include="UserControl\細項控制項.Designer.cs">
+      <DependentUpon>細項控制項.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\UserControl3.cs">
+    <Compile Include="UserControl\物流控制項.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Management\UserControl3.Designer.cs">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <Compile Include="UserControl\物流控制項.Designer.cs">
+      <DependentUpon>物流控制項.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\主畫面.cs">
       <SubType>Form</SubType>
@@ -455,14 +455,14 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Management\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\照片控制項.resx">
+      <DependentUpon>照片控制項.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Management\UserControl2.resx">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\細項控制項.resx">
+      <DependentUpon>細項控制項.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Management\UserControl3.resx">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\物流控制項.resx">
+      <DependentUpon>物流控制項.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\主畫面.resx">
       <DependentUpon>主畫面.cs</DependentUpon>
