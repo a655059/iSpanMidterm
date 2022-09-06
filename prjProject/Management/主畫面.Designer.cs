@@ -45,6 +45,7 @@ namespace WindowsFormsApp2
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("新細明體", 20F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "(請選擇)",
@@ -52,10 +53,11 @@ namespace WindowsFormsApp2
             "產品管理",
             "訂單管理",
             "常見問題",
-            "酷碰卷"});
-            this.comboBox1.Location = new System.Drawing.Point(29, 60);
+            "酷碰卷",
+            "申訴管理"});
+            this.comboBox1.Location = new System.Drawing.Point(12, 60);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 26);
+            this.comboBox1.Size = new System.Drawing.Size(252, 48);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 

@@ -1,4 +1,5 @@
 ﻿using prjProject.Entity;
+using prjProject.Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,7 @@ namespace WindowsFormsApp2
                 cbship.Items.Add(i);
             }
         }
+
         iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
 
         產品管理 產品介面 = new 產品管理();
@@ -91,15 +93,15 @@ namespace WindowsFormsApp2
             txtpdfee.Text= DBiSpan.Products.Where(n => n.ProductID == pid)
                 .Select(n =>n.AdFee).FirstOrDefault().ToString();
         }
+
+        public int productID= 0;
+
         private void 新增_Click(object sender, EventArgs e)
-        {
-       
+        {          
                 Product product = new Product()
                 {
                     ProductName = txtpdname.Text,
-                    AdFee = Convert.ToInt32(txtpdfee.Text),
-                    ShipperID = DBiSpan.Shippers.Where(n => n.ShipperName == cbship.Text)
-                    .Select(n => n.ShipperID).FirstOrDefault(),
+                    AdFee = Convert.ToInt32(txtpdfee.Text),                   
                     MemberID = 1,
                     RegionID = DBiSpan.RegionLists.Where(n => n.RegionName == cbRegion.Text)
                     .Select(n => n.RegionID).FirstOrDefault(),
@@ -108,25 +110,37 @@ namespace WindowsFormsApp2
                     .Select(n => n.SmallTypeID).FirstOrDefault()
                 };
                 DBiSpan.Products.Add(product);
+
+
                 DBiSpan.SaveChanges();
 
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                byte[] bytes = ms.GetBuffer();
+                productID=product.ProductID;  //新增出來的ID放進變數，要給其他表關聯用
 
-                //todo#0 預設ID寫死
-                ProductDetail productDetail = new ProductDetail()
-                {
-                    UnitPrice = Convert.ToInt32(txtpdup.Text),
-                    Quantity = Convert.ToInt32(txtpdquty.Text),
-                    Style = txtstyle.Text,
-                    ProductID = DBiSpan.Products.Where(n => n.MemberID == 1)
-                    .OrderByDescending(n => n.ProductID).Select(n => n.ProductID).FirstOrDefault(),
-                    Pic = bytes
-                };
-                DBiSpan.ProductDetails.Add(productDetail);
-            
-            DBiSpan.SaveChanges();            
+                      
+            for(int i =0;i<商品細項list.Count;i++)
+            { 
+                ProductDetail PD = new ProductDetail();
+
+                PD.UnitPrice = 商品細項list[i].UnitPrice;
+                PD.Quantity = 商品細項list[i].Quantity;
+                PD.Style = 商品細項list[i].Style;
+                PD.ProductID = productID;
+                PD.Pic = 商品細項list[i].pic;
+                
+                DBiSpan.ProductDetails.Add(PD);
+            }
+                DBiSpan.SaveChanges();
+
+            for (int i = 0; i < 照片區.Count; i++)
+            {
+                ProductPic productPic = new ProductPic();
+                productPic.ProductID = productID;
+                productPic.picture = 照片區[i].picture;
+                DBiSpan.ProductPics.Add(productPic);
+            }
+            DBiSpan.SaveChanges();
+
+
             MessageBox.Show("新增成功");
         }
 
@@ -226,5 +240,166 @@ namespace WindowsFormsApp2
         {
             //產品介面.啟動表單();
         }
+
+        //===========================================  照片庫區
+
+        List<照片區> 照片區 = new List<照片區>(); // 照片暫存   建立一個類別
+        private void picmore_Click(object sender, EventArgs e)
+        {
+            新增進照片類別();
+            新增照片();
+        }
+
+         private void 照片庫瀏覽_Click(object sender, EventArgs e)
+                {
+                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                        pictureBox2.Image = Image.FromFile(openFileDialog1.FileName);
+                }
+
+        void 新增進照片類別() 
+        {
+            照片區 照片 = new 照片區();
+
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            pictureBox2.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] bytes = ms.GetBuffer();
+
+            照片.picture = bytes;  
+            照片區.Add(照片);
+        }
+        void 新增照片()
+        {
+            picPanel3.Controls.Clear();
+            for(int i = 0; i < 照片區.Count(); i++)
+            {
+                照片控制項 照項 = new 照片控制項();
+                照項.picture = 照片區[i].picture;
+                picPanel3.Controls.Add(照項);
+
+                foreach(Control control in 照項.Controls)
+                {
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button button = (Button)control;
+                        button.Click += 刪除按鈕_Click;
+                    }
+                }
+                Application.DoEvents();
+            }
+        }
+
+        private void 刪除按鈕_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int idx = picPanel3.Controls.IndexOf(button.Parent);
+            照片區.RemoveAt(idx);
+            picPanel3.Controls.Remove(button.Parent);
+        }
+        //=====================================================
+        //======================================規格區
+        List<商品細項> 商品細項list = new List<商品細項>();
+
+        private void 新增樣式_Click(object sender, EventArgs e)
+        {
+            新增進規格類別();
+
+            新增規格();
+        }
+
+        private void 新增規格()
+        {
+            tPanel2.Controls.Clear();
+            for (int i = 0; i < 商品細項list.Count; i++)
+            {
+                細項控制項 系控 = new 細項控制項();
+                系控.Quantity = 商品細項list[i].Quantity;
+                系控.UnitPrice = 商品細項list[i].UnitPrice;
+                系控.Style = 商品細項list[i].Style;
+                if (商品細項list[i].pic != null)
+                    系控.pic = 商品細項list[i].pic;
+                tPanel2.Controls.Add(系控);
+
+                foreach (Control control in 系控.Controls)
+                {
+                    if (control.GetType() == typeof(Button))
+                    {
+                        Button button = (Button)control;
+                        button.Click += 刪除規格紐_click;
+                    }
+                }
+            }
+        }
+
+        private void 新增進規格類別()
+        {
+            商品細項 細項 = new 商品細項();
+            細項.Quantity = Convert.ToInt32(textBox2.Text);
+            細項.UnitPrice = Convert.ToInt32(textBox1.Text);
+            細項.Style = textBox3.Text;
+
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] bytes = ms.GetBuffer();
+
+            if (bytes != null)
+                細項.pic = bytes;
+
+            商品細項list.Add(細項);
+        }
+        private void 刪除規格紐_click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int idx = tPanel2.Controls.IndexOf(button.Parent);
+            商品細項list.RemoveAt(idx);
+            tPanel2.Controls.Remove(button.Parent);
+        }
+        //==========================================================
+        //======================物流區
+        List<物流> 物流list = new List<物流>();
+
+        private void 增加送方式_Click(object sender, EventArgs e)
+        {
+            新增進物流類別();
+            新增物流();
+        }
+
+        private void 新增物流()
+        {
+            Panel1.Controls.Clear();
+            for (int i = 0; i < 物流list.Count; i++)
+            {
+                物流控制項 物項 = new 物流控制項();
+                物項.ShipperName = 物流list[i].ShipperName;
+                Panel1.Controls.Add(物項);
+
+                foreach (Control control in 物項.Controls)// 抓出自訂控制項(UserContral)裡的控制項
+                {
+                    if (control.GetType() == typeof(Button))// 找出控制項裡的屬性=Button屬性
+                    {                        
+                        Button button = (Button)control; //將control轉型成Button，用Button接
+                        button.Click += 刪除物流紐_Click; //找到控制項裡的Button設定事件
+                    }
+                }
+            }
+        }
+
+        private void 刪除物流紐_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;  // 轉型成Button
+            int idx = Panel1.Controls.IndexOf(button.Parent);
+            // button.Parent 就是button上一層 在這就是指UserControl
+            物流list.RemoveAt(idx);  //刪除選到的資料
+            Panel1.Controls.Remove(button.Parent);//刪除選到的button物件
+        }
+
+        private void 新增進物流類別()
+        {
+            物流 物流 = new 物流();
+            物流.ShipperName = cbship.Text;
+            物流list.Add(物流);
+        }
     }
 }
+
+        
+    
