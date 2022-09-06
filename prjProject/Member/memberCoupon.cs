@@ -24,10 +24,17 @@ namespace prjProject.Member
 
         private void memberCoupon_Load(object sender, EventArgs e)
         {
-            var q = (from i in dbindex.MemberAccounts
-                     where i.MemberID == memberID
-                     select i).FirstOrDefault();
 
+            var officialCou = (from i in dbindex.OfficialCoupons
+                              where i.MemberID == memberID
+                              select i).FirstOrDefault();
+            var myCoupon = (from i in dbindex.Coupons
+                           where i.CouponID == officialCou.CouponID
+                           select i).ToList();
+            txt_couName.Text = myCoupon[0].CouponName;
+            txt_couStar.Text = myCoupon[0].StartDate.ToString();
+            txt_couEnd.Text = myCoupon[0].ExpiredDate.ToString();
+            txt_couDiscount.Text = myCoupon[0].Discount.ToString();
         }
     }
 }

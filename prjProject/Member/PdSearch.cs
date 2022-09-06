@@ -83,7 +83,6 @@ namespace Project_期中專案
             this.txt_id.Text = or.OrderID.ToString();
             this.txt_datime.Text = or.OrderDatetime.ToString();
             this.txt_retime.Text = or.RecieveAdr.ToString();
-            this.txt_pdid.Text = or.ProductID.ToString();
             this.txt_finday.Text = or.FinishDate.ToString();
             this.txt_coupid.Text = or.CouponID.ToString();
             this.txt_statid.Text = st[0].OrderStatusName;

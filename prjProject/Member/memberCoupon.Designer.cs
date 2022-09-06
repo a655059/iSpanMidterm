@@ -34,10 +34,10 @@ namespace prjProject.Member
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_couName = new System.Windows.Forms.TextBox();
+            this.txt_couStar = new System.Windows.Forms.TextBox();
+            this.txt_couEnd = new System.Windows.Forms.TextBox();
+            this.txt_couDiscount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,43 +90,43 @@ namespace prjProject.Member
             this.label5.TabIndex = 4;
             this.label5.Text = "我的優惠眷";
             // 
-            // textBox1
+            // txt_couName
             // 
-            this.textBox1.Location = new System.Drawing.Point(253, 118);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 5;
+            this.txt_couName.Location = new System.Drawing.Point(253, 118);
+            this.txt_couName.Name = "txt_couName";
+            this.txt_couName.Size = new System.Drawing.Size(100, 22);
+            this.txt_couName.TabIndex = 5;
             // 
-            // textBox2
+            // txt_couStar
             // 
-            this.textBox2.Location = new System.Drawing.Point(253, 177);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 6;
+            this.txt_couStar.Location = new System.Drawing.Point(253, 177);
+            this.txt_couStar.Name = "txt_couStar";
+            this.txt_couStar.Size = new System.Drawing.Size(100, 22);
+            this.txt_couStar.TabIndex = 6;
             // 
-            // textBox3
+            // txt_couEnd
             // 
-            this.textBox3.Location = new System.Drawing.Point(253, 246);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 7;
+            this.txt_couEnd.Location = new System.Drawing.Point(253, 246);
+            this.txt_couEnd.Name = "txt_couEnd";
+            this.txt_couEnd.Size = new System.Drawing.Size(100, 22);
+            this.txt_couEnd.TabIndex = 7;
             // 
-            // textBox4
+            // txt_couDiscount
             // 
-            this.textBox4.Location = new System.Drawing.Point(253, 313);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 8;
+            this.txt_couDiscount.Location = new System.Drawing.Point(253, 313);
+            this.txt_couDiscount.Name = "txt_couDiscount";
+            this.txt_couDiscount.Size = new System.Drawing.Size(100, 22);
+            this.txt_couDiscount.TabIndex = 8;
             // 
             // memberCoupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_couDiscount);
+            this.Controls.Add(this.txt_couEnd);
+            this.Controls.Add(this.txt_couStar);
+            this.Controls.Add(this.txt_couName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -147,9 +147,9 @@ namespace prjProject.Member
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_couName;
+        private System.Windows.Forms.TextBox txt_couStar;
+        private System.Windows.Forms.TextBox txt_couEnd;
+        private System.Windows.Forms.TextBox txt_couDiscount;
     }
 }
