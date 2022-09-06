@@ -73,6 +73,24 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\照片控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\照片控制項.Designer.cs">
+      <DependentUpon>照片控制項.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\細項控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\細項控制項.Designer.cs">
+      <DependentUpon>細項控制項.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\物流控制項.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\物流控制項.Designer.cs">
+      <DependentUpon>物流控制項.cs</DependentUpon>
+    </Compile>
     <Compile Include="Buyer\CommentPhotoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +223,7 @@
     <Compile Include="Management\商品增刪修.Designer.cs">
       <DependentUpon>商品增刪修.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\商品細項.cs" />
     <Compile Include="Management\問題表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,11 +248,19 @@
     <Compile Include="Management\會員查詢.Designer.cs">
       <DependentUpon>會員查詢.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\照片區.cs" />
+    <Compile Include="Management\物流.cs" />
     <Compile Include="Management\產品管理.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Management\產品管理.Designer.cs">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\申訴修改刪除.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\申訴修改刪除.Designer.cs">
+      <DependentUpon>申訴修改刪除.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\申訴管理.cs">
       <SubType>Form</SubType>
@@ -446,6 +473,15 @@
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\照片控制項.resx">
+      <DependentUpon>照片控制項.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\細項控制項.resx">
+      <DependentUpon>細項控制項.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\物流控制項.resx">
+      <DependentUpon>物流控制項.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Buyer\CommentPhotoForm.resx">
       <DependentUpon>CommentPhotoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -475,6 +511,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Management\產品管理.resx">
       <DependentUpon>產品管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\申訴修改刪除.resx">
+      <DependentUpon>申訴修改刪除.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\申訴管理.resx">
       <DependentUpon>申訴管理.cs</DependentUpon>
