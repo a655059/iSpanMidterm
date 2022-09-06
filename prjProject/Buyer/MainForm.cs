@@ -71,14 +71,17 @@ namespace prjProject
         string _selectedName = "";
         bool textboxHasText = false;
         bool _isInType = false;
+        //AD CHECK
+        int _ADid;
+        int _ADpid1,_ADpid2;
         private void MainForm_Load(object sender, EventArgs e)
         {
             gueseYouLike();
             //LoadAllItem();
             LoadBigTypeList();
             searchbarReset();
-            inpuAD(flowAD1);
-            inpuAD(flowAD2);
+            ads(pbAD1, tbAD1, adtrigger1);
+            ads(pbAD2, tbAD2, adtrigger2);
         }
         //private void LoadAllItem()
         //{
@@ -213,7 +216,7 @@ namespace prjProject
                                select q.ProductID;
 
 
-            int Counter = 5;            
+            int Counter = 5;
             if (productquery.Count() <= 0) return;
             else if (productquery.Count() < Counter) Counter = productquery.Count();
             int[] randomArray = new int[Counter];
@@ -229,7 +232,7 @@ namespace prjProject
                         index = find5.Next(productquery.Count());
                         randomArray[i] = productquery.ToList()[index];
                         j = 0;
-                    }                    
+                    }
                 }
             }
             List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
@@ -323,7 +326,7 @@ namespace prjProject
             else
             {
                 member_center form = new member_center();
-                form.memberName =memberName;
+                form.memberName = memberName;
                 form.memeberID = memberID;
                 form.ShowDialog();
             }
@@ -462,6 +465,8 @@ namespace prjProject
             if (spContainerItem.Visible == true)
             {
                 gueseYouLike();
+                ads(pbAD1, tbAD1,adtrigger1);
+                ads(pbAD2, tbAD2, adtrigger2);
             }
         }
         //檢查會員
@@ -495,30 +500,47 @@ namespace prjProject
             }
         }
         //註冊頁面連結
-
         private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form1 createAcc = new Form1();
             createAcc.ShowDialog();
         }
-        private void inpuAD(FlowLayoutPanel f)
+        //下排廣告輪播
+        private void ads(PictureBox picturebox,TextBox textbox,Label l)
         {
-            var adlist = from l in dbContext.Products
-                         where l.AdFee >= 0 &&l.ProductStatusID==0
-                         select l;
+            var adlist = dbContext.Products.Where(p => p.AdFee > 0 && p.ProductStatusID == 0).OrderBy(p=>p.ProductID).Select(p => p).ToList();
+
             if (adlist.Count() == 0) return;
             Random r = new Random();
             int idx = r.Next(adlist.Count());
-            List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(adlist);
-            foreach (CtrlDisplayItem j in list)
-            {                
-                j.Click += CtrlDisplayItem_Click;
-                foreach (Control control in j.Controls)
-                {
-                    control.Click += CtrlDisplayItem_Click;
-                }
+            while (_ADid == idx)
+                idx = r.Next(adlist.Count());
+            _ADid = idx;
+            int id = adlist[idx].ProductID;
+            l.Text = id.ToString();
+            textbox.Text = dbContext.Products.Where(p => p.ProductID == id).Select(p => p.Description).FirstOrDefault();
+            var photo = dbContext.ProductPics.Where(p => p.ProductID == id).Select(p => p.picture).FirstOrDefault();
+            if (photo != null)
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(photo);
+                picturebox.Image = Image.FromStream(ms);
             }
-            f.Controls.Add(list[idx]);
+            else
+                picturebox.Image = picturebox.ErrorImage;
+        }
+        private void clickAD(int pid)
+        {
+            SelectedProductForm selectp = new SelectedProductForm();
+            selectp.productID = pid;
+            selectp.ShowDialog();
+        }
+        private void pbAD1_Click(object sender, EventArgs e)
+        {            
+            clickAD(Convert.ToInt32(adtrigger1.Text));
+        }
+        private void pbAD2_Click(object sender, EventArgs e)
+        {
+            clickAD(Convert.ToInt32(adtrigger2.Text));
         }
     }
 }
