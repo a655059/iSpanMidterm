@@ -211,11 +211,11 @@ namespace prjProject
                                select q.ProductID;
 
 
-            int Couter = 5;            
+            int Counter = 5;            
             if (productquery.Count() <= 0) return;
-            else if (productquery.Count() < Couter) Couter = productquery.Count();
-            int[] randomArray = new int[Couter];
-            for (int i = 0; i < Couter; i++)
+            else if (productquery.Count() < Counter) Counter = productquery.Count();
+            int[] randomArray = new int[Counter];
+            for (int i = 0; i < Counter; i++)
             {
                 int index = find5.Next(productquery.Count());
                 randomArray[i] = productquery.ToList()[index];
