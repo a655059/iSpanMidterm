@@ -1,4 +1,5 @@
 ﻿using pgjMidtermProject;
+using prjProject.Buyer;
 using prjProject.Entity;
 using System;
 using System.Collections.Generic;
@@ -142,6 +143,11 @@ namespace prjProject.Models
                     f.memberID = memberID;
                     f.memberName = q.Name;
                     f.ProductNumInCart = productNumInCart.ToString();
+                }
+                else if (form.GetType() == typeof(Event_Coupon))
+                {
+                    Event_Coupon f = (Event_Coupon)form;
+                    f.memberID = memberID;
                 }
                 else
                 {
