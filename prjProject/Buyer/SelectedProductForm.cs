@@ -201,6 +201,19 @@ namespace prjProject
                 lblSoldCount.Text = soldCount.ToString();
             }
             linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
+
+            decimal averageStar = CFunctions.GetAverageStarScore(productID);
+            if (averageStar > 0)
+            {
+                lblStarScore.Text = averageStar.ToString("0.0");
+                int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                CFunctions.ShowStar(starScore, flpStar, 20);
+            }
+            else
+            {
+                lblStarScore.Text = "尚無評分";
+                lblStarScore.Font = new Font("標楷體", 12);
+            }
         }
 
         private void Style_MouseLeave(object sender, EventArgs e)

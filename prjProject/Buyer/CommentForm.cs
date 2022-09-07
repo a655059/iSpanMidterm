@@ -97,11 +97,7 @@ namespace prjProject
         }
         Dictionary<int, int> dic = new Dictionary<int, int>()
             {
-                {12, 5 },
-                {11, 4 },
-                {10, 3 },
-                {9, 2 },
-                {8, 1 },
+                {12, 5}, {11, 4}, {10, 3}, {9, 2}, {8, 1},
             };
         private void CommentFilter_Click(object sender, EventArgs e)
         {
@@ -110,7 +106,7 @@ namespace prjProject
             int index = panel1.Controls.IndexOf(button);
             
             List<UCtrlComment> list;
-            if (index == 11)
+            if (index == 13)
             {
                 list = CFunctions.GetComments(productID);
             }
