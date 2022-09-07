@@ -39,6 +39,7 @@ namespace prjProject
             this.panelSearch = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
             this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
             this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
             this.lblName = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@ namespace prjProject
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
             this.spContainerBotton = new System.Windows.Forms.SplitContainer();
             this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
             this.spContainerItem = new System.Windows.Forms.SplitContainer();
@@ -130,7 +130,6 @@ namespace prjProject
             this.spContainerMainPage.Panel1.Controls.Add(this.pbLogo);
             this.spContainerMainPage.Panel1.Controls.Add(this.panel3);
             this.spContainerMainPage.Panel1.Controls.Add(this.linkLabel2);
-            this.spContainerMainPage.Panel1.Controls.Add(this.lblToSellerForm);
             // 
             // spContainerMainPage.Panel2
             // 
@@ -147,6 +146,7 @@ namespace prjProject
             this.panelTopBar.Controls.Add(this.pbCart);
             this.panelTopBar.Controls.Add(this.linkLabelMemberCenter);
             this.panelTopBar.Controls.Add(this.panelSearch);
+            this.panelTopBar.Controls.Add(this.lblToSellerForm);
             this.panelTopBar.Controls.Add(this.linkLabelRegister);
             this.panelTopBar.Controls.Add(this.linkLabelLogin);
             this.panelTopBar.Controls.Add(this.lblName);
@@ -184,7 +184,7 @@ namespace prjProject
             this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
             this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.Location = new System.Drawing.Point(230, 4);
+            this.linkLabelMemberCenter.Location = new System.Drawing.Point(110, 4);
             this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
             this.linkLabelMemberCenter.Size = new System.Drawing.Size(96, 27);
             this.linkLabelMemberCenter.TabIndex = 24;
@@ -224,6 +224,21 @@ namespace prjProject
             this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
             this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
             // 
+            // lblToSellerForm
+            // 
+            this.lblToSellerForm.AutoSize = true;
+            this.lblToSellerForm.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
+            this.lblToSellerForm.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
+            this.lblToSellerForm.Location = new System.Drawing.Point(12, 4);
+            this.lblToSellerForm.Name = "lblToSellerForm";
+            this.lblToSellerForm.Size = new System.Drawing.Size(96, 27);
+            this.lblToSellerForm.TabIndex = 10;
+            this.lblToSellerForm.TabStop = true;
+            this.lblToSellerForm.Text = "賣家中心";
+            this.lblToSellerForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblToSellerForm_LinkClicked);
+            // 
             // linkLabelRegister
             // 
             this.linkLabelRegister.AutoSize = true;
@@ -246,7 +261,7 @@ namespace prjProject
             this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
             this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(408, 4);
+            this.linkLabelLogin.Location = new System.Drawing.Point(397, 4);
             this.linkLabelLogin.Name = "linkLabelLogin";
             this.linkLabelLogin.Size = new System.Drawing.Size(54, 27);
             this.linkLabelLogin.TabIndex = 13;
@@ -297,9 +312,9 @@ namespace prjProject
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(0, 1);
+            this.panel3.Location = new System.Drawing.Point(0, -1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1880, 24);
+            this.panel3.Size = new System.Drawing.Size(1880, 28);
             this.panel3.TabIndex = 27;
             // 
             // panel4
@@ -310,13 +325,13 @@ namespace prjProject
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Location = new System.Drawing.Point(1169, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(111, 21);
+            this.panel4.Size = new System.Drawing.Size(111, 26);
             this.panel4.TabIndex = 28;
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::prjProject.Properties.Resources._8664917_window_minimize_icon;
-            this.pictureBox5.Location = new System.Drawing.Point(3, -2);
+            this.pictureBox5.Location = new System.Drawing.Point(3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(22, 20);
             this.pictureBox5.TabIndex = 26;
@@ -326,7 +341,7 @@ namespace prjProject
             // pictureBox3
             // 
             this.pictureBox3.Image = global::prjProject.Properties.Resources.close;
-            this.pictureBox3.Location = new System.Drawing.Point(85, -1);
+            this.pictureBox3.Location = new System.Drawing.Point(85, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 21);
             this.pictureBox3.TabIndex = 23;
@@ -336,7 +351,7 @@ namespace prjProject
             // pictureBox4
             // 
             this.pictureBox4.Image = global::prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(43, -2);
+            this.pictureBox4.Location = new System.Drawing.Point(43, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 20);
             this.pictureBox4.TabIndex = 25;
@@ -350,27 +365,12 @@ namespace prjProject
             this.linkLabel2.ForeColor = System.Drawing.Color.Black;
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(271, 23);
+            this.linkLabel2.Location = new System.Drawing.Point(565, 94);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(96, 27);
             this.linkLabel2.TabIndex = 11;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "追蹤我們";
-            // 
-            // lblToSellerForm
-            // 
-            this.lblToSellerForm.AutoSize = true;
-            this.lblToSellerForm.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.Location = new System.Drawing.Point(169, 23);
-            this.lblToSellerForm.Name = "lblToSellerForm";
-            this.lblToSellerForm.Size = new System.Drawing.Size(96, 27);
-            this.lblToSellerForm.TabIndex = 10;
-            this.lblToSellerForm.TabStop = true;
-            this.lblToSellerForm.Text = "賣家中心";
-            this.lblToSellerForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblToSellerForm_LinkClicked);
             // 
             // spContainerBotton
             // 
@@ -462,7 +462,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 273);
+            this.panel2.Size = new System.Drawing.Size(830, 279);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -470,7 +470,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 273);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 279);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
