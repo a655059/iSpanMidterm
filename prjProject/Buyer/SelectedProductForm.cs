@@ -19,6 +19,26 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public string starCountAndStarScore
+        {
+            get { return lblStarScore.Text; }
+            set
+            {
+                lblStarScore.Text = value;
+                decimal averageStar = CFunctions.GetAverageStarScore(productID);
+                if (averageStar > 0)
+                {
+                    lblStarScore.Text = averageStar.ToString("0.0");
+                    int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                    CFunctions.ShowStar(starScore, flpStar, 20);
+                }
+                else
+                {
+                    lblStarScore.Text = "尚無評分";
+                    lblStarScore.Font = new Font("標楷體", 12);
+                }
+            }
+        }
         public string commentCount
         {
             get { return linkLabelComment.Text; }
