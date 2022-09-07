@@ -91,7 +91,7 @@ namespace WindowsFormsApp2
             //cbship.Text=DBiSpan.Shippers.Where(n=>n.ShipperID==Ship)
             //    .Select(n=>n.ShipperName).FirstOrDefault();
 
-            txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
+            txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == P_select)
                 .Select(n => n.Style).FirstOrDefault();
 
             var REgin = DBiSpan.Products.Where(n => n.ProductID == P_select)
@@ -234,28 +234,26 @@ namespace WindowsFormsApp2
                     .Select(n => n.SmallTypeID).FirstOrDefault();
 
             productID = P_select;  //選到的ID放進變數，要給其他表關聯用
-
-
+                        
             for (int i = 0; i < 商品細項list.Count; i++)
             {
-                ProductDetail PD = new ProductDetail();
+                var PD = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+                    .Select(n => n).FirstOrDefault();
 
                 PD.UnitPrice = 商品細項list[i].UnitPrice;
                 PD.Quantity = 商品細項list[i].Quantity;
                 PD.Style = 商品細項list[i].Style;
                 PD.ProductID = productID;
                 PD.Pic = 商品細項list[i].pic;
-
-                DBiSpan.ProductDetails.Add(PD);
             }
             DBiSpan.SaveChanges();
 
             for (int i = 0; i < 照片區.Count; i++)
             {
-                ProductPic productPic = new ProductPic();
-                productPic.ProductID = productID;
-                productPic.picture = 照片區[i].picture;
-                DBiSpan.ProductPics.Add(productPic);
+                var Pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
+                    .Select(n => n).FirstOrDefault();
+                Pics.ProductID = productID;
+                Pics.picture = 照片區[i].picture;
             }
             DBiSpan.SaveChanges();
            MessageBox.Show("修改成功");
@@ -392,7 +390,7 @@ namespace WindowsFormsApp2
         {
             商品細項 細項 = new 商品細項();
             細項.Quantity = Convert.ToInt32(txtpdquty.Text);
-            細項.UnitPrice = Convert.ToInt32(txtpdup.Text);
+            細項.UnitPrice = Convert.ToInt32(txtpdup.Text.Split('.')[0]);
             細項.Style = txtstyle.Text;
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
