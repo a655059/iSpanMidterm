@@ -26,7 +26,7 @@ namespace prjProject
         public string memberName
         {
             get { return lblWelcome.Text; }
-            set { lblWelcome.Text = value; }
+            set { lblWelcome.Text = $"歡迎 {value}"; }
         }
         public string ProductNumInCart
         {
@@ -38,7 +38,7 @@ namespace prjProject
         {
             memberID = CFunctions.GetMemberInfoFromHomePage();
             CFunctions.ShowMemberInfoAtHeader(memberID, out string memberName, out int productNumInCart);
-            lblWelcome.Text = memberName;
+            lblWelcome.Text = $"歡迎 {memberName}" ;
             lblProductNumInCart.Text = productNumInCart.ToString();
             if (IsBuyNow)
             {

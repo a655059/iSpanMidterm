@@ -19,6 +19,11 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public Image HandLike
+        {
+            get { return pbHandLike.Image; }
+            set { pbHandLike.Image = value; }
+        }
         public string starCountAndStarScore
         {
             get { return lblStarScore.Text; }
@@ -74,7 +79,7 @@ namespace prjProject
         public string memberName
         {
             get { return lblWelcome.Text; }
-            set { lblWelcome.Text = value; }
+            set { lblWelcome.Text =  $"歡迎 {value}" ; }
         }
         public string ProductNumInCart
         {
@@ -96,6 +101,8 @@ namespace prjProject
             get { return pbHeart.Image; }
             set { pbHeart.Image = value; }
         }
+        public bool IsHandLike { get; set; }
+        public int sellerMemberID { get; set; }
         public bool IsHeartClick { get; set; }
         public int productID { get; set; }
         public int memberID { get;set; }
@@ -107,10 +114,14 @@ namespace prjProject
             string[] allCountry = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
             cbbCountry.Items.AddRange(allCountry);
             memberID = CFunctions.GetMemberInfoFromHomePage();
+            var q3 = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i);
+            string sellerName = q3.Select(i => i.MemberAccount.Name).FirstOrDefault();
+            lblSellerName.Text = $"{sellerName}的賣場";
+            sellerMemberID = q3.Select(i => i.MemberID).FirstOrDefault();
             if (memberID > 0)
             {
                 var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
-                lblWelcome.Text = q1.Name;
+                lblWelcome.Text = $"歡迎 {q1.Name}";
                 linkLabelLogin.Text = "會員中心";
                 int memberRegionID = q1.RegionID;
                 string memberCountry = q1.RegionList.CountryList.CountryName;
@@ -196,10 +207,7 @@ namespace prjProject
                 lblPrice.Text = "";
             }
 
-            var q3 = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i);
-            string sellerName = q3.Select(i => i.MemberAccount.Name).FirstOrDefault();
-            lblSellerName.Text = $"{sellerName}的賣場";
-            int sellerMemberID = q3.Select(i=>i.MemberID).FirstOrDefault();
+            
             int sellerFollowCount = dbContext.Follows.Where(i => i.FollowedMemID == sellerMemberID).Select(i => i).ToList().Count;
             lblSellerFollowNum.Text = sellerFollowCount.ToString();
             
@@ -217,10 +225,10 @@ namespace prjProject
             
             string productDescription = q3.FirstOrDefault().Description;
             lblProductDescription.Text = productDescription;
-            int sellerID = q3.FirstOrDefault().MemberID;
-            int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerID).Select(i => i).ToList().Count;
+            int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerMemberID).Select(i => i).ToList().Count;
             lblSellerProductNum.Text = sellerProductNum.ToString();
             CFunctions.SetHeart(this);
+            CFunctions.SetHandLike(this);
             var q = dbContext.OrderDetails.Where(i => i.ProductDetail.ProductID == productID && i.Order.StatusID == 6).Select(i => i.Quantity).ToList();
             int soldCount = q.Sum();
             if (soldCount == 0)
@@ -327,6 +335,10 @@ namespace prjProject
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (memberID > 0)
+            {
+                return;
+            }
             LoginForm form = new LoginForm();
             form.ShowDialog();
         }
@@ -477,6 +489,37 @@ namespace prjProject
         private void llToMainForm_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        
+        private void pbHandLike_Click(object sender, EventArgs e)
+        {
+            if (memberID > 0)
+            {
+                if (IsHandLike)
+                {
+                    pbHandLike.Image = Image.FromFile("../../Images/handLike.png");
+                    var q = dbContext.Follows.Where(i => i.MemberID == memberID && i.FollowedMemID == sellerMemberID).Select(i => i).FirstOrDefault();
+                    dbContext.Follows.Remove(q);
+                    dbContext.SaveChanges();
+                }
+                else
+                {
+                    pbHandLike.Image = Image.FromFile("../../Images/twinkleHandLike.png");
+                    Follow follow = new Follow
+                    {
+                        MemberID = memberID,
+                        FollowedMemID = sellerMemberID,
+                    };
+                    dbContext.Follows.Add(follow);
+                    dbContext.SaveChanges();
+                }
+                IsHandLike = !IsHandLike;
+            }
+            else
+            {
+                LoginForm form = new LoginForm();
+                form.ShowDialog();
+            }
         }
     }
 }
