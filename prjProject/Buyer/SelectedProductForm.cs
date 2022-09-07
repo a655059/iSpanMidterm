@@ -19,6 +19,32 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public string starCountAndStarScore
+        {
+            get { return lblStarScore.Text; }
+            set
+            {
+                lblStarScore.Text = value;
+                flpStar.Controls.Clear();
+                decimal averageStar = CFunctions.GetAverageStarScore(productID);
+                if (averageStar > 0)
+                {
+                    lblStarScore.Text = averageStar.ToString("0.0");
+                    int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                    CFunctions.ShowStar(starScore, flpStar, 20);
+                }
+                else
+                {
+                    lblStarScore.Text = "尚無評分";
+                    lblStarScore.Font = new Font("標楷體", 12);
+                }
+            }
+        }
+        public string commentCount
+        {
+            get { return linkLabelComment.Text; }
+            set { linkLabelComment.Text = value; }
+        }
         public object[] countries
         {
             set
@@ -60,6 +86,11 @@ namespace prjProject
             get { return cbbRegion.Text; }
             set { cbbRegion.Text = value; }
         }
+        public string memberCenter
+        {
+            get { return linkLabelLogin.Text; }
+            set { linkLabelLogin.Text = value; }
+        }
         public Image heart
         {
             get { return pbHeart.Image; }
@@ -80,6 +111,7 @@ namespace prjProject
             {
                 var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
                 lblWelcome.Text = q1.Name;
+                linkLabelLogin.Text = "會員中心";
                 int memberRegionID = q1.RegionID;
                 string memberCountry = q1.RegionList.CountryList.CountryName;
                 int memberCountryID = q1.RegionList.CountryList.CountryID;
@@ -167,6 +199,10 @@ namespace prjProject
             var q3 = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i);
             string sellerName = q3.Select(i => i.MemberAccount.Name).FirstOrDefault();
             lblSellerName.Text = $"{sellerName}的賣場";
+            int sellerMemberID = q3.Select(i=>i.MemberID).FirstOrDefault();
+            int sellerFollowCount = dbContext.Follows.Where(i => i.FollowedMemID == sellerMemberID).Select(i => i).ToList().Count;
+            lblSellerFollowNum.Text = sellerFollowCount.ToString();
+            
             byte[] sellerPhoto = q3.Select(i => i.MemberAccount.MemPic).FirstOrDefault();
             if (sellerPhoto == null)
             {
@@ -196,6 +232,22 @@ namespace prjProject
                 lblSoldCount.Text = soldCount.ToString();
             }
             linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
+
+            decimal averageStar = CFunctions.GetAverageStarScore(productID);
+            if (averageStar > 0)
+            {
+                lblStarScore.Text = averageStar.ToString("0.0");
+                int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                CFunctions.ShowStar(starScore, flpStar, 20);
+            }
+            else
+            {
+                lblStarScore.Text = "尚無評分";
+                lblStarScore.Font = new Font("標楷體", 12);
+            }
+            string smallTypeName = q3.Select(i => i.SmallType.SmallTypeName).FirstOrDefault();
+            string bigTypeName = q3.Select(i => i.SmallType.BigType.BigTypeName).FirstOrDefault();
+            llToType.Text = $"{bigTypeName} > {smallTypeName}";
         }
 
         private void Style_MouseLeave(object sender, EventArgs e)
@@ -283,6 +335,18 @@ namespace prjProject
         {
             if (memberID > 0)
             {
+                int sellerID = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i.MemberID).FirstOrDefault();
+                if (sellerID == memberID)
+                {
+                    if (MessageBox.Show("你確定要買你自己上架的商品嗎?", "不給你買", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        MessageBox.Show("規定你不能買自己賣的東西");
+                        return;
+                    }
+                    else {
+                        return;
+                    }
+                }
                 if (!CFunctions.IsAllInfoChecked(productDetailID, productRegion, nudCount.Value, out int detailID, out string outAdr, out int qty))
                 {
                     return;
@@ -294,7 +358,7 @@ namespace prjProject
                     OrderDatetime = DateTime.Now,
                     RecieveAdr = memberAddress,
                     FinishDate = DateTime.Now,
-                    CouponID = 7,
+                    CouponID = 2,
                     StatusID = 1,
                     ProductDetailID = detailID,
                     ShipperID = 2,
@@ -399,6 +463,20 @@ namespace prjProject
             form.productID = productID;
             form.productName = lblProductName.Text;
             form.ShowDialog();
+        }
+
+        private void cbbCountry_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string countryName = cbbCountry.Text;
+            var regionName = dbContext.RegionLists.Where(i => i.CountryList.CountryName == countryName).Select(i => i.RegionName).ToArray();
+            cbbRegion.Items.Clear();
+            cbbRegion.Items.AddRange(regionName);
+            cbbRegion.SelectedIndex = 0;
+        }
+
+        private void llToMainForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

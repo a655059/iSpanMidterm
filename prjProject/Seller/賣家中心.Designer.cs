@@ -33,18 +33,18 @@ namespace seller
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_comment = new System.Windows.Forms.Label();
+            this.lbl_sel_count = new System.Windows.Forms.Label();
+            this.btn_next = new System.Windows.Forms.Button();
+            this.btn_prev = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lklb_upload = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_next = new System.Windows.Forms.Button();
-            this.btn_prev = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbl_comment = new System.Windows.Forms.Label();
-            this.lbl_sel_count = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -56,7 +56,7 @@ namespace seller
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -111,99 +111,11 @@ namespace seller
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(2, 151);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(389, 37);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(523, 202);
-            this.flowLayoutPanel1.TabIndex = 7;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel2.Location = new System.Drawing.Point(238, 281);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(124, 27);
-            this.linkLabel2.TabIndex = 6;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "管理商品";
-            // 
-            // lklb_upload
-            // 
-            this.lklb_upload.AutoSize = true;
-            this.lklb_upload.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lklb_upload.Location = new System.Drawing.Point(238, 221);
-            this.lklb_upload.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lklb_upload.Name = "lklb_upload";
-            this.lklb_upload.Size = new System.Drawing.Size(124, 27);
-            this.lklb_upload.TabIndex = 5;
-            this.lklb_upload.TabStop = true;
-            this.lklb_upload.Text = "上架商品";
-            this.lklb_upload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklb_upload_LinkClicked);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(30, 247);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 27);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "label4";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(137, 247);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 27);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "的賣場";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.OrangeRed;
-            this.pictureBox1.Location = new System.Drawing.Point(26, 37);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(199, 187);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_next
-            // 
-            this.btn_next.Location = new System.Drawing.Point(668, 270);
-            this.btn_next.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_next.Name = "btn_next";
-            this.btn_next.Size = new System.Drawing.Size(74, 38);
-            this.btn_next.TabIndex = 13;
-            this.btn_next.Text = "下一頁";
-            this.btn_next.UseVisualStyleBackColor = true;
-            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
-            // 
-            // btn_prev
-            // 
-            this.btn_prev.Location = new System.Drawing.Point(538, 270);
-            this.btn_prev.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_prev.Name = "btn_prev";
-            this.btn_prev.Size = new System.Drawing.Size(74, 38);
-            this.btn_prev.TabIndex = 12;
-            this.btn_prev.Text = "上一頁";
-            this.btn_prev.UseVisualStyleBackColor = true;
-            this.btn_prev.Click += new System.EventHandler(this.btn_prev_Click);
             // 
             // label6
             // 
@@ -249,13 +161,102 @@ namespace seller
             this.lbl_sel_count.TabIndex = 14;
             this.lbl_sel_count.Text = "lbl1";
             // 
+            // btn_next
+            // 
+            this.btn_next.Location = new System.Drawing.Point(668, 270);
+            this.btn_next.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_next.Name = "btn_next";
+            this.btn_next.Size = new System.Drawing.Size(74, 38);
+            this.btn_next.TabIndex = 13;
+            this.btn_next.Text = "下一頁";
+            this.btn_next.UseVisualStyleBackColor = true;
+            this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
+            // 
+            // btn_prev
+            // 
+            this.btn_prev.Location = new System.Drawing.Point(538, 270);
+            this.btn_prev.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_prev.Name = "btn_prev";
+            this.btn_prev.Size = new System.Drawing.Size(74, 38);
+            this.btn_prev.TabIndex = 12;
+            this.btn_prev.Text = "上一頁";
+            this.btn_prev.UseVisualStyleBackColor = true;
+            this.btn_prev.Click += new System.EventHandler(this.btn_prev_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(389, 37);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(523, 202);
+            this.flowLayoutPanel1.TabIndex = 7;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabel2.Location = new System.Drawing.Point(238, 281);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(124, 27);
+            this.linkLabel2.TabIndex = 6;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "管理訂單";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // lklb_upload
+            // 
+            this.lklb_upload.AutoSize = true;
+            this.lklb_upload.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lklb_upload.Location = new System.Drawing.Point(238, 336);
+            this.lklb_upload.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lklb_upload.Name = "lklb_upload";
+            this.lklb_upload.Size = new System.Drawing.Size(152, 27);
+            this.lklb_upload.TabIndex = 5;
+            this.lklb_upload.TabStop = true;
+            this.lklb_upload.Text = "商品新刪修";
+            this.lklb_upload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklb_upload_LinkClicked);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(30, 247);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 27);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(137, 247);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 27);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "的賣場";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.OrangeRed;
+            this.pictureBox1.Location = new System.Drawing.Point(26, 37);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(199, 187);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // 賣家中心
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 602);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "賣家中心";
             this.Text = "賣家中心";
             this.Load += new System.EventHandler(this.賣家中心_Load);

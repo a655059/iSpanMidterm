@@ -57,7 +57,7 @@ namespace WindowsFormsApp2
                             n.RegionID,
                             n.AdFee,
                             n.Description,
-                            n.ShipperID
+                            //n.ShipperID
                         }).ToList();
             dataGridView1.DataSource = Q;
             

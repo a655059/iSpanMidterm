@@ -106,7 +106,7 @@ namespace prjProject.Models
             return memberID;
         }
         
-        public static void SendMemberInfoToEachForm(int memberID)
+        public static void SendMemberInfoToEachForm(int memberID, int productID = 0)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
@@ -116,6 +116,9 @@ namespace prjProject.Models
             int memberCountryID = Convert.ToInt32(q.RegionList.CountryID);
             var memberRegions = dbContext.RegionLists.Where(i => i.CountryID == memberCountryID).Select(i => i.RegionName).ToArray();
             var countryNames = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
+            
+            int commentCount = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count;
+            
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType() == typeof(MainForm))
@@ -137,6 +140,12 @@ namespace prjProject.Models
                     f.memberRegionName = memberRegion;
                     CFunctions.SetHeart(f);
                     f.memberRegion = q.RegionList.RegionName;
+                    if (commentCount > 0)
+                    {
+                        f.commentCount = commentCount.ToString();
+                    }
+                    f.starCountAndStarScore = 10.ToString();
+                    f.memberCenter = "會員中心";
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
@@ -150,7 +159,9 @@ namespace prjProject.Models
                     CommentForm f = (CommentForm)form;
                     f.memberID = memberID;
                     f.memberName = q.Name;
-                    f.ProductNumInCart = productNumInCart.ToString();
+                    //f.ProductNumInCart = productNumInCart.ToString();
+                    f.memberCenter = "會員中心";
+                    f.IsLogin = true;
                 }
                 else if (form.GetType() == typeof(Event_Coupon))
                 {
@@ -271,9 +282,17 @@ namespace prjProject.Models
             string buyerPhone = q1.Phone;
             foreach (var p in q)
             {
-                byte[] bytes = p.ProductDetail.Pic;
-                MemoryStream ms = new MemoryStream(bytes);
-                Image image = Image.FromStream(ms);
+                Image image = Image.FromFile("../../Images/cross.png");
+                try
+                {
+                    byte[] bytes = p.ProductDetail.Pic;
+                    MemoryStream ms = new MemoryStream(bytes);
+                    image = Image.FromStream(ms);
+                }
+                catch(Exception ex)
+                {
+                    image = Image.FromFile("../../Images/cross.png");
+                }
                 string productName = p.ProductDetail.Product.ProductName;
                 string productStyle = p.ProductDetail.Style;
                 productName = $"{productName} - {productStyle}";
@@ -413,7 +432,7 @@ namespace prjProject.Models
             {
                 string couponName = uCtrl.CouponName;
                 var q = dbContext.Coupons.Where(i => i.CouponName == couponName).Select(i => i.Discount).FirstOrDefault();
-                tempPrice *= (1 - q);
+                tempPrice *= q;
             }
             float discount = tempPrice - oldTotalPrice;
             return discount;
@@ -534,7 +553,7 @@ namespace prjProject.Models
             int couponID = 0;
             if (flp.Controls.Count == 0)
             {
-                couponID = 7;
+                couponID = 2;
             }
             else
             {
@@ -607,10 +626,10 @@ namespace prjProject.Models
         }
         public static void RemoveMemberCouponFromDB(int memberID, int couponID)
         {
-            if (couponID == 7) return;
+            if (couponID == 2) return;
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
             var q = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.CouponID == couponID).Select(i => i).FirstOrDefault();
-            q.ExpireN_A = false;
+            q.ExpireN_A = true;
             dbContext.SaveChanges();
         }
 
@@ -633,12 +652,17 @@ namespace prjProject.Models
             }
         }
         
-        public static List<UCtrlComment> ShowComments(int productID)
+        public static List<UCtrlComment> GetComments(int productID, int starCount = 0)
         {
             List<UCtrlComment> list = new List<UCtrlComment>();
             iSpanProjectEntities dbContext = new iSpanProjectEntities();
-            var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i=>i);
-            foreach (var c in comments)
+            var comments = dbContext.Comments.Where(i => i.ProductID == productID).OrderByDescending(i => i.CommentID).Select(i => i);
+            if (starCount > 0)
+            {
+                comments = comments.Where(i => i.Star == starCount).OrderByDescending(i => i.CommentID).Select(i => i);
+            }
+            
+            foreach (Comment c in comments)
             {
                 var commentPhotos = dbContext.CommentPics.Where(i => i.CommentID == c.CommentID).Select(i => i.CommentPic1).ToList();
                 UCtrlComment uCtrl = new UCtrlComment();
@@ -668,6 +692,47 @@ namespace prjProject.Models
             }
             return list;
         }
-        
+
+        public static decimal GetAverageStarScore(int productID)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            decimal averageStar = 0;
+            var q = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i.Star);
+            if (q.ToList().Count > 0)
+            {
+                int totalStar = 0;
+                foreach (var p in q)
+                {
+                    totalStar += Convert.ToInt32(p);
+                }
+                averageStar = totalStar / q.ToList().Count;
+            }
+            else
+            {
+                averageStar = 0;
+            }
+            return averageStar;
+        }
+        public static void ShowStar(int starScore, FlowLayoutPanel flp, int starSize)
+        {
+            for (int i = 0; i <= starScore-1; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Width = starSize;
+                pictureBox.Height = starSize;
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.Image = Image.FromFile("../../Images/twinkleStar.png");
+                flp.Controls.Add(pictureBox);
+            }
+            for (int i = starScore; i <= 4; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Width = starSize;
+                pictureBox.Height = starSize;
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.Image = Image.FromFile("../../Images/star.png");
+                flp.Controls.Add(pictureBox);
+            }
+        }
     }
 }
