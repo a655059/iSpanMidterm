@@ -402,22 +402,37 @@ namespace prjProject
             _isinSearch = true;
             if (_isInType)
             {
-                //if (_smallkey) _smallfloorreset();
-                var q = from p in dbContext.Products
-                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName == _selectedName && p.ProductStatusID == 0
-                        select p;
+                var q = dbContext.Products.Where(p => p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName == _selectedName && p.ProductStatusID == 0).OrderBy(p => p.ProductID).Select(p => p);
                 List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
                 return list;
             }
             else
             {
                 var q = from p in dbContext.Products
-                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.ProductStatusID == 0
-                        select p;
+                        where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.ProductStatusID == 0                        
+                        select p;                                
                 List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
                 return list;
             }
         }
+        //private IQueryable<Product> _searchBy(string s)
+        //{
+
+        //        if (cbSearch.SelectedIndex == 0)
+        //        {
+        //        var q = dbContext.Products.Where(p => p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName == _selectedName && p.ProductStatusID == 0).OrderBy(p => p.ProductID).Select(p => p);
+        //            return q;
+        //        }
+        //        else if (cbSearch.SelectedIndex == 1|| cbSearch.SelectedIndex==2)
+        //        {
+        //        var q = from q1 in dbContext.OrderDetails
+        //                  where q1.Order.StatusID == 6 
+        //                  group q1 by q1.ProductDetail.ProductID into g
+        //                  select new { ProductID = g.Key, Qty = g.Sum(i => i.Quantity)};
+        //        var qq =from q2 in dbContext.Products
+        //                where q2.ProductID == 
+        //    }
+        //}
         //重置搜尋
         private void searchbarReset()
         {
