@@ -44,7 +44,7 @@ namespace WindowsFormsApp2
             datest.Value = DBiSpan.Coupons.Where(n => n.CouponID == select)
                 .Select(n => n.StartDate).FirstOrDefault();
             dateed.Value = DBiSpan.Coupons.Where(n => n.CouponID == select)
-                .Select(n => n.StartDate).FirstOrDefault();
+                .Select(n => n.ExpiredDate).FirstOrDefault();
             txtds.Text = DBiSpan.Coupons.Where(n => n.CouponID == select)
                 .Select(n => n.Discount).FirstOrDefault().ToString();
         }

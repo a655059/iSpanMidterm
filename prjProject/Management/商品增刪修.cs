@@ -85,12 +85,6 @@ namespace WindowsFormsApp2
             txtdesc.Text = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n.Description).FirstOrDefault();
 
-
-            //var Ship = DBiSpan.Products.Where(n => n.ProductID == pid)
-            //    .Select(n =>n.ShipperID).FirstOrDefault();
-            //cbship.Text=DBiSpan.Shippers.Where(n=>n.ShipperID==Ship)
-            //    .Select(n=>n.ShipperName).FirstOrDefault();
-
             txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == P_select)
                 .Select(n => n.Style).FirstOrDefault();
 
@@ -115,6 +109,11 @@ namespace WindowsFormsApp2
 
             txtpdquty.Text = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
                .Select(n => n.Quantity).FirstOrDefault().ToString();
+
+            var shp = DBiSpan.ShipperToProducts.Where(n => n.ProductID == P_select)
+                .Select(n => n.ShipperID).FirstOrDefault();
+            cbship.Text = DBiSpan.Shippers.Where(n => n.ShipperID == shp)
+                .Select(n => n.ShipperName).FirstOrDefault();
             
             var pic= DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
                .Select(n => n.Pic).FirstOrDefault();
