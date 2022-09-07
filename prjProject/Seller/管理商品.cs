@@ -30,13 +30,14 @@ namespace prjProject.Seller
         {
             int odid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["OrderID"].Value);
 
-            var alter = isp.Orders.Where(x => x.OrderID == odid && x.StatusID <= 2);
-           
+            var alter = isp.Orders.Where(x => x.OrderID == odid && x.StatusID == 2).ToList();
 
-            foreach (var at in alter)
-            {
-                at.StatusID = 4;
-            }
+
+            alter[0].StatusID = 4;
+            //foreach (var at in alter)
+            //{
+
+            //}
 
 
             this.isp.SaveChanges();
@@ -62,6 +63,7 @@ namespace prjProject.Seller
 
             dataGridView1.DataSource = od.ToList();
             dataGridView2.DataSource = odd.ToList();
+            dataGridView3.DataSource = od_on.ToList();
         }
     }
 }
