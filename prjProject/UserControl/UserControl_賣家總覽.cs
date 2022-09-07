@@ -36,5 +36,6 @@ namespace seller
                 this.rtb_賣家總覽.Text = value;
             }
         }
+
     }
 }

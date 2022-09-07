@@ -354,47 +354,11 @@
     <Compile Include="Models\商品細項.cs" />
     <Compile Include="Models\帳密.cs" />
     <Compile Include="Models\運貨方式.cs" />
-    <Compile Include="Seller\buyer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\buyer.Designer.cs">
-      <DependentUpon>buyer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\Frm_main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\Frm_main.Designer.cs">
-      <DependentUpon>Frm_main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\LogIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\LogIn.Designer.cs">
-      <DependentUpon>LogIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\register.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\register.Designer.cs">
-      <DependentUpon>register.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Seller\上架.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Seller\上架.Designer.cs">
       <DependentUpon>上架.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Seller\修改.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seller\修改.Designer.cs">
-      <DependentUpon>修改.cs</DependentUpon>
     </Compile>
     <Compile Include="Seller\賣家中心.cs">
       <SubType>Form</SubType>
@@ -571,26 +535,8 @@
     <EmbeddedResource Include="Member\PdSearch.resx">
       <DependentUpon>PdSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seller\buyer.resx">
-      <DependentUpon>buyer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller\Frm_main.resx">
-      <DependentUpon>Frm_main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller\LogIn.resx">
-      <DependentUpon>LogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller\register.resx">
-      <DependentUpon>register.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Seller\上架.resx">
       <DependentUpon>上架.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seller\修改.resx">
-      <DependentUpon>修改.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Seller\賣家中心.resx">
       <DependentUpon>賣家中心.cs</DependentUpon>
