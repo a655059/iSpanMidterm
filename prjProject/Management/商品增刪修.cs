@@ -72,10 +72,10 @@ namespace WindowsFormsApp2
             txtdesc.Text = DBiSpan.Products.Where(n => n.ProductID == pid)
                 .Select(n => n.Description).FirstOrDefault();
 
-            var Ship = DBiSpan.Products.Where(n => n.ProductID == pid)
-                .Select(n =>n.ShipperID).FirstOrDefault();
-            cbship.Text=DBiSpan.Shippers.Where(n=>n.ShipperID==Ship)
-                .Select(n=>n.ShipperName).FirstOrDefault();
+            //var Ship = DBiSpan.Products.Where(n => n.ProductID == pid)
+            //    .Select(n =>n.ShipperID).FirstOrDefault();
+            //cbship.Text=DBiSpan.Shippers.Where(n=>n.ShipperID==Ship)
+            //    .Select(n=>n.ShipperName).FirstOrDefault();
 
             txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
                 .Select(n => n.Style).FirstOrDefault();
@@ -185,8 +185,8 @@ namespace WindowsFormsApp2
             var Q = DBiSpan.Products.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
             Q.ProductName = txtpdname.Text;
             Q.AdFee = Convert.ToDecimal(txtpdfee.Text);
-            Q.ShipperID = DBiSpan.Shippers.Where(n => n.ShipperName == cbship.Text)
-                    .Select(n => n.ShipperID).FirstOrDefault();
+            //Q.ShipperID = DBiSpan.Shippers.Where(n => n.ShipperName == cbship.Text)
+            //        .Select(n => n.ShipperID).FirstOrDefault();
             Q.MemberID = 1;
             Q.RegionID = DBiSpan.RegionLists.Where(n => n.RegionName == cbRegion.Text)
                     .Select(n => n.RegionID).FirstOrDefault();

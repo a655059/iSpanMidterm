@@ -331,7 +331,7 @@ namespace seller
                 prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
                 prds.SmallTypeID = j[0].SmallTypeID;
                 prds.RegionID = i[0].RegionID;
-                prds.ShipperID = shipid[0].ShipperID;
+                //prds.ShipperID = shipid[0].ShipperID;
             }
 
             this.isp.SaveChanges();
