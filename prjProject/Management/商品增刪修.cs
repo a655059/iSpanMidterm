@@ -91,7 +91,7 @@ namespace WindowsFormsApp2
             //cbship.Text=DBiSpan.Shippers.Where(n=>n.ShipperID==Ship)
             //    .Select(n=>n.ShipperName).FirstOrDefault();
 
-            txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
+            txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == P_select)
                 .Select(n => n.Style).FirstOrDefault();
 
             var REgin = DBiSpan.Products.Where(n => n.ProductID == P_select)

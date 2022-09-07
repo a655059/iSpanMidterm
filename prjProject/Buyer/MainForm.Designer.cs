@@ -150,7 +150,7 @@ namespace prjProject
             this.panelTopBar.Controls.Add(this.linkLabelRegister);
             this.panelTopBar.Controls.Add(this.linkLabelLogin);
             this.panelTopBar.Controls.Add(this.lblName);
-            this.panelTopBar.Location = new System.Drawing.Point(675, 26);
+            this.panelTopBar.Location = new System.Drawing.Point(675, 27);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(605, 102);
             this.panelTopBar.TabIndex = 28;
@@ -462,7 +462,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 279);
+            this.panel2.Size = new System.Drawing.Size(830, 282);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -470,7 +470,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 279);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 282);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
