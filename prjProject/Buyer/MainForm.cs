@@ -110,9 +110,7 @@ namespace prjProject
             _tempBigtype = _selected;
             _selectedName = _selected.TypeName;
             tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
-            
 
-                    //新增回上一層按鈕
             FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
             lp.ButtonClicked += LastPage_Click;
             flowpanelType.Controls.Add(lp);
@@ -158,9 +156,9 @@ namespace prjProject
                 }
             }
             f._isclicked = true;
-            f.BackColor = Color.Yellow;
+            f.BackColor = Color.Red;
         }
-        //小類別 功能 商品區呈現
+        //小類別 功能 商品呈現
         private void selectedItem(object sender)
         {
             FlowBarProductType _selected = (FlowBarProductType)sender;
@@ -184,7 +182,6 @@ namespace prjProject
                     list.Add(item);
                 }
             }
-                            //新增點擊事件
             foreach (CtrlDisplayItem j in list)
             {
                 flowpanelTypeItem.Controls.Add(j);
@@ -215,10 +212,10 @@ namespace prjProject
             }
             else if(_smallkey && _isinSearch)
             {
+                searchbarReset();
                 _smallkey = false;
                 SmalltypeShow(_tempBigtype);
                 selectedItem(_tempBigtype);
-                searchbarReset();
             }
         }
         //Smalltype分頁 功能 清除
@@ -425,7 +422,7 @@ namespace prjProject
         private void searchbarReset()
         {
             _isinSearch = false;
-            if (_smallkey)
+            if (_isInType)
             {
                 tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
                 tbSearch.ForeColor = Color.LightGray;

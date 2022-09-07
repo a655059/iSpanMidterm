@@ -56,8 +56,9 @@ namespace prjProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.Name = "FlowBarProductTypeLastPage";
             this.Size = new System.Drawing.Size(145, 32);
             this.Load += new System.EventHandler(this.FlowBarProductTypeLastPage_Load);
