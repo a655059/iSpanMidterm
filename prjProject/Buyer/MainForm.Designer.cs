@@ -88,6 +88,7 @@ namespace prjProject
             this.spContainerBotton.Panel1.SuspendLayout();
             this.spContainerBotton.Panel2.SuspendLayout();
             this.spContainerBotton.SuspendLayout();
+            
             ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).BeginInit();
             this.spContainerItem.Panel1.SuspendLayout();
             this.spContainerItem.Panel2.SuspendLayout();
@@ -134,9 +135,8 @@ namespace prjProject
             // spContainerMainPage.Panel2
             // 
             this.spContainerMainPage.Panel2.Controls.Add(this.spContainerBotton);
-            this.spContainerMainPage.Size = new System.Drawing.Size(1707, 950);
+            this.spContainerMainPage.Size = new System.Drawing.Size(1280, 760);
             this.spContainerMainPage.SplitterDistance = 128;
-            this.spContainerMainPage.SplitterWidth = 5;
             this.spContainerMainPage.TabIndex = 1;
             // 
             // panelTopBar
@@ -151,30 +151,28 @@ namespace prjProject
             this.panelTopBar.Controls.Add(this.linkLabelRegister);
             this.panelTopBar.Controls.Add(this.linkLabelLogin);
             this.panelTopBar.Controls.Add(this.lblName);
-            this.panelTopBar.Location = new System.Drawing.Point(900, 34);
-            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTopBar.Location = new System.Drawing.Point(675, 27);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(807, 96);
+            this.panelTopBar.Size = new System.Drawing.Size(605, 102);
             this.panelTopBar.TabIndex = 28;
             // 
             // lblProductNumInCart
             // 
             this.lblProductNumInCart.AutoSize = true;
             this.lblProductNumInCart.ForeColor = System.Drawing.Color.White;
-            this.lblProductNumInCart.Location = new System.Drawing.Point(713, 71);
+            this.lblProductNumInCart.Location = new System.Drawing.Point(535, 57);
             this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductNumInCart.Name = "lblProductNumInCart";
-            this.lblProductNumInCart.Size = new System.Drawing.Size(14, 15);
+            this.lblProductNumInCart.Size = new System.Drawing.Size(11, 12);
             this.lblProductNumInCart.TabIndex = 20;
             this.lblProductNumInCart.Text = "0";
             // 
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(672, 79);
-            this.pbCart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbCart.Location = new System.Drawing.Point(504, 63);
             this.pbCart.Name = "pbCart";
-            this.pbCart.Size = new System.Drawing.Size(51, 46);
+            this.pbCart.Size = new System.Drawing.Size(38, 37);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCart.TabIndex = 18;
             this.pbCart.TabStop = false;
@@ -187,10 +185,9 @@ namespace prjProject
             this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
             this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.Location = new System.Drawing.Point(147, 5);
-            this.linkLabelMemberCenter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelMemberCenter.Location = new System.Drawing.Point(110, 4);
             this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
-            this.linkLabelMemberCenter.Size = new System.Drawing.Size(123, 34);
+            this.linkLabelMemberCenter.Size = new System.Drawing.Size(96, 27);
             this.linkLabelMemberCenter.TabIndex = 24;
             this.linkLabelMemberCenter.TabStop = true;
             this.linkLabelMemberCenter.Text = "會員中心";
@@ -200,20 +197,18 @@ namespace prjProject
             // 
             this.panelSearch.Controls.Add(this.btnSearch);
             this.panelSearch.Controls.Add(this.tbSearch);
-            this.panelSearch.Location = new System.Drawing.Point(4, 78);
-            this.panelSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSearch.Location = new System.Drawing.Point(3, 62);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(587, 51);
+            this.panelSearch.Size = new System.Drawing.Size(440, 41);
             this.panelSearch.TabIndex = 22;
             // 
             // btnSearch
             // 
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(532, 5);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Location = new System.Drawing.Point(399, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(44, 41);
+            this.btnSearch.Size = new System.Drawing.Size(33, 33);
             this.btnSearch.TabIndex = 17;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -222,10 +217,9 @@ namespace prjProject
             // 
             this.tbSearch.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbSearch.ForeColor = System.Drawing.Color.LightGray;
-            this.tbSearch.Location = new System.Drawing.Point(3, 4);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSearch.Location = new System.Drawing.Point(2, 3);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(529, 42);
+            this.tbSearch.Size = new System.Drawing.Size(398, 35);
             this.tbSearch.TabIndex = 16;
             this.tbSearch.Text = "從全部商品中搜尋...";
             this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
@@ -238,10 +232,9 @@ namespace prjProject
             this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
             this.lblToSellerForm.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.Location = new System.Drawing.Point(16, 5);
-            this.lblToSellerForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblToSellerForm.Location = new System.Drawing.Point(12, 4);
             this.lblToSellerForm.Name = "lblToSellerForm";
-            this.lblToSellerForm.Size = new System.Drawing.Size(123, 34);
+            this.lblToSellerForm.Size = new System.Drawing.Size(96, 27);
             this.lblToSellerForm.TabIndex = 10;
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
@@ -254,10 +247,9 @@ namespace prjProject
             this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
             this.linkLabelRegister.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Location = new System.Drawing.Point(443, 5);
-            this.linkLabelRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelRegister.Location = new System.Drawing.Point(332, 4);
             this.linkLabelRegister.Name = "linkLabelRegister";
-            this.linkLabelRegister.Size = new System.Drawing.Size(69, 34);
+            this.linkLabelRegister.Size = new System.Drawing.Size(54, 27);
             this.linkLabelRegister.TabIndex = 12;
             this.linkLabelRegister.TabStop = true;
             this.linkLabelRegister.Text = "註冊";
@@ -270,10 +262,9 @@ namespace prjProject
             this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
             this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(529, 5);
-            this.linkLabelLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelLogin.Location = new System.Drawing.Point(397, 4);
             this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(69, 34);
+            this.linkLabelLogin.Size = new System.Drawing.Size(54, 27);
             this.linkLabelLogin.TabIndex = 13;
             this.linkLabelLogin.TabStop = true;
             this.linkLabelLogin.Text = "登入";
@@ -283,10 +274,10 @@ namespace prjProject
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblName.Location = new System.Drawing.Point(611, 5);
-            this.lblName.Margin = new System.Windows.Forms.Padding(13, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(458, 4);
+            this.lblName.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(69, 34);
+            this.lblName.Size = new System.Drawing.Size(54, 27);
             this.lblName.TabIndex = 19;
             this.lblName.Text = "歡迎";
             this.lblName.Visible = false;
@@ -298,10 +289,9 @@ namespace prjProject
             this.linkLabelHouTai.ForeColor = System.Drawing.Color.Black;
             this.linkLabelHouTai.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelHouTai.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelHouTai.Location = new System.Drawing.Point(173, 120);
-            this.linkLabelHouTai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabelHouTai.Location = new System.Drawing.Point(130, 96);
             this.linkLabelHouTai.Name = "linkLabelHouTai";
-            this.linkLabelHouTai.Size = new System.Drawing.Size(69, 34);
+            this.linkLabelHouTai.Size = new System.Drawing.Size(54, 27);
             this.linkLabelHouTai.TabIndex = 23;
             this.linkLabelHouTai.TabStop = true;
             this.linkLabelHouTai.Text = "後台";
@@ -310,10 +300,9 @@ namespace prjProject
             // pbLogo
             // 
             this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
-            this.pbLogo.Location = new System.Drawing.Point(13, 31);
-            this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbLogo.Location = new System.Drawing.Point(10, 25);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(152, 125);
+            this.pbLogo.Size = new System.Drawing.Size(114, 100);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLogo.TabIndex = 29;
             this.pbLogo.TabStop = false;
@@ -325,9 +314,8 @@ namespace prjProject
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(0, -1);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2507, 35);
+            this.panel3.Size = new System.Drawing.Size(1880, 28);
             this.panel3.TabIndex = 27;
             // 
             // panel4
@@ -336,19 +324,17 @@ namespace prjProject
             this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(1559, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(1169, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(148, 32);
+            this.panel4.Size = new System.Drawing.Size(111, 26);
             this.panel4.TabIndex = 28;
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::prjProject.Properties.Resources._8664917_window_minimize_icon;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 2);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox5.Location = new System.Drawing.Point(3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(29, 25);
+            this.pictureBox5.Size = new System.Drawing.Size(22, 20);
             this.pictureBox5.TabIndex = 26;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.btnWindowMinimized_Click_1);
@@ -356,10 +342,9 @@ namespace prjProject
             // pictureBox3
             // 
             this.pictureBox3.Image = global::prjProject.Properties.Resources.close;
-            this.pictureBox3.Location = new System.Drawing.Point(113, 4);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(85, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(33, 26);
+            this.pictureBox3.Size = new System.Drawing.Size(25, 21);
             this.pictureBox3.TabIndex = 23;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.btnClose_Click);
@@ -367,10 +352,9 @@ namespace prjProject
             // pictureBox4
             // 
             this.pictureBox4.Image = global::prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(57, 4);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(43, 3);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(33, 25);
+            this.pictureBox4.Size = new System.Drawing.Size(25, 20);
             this.pictureBox4.TabIndex = 25;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.btnWindowMaximized_Click_1);
@@ -382,10 +366,9 @@ namespace prjProject
             this.linkLabel2.ForeColor = System.Drawing.Color.Black;
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(753, 118);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Location = new System.Drawing.Point(565, 94);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(123, 34);
+            this.linkLabel2.Size = new System.Drawing.Size(96, 27);
             this.linkLabel2.TabIndex = 11;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "追蹤我們";
@@ -395,7 +378,6 @@ namespace prjProject
             this.spContainerBotton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spContainerBotton.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.spContainerBotton.Location = new System.Drawing.Point(0, 0);
-            this.spContainerBotton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spContainerBotton.Name = "spContainerBotton";
             // 
             // spContainerBotton.Panel1
@@ -407,9 +389,8 @@ namespace prjProject
             this.spContainerBotton.Panel2.BackColor = System.Drawing.Color.MistyRose;
             this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
             this.spContainerBotton.Panel2.Controls.Add(this.panel5);
-            this.spContainerBotton.Size = new System.Drawing.Size(1707, 817);
+            this.spContainerBotton.Size = new System.Drawing.Size(1280, 628);
             this.spContainerBotton.SplitterDistance = 163;
-            this.spContainerBotton.SplitterWidth = 5;
             this.spContainerBotton.TabIndex = 0;
             // 
             // flowpanelType
@@ -418,9 +399,8 @@ namespace prjProject
             this.flowpanelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelType.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowpanelType.Name = "flowpanelType";
-            this.flowpanelType.Size = new System.Drawing.Size(163, 817);
+            this.flowpanelType.Size = new System.Drawing.Size(163, 628);
             this.flowpanelType.TabIndex = 4;
             // 
             // spContainerItem
@@ -430,7 +410,6 @@ namespace prjProject
             this.spContainerItem.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.spContainerItem.IsSplitterFixed = true;
             this.spContainerItem.Location = new System.Drawing.Point(0, 0);
-            this.spContainerItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spContainerItem.Name = "spContainerItem";
             this.spContainerItem.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -441,9 +420,8 @@ namespace prjProject
             // spContainerItem.Panel2
             // 
             this.spContainerItem.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.spContainerItem.Size = new System.Drawing.Size(1539, 817);
+            this.spContainerItem.Size = new System.Drawing.Size(1113, 628);
             this.spContainerItem.SplitterDistance = 303;
-            this.spContainerItem.SplitterWidth = 5;
             this.spContainerItem.TabIndex = 0;
             this.spContainerItem.Visible = false;
             // 
@@ -453,7 +431,6 @@ namespace prjProject
             this.spContainerGuessYouLike.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.spContainerGuessYouLike.IsSplitterFixed = true;
             this.spContainerGuessYouLike.Location = new System.Drawing.Point(0, 0);
-            this.spContainerGuessYouLike.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spContainerGuessYouLike.Name = "spContainerGuessYouLike";
             this.spContainerGuessYouLike.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -464,7 +441,7 @@ namespace prjProject
             // spContainerGuessYouLike.Panel2
             // 
             this.spContainerGuessYouLike.Panel2.Controls.Add(this.panel2);
-            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1537, 301);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1111, 301);
             this.spContainerGuessYouLike.SplitterDistance = 39;
             this.spContainerGuessYouLike.SplitterWidth = 1;
             this.spContainerGuessYouLike.TabIndex = 0;
@@ -475,9 +452,8 @@ namespace prjProject
             this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblGuessYouLike.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblGuessYouLike.Location = new System.Drawing.Point(0, 0);
-            this.lblGuessYouLike.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGuessYouLike.Name = "lblGuessYouLike";
-            this.lblGuessYouLike.Size = new System.Drawing.Size(195, 47);
+            this.lblGuessYouLike.Size = new System.Drawing.Size(154, 37);
             this.lblGuessYouLike.TabIndex = 0;
             this.lblGuessYouLike.Text = "猜你喜歡...";
             // 
@@ -485,19 +461,17 @@ namespace prjProject
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.Controls.Add(this.flowpanelAD);
-            this.panel2.Location = new System.Drawing.Point(215, 1);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1107, 291);
+            this.panel2.Size = new System.Drawing.Size(830, 282);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
             // 
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelAD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(1107, 291);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 282);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -512,11 +486,10 @@ namespace prjProject
             this.tableLayoutPanel1.Controls.Add(this.spADcontainer1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1537, 507);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1111, 319);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // spADcontainer2
@@ -524,8 +497,7 @@ namespace prjProject
             this.spADcontainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spADcontainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.spADcontainer2.IsSplitterFixed = true;
-            this.spADcontainer2.Location = new System.Drawing.Point(516, 5);
-            this.spADcontainer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spADcontainer2.Location = new System.Drawing.Point(373, 4);
             this.spADcontainer2.Name = "spADcontainer2";
             this.spADcontainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -537,7 +509,7 @@ namespace prjProject
             // spADcontainer2.Panel2
             // 
             this.spADcontainer2.Panel2.Controls.Add(this.pbAD2);
-            this.spADcontainer2.Size = new System.Drawing.Size(502, 497);
+            this.spADcontainer2.Size = new System.Drawing.Size(362, 311);
             this.spADcontainer2.SplitterDistance = 57;
             this.spADcontainer2.SplitterWidth = 1;
             this.spADcontainer2.TabIndex = 2;
@@ -545,10 +517,9 @@ namespace prjProject
             // adtrigger2
             // 
             this.adtrigger2.AutoSize = true;
-            this.adtrigger2.Location = new System.Drawing.Point(635, 49);
-            this.adtrigger2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.adtrigger2.Location = new System.Drawing.Point(476, 39);
             this.adtrigger2.Name = "adtrigger2";
-            this.adtrigger2.Size = new System.Drawing.Size(14, 15);
+            this.adtrigger2.Size = new System.Drawing.Size(11, 12);
             this.adtrigger2.TabIndex = 2;
             this.adtrigger2.Text = "2";
             this.adtrigger2.Visible = false;
@@ -560,11 +531,10 @@ namespace prjProject
             this.tbAD2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold);
             this.tbAD2.ForeColor = System.Drawing.Color.Red;
             this.tbAD2.Location = new System.Drawing.Point(0, 0);
-            this.tbAD2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbAD2.Multiline = true;
             this.tbAD2.Name = "tbAD2";
             this.tbAD2.ReadOnly = true;
-            this.tbAD2.Size = new System.Drawing.Size(502, 57);
+            this.tbAD2.Size = new System.Drawing.Size(362, 57);
             this.tbAD2.TabIndex = 0;
             this.tbAD2.TabStop = false;
             this.tbAD2.Text = "dddd";
@@ -575,9 +545,8 @@ namespace prjProject
             this.pbAD2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbAD2.ErrorImage = global::prjProject.Properties.Resources.cross;
             this.pbAD2.Location = new System.Drawing.Point(0, 0);
-            this.pbAD2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbAD2.Name = "pbAD2";
-            this.pbAD2.Size = new System.Drawing.Size(502, 439);
+            this.pbAD2.Size = new System.Drawing.Size(362, 253);
             this.pbAD2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAD2.TabIndex = 1;
             this.pbAD2.TabStop = false;
@@ -588,10 +557,9 @@ namespace prjProject
             this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EventAD1.Image = global::prjProject.Properties.Resources.EVENTCOUPON;
-            this.EventAD1.Location = new System.Drawing.Point(1027, 5);
-            this.EventAD1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EventAD1.Location = new System.Drawing.Point(742, 4);
             this.EventAD1.Name = "EventAD1";
-            this.EventAD1.Size = new System.Drawing.Size(505, 497);
+            this.EventAD1.Size = new System.Drawing.Size(365, 311);
             this.EventAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.EventAD1.TabIndex = 0;
             this.EventAD1.TabStop = false;
@@ -602,8 +570,7 @@ namespace prjProject
             this.spADcontainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spADcontainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.spADcontainer1.IsSplitterFixed = true;
-            this.spADcontainer1.Location = new System.Drawing.Point(5, 5);
-            this.spADcontainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.spADcontainer1.Location = new System.Drawing.Point(4, 4);
             this.spADcontainer1.Name = "spADcontainer1";
             this.spADcontainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -615,7 +582,7 @@ namespace prjProject
             // spADcontainer1.Panel2
             // 
             this.spADcontainer1.Panel2.Controls.Add(this.pbAD1);
-            this.spADcontainer1.Size = new System.Drawing.Size(502, 497);
+            this.spADcontainer1.Size = new System.Drawing.Size(362, 311);
             this.spADcontainer1.SplitterDistance = 57;
             this.spADcontainer1.SplitterWidth = 1;
             this.spADcontainer1.TabIndex = 1;
@@ -623,10 +590,9 @@ namespace prjProject
             // adtrigger1
             // 
             this.adtrigger1.AutoSize = true;
-            this.adtrigger1.Location = new System.Drawing.Point(637, 49);
-            this.adtrigger1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.adtrigger1.Location = new System.Drawing.Point(478, 39);
             this.adtrigger1.Name = "adtrigger1";
-            this.adtrigger1.Size = new System.Drawing.Size(14, 15);
+            this.adtrigger1.Size = new System.Drawing.Size(11, 12);
             this.adtrigger1.TabIndex = 1;
             this.adtrigger1.Text = "1";
             this.adtrigger1.Visible = false;
@@ -638,11 +604,10 @@ namespace prjProject
             this.tbAD1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbAD1.ForeColor = System.Drawing.Color.Red;
             this.tbAD1.Location = new System.Drawing.Point(0, 0);
-            this.tbAD1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbAD1.Multiline = true;
             this.tbAD1.Name = "tbAD1";
             this.tbAD1.ReadOnly = true;
-            this.tbAD1.Size = new System.Drawing.Size(502, 57);
+            this.tbAD1.Size = new System.Drawing.Size(362, 57);
             this.tbAD1.TabIndex = 0;
             this.tbAD1.TabStop = false;
             this.tbAD1.Text = "dddd";
@@ -653,9 +618,8 @@ namespace prjProject
             this.pbAD1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbAD1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbAD1.ErrorImage")));
             this.pbAD1.Location = new System.Drawing.Point(0, 0);
-            this.pbAD1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbAD1.Name = "pbAD1";
-            this.pbAD1.Size = new System.Drawing.Size(502, 439);
+            this.pbAD1.Size = new System.Drawing.Size(362, 253);
             this.pbAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAD1.TabIndex = 0;
             this.pbAD1.TabStop = false;
@@ -665,9 +629,8 @@ namespace prjProject
             // 
             this.panel5.Controls.Add(this.flowpanelTypeItem);
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1884, 958);
+            this.panel5.Size = new System.Drawing.Size(1413, 766);
             this.panel5.TabIndex = 1;
             // 
             // flowpanelTypeItem
@@ -675,9 +638,8 @@ namespace prjProject
             this.flowpanelTypeItem.AutoScroll = true;
             this.flowpanelTypeItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelTypeItem.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelTypeItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
-            this.flowpanelTypeItem.Size = new System.Drawing.Size(1884, 958);
+            this.flowpanelTypeItem.Size = new System.Drawing.Size(1413, 766);
             this.flowpanelTypeItem.TabIndex = 1;
             // 
             // timer1
@@ -686,12 +648,11 @@ namespace prjProject
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1707, 950);
+            this.ClientSize = new System.Drawing.Size(1280, 760);
             this.Controls.Add(this.spContainerMainPage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
