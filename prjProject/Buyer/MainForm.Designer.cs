@@ -295,7 +295,7 @@ namespace prjProject
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(0, 1);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1680, 24);
             this.panel3.TabIndex = 27;

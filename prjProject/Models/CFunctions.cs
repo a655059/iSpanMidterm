@@ -145,6 +145,7 @@ namespace prjProject.Models
                         f.commentCount = commentCount.ToString();
                     }
                     f.starCountAndStarScore = 10.ToString();
+                    f.memberCenter = "會員中心";
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
@@ -158,7 +159,9 @@ namespace prjProject.Models
                     CommentForm f = (CommentForm)form;
                     f.memberID = memberID;
                     f.memberName = q.Name;
-                    f.ProductNumInCart = productNumInCart.ToString();
+                    //f.ProductNumInCart = productNumInCart.ToString();
+                    f.memberCenter = "會員中心";
+                    f.IsLogin = true;
                 }
                 else if (form.GetType() == typeof(Event_Coupon))
                 {
@@ -279,9 +282,17 @@ namespace prjProject.Models
             string buyerPhone = q1.Phone;
             foreach (var p in q)
             {
-                byte[] bytes = p.ProductDetail.Pic;
-                MemoryStream ms = new MemoryStream(bytes);
-                Image image = Image.FromStream(ms);
+                Image image = Image.FromFile("../../Images/cross.png");
+                try
+                {
+                    byte[] bytes = p.ProductDetail.Pic;
+                    MemoryStream ms = new MemoryStream(bytes);
+                    image = Image.FromStream(ms);
+                }
+                catch(Exception ex)
+                {
+                    image = Image.FromFile("../../Images/cross.png");
+                }
                 string productName = p.ProductDetail.Product.ProductName;
                 string productStyle = p.ProductDetail.Style;
                 productName = $"{productName} - {productStyle}";

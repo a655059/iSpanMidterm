@@ -20,10 +20,15 @@ namespace prjProject
         {
             InitializeComponent();
         }
-        public string ProductNumInCart
+        //public string ProductNumInCart
+        //{
+        //    get { return lblProductNumInCart.Text; }
+        //    set { lblProductNumInCart.Text = value; }
+        //}
+        public string memberCenter
         {
-            get { return lblProductNumInCart.Text; }
-            set { lblProductNumInCart.Text = value; }
+            get { return linkLabelLogin.Text; }
+            set { linkLabelLogin.Text = value; }
         }
         public string memberName
         {
@@ -34,6 +39,25 @@ namespace prjProject
         {
             get { return lblProductName.Text; }
             set { lblProductName.Text = value; }
+        }
+        public bool IsLogin
+        {
+            set
+            {
+                var q = dbContext.OrderDetails.Where(i => i.ProductDetail.Product.ProductID == productID && i.Order.MemberID == memberID && i.Order.StatusID == 6).Select(i => i).ToList();
+                if (q.Count > 0)
+                {
+                    txtWriteComment.Enabled = value;
+                    flpStar.Enabled = value;
+                    btnChoosePhoto.Enabled = value;
+                }
+                else
+                {
+                    txtWriteComment.Enabled = false;
+                    flpStar.Enabled = false;
+                    btnChoosePhoto.Enabled = false;
+                }   
+            }
         }
         public int memberID { get; set; }
         public int productID { get; set; }
@@ -46,6 +70,11 @@ namespace prjProject
             if (memberID > 0)
             {
                 CFunctions.SendMemberInfoToEachForm(memberID);
+                IsLogin = true;
+            }
+            else
+            {
+                IsLogin = false;
             }
             for (int i = 0; i < 5; i++)
             {
@@ -180,9 +209,15 @@ namespace prjProject
 
         private void btnCommit_Click(object sender, EventArgs e)
         {
+            var q = dbContext.OrderDetails.Where(i => i.ProductDetail.Product.ProductID == productID && i.Order.MemberID == memberID && i.Order.StatusID == 6).Select(i => i).ToList();
             if (memberID > 0)
             {
-                if (txtWriteComment.Text == "")
+                if (q.Count == 0)
+                {
+                    MessageBox.Show("要先購買才能評論");
+                    return;
+                }
+                else if (txtWriteComment.Text == "")
                 {
                     MessageBox.Show("請寫評論");
                     return;
@@ -190,11 +225,6 @@ namespace prjProject
                 else if (starCount == 0)
                 {
                     MessageBox.Show("請用星星評分");
-                    return;
-                }
-                else if (flpCommentPhoto.Controls.Count < 1)
-                {
-                    MessageBox.Show("請選擇圖片");
                     return;
                 }
                 else
@@ -208,19 +238,22 @@ namespace prjProject
                     };
                     dbContext.Comments.Add(comment);
                     dbContext.SaveChanges();
-                    int commentID = dbContext.Comments.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i.CommentID).OrderByDescending(i => i).FirstOrDefault();
-                    foreach (PictureBox pb in flpCommentPhoto.Controls)
+                    if (flpCommentPhoto.Controls.Count > 0)
                     {
-                        MemoryStream ms = new MemoryStream();
-                        pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        byte[] bytes = ms.GetBuffer();
-                        CommentPic commentPic = new CommentPic
+                        int commentID = dbContext.Comments.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i.CommentID).OrderByDescending(i => i).FirstOrDefault();
+                        foreach (PictureBox pb in flpCommentPhoto.Controls)
                         {
-                            CommentID = commentID,
-                            CommentPic1 = bytes,
-                        };
-                        dbContext.CommentPics.Add(commentPic);
-                        dbContext.SaveChanges();
+                            MemoryStream ms = new MemoryStream();
+                            pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            byte[] bytes = ms.GetBuffer();
+                            CommentPic commentPic = new CommentPic
+                            {
+                                CommentID = commentID,
+                                CommentPic1 = bytes,
+                            };
+                            dbContext.CommentPics.Add(commentPic);
+                            dbContext.SaveChanges();
+                        }
                     }
                     MessageBox.Show("感謝你的評論");
                     flowLayoutPanel1.Controls.Clear();
@@ -260,9 +293,14 @@ namespace prjProject
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+        
 
+        private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            form.ShowDialog();
         }
+
+        
     }
 }
