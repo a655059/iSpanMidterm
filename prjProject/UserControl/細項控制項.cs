@@ -18,7 +18,7 @@ namespace prjProject.Management
         }
         public string Style
         {
-            //get { } 
+            //get {  } 
             set { textBox1.Text = value; }
         }
         public int Quantity

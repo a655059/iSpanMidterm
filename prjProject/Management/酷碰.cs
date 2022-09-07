@@ -20,8 +20,14 @@ namespace WindowsFormsApp2
         iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
         private void 酷碰_Load(object sender, EventArgs e)
         {
-            var Q = DBiSpan.Coupons.Select(n => new{ 
-            n.CouponID,
+            啟動帶入();
+        }
+
+        private void 啟動帶入()
+        {
+            var Q = DBiSpan.Coupons.Select(n => new
+            {
+                n.CouponID,
                 n.CouponName,
                 n.StartDate,
                 n.ExpiredDate,
@@ -35,7 +41,8 @@ namespace WindowsFormsApp2
             酷碰增刪修 OO = new 酷碰增刪修();
             var select = dataGridView1.CurrentRow.Cells["CouponID"].Value;
             OO.select = Convert.ToInt32(select);
-            OO.Show();
+            OO.ShowDialog();
+            啟動帶入();
         }
     }
 }
