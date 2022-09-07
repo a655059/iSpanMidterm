@@ -276,7 +276,7 @@ namespace prjProject
                     if (averageStar > 0)
                     {
                         lblAverageStar.Text = averageStar.ToString("0.0");
-                        int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                        int starScore = Convert.ToInt32(Math.Floor(averageStar));
                         CFunctions.ShowStar(starScore, flpAverageStar, 20);
                     }
                     else
@@ -297,10 +297,12 @@ namespace prjProject
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (memberID > 0)
+            {
+                return;
+            }
             LoginForm form = new LoginForm();
             form.ShowDialog();
         }
-
-        
     }
 }

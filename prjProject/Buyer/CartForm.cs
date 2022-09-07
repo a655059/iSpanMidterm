@@ -299,6 +299,7 @@ namespace prjProject
             if (IsBuyNow)
             {
                 CFunctions.AddOrderAndOrderDetailToDataBase(flpProductInCart, flpSelectedCoupon, memberID);
+                IsBuyNow = false;
             }
             else if (CFunctions.IsAllProductSelected(flpProductInCart))
             {
@@ -365,9 +366,8 @@ namespace prjProject
             IsCouponCandidateOpened = !IsCouponCandidateOpened;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+        
     }
 }

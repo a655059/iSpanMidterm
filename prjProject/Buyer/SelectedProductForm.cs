@@ -19,6 +19,11 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public string SoldCount
+        {
+            get { return lblSoldCount.Text; }
+            set { lblSoldCount.Text = value; }
+        }
         public Image HandLike
         {
             get { return pbHandLike.Image; }
@@ -245,7 +250,7 @@ namespace prjProject
             if (averageStar > 0)
             {
                 lblStarScore.Text = averageStar.ToString("0.0");
-                int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                int starScore = Convert.ToInt32(Math.Floor(averageStar));
                 CFunctions.ShowStar(starScore, flpStar, 20);
             }
             else
@@ -347,8 +352,7 @@ namespace prjProject
         {
             if (memberID > 0)
             {
-                int sellerID = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i.MemberID).FirstOrDefault();
-                if (sellerID == memberID)
+                if (memberID == sellerMemberID)
                 {
                     if (MessageBox.Show("你確定要買你自己上架的商品嗎?", "不給你買", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
@@ -418,17 +422,24 @@ namespace prjProject
         {
             if (memberID > 0)
             {
-                if (!CFunctions.IsAllInfoChecked(productDetailID, productRegion, nudCount.Value, out int detailID, out string outAdr, out int qty))
+                if (memberID == sellerMemberID)
                 {
-                    return;
+                    MessageBox.Show("不能買自己的商品");
                 }
                 else
                 {
-                    CartForm form = new CartForm();
-                    form.IsBuyNow = true;
-                    form.productDetailID = productDetailID;
-                    form.productCount = Convert.ToInt32(nudCount.Value);
-                    form.ShowDialog();
+                    if (!CFunctions.IsAllInfoChecked(productDetailID, productRegion, nudCount.Value, out int detailID, out string outAdr, out int qty))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        CartForm form = new CartForm();
+                        form.IsBuyNow = true;
+                        form.productDetailID = productDetailID;
+                        form.productCount = Convert.ToInt32(nudCount.Value);
+                        form.ShowDialog();
+                    }
                 }
             }
             else
@@ -441,26 +452,33 @@ namespace prjProject
         private void pbHeart_Click(object sender, EventArgs e)
         {
             if (memberID > 0)
-            {
-                if (IsHeartClick)
+            { 
+                if (memberID == sellerMemberID)
                 {
-                    pbHeart.Image = Image.FromFile("../../Images/blackHeart4.png");
-                    var q = dbContext.Likes.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i).FirstOrDefault();
-                    dbContext.Likes.Remove(q);
-                    dbContext.SaveChanges();
+                    MessageBox.Show("不能點自己的愛心");
                 }
                 else
                 {
-                    pbHeart.Image = Image.FromFile("../../Images/redHeart.png");
-                    Like like = new Like
+                    if (IsHeartClick)
                     {
-                        MemberID = memberID,
-                        ProductID = productID,
-                    };
-                    dbContext.Likes.Add(like);
-                    dbContext.SaveChanges();
+                        pbHeart.Image = Image.FromFile("../../Images/blackHeart4.png");
+                        var q = dbContext.Likes.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i).FirstOrDefault();
+                        dbContext.Likes.Remove(q);
+                        dbContext.SaveChanges();
+                    }
+                    else
+                    {
+                        pbHeart.Image = Image.FromFile("../../Images/redHeart.png");
+                        Like like = new Like
+                        {
+                            MemberID = memberID,
+                            ProductID = productID,
+                        };
+                        dbContext.Likes.Add(like);
+                        dbContext.SaveChanges();
+                    }
+                    IsHeartClick = !IsHeartClick;
                 }
-                IsHeartClick = !IsHeartClick;
             }
             else
             {
@@ -495,25 +513,32 @@ namespace prjProject
         {
             if (memberID > 0)
             {
-                if (IsHandLike)
+                if (memberID == sellerMemberID)
                 {
-                    pbHandLike.Image = Image.FromFile("../../Images/handLike.png");
-                    var q = dbContext.Follows.Where(i => i.MemberID == memberID && i.FollowedMemID == sellerMemberID).Select(i => i).FirstOrDefault();
-                    dbContext.Follows.Remove(q);
-                    dbContext.SaveChanges();
+                    MessageBox.Show("不能點自己讚");
                 }
                 else
                 {
-                    pbHandLike.Image = Image.FromFile("../../Images/twinkleHandLike.png");
-                    Follow follow = new Follow
+                    if (IsHandLike)
                     {
-                        MemberID = memberID,
-                        FollowedMemID = sellerMemberID,
-                    };
-                    dbContext.Follows.Add(follow);
-                    dbContext.SaveChanges();
+                        pbHandLike.Image = Image.FromFile("../../Images/handLike.png");
+                        var q = dbContext.Follows.Where(i => i.MemberID == memberID && i.FollowedMemID == sellerMemberID).Select(i => i).FirstOrDefault();
+                        dbContext.Follows.Remove(q);
+                        dbContext.SaveChanges();
+                    }
+                    else
+                    {
+                        pbHandLike.Image = Image.FromFile("../../Images/twinkleHandLike.png");
+                        Follow follow = new Follow
+                        {
+                            MemberID = memberID,
+                            FollowedMemID = sellerMemberID,
+                        };
+                        dbContext.Follows.Add(follow);
+                        dbContext.SaveChanges();
+                    }
+                    IsHandLike = !IsHandLike;
                 }
-                IsHandLike = !IsHandLike;
             }
             else
             {

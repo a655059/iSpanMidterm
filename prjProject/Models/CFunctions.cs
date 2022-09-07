@@ -137,6 +137,7 @@ namespace prjProject.Models
                     f.memberRegionName = memberRegion;
                     CFunctions.SetHeart(f);
                     CFunctions.SetHandLike(f);
+                    CFunctions.SetSoldCount(f);
                     f.memberRegion = q.RegionList.RegionName;
                     if (commentCount > 0)
                     {
@@ -172,6 +173,13 @@ namespace prjProject.Models
                     continue;
                 }
             }
+        }
+        public static void SetSoldCount(SelectedProductForm form)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var q  = dbContext.OrderDetails.Where(i => i.Order.StatusID == 6 && i.ProductDetail.Product.ProductID == form.productID).Select(i => i.Quantity).ToList();
+
+            form.SoldCount = q.Sum().ToString();
         }
         public static void SetHandLike(SelectedProductForm form)
         {
@@ -713,7 +721,7 @@ namespace prjProject.Models
             var q = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i.Star);
             if (q.ToList().Count > 0)
             {
-                int totalStar = 0;
+                decimal totalStar = 0;
                 foreach (var p in q)
                 {
                     totalStar += Convert.ToInt32(p);
