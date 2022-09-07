@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjProject
+namespace prjProject.Management
 {
-    public partial class CtrlADDisplay : UserControl
+    public partial class 申訴修改刪除 : Form
     {
-        public CtrlADDisplay()
+        public 申訴修改刪除()
         {
             InitializeComponent();
         }
+        public int inag { get; set; }  // 選到的ID選項帶過來
+
     }
 }

@@ -67,7 +67,7 @@ namespace prjProject
                 }
             }
             RegisterEventToFlpProductInCart(flpProductInCart);
-            var q1 = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.ExpireN_A == true && i.CouponID != 7).Select(i => i.Coupon.CouponName);
+            var q1 = dbContext.OfficialCoupons.Where(i => i.MemberID == memberID && i.ExpireN_A == false && i.CouponID != 2).Select(i => i.Coupon.CouponName);
             if (q1.ToList().Count > 0)
             {
                 foreach (var p in q1)
@@ -221,6 +221,7 @@ namespace prjProject
         {
             if (MessageBox.Show("確定要刪除此商品嗎?", "是否要刪除?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
+
                 if (IsBuyNow)
                 {
                     Button button = (Button)sender;
@@ -247,6 +248,10 @@ namespace prjProject
                     flpProductInCart.Controls.Remove(button.Parent);
                     CFunctions.SendMemberInfoToEachForm(memberID);
                 }
+                float discount = CFunctions.GetDiscountPrice(flpSelectedCoupon, flpProductInCart);
+                lblDiscount.Text = discount.ToString("C0");
+                int totalPrice = CFunctions.GetTotalPrice(flpProductInCart, discount);
+                lblTotalPrice.Text = totalPrice.ToString("C0");
             }
             else
             {

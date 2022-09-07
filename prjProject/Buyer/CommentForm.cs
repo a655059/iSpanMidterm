@@ -43,7 +43,10 @@ namespace prjProject
         private void CommentForm_Load(object sender, EventArgs e)
         {
             memberID = CFunctions.GetMemberInfoFromHomePage();
-            
+            if (memberID > 0)
+            {
+                CFunctions.SendMemberInfoToEachForm(memberID);
+            }
             for (int i = 0; i < 5; i++)
             {
                 PictureBox pictureBox = new PictureBox();
@@ -54,12 +57,84 @@ namespace prjProject
                 flpStar.Controls.Add(pictureBox);
                 pictureBox.Click += Star_Click;
             }
-            List<UCtrlComment> list = CFunctions.ShowComments(productID);
+            List<UCtrlComment> list = CFunctions.GetComments(productID);
             foreach (UCtrlComment uCtrl in list)
             {
                 flowLayoutPanel1.Controls.Add(uCtrl);
-
+                foreach (Control control in uCtrl.Controls)
+                {
+                    if (control.GetType() == typeof(LinkLabel))
+                    {
+                        LinkLabel linkLabel = (LinkLabel)control;
+                        linkLabel.Click += ShowCommentPhoto_Click;
+                    }
+                }
             }
+            foreach (Control control in panel1.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    Button button = (Button)control;
+                    if (button.Text == "給評價" || button.Text == "選擇照片")
+                    {
+                        continue;
+                    }
+                    button.Click += CommentFilter_Click;
+                }
+            }
+            decimal averageStar = CFunctions.GetAverageStarScore(productID);
+            if (averageStar > 0)
+            {
+                lblAverageStar.Text = averageStar.ToString("0.0");
+                int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                CFunctions.ShowStar(starScore, flpAverageStar, 20);
+            }
+            else
+            {
+                lblAverageStar.Text = "尚無評分";
+                lblAverageStar.Font = new Font("標楷體", 12);
+            }
+        }
+        Dictionary<int, int> dic = new Dictionary<int, int>()
+            {
+                {12, 5}, {11, 4}, {10, 3}, {9, 2}, {8, 1},
+            };
+        private void CommentFilter_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            Button button = (Button)sender;
+            int index = panel1.Controls.IndexOf(button);
+            
+            List<UCtrlComment> list;
+            if (index == 13)
+            {
+                list = CFunctions.GetComments(productID);
+            }
+            else
+            {
+                list = CFunctions.GetComments(productID, dic[index]);
+            }
+            foreach (UCtrlComment uCtrl in list)
+            {
+                flowLayoutPanel1.Controls.Add(uCtrl);
+                foreach (Control control in uCtrl.Controls)
+                {
+                    if (control.GetType() == typeof(LinkLabel))
+                    {
+                        LinkLabel linkLabel = (LinkLabel)control;
+                        linkLabel.Click += ShowCommentPhoto_Click;
+                    }
+                }
+            }
+        }
+
+        private void ShowCommentPhoto_Click(object sender, EventArgs e)
+        {
+            LinkLabel linkLabel = (LinkLabel)sender;
+            UCtrlComment uCtrl = (UCtrlComment)linkLabel.Parent;
+            CommentPhotoForm form = new CommentPhotoForm();
+            form.commentID = uCtrl.commentID;
+            form.ShowDialog();
         }
 
         private void Star_Click(object sender, EventArgs e)
@@ -148,7 +223,34 @@ namespace prjProject
                         dbContext.SaveChanges();
                     }
                     MessageBox.Show("感謝你的評論");
-
+                    flowLayoutPanel1.Controls.Clear();
+                    flpAverageStar.Controls.Clear();
+                    List<UCtrlComment> list = CFunctions.GetComments(productID);
+                    foreach (UCtrlComment uCtrl in list)
+                    {
+                        flowLayoutPanel1.Controls.Add(uCtrl);
+                        foreach (Control control in uCtrl.Controls)
+                        {
+                            if (control.GetType() == typeof(LinkLabel))
+                            {
+                                LinkLabel linkLabel = (LinkLabel)control;
+                                linkLabel.Click += ShowCommentPhoto_Click;
+                            }
+                        }
+                    }
+                    CFunctions.SendMemberInfoToEachForm(memberID, productID);
+                    decimal averageStar = CFunctions.GetAverageStarScore(productID);
+                    if (averageStar > 0)
+                    {
+                        lblAverageStar.Text = averageStar.ToString("0.0");
+                        int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                        CFunctions.ShowStar(starScore, flpAverageStar, 20);
+                    }
+                    else
+                    {
+                        lblAverageStar.Text = "尚無評分";
+                        lblAverageStar.Font = new Font("標楷體", 12);
+                    }
                 }
             }
             else

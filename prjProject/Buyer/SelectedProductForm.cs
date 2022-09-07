@@ -19,6 +19,31 @@ namespace prjProject
         {
             InitializeComponent();
         }
+        public string starCountAndStarScore
+        {
+            get { return lblStarScore.Text; }
+            set
+            {
+                lblStarScore.Text = value;
+                decimal averageStar = CFunctions.GetAverageStarScore(productID);
+                if (averageStar > 0)
+                {
+                    lblStarScore.Text = averageStar.ToString("0.0");
+                    int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                    CFunctions.ShowStar(starScore, flpStar, 20);
+                }
+                else
+                {
+                    lblStarScore.Text = "尚無評分";
+                    lblStarScore.Font = new Font("標楷體", 12);
+                }
+            }
+        }
+        public string commentCount
+        {
+            get { return linkLabelComment.Text; }
+            set { linkLabelComment.Text = value; }
+        }
         public object[] countries
         {
             set
@@ -196,6 +221,19 @@ namespace prjProject
                 lblSoldCount.Text = soldCount.ToString();
             }
             linkLabelComment.Text = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count.ToString();
+
+            decimal averageStar = CFunctions.GetAverageStarScore(productID);
+            if (averageStar > 0)
+            {
+                lblStarScore.Text = averageStar.ToString("0.0");
+                int starScore = Convert.ToInt32(Math.Round(averageStar, MidpointRounding.AwayFromZero));
+                CFunctions.ShowStar(starScore, flpStar, 20);
+            }
+            else
+            {
+                lblStarScore.Text = "尚無評分";
+                lblStarScore.Font = new Font("標楷體", 12);
+            }
         }
 
         private void Style_MouseLeave(object sender, EventArgs e)
@@ -283,6 +321,18 @@ namespace prjProject
         {
             if (memberID > 0)
             {
+                int sellerID = dbContext.Products.Where(i => i.ProductID == productID).Select(i => i.MemberID).FirstOrDefault();
+                if (sellerID == memberID)
+                {
+                    if (MessageBox.Show("你確定要買你自己上架的商品嗎?", "不給你買", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        MessageBox.Show("規定你不能買自己賣的東西");
+                        return;
+                    }
+                    else {
+                        return;
+                    }
+                }
                 if (!CFunctions.IsAllInfoChecked(productDetailID, productRegion, nudCount.Value, out int detailID, out string outAdr, out int qty))
                 {
                     return;
@@ -294,7 +344,7 @@ namespace prjProject
                     OrderDatetime = DateTime.Now,
                     RecieveAdr = memberAddress,
                     FinishDate = DateTime.Now,
-                    CouponID = 7,
+                    CouponID = 2,
                     StatusID = 1,
                     ProductDetailID = detailID,
                     ShipperID = 2,

@@ -34,20 +34,23 @@ namespace prjProject.Buyer
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(584, 561);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // CommentPhotoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "CommentPhotoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CommentPhotoForm";
+            this.Load += new System.EventHandler(this.CommentPhotoForm_Load);
             this.ResumeLayout(false);
 
         }

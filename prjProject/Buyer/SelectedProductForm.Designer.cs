@@ -43,6 +43,8 @@ namespace prjProject
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
+            this.flpStar = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbbCountry = new System.Windows.Forms.ComboBox();
             this.pbHeart = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblProductDescription = new System.Windows.Forms.Label();
@@ -65,7 +67,7 @@ namespace prjProject
             this.cbbRegion = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblStarScore = new System.Windows.Forms.Label();
             this.linkLabelComment = new System.Windows.Forms.LinkLabel();
             this.lblSoldCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,7 +77,6 @@ namespace prjProject
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pbProductPhoto = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cbbCountry = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -115,6 +116,7 @@ namespace prjProject
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.flpStar);
             this.splitContainer1.Panel2.Controls.Add(this.cbbCountry);
             this.splitContainer1.Panel2.Controls.Add(this.pbHeart);
             this.splitContainer1.Panel2.Controls.Add(this.panel3);
@@ -130,7 +132,7 @@ namespace prjProject
             this.splitContainer1.Panel2.Controls.Add(this.cbbRegion);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.lblStarScore);
             this.splitContainer1.Panel2.Controls.Add(this.linkLabelComment);
             this.splitContainer1.Panel2.Controls.Add(this.lblSoldCount);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
@@ -265,6 +267,24 @@ namespace prjProject
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
             // 
+            // flpStar
+            // 
+            this.flpStar.Location = new System.Drawing.Point(355, 83);
+            this.flpStar.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.flpStar.Name = "flpStar";
+            this.flpStar.Size = new System.Drawing.Size(170, 30);
+            this.flpStar.TabIndex = 24;
+            // 
+            // cbbCountry
+            // 
+            this.cbbCountry.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbbCountry.FormattingEnabled = true;
+            this.cbbCountry.Location = new System.Drawing.Point(514, 167);
+            this.cbbCountry.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.cbbCountry.Name = "cbbCountry";
+            this.cbbCountry.Size = new System.Drawing.Size(81, 24);
+            this.cbbCountry.TabIndex = 23;
+            // 
             // pbHeart
             // 
             this.pbHeart.BackColor = System.Drawing.Color.Transparent;
@@ -393,7 +413,7 @@ namespace prjProject
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Times New Roman", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.Red;
-            this.lblPrice.Location = new System.Drawing.Point(351, 103);
+            this.lblPrice.Location = new System.Drawing.Point(351, 130);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(53, 25);
@@ -479,7 +499,7 @@ namespace prjProject
             // 
             this.cbbRegion.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cbbRegion.FormattingEnabled = true;
-            this.cbbRegion.Location = new System.Drawing.Point(606, 148);
+            this.cbbRegion.Location = new System.Drawing.Point(606, 167);
             this.cbbRegion.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.cbbRegion.Name = "cbbRegion";
             this.cbbRegion.Size = new System.Drawing.Size(81, 24);
@@ -489,7 +509,7 @@ namespace prjProject
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(455, 152);
+            this.label7.Location = new System.Drawing.Point(455, 171);
             this.label7.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
@@ -500,28 +520,30 @@ namespace prjProject
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(351, 152);
+            this.label6.Location = new System.Drawing.Point(351, 171);
             this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 16);
             this.label6.TabIndex = 7;
             this.label6.Text = "運送";
             // 
-            // label5
+            // lblStarScore
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(351, 48);
-            this.label5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "星星數";
+            this.lblStarScore.AutoSize = true;
+            this.lblStarScore.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblStarScore.ForeColor = System.Drawing.Color.Red;
+            this.lblStarScore.Location = new System.Drawing.Point(355, 57);
+            this.lblStarScore.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblStarScore.Name = "lblStarScore";
+            this.lblStarScore.Size = new System.Drawing.Size(106, 24);
+            this.lblStarScore.TabIndex = 6;
+            this.lblStarScore.Text = "尚無評分";
             // 
             // linkLabelComment
             // 
             this.linkLabelComment.AutoSize = true;
             this.linkLabelComment.Font = new System.Drawing.Font("Times New Roman", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelComment.Location = new System.Drawing.Point(538, 66);
+            this.linkLabelComment.Location = new System.Drawing.Point(538, 85);
             this.linkLabelComment.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.linkLabelComment.Name = "linkLabelComment";
             this.linkLabelComment.Size = new System.Drawing.Size(100, 25);
@@ -534,7 +556,7 @@ namespace prjProject
             // 
             this.lblSoldCount.AutoSize = true;
             this.lblSoldCount.Font = new System.Drawing.Font("Times New Roman", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoldCount.Location = new System.Drawing.Point(670, 66);
+            this.lblSoldCount.Location = new System.Drawing.Point(670, 85);
             this.lblSoldCount.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblSoldCount.Name = "lblSoldCount";
             this.lblSoldCount.Size = new System.Drawing.Size(100, 25);
@@ -545,7 +567,7 @@ namespace prjProject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("標楷體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(681, 42);
+            this.label3.Location = new System.Drawing.Point(681, 61);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 22);
@@ -556,7 +578,7 @@ namespace prjProject
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(539, 42);
+            this.label2.Location = new System.Drawing.Point(539, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 22);
@@ -567,7 +589,7 @@ namespace prjProject
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("標楷體", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblProductName.Location = new System.Drawing.Point(351, 14);
+            this.lblProductName.Location = new System.Drawing.Point(355, 14);
             this.lblProductName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(124, 27);
@@ -610,16 +632,6 @@ namespace prjProject
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // cbbCountry
-            // 
-            this.cbbCountry.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cbbCountry.FormattingEnabled = true;
-            this.cbbCountry.Location = new System.Drawing.Point(514, 148);
-            this.cbbCountry.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.cbbCountry.Name = "cbbCountry";
-            this.cbbCountry.Size = new System.Drawing.Size(81, 24);
-            this.cbbCountry.TabIndex = 23;
             // 
             // SelectedProductForm
             // 
@@ -666,7 +678,7 @@ namespace prjProject
         private System.Windows.Forms.ComboBox cbbRegion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblStarScore;
         private System.Windows.Forms.Button btnBuyNow;
         private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.NumericUpDown nudCount;
@@ -699,5 +711,6 @@ namespace prjProject
         private System.Windows.Forms.Label lblProductNumInCart;
         private System.Windows.Forms.PictureBox pbHeart;
         private System.Windows.Forms.ComboBox cbbCountry;
+        private System.Windows.Forms.FlowLayoutPanel flpStar;
     }
 }

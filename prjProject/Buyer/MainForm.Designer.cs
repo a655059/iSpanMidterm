@@ -59,9 +59,15 @@ namespace prjProject
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowpanelAD = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowAD2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.spADcontainer2 = new System.Windows.Forms.SplitContainer();
+            this.adtrigger2 = new System.Windows.Forms.Label();
+            this.tbAD2 = new System.Windows.Forms.TextBox();
+            this.pbAD2 = new System.Windows.Forms.PictureBox();
             this.EventAD1 = new System.Windows.Forms.PictureBox();
-            this.flowAD1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.spADcontainer1 = new System.Windows.Forms.SplitContainer();
+            this.adtrigger1 = new System.Windows.Forms.Label();
+            this.tbAD1 = new System.Windows.Forms.TextBox();
+            this.pbAD1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -92,7 +98,17 @@ namespace prjProject
             this.spContainerGuessYouLike.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spADcontainer2)).BeginInit();
+            this.spADcontainer2.Panel1.SuspendLayout();
+            this.spADcontainer2.Panel2.SuspendLayout();
+            this.spADcontainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spADcontainer1)).BeginInit();
+            this.spADcontainer1.Panel1.SuspendLayout();
+            this.spADcontainer1.Panel2.SuspendLayout();
+            this.spADcontainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -372,7 +388,7 @@ namespace prjProject
             this.spContainerBotton.Panel2.Controls.Add(this.spContainerItem);
             this.spContainerBotton.Panel2.Controls.Add(this.panel5);
             this.spContainerBotton.Size = new System.Drawing.Size(1680, 768);
-            this.spContainerBotton.SplitterDistance = 168;
+            this.spContainerBotton.SplitterDistance = 150;
             this.spContainerBotton.TabIndex = 0;
             // 
             // flowpanelType
@@ -382,7 +398,7 @@ namespace prjProject
             this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelType.Location = new System.Drawing.Point(0, 0);
             this.flowpanelType.Name = "flowpanelType";
-            this.flowpanelType.Size = new System.Drawing.Size(168, 768);
+            this.flowpanelType.Size = new System.Drawing.Size(150, 768);
             this.flowpanelType.TabIndex = 0;
             // 
             // spContainerItem
@@ -402,7 +418,7 @@ namespace prjProject
             // spContainerItem.Panel2
             // 
             this.spContainerItem.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.spContainerItem.Size = new System.Drawing.Size(1508, 768);
+            this.spContainerItem.Size = new System.Drawing.Size(1526, 768);
             this.spContainerItem.SplitterDistance = 303;
             this.spContainerItem.TabIndex = 0;
             this.spContainerItem.Visible = false;
@@ -423,14 +439,15 @@ namespace prjProject
             // spContainerGuessYouLike.Panel2
             // 
             this.spContainerGuessYouLike.Panel2.Controls.Add(this.panel2);
-            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1506, 301);
+            this.spContainerGuessYouLike.Size = new System.Drawing.Size(1524, 301);
             this.spContainerGuessYouLike.SplitterDistance = 39;
+            this.spContainerGuessYouLike.SplitterWidth = 1;
             this.spContainerGuessYouLike.TabIndex = 0;
             // 
             // lblGuessYouLike
             // 
             this.lblGuessYouLike.AutoSize = true;
-            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblGuessYouLike.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblGuessYouLike.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblGuessYouLike.Location = new System.Drawing.Point(0, 0);
             this.lblGuessYouLike.Name = "lblGuessYouLike";
@@ -442,9 +459,9 @@ namespace prjProject
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.Controls.Add(this.flowpanelAD);
-            this.panel2.Location = new System.Drawing.Point(351, 3);
+            this.panel2.Location = new System.Drawing.Point(360, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 252);
+            this.panel2.Size = new System.Drawing.Size(830, 258);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -452,7 +469,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 252);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 258);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -462,43 +479,143 @@ namespace prjProject
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.Controls.Add(this.flowAD2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.spADcontainer2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.EventAD1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowAD1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.spADcontainer1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1506, 459);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 459);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // flowAD2
+            // spADcontainer2
             // 
-            this.flowAD2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowAD2.Location = new System.Drawing.Point(505, 4);
-            this.flowAD2.Name = "flowAD2";
-            this.flowAD2.Size = new System.Drawing.Size(494, 451);
-            this.flowAD2.TabIndex = 2;
+            this.spADcontainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spADcontainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spADcontainer2.Location = new System.Drawing.Point(511, 4);
+            this.spADcontainer2.Name = "spADcontainer2";
+            this.spADcontainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // spADcontainer2.Panel1
+            // 
+            this.spADcontainer2.Panel1.Controls.Add(this.adtrigger2);
+            this.spADcontainer2.Panel1.Controls.Add(this.tbAD2);
+            // 
+            // spADcontainer2.Panel2
+            // 
+            this.spADcontainer2.Panel2.Controls.Add(this.pbAD2);
+            this.spADcontainer2.Size = new System.Drawing.Size(500, 451);
+            this.spADcontainer2.SplitterDistance = 57;
+            this.spADcontainer2.SplitterWidth = 1;
+            this.spADcontainer2.TabIndex = 2;
+            // 
+            // adtrigger2
+            // 
+            this.adtrigger2.AutoSize = true;
+            this.adtrigger2.Location = new System.Drawing.Point(476, 39);
+            this.adtrigger2.Name = "adtrigger2";
+            this.adtrigger2.Size = new System.Drawing.Size(11, 12);
+            this.adtrigger2.TabIndex = 2;
+            this.adtrigger2.Text = "2";
+            this.adtrigger2.Visible = false;
+            // 
+            // tbAD2
+            // 
+            this.tbAD2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbAD2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAD2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold);
+            this.tbAD2.ForeColor = System.Drawing.Color.Red;
+            this.tbAD2.Location = new System.Drawing.Point(0, 0);
+            this.tbAD2.Multiline = true;
+            this.tbAD2.Name = "tbAD2";
+            this.tbAD2.Size = new System.Drawing.Size(500, 57);
+            this.tbAD2.TabIndex = 0;
+            this.tbAD2.Text = "dddd";
+            this.tbAD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pbAD2
+            // 
+            this.pbAD2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbAD2.ErrorImage = global::prjProject.Properties.Resources.cross;
+            this.pbAD2.Location = new System.Drawing.Point(0, 0);
+            this.pbAD2.Name = "pbAD2";
+            this.pbAD2.Size = new System.Drawing.Size(500, 393);
+            this.pbAD2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAD2.TabIndex = 1;
+            this.pbAD2.TabStop = false;
+            this.pbAD2.Click += new System.EventHandler(this.pbAD2_Click);
             // 
             // EventAD1
             // 
             this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EventAD1.Location = new System.Drawing.Point(1006, 4);
+            this.EventAD1.Image = global::prjProject.Properties.Resources.EVENTCOUPON;
+            this.EventAD1.Location = new System.Drawing.Point(1018, 4);
             this.EventAD1.Name = "EventAD1";
-            this.EventAD1.Size = new System.Drawing.Size(496, 451);
+            this.EventAD1.Size = new System.Drawing.Size(502, 451);
+            this.EventAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.EventAD1.TabIndex = 0;
             this.EventAD1.TabStop = false;
             this.EventAD1.Click += new System.EventHandler(this.EventAD1_Click);
             // 
-            // flowAD1
+            // spADcontainer1
             // 
-            this.flowAD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowAD1.Location = new System.Drawing.Point(4, 4);
-            this.flowAD1.Name = "flowAD1";
-            this.flowAD1.Size = new System.Drawing.Size(494, 451);
-            this.flowAD1.TabIndex = 1;
+            this.spADcontainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spADcontainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.spADcontainer1.Location = new System.Drawing.Point(4, 4);
+            this.spADcontainer1.Name = "spADcontainer1";
+            this.spADcontainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // spADcontainer1.Panel1
+            // 
+            this.spADcontainer1.Panel1.Controls.Add(this.adtrigger1);
+            this.spADcontainer1.Panel1.Controls.Add(this.tbAD1);
+            // 
+            // spADcontainer1.Panel2
+            // 
+            this.spADcontainer1.Panel2.Controls.Add(this.pbAD1);
+            this.spADcontainer1.Size = new System.Drawing.Size(500, 451);
+            this.spADcontainer1.SplitterDistance = 57;
+            this.spADcontainer1.SplitterWidth = 1;
+            this.spADcontainer1.TabIndex = 1;
+            // 
+            // adtrigger1
+            // 
+            this.adtrigger1.AutoSize = true;
+            this.adtrigger1.Location = new System.Drawing.Point(478, 39);
+            this.adtrigger1.Name = "adtrigger1";
+            this.adtrigger1.Size = new System.Drawing.Size(11, 12);
+            this.adtrigger1.TabIndex = 1;
+            this.adtrigger1.Text = "1";
+            this.adtrigger1.Visible = false;
+            // 
+            // tbAD1
+            // 
+            this.tbAD1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAD1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbAD1.ForeColor = System.Drawing.Color.Red;
+            this.tbAD1.Location = new System.Drawing.Point(0, 0);
+            this.tbAD1.Multiline = true;
+            this.tbAD1.Name = "tbAD1";
+            this.tbAD1.Size = new System.Drawing.Size(500, 57);
+            this.tbAD1.TabIndex = 0;
+            this.tbAD1.Text = "dddd";
+            this.tbAD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pbAD1
+            // 
+            this.pbAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbAD1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbAD1.ErrorImage")));
+            this.pbAD1.Location = new System.Drawing.Point(0, 0);
+            this.pbAD1.Name = "pbAD1";
+            this.pbAD1.Size = new System.Drawing.Size(500, 393);
+            this.pbAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAD1.TabIndex = 0;
+            this.pbAD1.TabStop = false;
+            this.pbAD1.Click += new System.EventHandler(this.pbAD1_Click);
             // 
             // panel5
             // 
@@ -563,7 +680,19 @@ namespace prjProject
             this.spContainerGuessYouLike.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.spADcontainer2.Panel1.ResumeLayout(false);
+            this.spADcontainer2.Panel1.PerformLayout();
+            this.spADcontainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spADcontainer2)).EndInit();
+            this.spADcontainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).EndInit();
+            this.spADcontainer1.Panel1.ResumeLayout(false);
+            this.spADcontainer1.Panel1.PerformLayout();
+            this.spADcontainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spADcontainer1)).EndInit();
+            this.spADcontainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -600,11 +729,17 @@ namespace prjProject
         private System.Windows.Forms.FlowLayoutPanel flowpanelAD;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pbLogo;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.SplitContainer spADcontainer2;
+        private System.Windows.Forms.TextBox tbAD2;
+        private System.Windows.Forms.PictureBox pbAD2;
         private System.Windows.Forms.PictureBox EventAD1;
-        private System.Windows.Forms.FlowLayoutPanel flowAD2;
-        private System.Windows.Forms.FlowLayoutPanel flowAD1;
+        private System.Windows.Forms.SplitContainer spADcontainer1;
+        private System.Windows.Forms.TextBox tbAD1;
+        private System.Windows.Forms.PictureBox pbAD1;
+        private System.Windows.Forms.Label adtrigger2;
+        private System.Windows.Forms.Label adtrigger1;
     }
 }
 
