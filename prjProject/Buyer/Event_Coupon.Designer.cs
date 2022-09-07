@@ -63,11 +63,10 @@ namespace prjProject.Buyer
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::prjProject.Properties.Resources.Coupon;
             this.pictureBox1.Location = new System.Drawing.Point(44, 195);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(798, 272);
+            this.pictureBox1.Size = new System.Drawing.Size(796, 270);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;

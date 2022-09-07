@@ -310,8 +310,8 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
-                memCheck(memberID);
                 if (memberID == 0) return;
+                memCheck(memberID);
                 CartForm form2 = new CartForm();
                 form2.ShowDialog();
             }
@@ -333,8 +333,8 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
-                memCheck(memberID);
                 if (memberID == 0) return;
+                memCheck(memberID);
                 member_center form2 = new member_center();
                 form2.memberName = memberName;
                 form2.memeberID = memberID;
@@ -443,8 +443,8 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
-                memCheck(memberID);
                 if (memberID == 0) return;
+                memCheck(memberID);
                 賣家中心 form2 = new 賣家中心();
                 form2.memberID = memberID;
                 form2.ShowDialog();
