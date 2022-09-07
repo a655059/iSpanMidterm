@@ -39,7 +39,7 @@ namespace Project_期中專案
             {
                 MessageBox.Show("請輸入必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
                                 "地址 姓名\n" + "生日");
-
+                return;
             }
             foreach (var i in memDaList)
             {
@@ -68,31 +68,6 @@ namespace Project_期中專案
             this.dbindex.SaveChanges();
             MessageBox.Show("新增成功!");
             Close();
-            //if (txtAccount.Text == ""||txtPassworld.Text==""||txt_phon.Text==""||txt_mail.Text==""||txtadd.Text==""||txt_name.Text=="")
-            //{
-            //    MessageBox.Show("請輸入必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
-            //                    "地址 姓名\n" + "生日");
-
-            //}
-            //else if (txtAccount.Text==memDaList[0].MemberAcc)
-            //{
-            //    MessageBox.Show("此帳號已註冊");
-            //}
-            //else if (txt_phon.Text == memDaList[0].Phone) { MessageBox.Show("此電話號碼已註冊，請確認!"); }
-            //else if (txt_mail.Text == memDaList[0].Email) { MessageBox.Show("此電子信箱已註冊，請確認"); }
-
-
-
-
-
-
-
-            //finally
-            //{
-            //    MessageBox.Show("必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
-            //                    "地址 姓名\n" + "生日");
-            //}
-
         }
 
         private void btn_pic_Click(object sender, EventArgs e)
