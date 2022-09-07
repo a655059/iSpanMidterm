@@ -24,34 +24,44 @@ namespace prjProject.Seller
         }
 
         public int memberID { get; set; }
-        List<int> prodid = new List<int>();
-        List<int> prodetail = new List<int>();
-        List<int> orddetail = new List<int>();
-        
-        List<訂單> ordd = new List<訂單>();
-        List<訂單細項> orddt = new List<訂單細項>();
+       
 
         private void btn_outproduct_Click(object sender, EventArgs e)
         {
-            
-            //var product = from a in isp.Products
-            //              where a.MemberID == this.memberID
-            //              select a;
+            int odid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["OrderID"].Value);
 
-            //var productDetailID = isp.ProductDetails.Where(i => i.Product.MemberID == memberID).Select(i => i.ProductDetailID).ToList();
+            var alter = isp.Orders.Where(x => x.OrderID == odid && x.StatusID <= 2);
+           
 
-            //var q10 = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == memberID).Select(i => i.OrderID).FirstOrDefault();
+            foreach (var at in alter)
+            {
+                at.StatusID = 4;
+            }
 
-            var q10 = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == memberID);
 
-            dataGridView1.DataSource = q10.ToList();
+            this.isp.SaveChanges();
 
-            MessageBox.Show("" + q10);
-            
-            //int oid = q10;
-            //var a = isp.Orders.Where()
-            //MessageBox.Show(""+ q10);
-          
+            show();
+        }
+        
+        private void 管理商品_Load(object sender, EventArgs e)
+        {
+
+            show();
+
+        }
+
+        void show()
+        {
+            var odd = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID)/*.FirstOrDefault()*/;
+            // 先抓到order中的內容
+            var od = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID && (i.Order.StatusID <= 2)).Select(i => new { i.Order.OrderID, i.Order.MemberID, i.Order.OrderDatetime, i.Order.RecieveAdr, i.Order.FinishDate, i.Order.CouponID,i.Order.StatusID });
+
+            var od_on = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID && (i.Order.StatusID > 2)).Select(i => new { i.Order.OrderID, i.Order.MemberID, i.Order.OrderDatetime, i.Order.RecieveAdr, i.Order.FinishDate, i.Order.CouponID, i.Order.StatusID });
+
+
+            dataGridView1.DataSource = od.ToList();
+            dataGridView2.DataSource = odd.ToList();
         }
     }
 }

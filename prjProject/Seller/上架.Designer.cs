@@ -46,6 +46,7 @@ namespace seller
             this.label12 = new System.Windows.Forms.Label();
             this.btn_newformat = new System.Windows.Forms.Button();
             this.btn_open_formatpic = new System.Windows.Forms.Button();
+            this.picb_format = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_style = new System.Windows.Forms.TextBox();
             this.txt_quantity = new System.Windows.Forms.TextBox();
@@ -55,9 +56,14 @@ namespace seller
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_openpic = new System.Windows.Forms.Button();
+            this.picb_product = new System.Windows.Forms.PictureBox();
             this.btn_new_pic = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmb_country = new System.Windows.Forms.ComboBox();
+            this.cmb_bigtype = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.color = new System.Windows.Forms.Label();
             this.btn_shipper_new = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -76,12 +82,8 @@ namespace seller
             this.cmb_shipper = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmb_bigtype = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cmb_country = new System.Windows.Forms.ComboBox();
-            this.picb_format = new System.Windows.Forms.PictureBox();
-            this.picb_product = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -93,10 +95,12 @@ namespace seller
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picb_format)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picb_product)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // ofd_product
@@ -257,26 +261,27 @@ namespace seller
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label12);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panel3.Controls.Add(this.btn_newformat);
             this.panel3.Controls.Add(this.btn_open_formatpic);
-            this.panel3.Controls.Add(this.picb_format);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txt_style);
+            this.panel3.Controls.Add(this.picb_format);
             this.panel3.Controls.Add(this.txt_quantity);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.txt_unitprice);
-            this.panel3.Location = new System.Drawing.Point(403, 339);
+            this.panel3.Location = new System.Drawing.Point(403, 291);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(506, 230);
+            this.panel3.Size = new System.Drawing.Size(506, 278);
             this.panel3.TabIndex = 93;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(12, 18);
+            this.label12.Location = new System.Drawing.Point(14, 18);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(186, 22);
@@ -286,7 +291,7 @@ namespace seller
             // btn_newformat
             // 
             this.btn_newformat.BackColor = System.Drawing.Color.LightSalmon;
-            this.btn_newformat.Location = new System.Drawing.Point(291, 163);
+            this.btn_newformat.Location = new System.Drawing.Point(18, 234);
             this.btn_newformat.Name = "btn_newformat";
             this.btn_newformat.Size = new System.Drawing.Size(75, 23);
             this.btn_newformat.TabIndex = 78;
@@ -296,7 +301,7 @@ namespace seller
             // 
             // btn_open_formatpic
             // 
-            this.btn_open_formatpic.Location = new System.Drawing.Point(400, 163);
+            this.btn_open_formatpic.Location = new System.Drawing.Point(18, 205);
             this.btn_open_formatpic.Name = "btn_open_formatpic";
             this.btn_open_formatpic.Size = new System.Drawing.Size(75, 23);
             this.btn_open_formatpic.TabIndex = 83;
@@ -304,11 +309,22 @@ namespace seller
             this.btn_open_formatpic.UseVisualStyleBackColor = true;
             this.btn_open_formatpic.Click += new System.EventHandler(this.btn_open_formatpic_Click);
             // 
+            // picb_format
+            // 
+            this.picb_format.BackColor = System.Drawing.Color.OrangeRed;
+            this.picb_format.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picb_format.Location = new System.Drawing.Point(14, 61);
+            this.picb_format.Name = "picb_format";
+            this.picb_format.Size = new System.Drawing.Size(214, 120);
+            this.picb_format.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picb_format.TabIndex = 84;
+            this.picb_format.TabStop = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(12, 69);
+            this.label7.Location = new System.Drawing.Point(245, 61);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 24);
@@ -318,7 +334,7 @@ namespace seller
             // txt_style
             // 
             this.txt_style.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_style.Location = new System.Drawing.Point(75, 57);
+            this.txt_style.Location = new System.Drawing.Point(308, 49);
             this.txt_style.Multiline = true;
             this.txt_style.Name = "txt_style";
             this.txt_style.Size = new System.Drawing.Size(191, 36);
@@ -327,7 +343,7 @@ namespace seller
             // txt_quantity
             // 
             this.txt_quantity.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_quantity.Location = new System.Drawing.Point(75, 101);
+            this.txt_quantity.Location = new System.Drawing.Point(308, 93);
             this.txt_quantity.Multiline = true;
             this.txt_quantity.Name = "txt_quantity";
             this.txt_quantity.Size = new System.Drawing.Size(191, 39);
@@ -337,7 +353,7 @@ namespace seller
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(12, 114);
+            this.label8.Location = new System.Drawing.Point(245, 106);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 24);
@@ -348,7 +364,7 @@ namespace seller
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(12, 165);
+            this.label9.Location = new System.Drawing.Point(245, 157);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 24);
@@ -358,7 +374,7 @@ namespace seller
             // txt_unitprice
             // 
             this.txt_unitprice.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_unitprice.Location = new System.Drawing.Point(75, 152);
+            this.txt_unitprice.Location = new System.Drawing.Point(308, 144);
             this.txt_unitprice.Multiline = true;
             this.txt_unitprice.Name = "txt_unitprice";
             this.txt_unitprice.Size = new System.Drawing.Size(191, 42);
@@ -366,13 +382,14 @@ namespace seller
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btn_openpic);
             this.panel2.Controls.Add(this.picb_product);
             this.panel2.Controls.Add(this.btn_new_pic);
-            this.panel2.Location = new System.Drawing.Point(3, 339);
+            this.panel2.Location = new System.Drawing.Point(3, 291);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(392, 230);
+            this.panel2.Size = new System.Drawing.Size(392, 278);
             this.panel2.TabIndex = 92;
             // 
             // label4
@@ -388,7 +405,7 @@ namespace seller
             // 
             // btn_openpic
             // 
-            this.btn_openpic.Location = new System.Drawing.Point(20, 66);
+            this.btn_openpic.Location = new System.Drawing.Point(24, 205);
             this.btn_openpic.Name = "btn_openpic";
             this.btn_openpic.Size = new System.Drawing.Size(75, 23);
             this.btn_openpic.TabIndex = 68;
@@ -396,10 +413,22 @@ namespace seller
             this.btn_openpic.UseVisualStyleBackColor = true;
             this.btn_openpic.Click += new System.EventHandler(this.btn_product_Click);
             // 
+            // picb_product
+            // 
+            this.picb_product.BackColor = System.Drawing.Color.OrangeRed;
+            this.picb_product.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picb_product.Location = new System.Drawing.Point(21, 61);
+            this.picb_product.Name = "picb_product";
+            this.picb_product.Size = new System.Drawing.Size(214, 120);
+            this.picb_product.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picb_product.TabIndex = 69;
+            this.picb_product.TabStop = false;
+            this.picb_product.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picb_product_MouseUp);
+            // 
             // btn_new_pic
             // 
             this.btn_new_pic.BackColor = System.Drawing.Color.LightSalmon;
-            this.btn_new_pic.Location = new System.Drawing.Point(21, 95);
+            this.btn_new_pic.Location = new System.Drawing.Point(25, 234);
             this.btn_new_pic.Name = "btn_new_pic";
             this.btn_new_pic.Size = new System.Drawing.Size(75, 23);
             this.btn_new_pic.TabIndex = 80;
@@ -415,17 +444,15 @@ namespace seller
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 574);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(362, 142);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(392, 142);
             this.flowLayoutPanel2.TabIndex = 56;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MistyRose;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.cmb_country);
-            this.panel1.Controls.Add(this.cmb_bigtype);
-            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.color);
             this.panel1.Controls.Add(this.btn_shipper_new);
             this.panel1.Controls.Add(this.flowLayoutPanel3);
@@ -436,16 +463,56 @@ namespace seller
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txt_adfee);
             this.panel1.Controls.Add(this.count);
-            this.panel1.Controls.Add(this.cmb_smtype);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.cmb_region);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cmb_shipper);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(913, 282);
             this.panel1.TabIndex = 91;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label15.Location = new System.Drawing.Point(2, 1);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(142, 22);
+            this.label15.TabIndex = 93;
+            this.label15.Text = "商品所屬縣市";
+            // 
+            // cmb_country
+            // 
+            this.cmb_country.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmb_country.FormattingEnabled = true;
+            this.cmb_country.Location = new System.Drawing.Point(54, 38);
+            this.cmb_country.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_country.Name = "cmb_country";
+            this.cmb_country.Size = new System.Drawing.Size(191, 30);
+            this.cmb_country.TabIndex = 94;
+            this.cmb_country.SelectedIndexChanged += new System.EventHandler(this.cmb_country_SelectedIndexChanged);
+            // 
+            // cmb_bigtype
+            // 
+            this.cmb_bigtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmb_bigtype.FormattingEnabled = true;
+            this.cmb_bigtype.Location = new System.Drawing.Point(112, 45);
+            this.cmb_bigtype.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_bigtype.Name = "cmb_bigtype";
+            this.cmb_bigtype.Size = new System.Drawing.Size(191, 30);
+            this.cmb_bigtype.TabIndex = 92;
+            this.cmb_bigtype.SelectedIndexChanged += new System.EventHandler(this.cmb_bigtype_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label14.Location = new System.Drawing.Point(2, 4);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(98, 22);
+            this.label14.TabIndex = 91;
+            this.label14.Text = "商品大類";
             // 
             // color
             // 
@@ -460,7 +527,7 @@ namespace seller
             // 
             // btn_shipper_new
             // 
-            this.btn_shipper_new.Location = new System.Drawing.Point(770, 157);
+            this.btn_shipper_new.Location = new System.Drawing.Point(772, 161);
             this.btn_shipper_new.Name = "btn_shipper_new";
             this.btn_shipper_new.Size = new System.Drawing.Size(101, 34);
             this.btn_shipper_new.TabIndex = 89;
@@ -481,7 +548,7 @@ namespace seller
             // 
             this.cmb_productstatus.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_productstatus.FormattingEnabled = true;
-            this.cmb_productstatus.Location = new System.Drawing.Point(492, 54);
+            this.cmb_productstatus.Location = new System.Drawing.Point(492, 64);
             this.cmb_productstatus.Name = "cmb_productstatus";
             this.cmb_productstatus.Size = new System.Drawing.Size(191, 29);
             this.cmb_productstatus.TabIndex = 87;
@@ -509,10 +576,10 @@ namespace seller
             // richTextBox_descript
             // 
             this.richTextBox_descript.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.richTextBox_descript.Location = new System.Drawing.Point(689, 201);
+            this.richTextBox_descript.Location = new System.Drawing.Point(612, 204);
             this.richTextBox_descript.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox_descript.Name = "richTextBox_descript";
-            this.richTextBox_descript.Size = new System.Drawing.Size(214, 65);
+            this.richTextBox_descript.Size = new System.Drawing.Size(291, 65);
             this.richTextBox_descript.TabIndex = 48;
             this.richTextBox_descript.Text = "";
             // 
@@ -520,7 +587,7 @@ namespace seller
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(642, 167);
+            this.label2.Location = new System.Drawing.Point(608, 163);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 24);
@@ -552,7 +619,7 @@ namespace seller
             // 
             this.cmb_smtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_smtype.FormattingEnabled = true;
-            this.cmb_smtype.Location = new System.Drawing.Point(121, 208);
+            this.cmb_smtype.Location = new System.Drawing.Point(112, 116);
             this.cmb_smtype.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_smtype.Name = "cmb_smtype";
             this.cmb_smtype.Size = new System.Drawing.Size(191, 30);
@@ -563,7 +630,7 @@ namespace seller
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(15, 210);
+            this.label3.Location = new System.Drawing.Point(6, 79);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 22);
@@ -574,7 +641,7 @@ namespace seller
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(374, 188);
+            this.label5.Location = new System.Drawing.Point(2, 76);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 22);
@@ -585,7 +652,7 @@ namespace seller
             // 
             this.cmb_region.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_region.FormattingEnabled = true;
-            this.cmb_region.Location = new System.Drawing.Point(426, 225);
+            this.cmb_region.Location = new System.Drawing.Point(54, 113);
             this.cmb_region.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_region.Name = "cmb_region";
             this.cmb_region.Size = new System.Drawing.Size(191, 30);
@@ -606,7 +673,7 @@ namespace seller
             // 
             this.cmb_shipper.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_shipper.FormattingEnabled = true;
-            this.cmb_shipper.Location = new System.Drawing.Point(492, 9);
+            this.cmb_shipper.Location = new System.Drawing.Point(492, 15);
             this.cmb_shipper.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_shipper.Name = "cmb_shipper";
             this.cmb_shipper.Size = new System.Drawing.Size(191, 30);
@@ -616,10 +683,10 @@ namespace seller
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(417, 574);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(403, 574);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(395, 142);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 142);
             this.flowLayoutPanel1.TabIndex = 55;
             // 
             // contextMenuStrip1
@@ -627,72 +694,29 @@ namespace seller
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // cmb_bigtype
+            // panel4
             // 
-            this.cmb_bigtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cmb_bigtype.FormattingEnabled = true;
-            this.cmb_bigtype.Location = new System.Drawing.Point(121, 164);
-            this.cmb_bigtype.Margin = new System.Windows.Forms.Padding(2);
-            this.cmb_bigtype.Name = "cmb_bigtype";
-            this.cmb_bigtype.Size = new System.Drawing.Size(191, 30);
-            this.cmb_bigtype.TabIndex = 92;
-            this.cmb_bigtype.SelectedIndexChanged += new System.EventHandler(this.cmb_bigtype_SelectedIndexChanged);
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.cmb_bigtype);
+            this.panel4.Controls.Add(this.cmb_smtype);
+            this.panel4.Location = new System.Drawing.Point(3, 120);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(318, 155);
+            this.panel4.TabIndex = 95;
             // 
-            // label14
+            // panel5
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(19, 167);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(98, 22);
-            this.label14.TabIndex = 91;
-            this.label14.Text = "商品大類";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(374, 113);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(142, 22);
-            this.label15.TabIndex = 93;
-            this.label15.Text = "商品所屬縣市";
-            // 
-            // cmb_country
-            // 
-            this.cmb_country.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cmb_country.FormattingEnabled = true;
-            this.cmb_country.Location = new System.Drawing.Point(426, 150);
-            this.cmb_country.Margin = new System.Windows.Forms.Padding(2);
-            this.cmb_country.Name = "cmb_country";
-            this.cmb_country.Size = new System.Drawing.Size(191, 30);
-            this.cmb_country.TabIndex = 94;
-            this.cmb_country.SelectedIndexChanged += new System.EventHandler(this.cmb_country_SelectedIndexChanged);
-            // 
-            // picb_format
-            // 
-            this.picb_format.BackColor = System.Drawing.Color.OrangeRed;
-            this.picb_format.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picb_format.Location = new System.Drawing.Point(275, 18);
-            this.picb_format.Name = "picb_format";
-            this.picb_format.Size = new System.Drawing.Size(214, 120);
-            this.picb_format.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picb_format.TabIndex = 84;
-            this.picb_format.TabStop = false;
-            // 
-            // picb_product
-            // 
-            this.picb_product.BackColor = System.Drawing.Color.OrangeRed;
-            this.picb_product.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picb_product.Location = new System.Drawing.Point(113, 66);
-            this.picb_product.Name = "picb_product";
-            this.picb_product.Size = new System.Drawing.Size(214, 120);
-            this.picb_product.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picb_product.TabIndex = 69;
-            this.picb_product.TabStop = false;
-            this.picb_product.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picb_product_MouseUp);
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.label15);
+            this.panel5.Controls.Add(this.cmb_region);
+            this.panel5.Controls.Add(this.cmb_country);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Location = new System.Drawing.Point(327, 120);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(253, 155);
+            this.panel5.TabIndex = 73;
             // 
             // 上架
             // 
@@ -716,12 +740,16 @@ namespace seller
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picb_format)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picb_product)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picb_format)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picb_product)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -779,5 +807,7 @@ namespace seller
         private System.Windows.Forms.ComboBox cmb_country;
         private System.Windows.Forms.ComboBox cmb_bigtype;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }

@@ -33,15 +33,15 @@ namespace prjProject.Buyer
                 return;
             }
 
-            OfficialCoupon o = new OfficialCoupon
+            OfficialCoupon coupon = new OfficialCoupon
             {
                 MemberID = memberID,
                 CouponID = 1,
                 ExpireN_A = false,
             };
             MessageBox.Show("領取成功！開始蝦拚到爆吧！");
-            //dbContext.OfficialCoupons.Add(o);
-            //dbContext.SaveChanges();
+            dbContext.OfficialCoupons.Add(coupon);
+            dbContext.SaveChanges();
         }
     }
 }

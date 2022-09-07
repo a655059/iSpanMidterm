@@ -130,7 +130,7 @@ namespace seller
         {
 
             var s = from d in isp.Products
-                    where d.MemberID == this.memberID
+                    where d.MemberID == this.memberID && d.ProductStatusID != 2
                     select d;
 
             dataGridView1.DataSource = s.ToList();  //抓特定賣家的販賣商品
@@ -218,42 +218,52 @@ namespace seller
             shiper.Clear();
             pd_detail.Clear();
             pd_pic.Clear();
+            clear();
             renew();
         }
+
+
+        void clear() {
+
+            //dataGridView1.Rows.Clear();
+            //dataGridView2.Rows.Clear();
+            //dataGridView3.Rows.Clear();
+
+            txt_pdname.Text = ""; 
+            txt_adfee.Text = "";
+            txt_style.Text = "";
+            txt_quantity.Text = "";
+            txt_unitprice.Text = "";
+            cmb_shipper.Text = "";
+            cmb_productstatus.Text = "";
+            cmb_bigtype.Text = "";
+            cmb_smtype.Text = "";
+            cmb_country.Text = "";
+            cmb_region.Text = "";
+
+            richTextBox_descript.Text = "";
+
+            picb_product = null;
+            picb_format = null;
+
+            this.flowLayoutPanel1.Controls.Clear();
+            this.flowLayoutPanel2.Controls.Clear();
+            this.flowLayoutPanel3.Controls.Clear();
+        }
+
 
         private void dele_Click(object sender, EventArgs e)
         {
 
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
-            var dee = (from a in isp.ShipperToProducts
-                     where a.ProductID == pdid
-                     select a).FirstOrDefault();
+            var delete = isp.Products.Where(i => i.ProductID == pdid).ToList();
 
-            var del = (from a in isp.ProductDetails
-                       where a.ProductID == pdid
-                       select a).FirstOrDefault();
-
-            var delll = (from c in isp.ProductPics
-                         where c.ProductID == pdid
-                         select c
-                        ).FirstOrDefault();
-
-            isp.ShipperToProducts.Remove(dee);
-            isp.ProductDetails.Remove(del);
-            isp.ProductPics.Remove(delll);
+            delete[0].ProductStatusID = 2;
 
             this.isp.SaveChanges();
-
-
-            var de = (from b in isp.Products
-                      where b.ProductID == pdid
-                      select b).FirstOrDefault();
-
-            isp.Products.Remove(de);
-
-            this.isp.SaveChanges();
-
+            
+            clear();
             renew();
 
         }
@@ -341,7 +351,7 @@ namespace seller
             pd_pic.Clear();
             //-----------------------------------------------------------------------
 
-
+            clear();
             renew();
         }
 
@@ -550,8 +560,8 @@ namespace seller
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)      //產生對應的可修改選項
         {
+            clear();
 
-            
             //-----------------------------------------------------------------------
             int index = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
@@ -643,6 +653,10 @@ namespace seller
             MemoryStream stream_format = new MemoryStream(data1);
             picb_format.Image = Image.FromStream(stream_format);
             stream.Close();
+
+
+            
+            renew();
         }
 
         private void cmb_smtype_SelectedIndexChanged(object sender, EventArgs e)

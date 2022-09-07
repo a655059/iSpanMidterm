@@ -24,9 +24,9 @@ namespace WindowsFormsApp2
             var 地區 = DBiSpan.RegionLists.Where(n=>n.RegionName==comRegionID.Text).
                             Select(n => n.RegionID).FirstOrDefault();
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            this.pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            byte[] bytes = ms.GetBuffer();// 上三行為照片轉換
+            var 會員狀態 = DBiSpan.MemStatus.Where(n=>n.MemStatusName==cbsta.Text)
+                                .Select(n => n.MemStatusID).FirstOrDefault();
+
 
             //bool ispass = false;            
             //if (!String.IsNullOrWhiteSpace(txtMemberAcc.Text)) ispass = true;
@@ -45,20 +45,27 @@ namespace WindowsFormsApp2
                 NickName = txtNickName.Text,
                 Name = txtName.Text,
                 Birthday = dateTimePicker1.Value,
-                Bio=txtBio.Text,
-                MemPic=bytes
+                Bio=txtBio.Text,               
+                MemStatusID=會員狀態
             };
-            this.DBiSpan.MemberAccounts.Add(mem);// 新增資料到資料庫
-            DBiSpan.SaveChanges();  // 確定帶入          
-            MessageBox.Show("新增成功");
-            
-            listBox1.Items.Clear();
-            var QQ = DBiSpan.MemberAccounts.Select(n => n.MemberAcc).ToList();
-            foreach (var i in QQ)
-            {
-                listBox1.Items.Add(i);
+            if (pictureBox1.Image != null) 
+            {                                
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                this.pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] bytes = ms.GetBuffer();// 上三行為照片轉換
+                mem.MemPic = bytes;
             }
+                this.DBiSpan.MemberAccounts.Add(mem);// 新增資料到資料庫
+                DBiSpan.SaveChanges();  // 確定帶入          
+                MessageBox.Show("新增成功");
 
+                listBox1.Items.Clear();
+                var QQ = DBiSpan.MemberAccounts.Select(n => n.MemberAcc).ToList();
+                foreach (var i in QQ)
+                {
+                    listBox1.Items.Add(i);
+                }
+            
         }
         
         private void 開啟帶入人名和地區_Load(object sender, EventArgs e) 
@@ -77,6 +84,12 @@ namespace WindowsFormsApp2
             {
                 listBox1.Items.Add(i);
             }
+
+            var QQQ = DBiSpan.MemStatus.Select(n => n.MemStatusName).ToList();
+            foreach (var i in QQQ)
+            {
+               cbsta.Items.Add(i);
+            }
             //if (listBox1.Items.Count==0) return;
             //listBox1.SelectedIndex = 0;  //預設選取第一筆資料
             //txtMemberAcc.Enabled = false;
@@ -94,6 +107,8 @@ namespace WindowsFormsApp2
 
             var 地區 = DBiSpan.RegionLists.Where(n => n.RegionName == comRegionID.Text).
                             Select(n => n.RegionID).FirstOrDefault();
+            var 會員狀態 = DBiSpan.MemStatus.Where(n => n.MemStatusName == cbsta.Text)
+                                .Select(n => n.MemStatusID).FirstOrDefault();
 
             Q.MemberPw = txtMemberPw.Text;
             Q.TWorNOT = checkBox1.Checked;
@@ -106,6 +121,14 @@ namespace WindowsFormsApp2
             Q.Name = txtName.Text;
             Q.Birthday = dateTimePicker1.Value;
             Q.Bio = txtBio.Text;
+            Q.MemStatusID = 會員狀態;
+            if (pictureBox1.Image != null)
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                this.pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] bytes = ms.GetBuffer();// 上三行為照片轉換
+                Q.MemPic = bytes;
+            }
             this.DBiSpan.SaveChanges();
             MessageBox.Show("修改成功");
         }
@@ -115,6 +138,7 @@ namespace WindowsFormsApp2
             MemberAccount Q = 點到的人名();
             this.DBiSpan.MemberAccounts.Remove(Q);
             this.DBiSpan.SaveChanges();
+            清空格子();
             MessageBox.Show("刪除成功");
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
@@ -123,6 +147,7 @@ namespace WindowsFormsApp2
         {
             if (listBox1.SelectedItem == null) return;
             //把資料帶入空格的方法
+            pictureBox1.Image = null;
             MemberAccount Q = 點到的人名();
 
             txtMemberAcc.Text = Q.MemberAcc;
@@ -137,8 +162,14 @@ namespace WindowsFormsApp2
             txtName.Text = Q.Name;
             dateTimePicker1.Value = Q.Birthday;
             txtBio.Text = Q.Bio;
+            var 會員狀態 = DBiSpan.MemStatus.Where(n=>n.MemStatusID==Q.MemStatusID)
+                                .Select(n => n.MemStatusName).FirstOrDefault();
+            cbsta.Text = 會員狀態;
+            if (Q.MemPic != null)
+            {
             System.IO.MemoryStream ms = new System.IO.MemoryStream(Q.MemPic);
             this.pictureBox1.Image = Image.FromStream(ms);
+            }                     
         }
 
         private MemberAccount 點到的人名()
@@ -152,10 +183,15 @@ namespace WindowsFormsApp2
 
         private void 清空格子_Click(object sender, EventArgs e)
         {
+            清空格子();
+        }
+
+        private void 清空格子()
+        {
             txtMemberAcc.Clear();
             txtMemberPw.Clear();
             checkBox1.Checked = false;
-            comRegionID.Text="中正區";
+            comRegionID.Text = "";
             txthone.Clear();
             txtEmail.Clear();
             txtackUPEmail.Clear();
@@ -165,6 +201,8 @@ namespace WindowsFormsApp2
             dateTimePicker1.Value = DateTime.Now;
             txtBio.Clear();
             pictureBox1.Image = null;
+            cbsta.Text = "";
+
         }
 
         private void 會員查詢_Click(object sender, EventArgs e)

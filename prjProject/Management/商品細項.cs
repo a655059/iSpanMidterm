@@ -13,5 +13,6 @@ namespace prjProject.Management
         public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public byte[] pic { get; set; }
+
     }
 }

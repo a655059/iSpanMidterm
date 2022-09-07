@@ -49,38 +49,33 @@ namespace seller
         }
 
 
-        void prevnext() {
-
-            //var q = from a in isp.Products      //透過id找出賣家所要販賣的商品
-            //        where a.MemberID == this.memberID
-            //        select a;
-
-
-            //lbl_sel_count.Text = q.Count().ToString();
-
-
-            //if (q.Count() > 0)           //代表賣家有商品 可以顯示
-            //{
-            //    foreach (var pid in q.Take(10))       //抓取特定賣家的id存入list中使用
-            //    {
-            //        prod.Add(pid.ProductID);
-            //    }
-
-            //    show();
-
-            //}
-
-        }
-
-
         private void 賣家中心_Load(object sender, EventArgs e)
         {
-            label2.Text = account;      
-            label4.Text = account;
+
+
+            var acount = isp.MemberAccounts.Where(x => x.MemberID == this.memberID).Select(x => x.MemberAcc).FirstOrDefault();
+
+            label2.Text = acount;
+            label4.Text = acount;
 
             //MessageBox.Show("" + this.memberID);
 
-            prevnext();
+            var q = from a in isp.Products      //透過id找出賣家所要販賣的商品
+                    where a.MemberID == this.memberID
+                    select a;
+           
+            lbl_sel_count.Text = q.Count().ToString();
+            if (q.Count() > 0)           //代表賣家有商品 可以顯示
+            {
+
+                foreach (var pid in q.Take(10))       //抓取特定賣家的id存入list中使用
+                {
+                    prod.Add(pid.ProductID);
+                }
+
+                show();
+
+            }
 
         }
 

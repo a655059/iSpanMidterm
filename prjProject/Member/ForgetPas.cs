@@ -17,6 +17,7 @@ namespace Project_期中專案
         public ForgetPas()
         {
             InitializeComponent();
+            MessageBox.Show("請於下個頁面輸入帳號，謝謝");
         }
 
         private void button1_Click(object sender, EventArgs e)
