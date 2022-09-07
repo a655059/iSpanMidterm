@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using prjProject.Seller;
 
 namespace seller
 {
@@ -119,5 +120,11 @@ namespace seller
             sel.Show();
         }
 
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            管理商品 manage = new 管理商品();
+            manage.memberID = this.memberID;
+            manage.Show();
+        }
     }
 }

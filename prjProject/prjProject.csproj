@@ -181,6 +181,14 @@
     <Compile Include="Entity\SmallType.cs">
       <DependentUpon>iSpanModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\訂單.cs" />
+    <Compile Include="Models\訂單細項.cs" />
+    <Compile Include="Seller\管理商品.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seller\管理商品.Designer.cs">
+      <DependentUpon>管理商品.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCtrlComment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -448,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Buyer\CommentPhotoForm.resx">
       <DependentUpon>CommentPhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seller\管理商品.resx">
+      <DependentUpon>管理商品.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UCtrlComment.resx">
       <DependentUpon>UCtrlComment.cs</DependentUpon>
