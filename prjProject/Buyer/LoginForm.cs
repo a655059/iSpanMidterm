@@ -21,6 +21,7 @@ namespace prjProject
         }
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
 
+        
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
             string account = txtAccount.Text;
@@ -31,7 +32,6 @@ namespace prjProject
                 MessageBox.Show("成功登入");
                 int memberID = q[0].MemberID;
                 CFunctions.SendMemberInfoToEachForm(memberID);
-
                 this.Close();
             }
             else

@@ -32,10 +32,8 @@ namespace prjProject
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
-            this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
@@ -44,6 +42,8 @@ namespace prjProject
             this.lblProductNumInCart = new System.Windows.Forms.Label();
             this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
             this.lblName = new System.Windows.Forms.Label();
+            this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -52,6 +52,11 @@ namespace prjProject
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
             this.spContainerBotton = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
             this.spContainerItem = new System.Windows.Forms.SplitContainer();
             this.spContainerGuessYouLike = new System.Windows.Forms.SplitContainer();
             this.lblGuessYouLike = new System.Windows.Forms.Label();
@@ -70,19 +75,14 @@ namespace prjProject
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
             this.spContainerMainPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelTopBar.SuspendLayout();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -92,6 +92,14 @@ namespace prjProject
             this.spContainerBotton.Panel1.SuspendLayout();
             this.spContainerBotton.Panel2.SuspendLayout();
             this.spContainerBotton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).BeginInit();
             this.spContainerItem.Panel1.SuspendLayout();
             this.spContainerItem.Panel2.SuspendLayout();
@@ -114,14 +122,6 @@ namespace prjProject
             this.spADcontainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // spContainerMainPage
@@ -150,16 +150,6 @@ namespace prjProject
             this.spContainerMainPage.Size = new System.Drawing.Size(1280, 760);
             this.spContainerMainPage.SplitterDistance = 128;
             this.spContainerMainPage.TabIndex = 1;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
-            this.pbLogo.Location = new System.Drawing.Point(10, 25);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(114, 100);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 29;
-            this.pbLogo.TabStop = false;
             // 
             // panelTopBar
             // 
@@ -191,21 +181,6 @@ namespace prjProject
             this.linkLabelMemberCenter.TabStop = true;
             this.linkLabelMemberCenter.Text = "會員中心";
             this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
-            // 
-            // linkLabelHouTai
-            // 
-            this.linkLabelHouTai.AutoSize = true;
-            this.linkLabelHouTai.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelHouTai.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelHouTai.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelHouTai.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelHouTai.Location = new System.Drawing.Point(130, 96);
-            this.linkLabelHouTai.Name = "linkLabelHouTai";
-            this.linkLabelHouTai.Size = new System.Drawing.Size(54, 27);
-            this.linkLabelHouTai.TabIndex = 23;
-            this.linkLabelHouTai.TabStop = true;
-            this.linkLabelHouTai.Text = "後台";
-            this.linkLabelHouTai.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHouTai_LinkClicked);
             // 
             // panelSearch
             // 
@@ -301,6 +276,31 @@ namespace prjProject
             this.lblName.TabIndex = 19;
             this.lblName.Text = "歡迎";
             this.lblName.Visible = false;
+            // 
+            // linkLabelHouTai
+            // 
+            this.linkLabelHouTai.AutoSize = true;
+            this.linkLabelHouTai.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelHouTai.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelHouTai.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelHouTai.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelHouTai.Location = new System.Drawing.Point(130, 96);
+            this.linkLabelHouTai.Name = "linkLabelHouTai";
+            this.linkLabelHouTai.Size = new System.Drawing.Size(54, 27);
+            this.linkLabelHouTai.TabIndex = 23;
+            this.linkLabelHouTai.TabStop = true;
+            this.linkLabelHouTai.Text = "後台";
+            this.linkLabelHouTai.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHouTai_LinkClicked);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
+            this.pbLogo.Location = new System.Drawing.Point(10, 25);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(114, 100);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 29;
+            this.pbLogo.TabStop = false;
             // 
             // panel3
             // 
@@ -403,6 +403,75 @@ namespace prjProject
             this.spContainerBotton.SplitterDistance = 163;
             this.spContainerBotton.TabIndex = 0;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.flowpanelType);
+            this.splitContainer1.Size = new System.Drawing.Size(163, 628);
+            this.splitContainer1.SplitterDistance = 124;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.panel6);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.panel1);
+            this.splitContainer2.Panel2Collapsed = true;
+            this.splitContainer2.Size = new System.Drawing.Size(163, 124);
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(20);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(163, 124);
+            this.panel6.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 46);
+            this.panel1.TabIndex = 1;
+            // 
+            // flowpanelType
+            // 
+            this.flowpanelType.AutoScroll = true;
+            this.flowpanelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpanelType.Location = new System.Drawing.Point(0, 0);
+            this.flowpanelType.Name = "flowpanelType";
+            this.flowpanelType.Size = new System.Drawing.Size(163, 503);
+            this.flowpanelType.TabIndex = 3;
+            // 
             // spContainerItem
             // 
             this.spContainerItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -463,7 +532,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 264);
+            this.panel2.Size = new System.Drawing.Size(830, 270);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -471,7 +540,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 264);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 270);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -646,75 +715,6 @@ namespace prjProject
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.flowpanelType);
-            this.splitContainer1.Size = new System.Drawing.Size(163, 628);
-            this.splitContainer1.SplitterDistance = 124;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // flowpanelType
-            // 
-            this.flowpanelType.AutoScroll = true;
-            this.flowpanelType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.flowpanelType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpanelType.Location = new System.Drawing.Point(0, 0);
-            this.flowpanelType.Name = "flowpanelType";
-            this.flowpanelType.Size = new System.Drawing.Size(163, 503);
-            this.flowpanelType.TabIndex = 3;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.panel6);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Panel2Collapsed = true;
-            this.splitContainer2.Size = new System.Drawing.Size(163, 124);
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(20);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(150, 70);
-            this.panel1.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(20);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(163, 124);
-            this.panel6.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -731,12 +731,12 @@ namespace prjProject
             this.spContainerMainPage.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).EndInit();
             this.spContainerMainPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -746,6 +746,14 @@ namespace prjProject
             this.spContainerBotton.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).EndInit();
             this.spContainerBotton.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.spContainerItem.Panel1.ResumeLayout(false);
             this.spContainerItem.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).EndInit();
@@ -771,14 +779,6 @@ namespace prjProject
             this.spADcontainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

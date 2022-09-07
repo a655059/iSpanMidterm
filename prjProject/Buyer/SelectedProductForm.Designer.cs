@@ -50,6 +50,7 @@ namespace prjProject
             this.lblProductDescription = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbHandLike = new System.Windows.Forms.PictureBox();
             this.lblSellerFollowNum = new System.Windows.Forms.Label();
             this.lblSellerProductNum = new System.Windows.Forms.Label();
             this.lbl = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@ namespace prjProject
             ((System.ComponentModel.ISupportInitialize)(this.pbHeart)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHandLike)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSellerPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).BeginInit();
             this.panel1.SuspendLayout();
@@ -146,7 +148,7 @@ namespace prjProject
             // lblProductNumInCart
             // 
             this.lblProductNumInCart.AutoSize = true;
-            this.lblProductNumInCart.Location = new System.Drawing.Point(766, 47);
+            this.lblProductNumInCart.Location = new System.Drawing.Point(766, 61);
             this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductNumInCart.Name = "lblProductNumInCart";
             this.lblProductNumInCart.Size = new System.Drawing.Size(79, 12);
@@ -157,7 +159,7 @@ namespace prjProject
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWelcome.Location = new System.Drawing.Point(841, 4);
+            this.lblWelcome.Location = new System.Drawing.Point(841, 18);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(54, 21);
@@ -170,7 +172,7 @@ namespace prjProject
             this.linkLabelLogin.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
             this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(718, 4);
+            this.linkLabelLogin.Location = new System.Drawing.Point(718, 18);
             this.linkLabelLogin.Name = "linkLabelLogin";
             this.linkLabelLogin.Size = new System.Drawing.Size(54, 21);
             this.linkLabelLogin.TabIndex = 23;
@@ -181,7 +183,7 @@ namespace prjProject
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(717, 55);
+            this.pbCart.Location = new System.Drawing.Point(717, 69);
             this.pbCart.Name = "pbCart";
             this.pbCart.Size = new System.Drawing.Size(50, 50);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -193,7 +195,7 @@ namespace prjProject
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(637, 61);
+            this.button1.Location = new System.Drawing.Point(655, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(33, 33);
             this.button1.TabIndex = 27;
@@ -202,7 +204,7 @@ namespace prjProject
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(272, 63);
+            this.textBox1.Location = new System.Drawing.Point(290, 77);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(398, 33);
             this.textBox1.TabIndex = 26;
@@ -211,7 +213,7 @@ namespace prjProject
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(83, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(83, 53);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -222,7 +224,7 @@ namespace prjProject
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(161, 57);
+            this.label1.Location = new System.Drawing.Point(161, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 35);
             this.label1.TabIndex = 24;
@@ -327,6 +329,7 @@ namespace prjProject
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbHandLike);
             this.panel2.Controls.Add(this.lblSellerFollowNum);
             this.panel2.Controls.Add(this.lblSellerProductNum);
             this.panel2.Controls.Add(this.lbl);
@@ -339,11 +342,23 @@ namespace prjProject
             this.panel2.Size = new System.Drawing.Size(763, 96);
             this.panel2.TabIndex = 20;
             // 
+            // pbHandLike
+            // 
+            this.pbHandLike.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbHandLike.Image = ((System.Drawing.Image)(resources.GetObject("pbHandLike.Image")));
+            this.pbHandLike.Location = new System.Drawing.Point(202, 60);
+            this.pbHandLike.Name = "pbHandLike";
+            this.pbHandLike.Size = new System.Drawing.Size(30, 30);
+            this.pbHandLike.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHandLike.TabIndex = 0;
+            this.pbHandLike.TabStop = false;
+            this.pbHandLike.Click += new System.EventHandler(this.pbHandLike_Click);
+            // 
             // lblSellerFollowNum
             // 
             this.lblSellerFollowNum.AutoSize = true;
             this.lblSellerFollowNum.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellerFollowNum.Location = new System.Drawing.Point(138, 70);
+            this.lblSellerFollowNum.Location = new System.Drawing.Point(138, 71);
             this.lblSellerFollowNum.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblSellerFollowNum.Name = "lblSellerFollowNum";
             this.lblSellerFollowNum.Size = new System.Drawing.Size(41, 19);
@@ -354,7 +369,7 @@ namespace prjProject
             // 
             this.lblSellerProductNum.AutoSize = true;
             this.lblSellerProductNum.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellerProductNum.Location = new System.Drawing.Point(137, 42);
+            this.lblSellerProductNum.Location = new System.Drawing.Point(137, 41);
             this.lblSellerProductNum.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblSellerProductNum.Name = "lblSellerProductNum";
             this.lblSellerProductNum.Size = new System.Drawing.Size(41, 19);
@@ -652,6 +667,7 @@ namespace prjProject
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHandLike)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSellerPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCount)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -708,5 +724,6 @@ namespace prjProject
         private System.Windows.Forms.LinkLabel llToType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel llToMainForm;
+        private System.Windows.Forms.PictureBox pbHandLike;
     }
 }
