@@ -16,11 +16,10 @@ namespace Project_期中專案
         iSpanProjectEntities dbindex = new iSpanProjectEntities();
         byte[] bytes;
         public string account;
-        
+
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -32,10 +31,9 @@ namespace Project_期中專案
                     //orderby i.RegionID ascending
                     select i;
             var q1 = q.ToList();
-            //MessageBox.Show(q1.ToString());
             try
             {
-            list.MemberAcc = txtAccount.Text;
+                list.MemberAcc = txtAccount.Text;
             list.MemberPw = txtPassworld.Text;
             list.TWorNOT = ckbox_yes.Checked;
             list.RegionID =Convert.ToInt32(q1[0].RegionID);//countryID==>cmb_are.text
@@ -48,10 +46,12 @@ namespace Project_期中專案
             list.Birthday = DTP_BIR.Value;
             list.Bio = txt_bio.Text;
             list.MemPic = bytes;
+            list.MemStatusID = 1;
 
             this.dbindex.MemberAccounts.Add(list);
             this.dbindex.SaveChanges();
             MessageBox.Show("新增成功!");
+
             }
             catch (Exception)
             {
@@ -117,6 +117,14 @@ namespace Project_期中專案
             cmb_are.Items.Clear();
             cmb_are.Items.AddRange(q1.ToArray());
             cmb_are.Text = cmb_are.Items[0].ToString();
+        }
+
+        private void txtPassworld_TextChanged(object sender, EventArgs e)
+        {
+            string txtpwd = txtPassworld.Text;
+            if (txtpwd.Length <= 5) { account_mes.Text = "密碼強度低"; }
+            else if (txtpwd.Length > 5 && txtpwd.Length < 8) { account_mes.Text = "密碼強度中等"; }
+            else { account_mes.Text = "密碼強度高"; }
         }
     }
 }

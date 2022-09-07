@@ -76,9 +76,9 @@ namespace prjProject.Member
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.Location = new System.Drawing.Point(51, 313);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 24);
+            this.label4.Size = new System.Drawing.Size(136, 24);
             this.label4.TabIndex = 3;
-            this.label4.Text = "優惠內容";
+            this.label4.Text = "優惠內容(折數)";
             // 
             // label5
             // 
