@@ -25,21 +25,21 @@ namespace prjProject.Member
         private void memberCoupon_Load(object sender, EventArgs e)
         {
 
-            var officialCou = (from i in dbindex.OfficialCoupons
+            var officialCou = from i in dbindex.OfficialCoupons.AsEnumerable()
                               where i.MemberID == memberID
-                              select i).FirstOrDefault();
-            //var myCoupon = (from i in dbindex.Coupons
-            //               where i.CouponID == officialCou.CouponID
-            //               select i).ToList();
+                              select new { id=i.CouponID,優惠券名稱=i.Coupon.CouponName,優惠券開始日期=i.Coupon.StartDate,優惠券結束日期=i.Coupon.ExpiredDate,優惠券內容=i.Coupon.Discount};
             if (!(officialCou == null))
             {
-                var myCoupon = (from i in dbindex.Coupons
-                                where i.CouponID == officialCou.CouponID
-                                select i).ToList();
-                txt_couName.Text = myCoupon[0].CouponName;
-                txt_couStar.Text = myCoupon[0].StartDate.ToString();
-                txt_couEnd.Text = myCoupon[0].ExpiredDate.ToString();
-                txt_couDiscount.Text = myCoupon[0].Discount.ToString();
+                this.dataGridView1.DataSource = officialCou.ToList();
+                //int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["優惠券名稱"].Value.ToString());
+
+                //var myCoupon = (from i in dbindex.Coupons
+                //                where i.CouponID ==nowId
+                //                select i).FirstOrDefault();
+                //txt_couName.Text =myCoupon.CouponName;
+                //txt_couStar.Text = myCoupon.StartDate.ToString();
+                //txt_couEnd.Text = myCoupon.ExpiredDate.ToString();
+                //txt_couDiscount.Text = myCoupon.Discount.ToString();
 
             }
             else
@@ -48,6 +48,26 @@ namespace prjProject.Member
                 Close();
             }
                 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["id"].Value.ToString());
+
+            //var officialCou = from i in dbindex.OfficialCoupons.AsEnumerable()
+            //                  where i.MemberID == memberID
+            //                  select new { 優惠券名稱 = i.Coupon.CouponName, 優惠券開始日期 = i.Coupon.StartDate, 優惠券結束日期 = i.Coupon.ExpiredDate, 優惠券內容 = i.Coupon.Discount };
+
+            //int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["優惠券名稱"].Value.ToString());
+
+            var myCoupon = (from i in dbindex.Coupons
+                            where i.CouponID == nowId
+                            select i).FirstOrDefault();
+            txt_couName.Text = myCoupon.CouponName;
+            txt_couStar.Text = myCoupon.StartDate.ToString();
+            txt_couEnd.Text = myCoupon.ExpiredDate.ToString();
+            txt_couDiscount.Text = myCoupon.Discount.ToString();
+
         }
     }
 }

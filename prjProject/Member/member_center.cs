@@ -92,12 +92,12 @@ namespace Project_期中專案
 
         private void member_center_Load(object sender, EventArgs e)
         {
-            var q = dbContext.MemberAccounts.Where(m => m.MemberID == memeberID).Select(m => m.MemPic);
-            if (q.Any()) {
+            var q = dbContext.MemberAccounts.Where(m => m.MemberID == memeberID).Select(m => m.MemPic).ToList();
+            if (q[0]!=null) {
                 var acpic = q.FirstOrDefault();
                 System.IO.MemoryStream ms = new System.IO.MemoryStream(acpic);
                 pictureBox1.Image= Image.FromStream(ms);
-            }
+            }            
         }
     }
 }

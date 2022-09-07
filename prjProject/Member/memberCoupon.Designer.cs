@@ -38,6 +38,8 @@ namespace prjProject.Member
             this.txt_couStar = new System.Windows.Forms.TextBox();
             this.txt_couEnd = new System.Windows.Forms.TextBox();
             this.txt_couDiscount = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -120,11 +122,22 @@ namespace prjProject.Member
             this.txt_couDiscount.Size = new System.Drawing.Size(100, 22);
             this.txt_couDiscount.TabIndex = 8;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(532, 118);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
             // memberCoupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txt_couDiscount);
             this.Controls.Add(this.txt_couEnd);
             this.Controls.Add(this.txt_couStar);
@@ -137,6 +150,7 @@ namespace prjProject.Member
             this.Name = "memberCoupon";
             this.Text = "memberCoupon";
             this.Load += new System.EventHandler(this.memberCoupon_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +167,6 @@ namespace prjProject.Member
         private System.Windows.Forms.TextBox txt_couStar;
         private System.Windows.Forms.TextBox txt_couEnd;
         private System.Windows.Forms.TextBox txt_couDiscount;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
