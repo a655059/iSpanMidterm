@@ -52,7 +52,39 @@ namespace Project_期中專案
             txtadd.Text = q.Address;
             txt_name.Text = q.Name;
             DTP_BIR.Value = q.Birthday;
-            if (q.MemPic == null||q.NickName==null||q.BackUpEmail==null||q.Bio==null||q.MemPic==null) return;
+            if (q.MemPic == null)
+            {
+                txt_backMail.Text = q.BackUpEmail;
+                txt_nickName.Text = q.NickName;
+                txt_bio.Text = q.Bio;
+            }
+            else if (q.NickName == null) 
+            {
+                txt_backMail.Text = q.BackUpEmail;
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(q.MemPic);
+                this.pic_box.Image = Image.FromStream(ms);
+                bytes = q.MemPic;
+                txt_bio.Text = q.Bio;
+                Application.DoEvents();
+            }
+            else if (q.BackUpEmail == null) 
+            {
+                txt_nickName.Text = q.NickName;
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(q.MemPic);
+                this.pic_box.Image = Image.FromStream(ms);
+                bytes = q.MemPic;
+                txt_bio.Text = q.Bio;
+                Application.DoEvents();
+            }
+            else if (q.Bio == null) 
+            {
+                txt_backMail.Text = q.BackUpEmail;
+                txt_nickName.Text = q.NickName;
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(q.MemPic);
+                this.pic_box.Image = Image.FromStream(ms);
+                bytes = q.MemPic;
+                Application.DoEvents();
+            }
             else 
             {
             txt_backMail.Text = q.BackUpEmail;
