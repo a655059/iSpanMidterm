@@ -144,6 +144,7 @@ namespace prjProject.Models
                     {
                         f.commentCount = commentCount.ToString();
                     }
+                    f.starCountAndStarScore = 10.ToString();
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {

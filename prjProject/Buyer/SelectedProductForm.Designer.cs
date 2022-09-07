@@ -530,12 +530,12 @@ namespace prjProject
             // lblStarScore
             // 
             this.lblStarScore.AutoSize = true;
-            this.lblStarScore.Font = new System.Drawing.Font("標楷體", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblStarScore.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblStarScore.ForeColor = System.Drawing.Color.Red;
-            this.lblStarScore.Location = new System.Drawing.Point(351, 62);
+            this.lblStarScore.Location = new System.Drawing.Point(355, 57);
             this.lblStarScore.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblStarScore.Name = "lblStarScore";
-            this.lblStarScore.Size = new System.Drawing.Size(89, 19);
+            this.lblStarScore.Size = new System.Drawing.Size(106, 24);
             this.lblStarScore.TabIndex = 6;
             this.lblStarScore.Text = "尚無評分";
             // 
@@ -589,7 +589,7 @@ namespace prjProject
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("標楷體", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblProductName.Location = new System.Drawing.Point(351, 14);
+            this.lblProductName.Location = new System.Drawing.Point(355, 14);
             this.lblProductName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(124, 27);
