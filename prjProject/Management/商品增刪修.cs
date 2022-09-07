@@ -48,29 +48,43 @@ namespace WindowsFormsApp2
         iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
 
         產品管理 產品介面 = new 產品管理();
-        public int pid { get; set; } //為了讓上一張form資料連接這張form
+        public int P_select { get; set; } //為了讓上一張form的product資料連接這張form的product
+        public int PD_select { get; set; }//為了讓上一張form的productD資料連接這張form的productD
+        public byte[] bytehead   //商品大頭貼二進位資料轉型
+        {
+            set
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(value);
+                pictureBox1.Image = Image.FromStream(ms);
+            }
+        }
+        public byte[] bytepics   //商品大頭貼二進位資料轉型
+        {
+            set
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(value);
+                pictureBox2.Image = Image.FromStream(ms);
+            }
+        }
         private void isLoad()
         {
-            txtpdname.Text = DBiSpan.Products.Where(n => n.ProductID == pid)
+            //===================================以下為product的資料帶入
+            txtpdname.Text = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n.ProductName).FirstOrDefault();
 
-            var SMall   = DBiSpan.Products.Where(n => n.ProductID == pid)
+            var SMall = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n.SmallTypeID).FirstOrDefault();
             cbSmall.Text = DBiSpan.SmallTypes.Where(n => n.SmallTypeID == SMall)
                 .Select(n => n.SmallTypeName).FirstOrDefault();
 
-            var BIg = DBiSpan.SmallTypes.Select(n => n.BigTypeID).FirstOrDefault();
+            var BIg = DBiSpan.SmallTypes.Where(n => n.SmallTypeID == SMall)
+                .Select(n => n.BigTypeID).FirstOrDefault();
             cbBig.Text = DBiSpan.BigTypes.Where(n => n.BigTypeID == BIg)
-                .Select(n => n.BigTypeName).FirstOrDefault();
+                .Select(n => n.BigTypeName).FirstOrDefault();           
 
-            txtpdup.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
-                .Select(n => n.UnitPrice).FirstOrDefault().ToString();
-
-            txtpdquty.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
-               .Select(n =>n.Quantity).FirstOrDefault().ToString();
-
-            txtdesc.Text = DBiSpan.Products.Where(n => n.ProductID == pid)
+            txtdesc.Text = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n.Description).FirstOrDefault();
+
 
             //var Ship = DBiSpan.Products.Where(n => n.ProductID == pid)
             //    .Select(n =>n.ShipperID).FirstOrDefault();
@@ -80,18 +94,44 @@ namespace WindowsFormsApp2
             txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductID == pid)
                 .Select(n => n.Style).FirstOrDefault();
 
-            var REgin= DBiSpan.Products.Where(n => n.ProductID == pid)
-                .Select(n =>n.RegionID).FirstOrDefault();
+            var REgin = DBiSpan.Products.Where(n => n.ProductID == P_select)
+                .Select(n => n.RegionID).FirstOrDefault();
             cbRegion.Text = DBiSpan.RegionLists.Where(n => n.RegionID == REgin)
                 .Select(n => n.RegionName).FirstOrDefault();
 
-            var Country=DBiSpan.RegionLists.Where(n => n.RegionID == REgin)
-                .Select(n =>n.CountryID).FirstOrDefault();
+            var Country = DBiSpan.RegionLists.Where(n => n.RegionID == REgin)
+                .Select(n => n.CountryID).FirstOrDefault();
             cbContry.Text = DBiSpan.CountryLists.Where(n => n.CountryID == Country)
                 .Select(n => n.CountryName).FirstOrDefault();
 
-            txtpdfee.Text= DBiSpan.Products.Where(n => n.ProductID == pid)
-                .Select(n =>n.AdFee).FirstOrDefault().ToString();
+            txtpdfee.Text = DBiSpan.Products.Where(n => n.ProductID == P_select)
+                .Select(n => n.AdFee).FirstOrDefault().ToString();
+            //===================================以下為detail的資料帶入
+            txtstyle.Text = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+               .Select(n => n.Style).FirstOrDefault();
+
+            txtpdup.Text = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+               .Select(n => n.UnitPrice).FirstOrDefault().ToString();
+
+            txtpdquty.Text = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+               .Select(n => n.Quantity).FirstOrDefault().ToString();
+            
+            var pic= DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+               .Select(n => n.Pic).FirstOrDefault();
+
+            var pics=DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
+               .Select(n => n.picture).FirstOrDefault();
+
+            if (pics != null)
+            {
+                bytepics = pics;
+                if (pic != null)
+                    bytehead = pic;
+                else
+                    return;
+            }
+            else
+                return;
         }
 
         public int productID= 0;
@@ -139,12 +179,11 @@ namespace WindowsFormsApp2
                 DBiSpan.ProductPics.Add(productPic);
             }
             DBiSpan.SaveChanges();
-
-
             MessageBox.Show("新增成功");
+            Close();
         }
 
-        private void 新增照片_Click(object sender, EventArgs e)
+        private void 瀏覽照片_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
@@ -182,7 +221,7 @@ namespace WindowsFormsApp2
 
         private void 修改_Click(object sender, EventArgs e)
         {
-            var Q = DBiSpan.Products.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
+            var Q = DBiSpan.Products.Where(n => n.ProductID == P_select).Select(n => n).FirstOrDefault();
             Q.ProductName = txtpdname.Text;
             Q.AdFee = Convert.ToDecimal(txtpdfee.Text);
             //Q.ShipperID = DBiSpan.Shippers.Where(n => n.ShipperName == cbship.Text)
@@ -194,20 +233,33 @@ namespace WindowsFormsApp2
             Q.SmallTypeID = DBiSpan.SmallTypes.Where(n => n.SmallTypeName == cbSmall.Text)
                     .Select(n => n.SmallTypeID).FirstOrDefault();
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            Byte[] bytes = ms.GetBuffer();
-            
-            var QQ = DBiSpan.ProductDetails.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
-            QQ.UnitPrice = Convert.ToDecimal(txtpdup.Text);
-                    QQ.Quantity = Convert.ToInt32(txtpdquty.Text);
-            QQ.Style = txtstyle.Text;
-            QQ.ProductID = DBiSpan.Products.Where(n => n.MemberID == 1)
-            .OrderByDescending(n => n.ProductID).Select(n => n.ProductID).FirstOrDefault();
-                    QQ.Pic = bytes;
+            productID = P_select;  //選到的ID放進變數，要給其他表關聯用
 
+
+            for (int i = 0; i < 商品細項list.Count; i++)
+            {
+                ProductDetail PD = new ProductDetail();
+
+                PD.UnitPrice = 商品細項list[i].UnitPrice;
+                PD.Quantity = 商品細項list[i].Quantity;
+                PD.Style = 商品細項list[i].Style;
+                PD.ProductID = productID;
+                PD.Pic = 商品細項list[i].pic;
+
+                DBiSpan.ProductDetails.Add(PD);
+            }
             DBiSpan.SaveChanges();
-            MessageBox.Show("修改成功");
+
+            for (int i = 0; i < 照片區.Count; i++)
+            {
+                ProductPic productPic = new ProductPic();
+                productPic.ProductID = productID;
+                productPic.picture = 照片區[i].picture;
+                DBiSpan.ProductPics.Add(productPic);
+            }
+            DBiSpan.SaveChanges();
+           MessageBox.Show("修改成功");
+            Close();
         }
 
         private void 商品增刪修_Load(object sender, EventArgs e)
@@ -226,16 +278,23 @@ namespace WindowsFormsApp2
 
         }
 
-        private void 刪除_Click(object sender, EventArgs e)
+        private void 刪除product_Click(object sender, EventArgs e)
         {
-            var PD = DBiSpan.ProductDetails.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
-            DBiSpan.ProductDetails.Remove(PD);
-            var P=DBiSpan.Products.Where(n => n.ProductID == pid).Select(n => n).FirstOrDefault();
-            DBiSpan.Products.Remove(P);
+            var P=DBiSpan.Products.Where(n => n.ProductID == P_select)
+                .Select(n => n).FirstOrDefault();
+            P.ProductStatusID = 2;
             this.DBiSpan.SaveChanges();
             MessageBox.Show("刪除成功");
+            Close();
         }
-
+        private void 刪除productdetail_Click(object sender, EventArgs e)
+        {
+            var P = DBiSpan.ProductDetails.Where(n => n.ProductID == PD_select).Select(n => n).FirstOrDefault();
+            DBiSpan.ProductDetails.Remove(P);
+            this.DBiSpan.SaveChanges();
+            MessageBox.Show("刪除成功");
+            Close();
+        }
         private void 商品增刪修_Leave(object sender, EventArgs e)
         {
             //產品介面.啟動表單();
@@ -301,9 +360,8 @@ namespace WindowsFormsApp2
 
         private void 新增樣式_Click(object sender, EventArgs e)
         {
-            新增進規格類別();
-
-            新增規格();
+              新增進規格類別();
+              新增規格();              
         }
 
         private void 新增規格()
@@ -333,9 +391,9 @@ namespace WindowsFormsApp2
         private void 新增進規格類別()
         {
             商品細項 細項 = new 商品細項();
-            細項.Quantity = Convert.ToInt32(textBox2.Text);
-            細項.UnitPrice = Convert.ToInt32(textBox1.Text);
-            細項.Style = textBox3.Text;
+            細項.Quantity = Convert.ToInt32(txtpdquty.Text);
+            細項.UnitPrice = Convert.ToInt32(txtpdup.Text);
+            細項.Style = txtstyle.Text;
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
@@ -398,6 +456,8 @@ namespace WindowsFormsApp2
             物流.ShipperName = cbship.Text;
             物流list.Add(物流);
         }
+
+        
     }
 }
 

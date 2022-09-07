@@ -23,17 +23,21 @@ namespace WindowsFormsApp2
         private void 新增_Click(object sender, EventArgs e)
         {            
             商品增刪修 WW = new 商品增刪修();
-            WW.Show();
+            WW.ShowDialog();
+            啟動表單();
         }
 
         private void 修改刪除_Click(object sender, EventArgs e)
         {
-            var select = dataGridView1.CurrentRow.Cells["ProductID"].Value;
+            var Pselect = dataGridView1.CurrentRow.Cells["ProductID"].Value;
+            var PDselect= dataGridView2.CurrentRow.Cells["ProductDetailID"].Value;
 
             商品增刪修 WW = new 商品增刪修();
-            WW.pid = Convert.ToInt32(select);
+            WW.P_select = Convert.ToInt32(Pselect);
+            WW.PD_select= Convert.ToInt32(PDselect);
             WW.isproductupdate = true;
             WW.ShowDialog();
+            啟動表單();
         }
 
         private void 產品管理_Load(object sender, EventArgs e)
@@ -56,7 +60,24 @@ namespace WindowsFormsApp2
                             //n.ShipperID
                         }).ToList();
             dataGridView1.DataSource = Q;
-            var W = DBiSpan.ProductDetails.Select(n => new
+            
+            var select = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+            var W = DBiSpan.ProductDetails.Where(n=>n.ProductID==select).Select(n => new
+            {
+                n.ProductDetailID,
+                n.ProductID,
+                n.Style,
+                n.Quantity,
+                n.UnitPrice,
+                n.Pic
+            }).ToList();
+            dataGridView2.DataSource = W;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var select = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+            var W = DBiSpan.ProductDetails.Where(n => n.ProductID == select).Select(n => new
             {
                 n.ProductDetailID,
                 n.ProductID,

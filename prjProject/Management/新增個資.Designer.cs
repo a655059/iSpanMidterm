@@ -63,6 +63,8 @@ namespace WindowsFormsApp2
             this.txtName = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbsta = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -224,7 +226,7 @@ namespace WindowsFormsApp2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(610, 288);
+            this.button1.Location = new System.Drawing.Point(678, 291);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 34);
             this.button1.TabIndex = 23;
@@ -234,7 +236,7 @@ namespace WindowsFormsApp2
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(610, 332);
+            this.button2.Location = new System.Drawing.Point(678, 335);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 34);
             this.button2.TabIndex = 24;
@@ -244,7 +246,7 @@ namespace WindowsFormsApp2
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(610, 384);
+            this.button3.Location = new System.Drawing.Point(678, 387);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 25;
@@ -336,7 +338,7 @@ namespace WindowsFormsApp2
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(610, 234);
+            this.button5.Location = new System.Drawing.Point(678, 237);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 34);
             this.button5.TabIndex = 35;
@@ -355,12 +357,31 @@ namespace WindowsFormsApp2
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.會員查詢_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(365, 445);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(80, 18);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "會員狀態";
+            // 
+            // cbsta
+            // 
+            this.cbsta.FormattingEnabled = true;
+            this.cbsta.Location = new System.Drawing.Point(461, 437);
+            this.cbsta.Name = "cbsta";
+            this.cbsta.Size = new System.Drawing.Size(121, 26);
+            this.cbsta.TabIndex = 38;
+            // 
             // 帳號管理
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 557);
             this.ControlBox = false;
+            this.Controls.Add(this.cbsta);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.listBox1);
@@ -443,5 +464,7 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbsta;
     }
 }
