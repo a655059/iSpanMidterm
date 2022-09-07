@@ -37,25 +37,31 @@ namespace Project_期中專案
             // 
             // txtAcc
             // 
-            this.txtAcc.Location = new System.Drawing.Point(330, 183);
+            this.txtAcc.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtAcc.Location = new System.Drawing.Point(495, 290);
+            this.txtAcc.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtAcc.Name = "txtAcc";
-            this.txtAcc.Size = new System.Drawing.Size(95, 22);
+            this.txtAcc.Size = new System.Drawing.Size(141, 33);
             this.txtAcc.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(292, 186);
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(438, 295);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 12);
+            this.label1.Size = new System.Drawing.Size(53, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "帳號:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(294, 259);
+            this.button1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button1.Location = new System.Drawing.Point(441, 410);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(113, 36);
             this.button1.TabIndex = 2;
             this.button1.Text = "確認";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,9 +69,11 @@ namespace Project_期中專案
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(398, 259);
+            this.button2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button2.Location = new System.Drawing.Point(597, 410);
+            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(113, 36);
             this.button2.TabIndex = 3;
             this.button2.Text = "離開";
             this.button2.UseVisualStyleBackColor = true;
@@ -73,13 +81,16 @@ namespace Project_期中專案
             // 
             // ForgetPas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(1200, 713);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAcc);
+            this.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ForgetPas";
             this.Text = "ForgetPas";
             this.ResumeLayout(false);

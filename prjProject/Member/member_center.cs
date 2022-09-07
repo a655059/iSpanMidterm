@@ -16,7 +16,7 @@ namespace Project_期中專案
     {
 
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
-
+        byte[] bytes;
         //public string txt{set{ label2.Text = value; } }
         public string memberName
         {
@@ -27,7 +27,17 @@ namespace Project_期中專案
         public member_center()
         {
             InitializeComponent();
-
+            //var pic = from i in dbContext.MemberAccounts
+            //          where i.MemberID == this.memeberID
+            //          select i;
+            //var piclist = pic.ToList();
+            //if (piclist[0].MemPic == null) return;
+            //else
+            //{
+            //    System.IO.MemoryStream ms = new System.IO.MemoryStream(piclist[0].MemPic);
+            //    this.pictureBox1.Image = Image.FromStream(ms);
+            //    bytes = piclist[0].MemPic;
+            //}
         }
         private void button1_Click(object sender, EventArgs e)
         {
