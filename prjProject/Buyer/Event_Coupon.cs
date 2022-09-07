@@ -27,7 +27,7 @@ namespace prjProject.Buyer
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             var check =dbContext.OfficialCoupons.Where(m=>m.MemberID == memberID && m.CouponID == 1).Select(m=>m);
-            if (!check.Any())
+            if (check.Any())
             { 
                 MessageBox.Show("你已領取過此券！");
                 return;
