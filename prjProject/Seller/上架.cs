@@ -16,6 +16,9 @@ namespace seller
     {
         //public string account;
         public int product_id;
+        public bool flag_mainpic = false;
+        public bool flag_formatpic = false;
+
         iSpanProjectEntities isp = new iSpanProjectEntities();
 
         public 上架()
@@ -124,83 +127,112 @@ namespace seller
             {
                 this.picb_product.Image = Image.FromFile(this.ofd_product.FileName);
             }
+            flag_mainpic = true;
         }
 
+        bool okay()
+        {
+            decimal decy,unitp;
+            int quanty;
+
+            bool a = decimal.TryParse(txt_adfee.Text, out decy);
+            bool b = int.TryParse(txt_quantity.Text, out quanty);
+            bool c = decimal.TryParse(txt_unitprice.Text, out unitp);
+            bool str = string.IsNullOrEmpty(cmb_shipper.Text) || string.IsNullOrEmpty(cmb_productstatus.Text)
+                || string.IsNullOrEmpty(cmb_bigtype.Text) || string.IsNullOrEmpty(cmb_smtype.Text)
+                || string.IsNullOrEmpty(cmb_country.Text) || string.IsNullOrEmpty(cmb_region.Text)
+                || string.IsNullOrEmpty(richTextBox_descript.Text) || string.IsNullOrEmpty(txt_style.Text);
+
+            if (a && b && c && !str) return true;
+            else return false;
+            
+        }
       
 
         private void refresh_Click(object sender, EventArgs e)      //確定上架
         {
 
-            Product pd = new Product();
 
-            pd.MemberID = this.memberID;
-            pd.ProductName = txt_pdname.Text;
-            pd.Description = richTextBox_descript.Text;
-            pd.AdFee = Convert.ToDecimal(txt_adfee.Text);
-
-            
-            var s = isp.SmallTypes.Where(a => a.SmallTypeName == cmb_smtype.Text).ToList();
-            pd.SmallTypeID = s[0].SmallTypeID;
-
-            var v = isp.RegionLists.Where(a => a.RegionName == cmb_region.Text).ToList();
-            pd.RegionID = v[0].RegionID;
-
-            var productstatus = isp.ProductStatus.Where(a => a.ProductStatusName == cmb_productstatus.Text).ToList();
-            pd.ProductStatusID = productstatus[0].ProductStatusID;
-
-
-            this.isp.Products.Add(pd);
-            this.isp.SaveChanges();
-            product_id = pd.ProductID;
-            //-----------------------------------------------------------------------------------
-            for(int i = 0;i < shiper.Count; i++)            //抓取多種貨運方式放入
+            if (okay())
             {
-                ShipperToProduct sptopd = new ShipperToProduct();
-                sptopd.ProductID = product_id;
-                string shpname = shiper[i].shipper;
-                var spid = (from a in isp.Shippers
-                            where a.ShipperName == shpname
-                            select a).ToList();
+                Product pd = new Product();
 
-                int shpid = spid[0].ShipperID;
-                sptopd.ShipperID = shpid;
-                this.isp.ShipperToProducts.Add(sptopd);
+                pd.MemberID = this.memberID;
+                pd.ProductName = txt_pdname.Text;
+                pd.Description = richTextBox_descript.Text;
+                pd.AdFee = Convert.ToDecimal(txt_adfee.Text);
+
+
+                var s = isp.SmallTypes.Where(a => a.SmallTypeName == cmb_smtype.Text).ToList();
+                pd.SmallTypeID = s[0].SmallTypeID;
+
+                var v = isp.RegionLists.Where(a => a.RegionName == cmb_region.Text).ToList();
+                pd.RegionID = v[0].RegionID;
+
+                var productstatus = isp.ProductStatus.Where(a => a.ProductStatusName == cmb_productstatus.Text).ToList();
+                pd.ProductStatusID = productstatus[0].ProductStatusID;
+
+
+                this.isp.Products.Add(pd);
+                this.isp.SaveChanges();
+                product_id = pd.ProductID;
+                //-----------------------------------------------------------------------------------
+                for (int i = 0; i < shiper.Count; i++)            //抓取多種貨運方式放入
+                {
+                    ShipperToProduct sptopd = new ShipperToProduct();
+                    sptopd.ProductID = product_id;
+                    string shpname = shiper[i].shipper;
+                    var spid = (from a in isp.Shippers
+                                where a.ShipperName == shpname
+                                select a).ToList();
+
+                    int shpid = spid[0].ShipperID;
+                    sptopd.ShipperID = shpid;
+                    this.isp.ShipperToProducts.Add(sptopd);
+                }
+
+                for (int i = 0; i < pd_detail.Count; i++)           //抓取規格放入
+                {
+                    ProductDetail prd = new ProductDetail();
+                    prd.ProductID = product_id;
+                    prd.Style = pd_detail[i].Style;
+                    prd.Quantity = pd_detail[i].Quantity;
+                    prd.UnitPrice = pd_detail[i].UnitPrice;
+                    prd.Pic = pd_detail[i].pic;
+                    this.isp.ProductDetails.Add(prd);
+                }
+
+                for (int i = 0; i < pd_pic.Count; i++)          //抓取圖片放入
+                {
+                    ProductPic pdpic = new ProductPic();
+                    pdpic.ProductID = product_id;
+                    pdpic.picture = pd_pic[i].picture;
+                    this.isp.ProductPics.Add(pdpic);
+                }
+
+                this.isp.SaveChanges();
+
+                shiper.Clear();
+                pd_detail.Clear();
+                pd_pic.Clear();
+                clear();
+                renew();
             }
 
-            for (int i = 0; i < pd_detail.Count; i++)           //抓取規格放入
+            else
             {
-                ProductDetail prd = new ProductDetail();
-                prd.ProductID = product_id;
-                prd.Style = pd_detail[i].Style;
-                prd.Quantity = pd_detail[i].Quantity;
-                prd.UnitPrice = pd_detail[i].UnitPrice;
-                prd.Pic = pd_detail[i].pic;
-                this.isp.ProductDetails.Add(prd);
+                DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
-
-            for (int i = 0; i < pd_pic.Count; i++)          //抓取圖片放入
-            {
-                ProductPic pdpic = new ProductPic();
-                pdpic.ProductID = product_id;
-                pdpic.picture = pd_pic[i].picture;
-                this.isp.ProductPics.Add(pdpic);
-            }
-
-            this.isp.SaveChanges();
-
-            shiper.Clear();
-            pd_detail.Clear();
-            pd_pic.Clear();
-            clear();
-            renew();
         }
 
 
         void clear() {
 
-            //dataGridView1.Rows.Clear();
-            //dataGridView2.Rows.Clear();
-            //dataGridView3.Rows.Clear();
+            picb_product.Image = null;
+            picb_format.Image = null;
+            dataGridView2.DataSource = null;
+            dataGridView3.DataSource = null;
 
             txt_pdname.Text = ""; 
             txt_adfee.Text = "";
@@ -215,9 +247,6 @@ namespace seller
             cmb_region.Text = "";
 
             richTextBox_descript.Text = "";
-
-            //picb_product.Image = null;
-            //picb_format.Image = null;
 
             this.flowLayoutPanel1.Controls.Clear();
             this.flowLayoutPanel2.Controls.Clear();
@@ -237,99 +266,121 @@ namespace seller
             this.isp.SaveChanges();
             
             clear();
-            picb_product.Image = null;
-            picb_format.Image = null;
-            dataGridView2.Rows.Clear();
-            dataGridView3.Rows.Clear();
+           
             renew();
 
         }
 
         private void alter_Click(object sender, EventArgs e)            //再產生對應新規格會卡住  要修改數量
         {
-           
-            int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
-
-
-            //先修改  shiptoproduct    productdetails     productpics
-            //-----------------------------------------------------------------------
-            var shipstatus = from a in isp.ShipperToProducts    //同一商品對應到多種運送方式
-                             where a.ProductID == pdid
-                             select a;
-
-            var shipid = (from a in isp.Shippers                //透過對應到的運送方式抓到
-                         where a.ShipperName == cmb_shipper.Text
-                         select a).ToList();
-
-            foreach (var shipst in shipstatus)      //倒底要給使用者更改shippertoproductid嗎?
-            {                                       //如果要個別改不同種的可能要再想一下
-                shipst.ShipperID = shipid[0].ShipperID;
-            }
-
-            var pddetail = from b in isp.ProductDetails
-                    where b.ProductID == pdid
-                    select b;
-
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] bytes = ms.GetBuffer();
-
-
-            foreach (var pdtt in pddetail)
+            if (okay())
             {
-                pdtt.Style = txt_style.Text;
-                pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
-                pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
-                pdtt.Pic = bytes;
+                int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+
+
+                //先修改  shiptoproduct    productdetails     productpics
+                //-----------------------------------------------------------------------
+                var shipstatus = from a in isp.ShipperToProducts    //同一商品對應到多種運送方式
+                                 where a.ProductID == pdid
+                                 select a;
+
+                var shipid = (from a in isp.Shippers                //透過對應到的運送方式抓到
+                              where a.ShipperName == cmb_shipper.Text
+                              select a).ToList();
+
+                //var shipid = isp.ShipperToProducts.Where(a => a.ProductID == pdid).Select(a => a.ShipperID).ToList();
+
+                foreach (var shipst in shipstatus)      //倒底要給使用者更改shippertoproductid嗎?
+                {                                       //如果要個別改不同種的可能要再想一下
+                    shipst.ShipperID = shipid[0].ShipperID;
+                }
+
+
+                var pddetail = isp.ProductDetails.Where(a => a.ProductID == pdid);
+                if (flag_formatpic)
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] bytes = ms.GetBuffer();
+
+                    foreach (var pdtt in pddetail)
+                    {
+                        pdtt.Pic = bytes;
+                    }
+                }
+
+                foreach (var pdtt in pddetail)
+                {
+                    pdtt.Style = txt_style.Text;
+                    pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
+                    pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+                }
+
+                var c = from d in isp.ProductPics       //抓取id
+                        where d.ProductID == pdid
+                        select d;
+
+                //----------------------------------------------------------------------------------------
+                if (flag_mainpic)
+                {
+                    System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+                    this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] bytes1 = ms1.GetBuffer();
+                    foreach (var ppic in c)
+                    {
+                        ppic.picture = bytes1;
+                    }
+                    flag_mainpic = false;
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+                        MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+                }
+
+                this.isp.SaveChanges();
+                //----------------------------------------------------------------------------------------
+                var j = (from s in isp.SmallTypes
+                         where s.SmallTypeName == cmb_smtype.Text
+                         select s).ToList();
+
+
+                var i = (from t in isp.RegionLists
+                         where t.RegionName == cmb_region.Text
+                         select t).ToList();
+
+                var g = from f in isp.Products
+                        where f.ProductID == pdid
+                        select f;
+
+
+                foreach (var prds in g)
+                {
+                    prds.ProductName = txt_pdname.Text;
+                    prds.Description = richTextBox_descript.Text;
+                    prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
+                    prds.SmallTypeID = j[0].SmallTypeID;
+                    prds.RegionID = i[0].RegionID;
+                    //prds.ShipperID = shipid[0].ShipperID;
+                }
+
+                this.isp.SaveChanges();
+
+                shiper.Clear();
+                pd_detail.Clear();
+                pd_pic.Clear();
+                //-----------------------------------------------------------------------
+
+                clear();
+
+                renew();
             }
 
-            var c = from d in isp.ProductPics       //抓取id
-                    where d.ProductID == pdid
-                    select d;
-
-            //----------------------------------------------------------------------------------------
-            System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
-            this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] bytes1 = ms1.GetBuffer();
-            foreach (var ppic in c)
+            else
             {
-                ppic.picture = bytes1;
+                DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
-            this.isp.SaveChanges();
-            //----------------------------------------------------------------------------------------
-            var j = (from s in isp.SmallTypes
-                     where s.SmallTypeName == cmb_smtype.Text
-                     select s).ToList();
-
-
-            var i = (from t in isp.RegionLists
-                     where t.RegionName == cmb_region.Text
-                     select t).ToList();
-
-            var g = from f in isp.Products
-                    where f.ProductID == pdid
-                    select f;
-
-
-            foreach (var prds in g)
-            {
-                prds.ProductName = txt_pdname.Text;
-                prds.Description = richTextBox_descript.Text;
-                prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
-                prds.SmallTypeID = j[0].SmallTypeID;
-                prds.RegionID = i[0].RegionID;
-                //prds.ShipperID = shipid[0].ShipperID;
-            }
-
-            this.isp.SaveChanges();
-
-            shiper.Clear();
-            pd_detail.Clear();
-            pd_pic.Clear();
-            //-----------------------------------------------------------------------
-
-            clear();
-            renew();
         }
 
 
@@ -397,21 +448,16 @@ namespace seller
             pd_dtail.Quantity = Convert.ToInt32(txt_quantity.Text);
             pd_dtail.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
 
-
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            //if (ms.Length > 0)
-            //{
+            if(flag_formatpic == true)
+            {
+                MemoryStream ms = new MemoryStream();
                 this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] bytes = ms.GetBuffer();
-
-                if (bytes != null)
-                {
-                    pd_dtail.pic = bytes;
-                }
-            //}
-
-
+                pd_dtail.pic = bytes;
+            }
+            
             pd_detail.Add(pd_dtail);
+            flag_formatpic = false;
         }
         void show_type()        //新增規格
         {
@@ -461,8 +507,17 @@ namespace seller
 
         private void btn_new_pic_Click(object sender, EventArgs e)
         {
-            pic();
-            btn_showpic();
+            if(flag_mainpic == true)
+            {
+                pic();
+                btn_showpic();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+                    MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+            }
+            flag_mainpic = false;
         }
         void pic()
         {
@@ -512,10 +567,7 @@ namespace seller
 
         #endregion
 
-        private void picb_product_MouseUp(object sender, MouseEventArgs e)      //想做圖片可以托拉進去
-        {
-         
-        }
+      
 
         private void btn_open_formatpic_Click(object sender, EventArgs e)
         {
@@ -523,6 +575,7 @@ namespace seller
             {
                 this.picb_format.Image = Image.FromFile(this.ofd_product.FileName);
             }
+            flag_formatpic = true;
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -537,7 +590,7 @@ namespace seller
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)      //產生對應的可修改選項
         {
-            clear();
+            //clear();
 
             //-----------------------------------------------------------------------
             int index = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
@@ -572,10 +625,14 @@ namespace seller
                         where a.ProductID == index
                         select a).ToList();
 
-            data = pics[0].picture;
-            MemoryStream stream = new MemoryStream(data);
-            picb_product.Image = Image.FromStream(stream);
-            stream.Close();
+            if(pics.Count() > 0)
+            {
+                data = pics[0].picture;
+                MemoryStream stream = new MemoryStream(data);
+                picb_product.Image = Image.FromStream(stream);
+                stream.Close();
+            }
+           
 
 
             //---------------------------------------------------------------
@@ -596,7 +653,7 @@ namespace seller
 
             else
             {
-                picb_format.Image = Image.FromFile("../Images/cross.png");
+                picb_format.Image = Image.FromFile("../../Images/cross.png");
             }
 
 

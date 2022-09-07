@@ -48,7 +48,7 @@ namespace seller
             // 
             this.rtb_賣家總覽.Location = new System.Drawing.Point(3, 188);
             this.rtb_賣家總覽.Name = "rtb_賣家總覽";
-            this.rtb_賣家總覽.Size = new System.Drawing.Size(233, 116);
+            this.rtb_賣家總覽.Size = new System.Drawing.Size(233, 57);
             this.rtb_賣家總覽.TabIndex = 1;
             this.rtb_賣家總覽.Text = "";
             // 
