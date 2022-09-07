@@ -200,7 +200,6 @@
           <Property Name="RegionID" Type="int" Nullable="false" />
           <Property Name="AdFee" Type="money" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="600" Nullable="false" />
-          <Property Name="ShipperID" Type="int" Nullable="false" />
           <Property Name="ProductStatusID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductDetail">
@@ -1052,7 +1051,6 @@
           <Property Name="RegionID" Type="Int32" Nullable="false" />
           <Property Name="AdFee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ShipperID" Type="Int32" Nullable="false" />
           <Property Name="ProductStatusID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_SalesCourt" FromRole="Product" ToRole="Comment" />
           <NavigationProperty Name="Likes" Relationship="Self.FK_Likes_Product" FromRole="Product" ToRole="Likes" />
@@ -1906,7 +1904,6 @@
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
                 <ScalarProperty Name="AdFee" ColumnName="AdFee" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
                 <ScalarProperty Name="ProductStatusID" ColumnName="ProductStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
