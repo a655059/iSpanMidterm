@@ -33,15 +33,11 @@ namespace prjProject
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblProductNumInCart = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
-            this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
             this.pbCart = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
             this.flpProductInCart = new System.Windows.Forms.FlowLayoutPanel();
             this.btnChooseCoupon = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,26 +66,22 @@ namespace prjProject
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.lblProductNumInCart);
             this.panel1.Controls.Add(this.lblWelcome);
-            this.panel1.Controls.Add(this.linkLabelLogin);
-            this.panel1.Controls.Add(this.linkLabelRegister);
             this.panel1.Controls.Add(this.pbCart);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.linkLabel2);
-            this.panel1.Controls.Add(this.lblToSellerForm);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1155, 103);
+            this.panel1.Size = new System.Drawing.Size(1264, 103);
             this.panel1.TabIndex = 0;
             // 
             // lblProductNumInCart
             // 
             this.lblProductNumInCart.AutoSize = true;
-            this.lblProductNumInCart.Location = new System.Drawing.Point(749, 40);
+            this.lblProductNumInCart.Location = new System.Drawing.Point(1059, 40);
             this.lblProductNumInCart.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductNumInCart.Name = "lblProductNumInCart";
             this.lblProductNumInCart.Size = new System.Drawing.Size(79, 12);
@@ -100,43 +92,17 @@ namespace prjProject
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWelcome.Location = new System.Drawing.Point(823, 8);
+            this.lblWelcome.Location = new System.Drawing.Point(1009, 8);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(54, 21);
             this.lblWelcome.TabIndex = 40;
             this.lblWelcome.Text = "歡迎";
             // 
-            // linkLabelLogin
-            // 
-            this.linkLabelLogin.AutoSize = true;
-            this.linkLabelLogin.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(773, 8);
-            this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(54, 21);
-            this.linkLabelLogin.TabIndex = 34;
-            this.linkLabelLogin.TabStop = true;
-            this.linkLabelLogin.Text = "登入";
-            // 
-            // linkLabelRegister
-            // 
-            this.linkLabelRegister.AutoSize = true;
-            this.linkLabelRegister.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Location = new System.Drawing.Point(696, 8);
-            this.linkLabelRegister.Name = "linkLabelRegister";
-            this.linkLabelRegister.Size = new System.Drawing.Size(54, 21);
-            this.linkLabelRegister.TabIndex = 33;
-            this.linkLabelRegister.TabStop = true;
-            this.linkLabelRegister.Text = "註冊";
-            // 
             // pbCart
             // 
             this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(700, 48);
+            this.pbCart.Location = new System.Drawing.Point(1010, 48);
             this.pbCart.Name = "pbCart";
             this.pbCart.Size = new System.Drawing.Size(50, 50);
             this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -147,7 +113,7 @@ namespace prjProject
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(619, 54);
+            this.button1.Location = new System.Drawing.Point(648, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(33, 33);
             this.button1.TabIndex = 38;
@@ -156,7 +122,7 @@ namespace prjProject
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(254, 56);
+            this.textBox1.Location = new System.Drawing.Point(283, 56);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(398, 33);
             this.textBox1.TabIndex = 37;
@@ -183,32 +149,6 @@ namespace prjProject
             this.label1.TabIndex = 35;
             this.label1.Text = "蝦到爆";
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel2.ForeColor = System.Drawing.Color.Black;
-            this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(189, 10);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(98, 21);
-            this.linkLabel2.TabIndex = 32;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "追蹤我們";
-            // 
-            // lblToSellerForm
-            // 
-            this.lblToSellerForm.AutoSize = true;
-            this.lblToSellerForm.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblToSellerForm.ForeColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.LinkColor = System.Drawing.Color.Black;
-            this.lblToSellerForm.Location = new System.Drawing.Point(65, 10);
-            this.lblToSellerForm.Name = "lblToSellerForm";
-            this.lblToSellerForm.Size = new System.Drawing.Size(98, 21);
-            this.lblToSellerForm.TabIndex = 31;
-            this.lblToSellerForm.TabStop = true;
-            this.lblToSellerForm.Text = "賣家中心";
-            // 
             // flpProductInCart
             // 
             this.flpProductInCart.AutoScroll = true;
@@ -234,7 +174,7 @@ namespace prjProject
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(342, 549);
+            this.label2.Location = new System.Drawing.Point(314, 549);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 19);
             this.label2.TabIndex = 3;
@@ -245,7 +185,7 @@ namespace prjProject
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Gray;
-            this.lblDiscount.Location = new System.Drawing.Point(342, 581);
+            this.lblDiscount.Location = new System.Drawing.Point(314, 581);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(59, 21);
             this.lblDiscount.TabIndex = 4;
@@ -255,7 +195,7 @@ namespace prjProject
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(342, 678);
+            this.label4.Location = new System.Drawing.Point(314, 641);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 21);
             this.label4.TabIndex = 5;
@@ -266,7 +206,7 @@ namespace prjProject
             this.lblTotalPrice.AutoSize = true;
             this.lblTotalPrice.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalPrice.Location = new System.Drawing.Point(437, 674);
+            this.lblTotalPrice.Location = new System.Drawing.Point(409, 637);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(76, 31);
             this.lblTotalPrice.TabIndex = 6;
@@ -277,7 +217,7 @@ namespace prjProject
             this.btnBuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnBuy.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnBuy.ForeColor = System.Drawing.Color.White;
-            this.btnBuy.Location = new System.Drawing.Point(342, 708);
+            this.btnBuy.Location = new System.Drawing.Point(314, 671);
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(194, 35);
             this.btnBuy.TabIndex = 7;
@@ -397,7 +337,7 @@ namespace prjProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 739);
+            this.ClientSize = new System.Drawing.Size(1264, 721);
             this.Controls.Add(this.btnCloseCouponCandidate);
             this.Controls.Add(this.flpCouponCandidate);
             this.Controls.Add(this.flpSelectedCoupon);
@@ -412,8 +352,8 @@ namespace prjProject
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "CartForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CartForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CartForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -431,15 +371,11 @@ namespace prjProject
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblProductNumInCart;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.LinkLabel linkLabelLogin;
-        private System.Windows.Forms.LinkLabel linkLabelRegister;
         private System.Windows.Forms.PictureBox pbCart;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel lblToSellerForm;
         private System.Windows.Forms.FlowLayoutPanel flpProductInCart;
         private System.Windows.Forms.Button btnChooseCoupon;
         private System.Windows.Forms.Label label2;

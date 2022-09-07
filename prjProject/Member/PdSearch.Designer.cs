@@ -41,12 +41,17 @@ namespace Project_期中專案
             this.label9 = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.txt_datime = new System.Windows.Forms.TextBox();
-            this.txt_retime = new System.Windows.Forms.TextBox();
+            this.txt_reAdd = new System.Windows.Forms.TextBox();
             this.txt_coupid = new System.Windows.Forms.TextBox();
             this.txt_finday = new System.Windows.Forms.TextBox();
             this.txt_statid = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btn_未結帳 = new System.Windows.Forms.Button();
+            this.btn_已出貨 = new System.Windows.Forms.Button();
+            this.btn_退換貨 = new System.Windows.Forms.Button();
+            this.btn_已到貨 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +61,7 @@ namespace Project_期中專案
             this.dataGridView1.Location = new System.Drawing.Point(360, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(461, 529);
+            this.dataGridView1.Size = new System.Drawing.Size(461, 463);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -118,7 +123,7 @@ namespace Project_期中專案
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "訂單地址";
+            this.label5.Text = "收件地址";
             // 
             // label7
             // 
@@ -164,17 +169,17 @@ namespace Project_期中專案
             this.txt_datime.Location = new System.Drawing.Point(163, 174);
             this.txt_datime.Multiline = true;
             this.txt_datime.Name = "txt_datime";
-            this.txt_datime.Size = new System.Drawing.Size(100, 22);
+            this.txt_datime.Size = new System.Drawing.Size(170, 22);
             this.txt_datime.TabIndex = 12;
             // 
-            // txt_retime
+            // txt_reAdd
             // 
-            this.txt_retime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_retime.Location = new System.Drawing.Point(163, 217);
-            this.txt_retime.Multiline = true;
-            this.txt_retime.Name = "txt_retime";
-            this.txt_retime.Size = new System.Drawing.Size(100, 22);
-            this.txt_retime.TabIndex = 13;
+            this.txt_reAdd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_reAdd.Location = new System.Drawing.Point(163, 217);
+            this.txt_reAdd.Multiline = true;
+            this.txt_reAdd.Name = "txt_reAdd";
+            this.txt_reAdd.Size = new System.Drawing.Size(170, 22);
+            this.txt_reAdd.TabIndex = 13;
             // 
             // txt_coupid
             // 
@@ -190,7 +195,7 @@ namespace Project_期中專案
             this.txt_finday.Location = new System.Drawing.Point(163, 254);
             this.txt_finday.Multiline = true;
             this.txt_finday.Name = "txt_finday";
-            this.txt_finday.Size = new System.Drawing.Size(100, 22);
+            this.txt_finday.Size = new System.Drawing.Size(170, 22);
             this.txt_finday.TabIndex = 15;
             // 
             // txt_statid
@@ -203,7 +208,7 @@ namespace Project_期中專案
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(188, 518);
+            this.button1.Location = new System.Drawing.Point(115, 518);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
@@ -214,7 +219,7 @@ namespace Project_期中專案
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.button2.Location = new System.Drawing.Point(16, 518);
+            this.button2.Location = new System.Drawing.Point(217, 518);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 19;
@@ -222,17 +227,73 @@ namespace Project_期中專案
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btn_未結帳
+            // 
+            this.btn_未結帳.Location = new System.Drawing.Point(360, 518);
+            this.btn_未結帳.Name = "btn_未結帳";
+            this.btn_未結帳.Size = new System.Drawing.Size(75, 23);
+            this.btn_未結帳.TabIndex = 20;
+            this.btn_未結帳.Text = "已完成訂單";
+            this.btn_未結帳.UseVisualStyleBackColor = true;
+            this.btn_未結帳.Click += new System.EventHandler(this.btn_未結帳_Click);
+            // 
+            // btn_已出貨
+            // 
+            this.btn_已出貨.Location = new System.Drawing.Point(486, 518);
+            this.btn_已出貨.Name = "btn_已出貨";
+            this.btn_已出貨.Size = new System.Drawing.Size(75, 23);
+            this.btn_已出貨.TabIndex = 21;
+            this.btn_已出貨.Text = "已出貨訂單";
+            this.btn_已出貨.UseVisualStyleBackColor = true;
+            this.btn_已出貨.Click += new System.EventHandler(this.btn_已出貨_Click);
+            // 
+            // btn_退換貨
+            // 
+            this.btn_退換貨.Location = new System.Drawing.Point(744, 518);
+            this.btn_退換貨.Name = "btn_退換貨";
+            this.btn_退換貨.Size = new System.Drawing.Size(75, 23);
+            this.btn_退換貨.TabIndex = 23;
+            this.btn_退換貨.Text = "退換貨訂單";
+            this.btn_退換貨.UseVisualStyleBackColor = true;
+            this.btn_退換貨.Click += new System.EventHandler(this.btn_退換貨_Click);
+            // 
+            // btn_已到貨
+            // 
+            this.btn_已到貨.Location = new System.Drawing.Point(618, 518);
+            this.btn_已到貨.Name = "btn_已到貨";
+            this.btn_已到貨.Size = new System.Drawing.Size(75, 23);
+            this.btn_已到貨.TabIndex = 22;
+            this.btn_已到貨.Text = "已到貨訂單";
+            this.btn_已到貨.UseVisualStyleBackColor = true;
+            this.btn_已到貨.Click += new System.EventHandler(this.btn_已到貨_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(16, 518);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "全部訂單";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // PdSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(878, 579);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_退換貨);
+            this.Controls.Add(this.btn_已到貨);
+            this.Controls.Add(this.btn_已出貨);
+            this.Controls.Add(this.btn_未結帳);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_statid);
             this.Controls.Add(this.txt_coupid);
             this.Controls.Add(this.txt_finday);
-            this.Controls.Add(this.txt_retime);
+            this.Controls.Add(this.txt_reAdd);
             this.Controls.Add(this.txt_datime);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.label9);
@@ -268,11 +329,16 @@ namespace Project_期中專案
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.TextBox txt_datime;
-        private System.Windows.Forms.TextBox txt_retime;
+        private System.Windows.Forms.TextBox txt_reAdd;
         private System.Windows.Forms.TextBox txt_coupid;
         private System.Windows.Forms.TextBox txt_finday;
         private System.Windows.Forms.TextBox txt_statid;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_未結帳;
+        private System.Windows.Forms.Button btn_已出貨;
+        private System.Windows.Forms.Button btn_退換貨;
+        private System.Windows.Forms.Button btn_已到貨;
+        private System.Windows.Forms.Button button3;
     }
 }

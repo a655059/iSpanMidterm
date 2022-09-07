@@ -115,10 +115,7 @@ namespace prjProject.Models
             string memberCountry = q.RegionList.CountryList.CountryName;
             int memberCountryID = Convert.ToInt32(q.RegionList.CountryID);
             var memberRegions = dbContext.RegionLists.Where(i => i.CountryID == memberCountryID).Select(i => i.RegionName).ToArray();
-            var countryNames = dbContext.CountryLists.Select(i => i.CountryName).ToArray();
-            
-            int commentCount = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count;
-            
+            var countryNames = dbContext.CountryLists.Select(i => i.CountryName).ToArray();int commentCount = dbContext.Comments.Where(i => i.ProductID == productID).Select(i => i).ToList().Count;
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType() == typeof(MainForm))
@@ -139,6 +136,7 @@ namespace prjProject.Models
                     f.regions = memberRegions;
                     f.memberRegionName = memberRegion;
                     CFunctions.SetHeart(f);
+                    CFunctions.SetHandLike(f);
                     f.memberRegion = q.RegionList.RegionName;
                     if (commentCount > 0)
                     {
@@ -146,6 +144,7 @@ namespace prjProject.Models
                     }
                     f.starCountAndStarScore = 10.ToString();
                     f.memberCenter = "會員中心";
+                    
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
@@ -174,7 +173,21 @@ namespace prjProject.Models
                 }
             }
         }
-
+        public static void SetHandLike(SelectedProductForm form)
+        {
+            iSpanProjectEntities dbContext = new iSpanProjectEntities();
+            var q = dbContext.Follows.Where(i => i.MemberID == form.memberID && i.FollowedMemID == form.sellerMemberID).Select(i => i).ToList();
+            if (q.Count == 1)
+            {
+                form.HandLike = Image.FromFile("../../Images/twinkleHandLike.png");
+                form.IsHandLike = true;
+            }
+            else
+            {
+                form.HandLike = Image.FromFile("../../Images/handLike.png");
+                form.IsHandLike = false;
+            }
+        }
         public static void SetHeart(SelectedProductForm form)
         {
             iSpanProjectEntities dbContext = new iSpanProjectEntities();

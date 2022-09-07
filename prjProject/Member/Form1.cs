@@ -31,9 +31,16 @@ namespace Project_期中專案
                     //orderby i.RegionID ascending
                     select i;
             var q1 = q.ToList();
-            try
+
+
+            if (txtAccount.Text == ""||txtPassworld.Text==""||txt_phon.Text==""||txt_mail.Text==""||txtadd.Text==""||txt_name.Text=="")
             {
-                list.MemberAcc = txtAccount.Text;
+                MessageBox.Show("請輸入必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
+                                "地址 姓名\n" + "生日");
+            }
+            else
+            {
+            list.MemberAcc = txtAccount.Text;
             list.MemberPw = txtPassworld.Text;
             list.TWorNOT = ckbox_yes.Checked;
             list.RegionID =Convert.ToInt32(q1[0].RegionID);//countryID==>cmb_are.text
@@ -51,17 +58,18 @@ namespace Project_期中專案
             this.dbindex.MemberAccounts.Add(list);
             this.dbindex.SaveChanges();
             MessageBox.Show("新增成功!");
+            }
 
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("請輸入必填欄位");
-            }
-            finally
-            {
-                MessageBox.Show("必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
-                                "地址 姓名\n" + "生日");
-            }
+
+            
+
+
+           
+            //finally
+            //{
+            //    MessageBox.Show("必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
+            //                    "地址 姓名\n" + "生日");
+            //}
 
         }
 
