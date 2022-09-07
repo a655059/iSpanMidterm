@@ -138,7 +138,7 @@ namespace Project_期中專案
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
             this.label8.TabIndex = 9;
-            this.label8.Text = "優惠眷代碼";
+            this.label8.Text = "優惠券名稱";
             // 
             // label9
             // 

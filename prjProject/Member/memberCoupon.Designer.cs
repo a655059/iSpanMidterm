@@ -48,7 +48,7 @@ namespace prjProject.Member
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "優惠眷名稱";
+            this.label1.Text = "優惠券名稱";
             // 
             // label2
             // 
@@ -58,7 +58,7 @@ namespace prjProject.Member
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 24);
             this.label2.TabIndex = 1;
-            this.label2.Text = "優惠眷開始日期";
+            this.label2.Text = "優惠券開始日期";
             // 
             // label3
             // 
@@ -68,7 +68,7 @@ namespace prjProject.Member
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 24);
             this.label3.TabIndex = 2;
-            this.label3.Text = "優惠眷結束日期";
+            this.label3.Text = "優惠券結束日期";
             // 
             // label4
             // 
@@ -76,9 +76,9 @@ namespace prjProject.Member
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.Location = new System.Drawing.Point(51, 313);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 24);
+            this.label4.Size = new System.Drawing.Size(136, 24);
             this.label4.TabIndex = 3;
-            this.label4.Text = "優惠內容";
+            this.label4.Text = "優惠內容(折數)";
             // 
             // label5
             // 
@@ -88,7 +88,7 @@ namespace prjProject.Member
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(195, 44);
             this.label5.TabIndex = 4;
-            this.label5.Text = "我的優惠眷";
+            this.label5.Text = "我的優惠券";
             // 
             // txt_couName
             // 

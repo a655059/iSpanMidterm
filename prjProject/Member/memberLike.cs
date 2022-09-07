@@ -42,12 +42,18 @@ namespace prjProject.Member
             var memberID = (from i in dbindex.Likes
                              where i.MemberID == this.memberID
                              select i).ToList();
+
+            try 
+            {
             int id = memberID[0].ProductID;
             //var productPic = from i in dbindex.Products
             //                 where i.ProductID == memberID[0].ProductID
             //                 select i;
             var productpic = dbindex.Products.Where(x => x.ProductID ==id).OrderBy(x => x.ProductID).Select(x => x);
-            if (!productpic.Any()) return;
+            if (!productpic.Any()) 
+            {
+                return;
+            };
             List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(productpic);
             foreach (CtrlDisplayItem j in list)
             {
@@ -58,6 +64,13 @@ namespace prjProject.Member
                     control.Click += CtrlDisplayItem_Click;
                 }
             }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("抱歉您還沒有任何按讚商品");
+                Close();
+            }
+           
 
 
         }
