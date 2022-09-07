@@ -73,7 +73,10 @@ namespace prjProject
         bool _isInType = false;
         //AD CHECK
         int _ADid;
-        int _ADpid1,_ADpid2;
+        FlowBarProductType _tempBigtype;
+        FlowBarProductType _tempSmalltype;
+        private bool _smallkey=false;
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             gueseYouLike();
@@ -129,12 +132,13 @@ namespace prjProject
         {
             spContainerItem.Visible = false;
             flowpanelType.Controls.Clear();
+            _isInType = true;
 
             FlowBarProductType _selected = (FlowBarProductType)sender;
             int bigtypenum = _selected.TypeNum;
             _selectedName = _selected.TypeName;
             tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
-            _isInType = true;
+            
 
             //新增回上一層按鈕
             List<FlowBarProductType> listpt = new List<FlowBarProductType>();
@@ -154,24 +158,13 @@ namespace prjProject
                 flowpanelType.Controls.Add(item);
             }
             //商品區處理
-            flowpanelTypeItem.Controls.Clear();
-            var q2 = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Take(50).Select(x => x);
-            if (!q2.Any()) return;
-            List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q2);
-            foreach (CtrlDisplayItem j in list)
-            {
-                flowpanelTypeItem.Controls.Add(j);
-                j.Click += CtrlDisplayItem_Click;
-                foreach (Control control in j.Controls)
-                {
-                    control.Click += CtrlDisplayItem_Click;
-                }
-            }
-            Application.DoEvents();
+            _tempBigtype = _selected;
+            selectedItem(_selected);
         }
-        //點左側副類別按鈕
+        //點左側小類別按鈕
         private void SmallType_Click(object sender, EventArgs e)
         {
+            _smallkey = true;
             FlowBarProductType _selected = (FlowBarProductType)sender;
             foreach (Control i in flowpanelType.Controls)
             {
@@ -179,15 +172,39 @@ namespace prjProject
                 {
                     ((FlowBarProductType)i).BackColor = Color.Black;
                     ((FlowBarProductType)i)._isclicked = false;
+
                 }
             }
             _selected._isclicked = true;
             Application.DoEvents();
             //商品區處理
+            _tempSmalltype = _selected;
+            selectedItem(_selected);
+        }
+        //商品區處理
+        private void selectedItem(object sender)
+        {
+            FlowBarProductType _selected = (FlowBarProductType)sender;
             flowpanelTypeItem.Controls.Clear();
-            var q = dbContext.Products.Where(x => x.SmallTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Select(x => x);
-            if (!q.Any()) return;
-            List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
+            List<CtrlDisplayItem> list = new List<CtrlDisplayItem>();
+            if (!_smallkey)
+            {
+                var q = dbContext.Products.Where(x => x.SmallType.BigTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Take(50).Select(x => x);
+                if (!q.Any()) return;
+                foreach(var item in CFunctions.GetProductsForShow(q))
+                {
+                    list.Add(item);
+                }
+            }
+            else
+            {
+                var q = dbContext.Products.Where(x => x.SmallTypeID == _selected.TypeNum && x.ProductStatusID == 0).OrderBy(x => x.SmallTypeID).Select(x => x);
+                if (!q.Any()) return;
+                foreach (var item in CFunctions.GetProductsForShow(q))
+                {
+                    list.Add(item);
+                }
+            }
             foreach (CtrlDisplayItem j in list)
             {
                 flowpanelTypeItem.Controls.Add(j);
@@ -197,14 +214,33 @@ namespace prjProject
                     control.Click += CtrlDisplayItem_Click;
                 }
             }
+            Application.DoEvents();
         }
+        //Smalltype 功能 回上一頁
         private void LastPage_Click(object sender, EventArgs e)
         {
-            LoadBigTypeList();
-            spContainerItem.Visible = true;
-            gueseYouLike();
-            searchbarReset();
+            if (!_smallkey)
+            {
+                LoadBigTypeList();
+                spContainerItem.Visible = true;
+                gueseYouLike();
+                searchbarReset();
+            }
+            else
+            {
+                _smallfloorreset();
+
+            }
         }
+        //Smalltype分頁 功能 清除
+        private void _smallfloorreset()
+        {
+            _smallkey = false;
+            _tempSmalltype.BackColor = Color.Black;
+            _tempSmalltype._isclicked = false;
+            selectedItem(_tempBigtype);
+        }
+        //Bigtype主頁 猜你喜歡
         private void gueseYouLike()
         {
             spContainerItem.Visible = true;
@@ -214,8 +250,6 @@ namespace prjProject
             var productquery = from q in dbContext.Products
                                where q.ProductStatusID == 0
                                select q.ProductID;
-
-
             int Counter = 5;
             if (productquery.Count() <= 0) return;
             else if (productquery.Count() < Counter) Counter = productquery.Count();
@@ -391,7 +425,7 @@ namespace prjProject
                 }
             }
         }
-        //搜尋鍵
+        //搜尋鍵 focus&leave
         private void tbSearch_Enter(object sender, EventArgs e)
         {
             if (textboxHasText == false)
@@ -415,6 +449,7 @@ namespace prjProject
         {
             if (_isInType)
             {
+                //if (_smallkey) _smallfloorreset();
                 var q = from p in dbContext.Products
                         where p.ProductName.ToUpper().Contains(s.ToUpper()) && p.SmallType.BigType.BigTypeName == _selectedName && p.ProductStatusID == 0
                         select p;
@@ -433,11 +468,19 @@ namespace prjProject
         //重置搜尋
         private void searchbarReset()
         {
-            tbSearch.Text = "從全部商品中搜尋...";
-            _selectedName = "從全部商品中搜尋...";
-            tbSearch.ForeColor = Color.LightGray;
-            textboxHasText = false;
-            _isInType = false;
+            if (_smallkey)
+            {
+                tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
+                tbSearch.ForeColor = Color.LightGray;
+                textboxHasText = false;
+            }
+            else {
+                _selectedName = "從全部商品中搜尋...";
+                tbSearch.Text = _selectedName;
+                tbSearch.ForeColor = Color.LightGray;
+                textboxHasText = false;
+                _isInType = false;
+            }
         }
         //連結至賣家中心
         private void lblToSellerForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -459,7 +502,6 @@ namespace prjProject
             }
         }
         //AD輪播timer
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (spContainerItem.Visible == true)

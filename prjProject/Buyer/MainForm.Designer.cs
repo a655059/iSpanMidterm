@@ -461,7 +461,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(360, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 258);
+            this.panel2.Size = new System.Drawing.Size(830, 261);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -469,7 +469,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 258);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 261);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -530,8 +530,10 @@ namespace prjProject
             this.tbAD2.Location = new System.Drawing.Point(0, 0);
             this.tbAD2.Multiline = true;
             this.tbAD2.Name = "tbAD2";
+            this.tbAD2.ReadOnly = true;
             this.tbAD2.Size = new System.Drawing.Size(500, 57);
             this.tbAD2.TabIndex = 0;
+            this.tbAD2.TabStop = false;
             this.tbAD2.Text = "dddd";
             this.tbAD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -600,8 +602,10 @@ namespace prjProject
             this.tbAD1.Location = new System.Drawing.Point(0, 0);
             this.tbAD1.Multiline = true;
             this.tbAD1.Name = "tbAD1";
+            this.tbAD1.ReadOnly = true;
             this.tbAD1.Size = new System.Drawing.Size(500, 57);
             this.tbAD1.TabIndex = 0;
+            this.tbAD1.TabStop = false;
             this.tbAD1.Text = "dddd";
             this.tbAD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
