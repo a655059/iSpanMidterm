@@ -34,7 +34,7 @@ namespace seller
                         b.AdFee,
                         b.Description,
                         b.SmallTypeID,
-                        b.ShipperID,
+                       // b.ShipperID,
                         b.RegionID
                     };
             

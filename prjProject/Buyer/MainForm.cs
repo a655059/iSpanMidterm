@@ -449,6 +449,7 @@ namespace prjProject
                 memCheck(memberID);
                 if (memberID == 0) return;
                 賣家中心 form2 = new 賣家中心();
+                form2.memberID = memberID;
                 form2.ShowDialog();
             }
             else
