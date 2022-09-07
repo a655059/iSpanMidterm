@@ -31,7 +31,6 @@ namespace prjProject.Entity
         public int RegionID { get; set; }
         public decimal AdFee { get; set; }
         public string Description { get; set; }
-        public int ShipperID { get; set; }
         public int ProductStatusID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
