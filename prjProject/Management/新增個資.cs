@@ -135,8 +135,8 @@ namespace WindowsFormsApp2
 
         private void 刪除_Click(object sender, EventArgs e)
         {
-            MemberAccount Q = 點到的人名();
-            this.DBiSpan.MemberAccounts.Remove(Q);
+            MemberAccount Q = 點到的人名();            
+            Q.MemStatusID = 4;
             this.DBiSpan.SaveChanges();
             清空格子();
             MessageBox.Show("刪除成功");

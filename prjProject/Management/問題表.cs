@@ -43,6 +43,7 @@ namespace WindowsFormsApp2
             DBiSpan.FAQs.Add(faq);
             DBiSpan.SaveChanges();
             MessageBox.Show("新增成功");
+            Close();
         }
 
         private void 修改刪除_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace WindowsFormsApp2
             Q.FAQTypeID = FAQTypeID;
             DBiSpan.SaveChanges();
             MessageBox.Show("修改成功");
+            Close();
         }
 
         private void load()
@@ -78,6 +80,7 @@ namespace WindowsFormsApp2
             DBiSpan.FAQs.Remove(Q);
             DBiSpan.SaveChanges();
             MessageBox.Show("刪除成功");
+            Close();
         }
     }
 }

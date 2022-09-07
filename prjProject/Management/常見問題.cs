@@ -25,6 +25,7 @@ namespace WindowsFormsApp2
             問題表.select = Convert.ToInt32(Q);
             問題表.ShowDialog();
             啟動帶入();
+            
         }
         iSpanProjectEntities DBiSpan = new iSpanProjectEntities();
         private void 常見問題_Load(object sender, EventArgs e)
