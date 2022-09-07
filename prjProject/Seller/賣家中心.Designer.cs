@@ -202,20 +202,20 @@ namespace seller
             this.linkLabel2.Size = new System.Drawing.Size(124, 27);
             this.linkLabel2.TabIndex = 6;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "管理商品";
+            this.linkLabel2.Text = "管理訂單";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // lklb_upload
             // 
             this.lklb_upload.AutoSize = true;
             this.lklb_upload.Font = new System.Drawing.Font("標楷體", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lklb_upload.Location = new System.Drawing.Point(238, 221);
+            this.lklb_upload.Location = new System.Drawing.Point(238, 336);
             this.lklb_upload.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lklb_upload.Name = "lklb_upload";
-            this.lklb_upload.Size = new System.Drawing.Size(124, 27);
+            this.lklb_upload.Size = new System.Drawing.Size(152, 27);
             this.lklb_upload.TabIndex = 5;
             this.lklb_upload.TabStop = true;
-            this.lklb_upload.Text = "上架商品";
+            this.lklb_upload.Text = "商品新刪修";
             this.lklb_upload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklb_upload_LinkClicked);
             // 
             // label4
