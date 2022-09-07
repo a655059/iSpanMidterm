@@ -461,7 +461,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(360, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 261);
+            this.panel2.Size = new System.Drawing.Size(830, 264);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -469,7 +469,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 261);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 264);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1

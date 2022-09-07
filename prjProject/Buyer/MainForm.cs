@@ -21,25 +21,10 @@ namespace prjProject
 {
     public partial class MainForm : Form
     {
-        //調整圓角 沒啥用
-        //        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        //        private static extern IntPtr CreateRoundRectRgn
-        //(
-        //    int nLeftRect, // x-coordinate of upper-left corner
-        //    int nTopRect, // y-coordinate of upper-left corner
-        //    int nRightRect, // x-coordinate of lower-right corner
-        //    int nBottomRect, // y-coordinate of lower-right corner
-        //    int nWidthEllipse, // height of ellipse
-        //    int nHeightEllipse // width of ellipse
-        // );
-
         public MainForm()
         {
             InitializeComponent();
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            timer1.Interval = 5000;
-            timer1.Enabled = true;
-            timer1.Start();
+
         }
         public string memberName
         {
@@ -76,34 +61,22 @@ namespace prjProject
         FlowBarProductType _tempBigtype;
         FlowBarProductType _tempSmalltype;
         private bool _smallkey=false;
+        private bool _isinSearch=false;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //猜你喜歡
             gueseYouLike();
-            //LoadAllItem();
+            //載入大類別
             LoadBigTypeList();
+            //載入搜尋列
             searchbarReset();
+            //ad載入
             ads(pbAD1, tbAD1, adtrigger1);
             ads(pbAD2, tbAD2, adtrigger2);
+            //timer載入
+            time_set();
         }
-        //private void LoadAllItem()
-        //{
-
-        //    spContainerItem.Visible = true;
-        //    flowpanelItem.Controls.Clear();
-        //    var q = dbContext.Products.Take(50).Select(i => i);
-        //    List<CtrlDisplayItem> list = CFunctions.GetProductsForShow(q);
-        //    foreach (CtrlDisplayItem i in list)
-        //    {
-        //        flowpanelItem.Controls.Add(i);
-        //        i.Click += CtrlDisplayItem_Click;
-        //        foreach (Control control in i.Controls)
-        //        {
-        //            control.Click += CtrlDisplayItem_Click;
-        //        }
-        //    }
-        //    Application.DoEvents();
-        //}
         private void LoadBigTypeList()
         {
             flowpanelType.Controls.Clear();
@@ -133,20 +106,25 @@ namespace prjProject
             spContainerItem.Visible = false;
             flowpanelType.Controls.Clear();
             _isInType = true;
-
             FlowBarProductType _selected = (FlowBarProductType)sender;
-            int bigtypenum = _selected.TypeNum;
+            _tempBigtype = _selected;
             _selectedName = _selected.TypeName;
             tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
             
 
-            //新增回上一層按鈕
-            List<FlowBarProductType> listpt = new List<FlowBarProductType>();
+                    //新增回上一層按鈕
             FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
             lp.ButtonClicked += LastPage_Click;
             flowpanelType.Controls.Add(lp);
-            //新增左側小類別按鈕
-            var q = dbContext.SmallTypes.Where(st => st.BigTypeID == bigtypenum).OrderBy(st => st.SmallTypeID).Select(st => st);
+
+            SmalltypeShow(_selected);
+            selectedItem(_selected);
+        }
+        //左側小類別按鈕 Show
+        private void SmalltypeShow(FlowBarProductType f)
+        {
+            var q = dbContext.SmallTypes.Where(st => st.BigTypeID == f.TypeNum).OrderBy(st => st.SmallTypeID).Select(st => st);
+            List<FlowBarProductType> listpt = new List<FlowBarProductType>();
             foreach (var item in q)
             {
                 FlowBarProductType lpp = new FlowBarProductType { TypeName = item.SmallTypeName, TypeNum = item.SmallTypeID };
@@ -157,31 +135,32 @@ namespace prjProject
             {
                 flowpanelType.Controls.Add(item);
             }
-            //商品區處理
-            _tempBigtype = _selected;
-            selectedItem(_selected);
         }
-        //點左側小類別按鈕
+        //左側小類別按鈕 Click
         private void SmallType_Click(object sender, EventArgs e)
         {
             _smallkey = true;
             FlowBarProductType _selected = (FlowBarProductType)sender;
+            _tempSmalltype = _selected;
+            smalltypeColor(_selected);
+            Application.DoEvents();
+            selectedItem(_selected);
+        }
+        //小類別 功能 顏色調整
+        private void smalltypeColor(FlowBarProductType f)
+        {
             foreach (Control i in flowpanelType.Controls)
             {
-                if (i is FlowBarProductType && i != _selected)
+                if (i is FlowBarProductType && i != f)
                 {
                     ((FlowBarProductType)i).BackColor = Color.Black;
                     ((FlowBarProductType)i)._isclicked = false;
-
                 }
             }
-            _selected._isclicked = true;
-            Application.DoEvents();
-            //商品區處理
-            _tempSmalltype = _selected;
-            selectedItem(_selected);
+            f._isclicked = true;
+            f.BackColor = Color.Yellow;
         }
-        //商品區處理
+        //小類別 功能 商品區呈現
         private void selectedItem(object sender)
         {
             FlowBarProductType _selected = (FlowBarProductType)sender;
@@ -205,6 +184,7 @@ namespace prjProject
                     list.Add(item);
                 }
             }
+                            //新增點擊事件
             foreach (CtrlDisplayItem j in list)
             {
                 flowpanelTypeItem.Controls.Add(j);
@@ -226,19 +206,25 @@ namespace prjProject
                 gueseYouLike();
                 searchbarReset();
             }
-            else
+            else if (_smallkey&&!_isinSearch)
             {
-                _smallfloorreset();
-
+                _smallkey = false;
+                _tempSmalltype.BackColor = Color.Black;
+                _tempSmalltype._isclicked = false;
+                selectedItem(_tempBigtype);
+            }
+            else if(_smallkey && _isinSearch)
+            {
+                _smallkey = false;
+                SmalltypeShow(_tempBigtype);
+                selectedItem(_tempBigtype);
+                searchbarReset();
             }
         }
         //Smalltype分頁 功能 清除
         private void _smallfloorreset()
         {
-            _smallkey = false;
-            _tempSmalltype.BackColor = Color.Black;
-            _tempSmalltype._isclicked = false;
-            selectedItem(_tempBigtype);
+            
         }
         //Bigtype主頁 猜你喜歡
         private void gueseYouLike()
@@ -258,7 +244,6 @@ namespace prjProject
             {
                 int index = find5.Next(productquery.Count());
                 randomArray[i] = productquery.ToList()[index];
-
                 for (int j = 0; j < i; j++)
                 {
                     while (randomArray[j] == randomArray[i])
@@ -297,10 +282,9 @@ namespace prjProject
             form.ProductNumInCart = ProductNumInCart;
             form.ShowDialog();
         }
-        //右上三個視窗按鈕
+        //視窗按鈕
         private void btnClose_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
         }
         private void btnWindowMaximized_Click_1(object sender, EventArgs e)
@@ -311,7 +295,6 @@ namespace prjProject
             }
             else this.WindowState = FormWindowState.Maximized;
         }
-
         private void btnWindowMinimized_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -323,7 +306,7 @@ namespace prjProject
             form.ShowDialog();
             memCheck(memberID);
         }
-
+        //點選購物車
         private void pbCart_Click(object sender, EventArgs e)
         {
             if (memberID == 0)
@@ -346,6 +329,7 @@ namespace prjProject
             主畫面 form = new 主畫面();
             form.ShowDialog();
         }
+        //主頁面 會員登入
         private void linkLabelMemberCenter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (memberID == 0)
@@ -355,6 +339,8 @@ namespace prjProject
                 memCheck(memberID);
                 if (memberID == 0) return;
                 member_center form2 = new member_center();
+                form2.memberName = memberName;
+                form2.memeberID = memberID;
                 form2.ShowDialog();
             }
             else
@@ -368,61 +354,30 @@ namespace prjProject
         //搜索功能
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (_isInType)
+            if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0)
             {
-                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0)
-                {
-                    flowpanelType.Controls.Clear();
-                    FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
-                    lp.ButtonClicked += LastPage_Click;
-                    flowpanelType.Controls.Add(lp);
+                flowpanelType.Controls.Clear();
+                FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
+                lp.ButtonClicked += LastPage_Click;
+                flowpanelType.Controls.Add(lp);
 
-                    spContainerItem.Visible = false;
-                    flowpanelTypeItem.Controls.Clear();
-                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
-                    foreach (CtrlDisplayItem j in list)
-                    {
-                        flowpanelTypeItem.Controls.Add(j);
-                        j.Click += CtrlDisplayItem_Click;
-                        foreach (Control control in j.Controls)
-                        {
-                            control.Click += CtrlDisplayItem_Click;
-                        }
-                    }
-                }
-                else
+                spContainerItem.Visible = false;
+                flowpanelTypeItem.Controls.Clear();
+                List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
+                foreach (CtrlDisplayItem j in list)
                 {
-                    MessageBox.Show("查無此產品，請確認關鍵字");
-                    return;
+                    flowpanelTypeItem.Controls.Add(j);
+                    j.Click += CtrlDisplayItem_Click;
+                    foreach (Control control in j.Controls)
+                    {
+                        control.Click += CtrlDisplayItem_Click;
+                    }
                 }
             }
             else
             {
-                if (!String.IsNullOrWhiteSpace(tbSearch.Text) && SearchSys(tbSearch.Text).Count != 0)
-                {
-                    flowpanelType.Controls.Clear();
-                    FlowBarProductTypeLastPage lp = new FlowBarProductTypeLastPage { TypeName = "回上一層" };
-                    lp.ButtonClicked += LastPage_Click;
-                    flowpanelType.Controls.Add(lp);
-
-                    spContainerItem.Visible = false;
-                    flowpanelTypeItem.Controls.Clear();
-                    List<CtrlDisplayItem> list = SearchSys(tbSearch.Text);
-                    foreach (CtrlDisplayItem j in list)
-                    {
-                        flowpanelTypeItem.Controls.Add(j);
-                        j.Click += CtrlDisplayItem_Click;
-                        foreach (Control control in j.Controls)
-                        {
-                            control.Click += CtrlDisplayItem_Click;
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("查無此產品，請確認關鍵字");
-                    return;
-                }
+                MessageBox.Show("查無此產品，請確認關鍵字");
+                return;
             }
         }
         //搜尋鍵 focus&leave
@@ -447,6 +402,7 @@ namespace prjProject
         //關鍵字查詢
         private List<CtrlDisplayItem> SearchSys(string s)
         {
+            _isinSearch = true;
             if (_isInType)
             {
                 //if (_smallkey) _smallfloorreset();
@@ -468,6 +424,7 @@ namespace prjProject
         //重置搜尋
         private void searchbarReset()
         {
+            _isinSearch = false;
             if (_smallkey)
             {
                 tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
@@ -482,7 +439,7 @@ namespace prjProject
                 _isInType = false;
             }
         }
-        //連結至賣家中心
+        //主頁面 賣家中心
         private void lblToSellerForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (memberID == 0)
@@ -492,6 +449,7 @@ namespace prjProject
                 memCheck(memberID);
                 if (memberID == 0) return;
                 賣家中心 form2 = new 賣家中心();
+                form2.memberID = memberID;
                 form2.ShowDialog();
             }
             else
@@ -501,7 +459,14 @@ namespace prjProject
                 form.ShowDialog();
             }
         }
+
         //AD輪播timer
+        private void time_set()
+        {
+            timer1.Interval = 5000;
+            timer1.Enabled = true;
+            timer1.Start();
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (spContainerItem.Visible == true)
@@ -523,7 +488,7 @@ namespace prjProject
                 linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
             }
         }
-        //
+        //主頁面 優惠券領取
         private void EventAD1_Click(object sender, EventArgs e)
         {
             if (memberID == 0)
@@ -532,12 +497,12 @@ namespace prjProject
                 form.ShowDialog();
                 memCheck(memberID);
                 if (memberID == 0) return;
-                Event_Coupon form2 = new Event_Coupon();
+                Event_Coupon form2 = new Event_Coupon() {memberID=memberID };
                 form2.ShowDialog();
             }
             else
             {
-                Event_Coupon form = new Event_Coupon();
+                Event_Coupon form = new Event_Coupon() { memberID = memberID };
                 form.ShowDialog();
             }
         }
