@@ -31,13 +31,21 @@ namespace Project_期中專案
                     //orderby i.RegionID ascending
                     select i;
             var q1 = q.ToList();
+            var memData = from i in dbindex.MemberAccounts.AsEnumerable()
+                          select i;
+            var memDaList = memData.ToList();
 
-
-            if (txtAccount.Text == ""||txtPassworld.Text==""||txt_phon.Text==""||txt_mail.Text==""||txtadd.Text==""||txt_name.Text=="")
+            if (txtAccount.Text == "" || txtPassworld.Text == "" || txt_phon.Text == "" || txt_mail.Text == "" || txtadd.Text == "" || txt_name.Text == "")
             {
                 MessageBox.Show("請輸入必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
                                 "地址 姓名\n" + "生日");
+
             }
+            foreach (var i in memDaList)
+            {
+            if (txtAccount.Text == i.MemberAcc) { MessageBox.Show("此帳號已註冊");return; }
+            else if (txt_phon.Text == i.Phone) { MessageBox.Show("此電話號碼已註冊，請確認!");return; }
+            else if (txt_mail.Text == i.Email) { MessageBox.Show("此電子信箱已註冊，請確認"); return; }
             else
             {
             list.MemberAcc = txtAccount.Text;
@@ -54,17 +62,31 @@ namespace Project_期中專案
             list.Bio = txt_bio.Text;
             list.MemPic = bytes;
             list.MemStatusID = 1;
-
+            }
+            }
             this.dbindex.MemberAccounts.Add(list);
             this.dbindex.SaveChanges();
             MessageBox.Show("新增成功!");
-            }
+            Close();
+            //if (txtAccount.Text == ""||txtPassworld.Text==""||txt_phon.Text==""||txt_mail.Text==""||txtadd.Text==""||txt_name.Text=="")
+            //{
+            //    MessageBox.Show("請輸入必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
+            //                    "地址 姓名\n" + "生日");
+
+            //}
+            //else if (txtAccount.Text==memDaList[0].MemberAcc)
+            //{
+            //    MessageBox.Show("此帳號已註冊");
+            //}
+            //else if (txt_phon.Text == memDaList[0].Phone) { MessageBox.Show("此電話號碼已註冊，請確認!"); }
+            //else if (txt_mail.Text == memDaList[0].Email) { MessageBox.Show("此電子信箱已註冊，請確認"); }
 
 
-            
 
 
-           
+
+
+
             //finally
             //{
             //    MessageBox.Show("必填欄位:\n" + "使用者帳號\n" + "密碼\n" + "所在縣市地區\n" + "電話 電子信箱\n" +
