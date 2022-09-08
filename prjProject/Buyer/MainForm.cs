@@ -561,5 +561,11 @@ namespace prjProject
         {
             clickAD(Convert.ToInt32(adtrigger2.Text));
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frm_FAQ form = new frm_FAQ();
+            form.ShowDialog();
+        }
     }
 }
