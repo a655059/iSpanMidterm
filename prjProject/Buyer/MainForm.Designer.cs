@@ -473,7 +473,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 297);
+            this.panel2.Size = new System.Drawing.Size(830, 300);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -481,7 +481,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 297);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 300);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -638,9 +638,10 @@ namespace prjProject
             // panel5
             // 
             this.panel5.Controls.Add(this.flowpanelTypeItem);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1413, 766);
+            this.panel5.Size = new System.Drawing.Size(1113, 628);
             this.panel5.TabIndex = 1;
             // 
             // flowpanelTypeItem
@@ -649,7 +650,7 @@ namespace prjProject
             this.flowpanelTypeItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelTypeItem.Location = new System.Drawing.Point(0, 0);
             this.flowpanelTypeItem.Name = "flowpanelTypeItem";
-            this.flowpanelTypeItem.Size = new System.Drawing.Size(1413, 766);
+            this.flowpanelTypeItem.Size = new System.Drawing.Size(1113, 628);
             this.flowpanelTypeItem.TabIndex = 1;
             // 
             // timer1
