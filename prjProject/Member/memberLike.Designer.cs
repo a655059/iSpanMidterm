@@ -30,7 +30,7 @@ namespace prjProject.Member
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Likepanel = new System.Windows.Forms.Panel();
+            this.Likepanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // label1
@@ -45,9 +45,9 @@ namespace prjProject.Member
             // 
             // Likepanel
             // 
-            this.Likepanel.Location = new System.Drawing.Point(12, 79);
+            this.Likepanel.Location = new System.Drawing.Point(12, 92);
             this.Likepanel.Name = "Likepanel";
-            this.Likepanel.Size = new System.Drawing.Size(776, 368);
+            this.Likepanel.Size = new System.Drawing.Size(776, 346);
             this.Likepanel.TabIndex = 1;
             // 
             // memberLike
@@ -68,6 +68,6 @@ namespace prjProject.Member
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel Likepanel;
+        private System.Windows.Forms.FlowLayoutPanel Likepanel;
     }
 }
