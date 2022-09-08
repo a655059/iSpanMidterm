@@ -278,7 +278,7 @@ namespace seller
         {
             selectedProductID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
             selectedProductDetailID = Convert.ToInt32(dataGridView2.CurrentRow.Cells["ProductDetailID"].Value);
-            var product = isp.Products.Where(i => i.ProductID == selectedProductDetailID).Select(i => i).FirstOrDefault();
+            var product = isp.Products.Where(i => i.ProductID == selectedProductID).Select(i => i).FirstOrDefault();
             var productDetail = isp.ProductDetails.Where(i => i.ProductDetailID == selectedProductDetailID).Select(i => i).FirstOrDefault();
             var smallTypeID = isp.SmallTypes.Where(i => i.SmallTypeName == cmb_smtype.Text).Select(i => i.SmallTypeID).FirstOrDefault();
             var countryID = isp.CountryLists.Where(i => i.CountryName == cmb_country.Text).Select(i => i.CountryID).FirstOrDefault();
@@ -802,6 +802,23 @@ namespace seller
         private void btn_clear_Click(object sender, EventArgs e)
         {
             clear();
+        }
+
+        private void 上架_FormClosed(object sender, FormClosedEventArgs e)
+        {
+          //  (賣家中心).
+        }
+
+        private void 上架_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is 賣家中心)
+                {
+                    賣家中心 f = (賣家中心)form;
+                    f.reLoad = "上架商品:";
+                }
+            }
         }
     }
 }
