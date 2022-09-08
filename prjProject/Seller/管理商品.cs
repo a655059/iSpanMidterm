@@ -56,7 +56,7 @@ namespace prjProject.Seller
         {
             var odd = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID)/*.FirstOrDefault()*/;
             // 先抓到order中的內容
-            var od = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID && (i.Order.StatusID <= 2)).Select(i => new { i.Order.OrderID, i.Order.MemberID, i.Order.OrderDatetime, i.Order.RecieveAdr, i.Order.FinishDate, i.Order.CouponID,i.Order.StatusID });
+            var od = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID && (i.Order.StatusID == 2)).Select(i => new { i.Order.OrderID, i.Order.MemberID, i.Order.OrderDatetime, i.Order.RecieveAdr, i.Order.FinishDate, i.Order.CouponID,i.Order.StatusID });
 
             var od_on = isp.OrderDetails.Where(i => i.ProductDetail.Product.MemberID == this.memberID && (i.Order.StatusID > 2)).Select(i => new { i.Order.OrderID, i.Order.MemberID, i.Order.OrderDatetime, i.Order.RecieveAdr, i.Order.FinishDate, i.Order.CouponID, i.Order.StatusID });
 

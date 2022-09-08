@@ -15,13 +15,19 @@ namespace seller
 {
     public partial class 賣家中心 : Form
     {
-      
+
         public 賣家中心()
         {
             InitializeComponent();
         }
 
-      
+        public string reLoad
+        {
+            
+            set {
+                label5.Text = value;
+                lodd(); }
+        }
         public int memberID { get; set; }
 
         iSpanProjectEntities isp = new iSpanProjectEntities();
@@ -41,11 +47,7 @@ namespace seller
             shift();
         }
 
-
-        private void 賣家中心_Load(object sender, EventArgs e)
-        {
-
-
+        public void lodd() {
             var acount = isp.MemberAccounts.Where(x => x.MemberID == this.memberID).Select(x => x.MemberAcc).FirstOrDefault();
             var acct = isp.MemberAccounts.Where(x => x.MemberID == this.memberID).ToList();
             byte[] data = null;
@@ -53,7 +55,7 @@ namespace seller
 
             label2.Text = acount;
             label4.Text = acount;
-            if(acct[0].MemPic != null)
+            if (acct[0].MemPic != null)
             {
                 data = acct[0].MemPic;
                 MemoryStream stream = new MemoryStream(data);
@@ -69,6 +71,11 @@ namespace seller
             lbl_sel_count.Text = q.Count().ToString();
             page++;
             shift();
+        }
+
+        private void 賣家中心_Load(object sender, EventArgs e)
+        {
+            lodd();
         }
 
         void shift() {
@@ -114,14 +121,14 @@ namespace seller
         {
             上架 sel = new 上架();
             sel.memberID = this.memberID;
-            sel.Show();
+            sel.ShowDialog();
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             管理商品 manage = new 管理商品();
             manage.memberID = this.memberID;
-            manage.Show();
+            manage.ShowDialog();
         }
 
         private void btn_change_Click(object sender, EventArgs e)
