@@ -73,6 +73,18 @@
     <Compile Include="Buyer\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buyer\FAQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Buyer\FAQ.Designer.cs">
+      <DependentUpon>FAQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyer\frm_FAQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyer\frm_FAQ.Designer.cs">
+      <DependentUpon>frm_FAQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\照片控制項.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -450,6 +462,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Buyer\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\FAQ.resx">
+      <DependentUpon>FAQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyer\frm_FAQ.resx">
+      <DependentUpon>frm_FAQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\照片控制項.resx">
       <DependentUpon>照片控制項.cs</DependentUpon>

@@ -29,7 +29,6 @@ namespace prjProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
             this.panelTopBar = new System.Windows.Forms.Panel();
@@ -70,7 +69,7 @@ namespace prjProject
             this.pbAD1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
@@ -88,7 +87,6 @@ namespace prjProject
             this.spContainerBotton.Panel1.SuspendLayout();
             this.spContainerBotton.Panel2.SuspendLayout();
             this.spContainerBotton.SuspendLayout();
-            
             ((System.ComponentModel.ISupportInitialize)(this.spContainerItem)).BeginInit();
             this.spContainerItem.Panel1.SuspendLayout();
             this.spContainerItem.Panel2.SuspendLayout();
@@ -368,10 +366,11 @@ namespace prjProject
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
             this.linkLabel2.Location = new System.Drawing.Point(565, 94);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(96, 27);
+            this.linkLabel2.Size = new System.Drawing.Size(55, 27);
             this.linkLabel2.TabIndex = 11;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "追蹤我們";
+            this.linkLabel2.Text = "FAQ";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // spContainerBotton
             // 
@@ -463,7 +462,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 282);
+            this.panel2.Size = new System.Drawing.Size(830, 288);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -471,7 +470,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 282);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 288);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
