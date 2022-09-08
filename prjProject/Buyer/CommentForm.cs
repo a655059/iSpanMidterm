@@ -210,11 +210,17 @@ namespace prjProject
         private void btnCommit_Click(object sender, EventArgs e)
         {
             var q = dbContext.OrderDetails.Where(i => i.ProductDetail.Product.ProductID == productID && i.Order.MemberID == memberID && i.Order.StatusID == 6).Select(i => i).ToList();
+            var q1 = dbContext.Comments.Where(i => i.MemberID == memberID && i.ProductID == productID).Select(i => i).ToList().Count;
             if (memberID > 0)
             {
                 if (q.Count == 0)
                 {
                     MessageBox.Show("要先購買才能評論");
+                    return;
+                }
+                else if (q1 > 0)
+                {
+                    MessageBox.Show("不能重複評論");
                     return;
                 }
                 else if (txtWriteComment.Text == "")

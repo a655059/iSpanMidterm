@@ -331,7 +331,6 @@ namespace prjProject
             this.Name = "CartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CartForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CartForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

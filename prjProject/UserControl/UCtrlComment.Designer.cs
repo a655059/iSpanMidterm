@@ -30,7 +30,6 @@ namespace prjProject.Buyer
         private void InitializeComponent()
         {
             this.linkLabelCommentPhoto = new System.Windows.Forms.LinkLabel();
-            this.lblTime = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.pbMemberPhoto = new System.Windows.Forms.PictureBox();
@@ -48,17 +47,6 @@ namespace prjProject.Buyer
             this.linkLabelCommentPhoto.TabIndex = 11;
             this.linkLabelCommentPhoto.TabStop = true;
             this.linkLabelCommentPhoto.Text = "附圖";
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Times New Roman", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(372, 104);
-            this.lblTime.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(36, 16);
-            this.lblTime.TabIndex = 10;
-            this.lblTime.Text = "時間";
             // 
             // txtComment
             // 
@@ -88,6 +76,7 @@ namespace prjProject.Buyer
             this.pbMemberPhoto.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pbMemberPhoto.Name = "pbMemberPhoto";
             this.pbMemberPhoto.Size = new System.Drawing.Size(92, 100);
+            this.pbMemberPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMemberPhoto.TabIndex = 6;
             this.pbMemberPhoto.TabStop = false;
             // 
@@ -105,7 +94,6 @@ namespace prjProject.Buyer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flpStar);
             this.Controls.Add(this.linkLabelCommentPhoto);
-            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.txtComment);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.pbMemberPhoto);
@@ -120,7 +108,6 @@ namespace prjProject.Buyer
         #endregion
 
         private System.Windows.Forms.LinkLabel linkLabelCommentPhoto;
-        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.PictureBox pbMemberPhoto;

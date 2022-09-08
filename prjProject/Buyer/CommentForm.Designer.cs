@@ -282,7 +282,7 @@ namespace prjProject
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(94, 39);
             this.button6.TabIndex = 10;
-            this.button6.Text = "一星()";
+            this.button6.Text = "一星";
             this.button6.UseVisualStyleBackColor = false;
             // 
             // button5
@@ -294,7 +294,7 @@ namespace prjProject
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(94, 39);
             this.button5.TabIndex = 9;
-            this.button5.Text = "二星()";
+            this.button5.Text = "二星";
             this.button5.UseVisualStyleBackColor = false;
             // 
             // button4
@@ -306,7 +306,7 @@ namespace prjProject
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(94, 39);
             this.button4.TabIndex = 8;
-            this.button4.Text = "三星()";
+            this.button4.Text = "三星";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button3
@@ -318,7 +318,7 @@ namespace prjProject
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 39);
             this.button3.TabIndex = 7;
-            this.button3.Text = "四星()";
+            this.button3.Text = "四星";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -330,7 +330,7 @@ namespace prjProject
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 39);
             this.button2.TabIndex = 6;
-            this.button2.Text = "五星()";
+            this.button2.Text = "五星";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // btnAll
@@ -380,8 +380,8 @@ namespace prjProject
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "CommentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CommentForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CommentForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
