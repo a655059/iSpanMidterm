@@ -441,7 +441,7 @@ namespace prjProject
         private void searchbarReset()
         {
             _isinSearch = false;
-            if (_isInType)
+            if (_smallkey)
             {
                 tbSearch.Text = "從" + _selectedName + "分類中搜尋...";
                 tbSearch.ForeColor = Color.LightGray;
