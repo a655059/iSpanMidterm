@@ -29,8 +29,15 @@ namespace prjProject.Buyer
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FAQ
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "FAQ";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
