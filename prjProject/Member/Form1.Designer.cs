@@ -61,12 +61,13 @@ namespace Project_期中專案
             this.cmb_are = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.account_mes = new System.Windows.Forms.Label();
+            this.bg = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancle
             // 
-            this.btn_cancle.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_cancle.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_cancle.Location = new System.Drawing.Point(136, 529);
             this.btn_cancle.Name = "btn_cancle";
             this.btn_cancle.Size = new System.Drawing.Size(88, 34);
@@ -77,7 +78,7 @@ namespace Project_期中專案
             // 
             // btn_save
             // 
-            this.btn_save.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_save.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_save.Location = new System.Drawing.Point(30, 529);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(88, 34);
@@ -97,7 +98,7 @@ namespace Project_期中專案
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label7.ForeColor = System.Drawing.Color.Chocolate;
             this.label7.Location = new System.Drawing.Point(30, 326);
             this.label7.Name = "label7";
@@ -116,7 +117,7 @@ namespace Project_期中專案
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label6.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label6.ForeColor = System.Drawing.Color.Chocolate;
             this.label6.Location = new System.Drawing.Point(30, 283);
             this.label6.Name = "label6";
@@ -135,7 +136,7 @@ namespace Project_期中專案
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label5.ForeColor = System.Drawing.Color.Chocolate;
             this.label5.Location = new System.Drawing.Point(30, 238);
             this.label5.Name = "label5";
@@ -146,7 +147,7 @@ namespace Project_期中專案
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.ForeColor = System.Drawing.Color.Chocolate;
             this.label4.Location = new System.Drawing.Point(30, 150);
             this.label4.Name = "label4";
@@ -157,7 +158,7 @@ namespace Project_期中專案
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.Color.Chocolate;
             this.label3.Location = new System.Drawing.Point(30, 108);
             this.label3.Name = "label3";
@@ -178,7 +179,7 @@ namespace Project_期中專案
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.Chocolate;
             this.label2.Location = new System.Drawing.Point(30, 71);
             this.label2.Name = "label2";
@@ -197,7 +198,7 @@ namespace Project_期中專案
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.Chocolate;
             this.label1.Location = new System.Drawing.Point(30, 34);
             this.label1.Name = "label1";
@@ -207,6 +208,7 @@ namespace Project_期中專案
             // 
             // txt_bio
             // 
+            this.txt_bio.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txt_bio.Location = new System.Drawing.Point(473, 334);
             this.txt_bio.Multiline = true;
             this.txt_bio.Name = "txt_bio";
@@ -216,7 +218,7 @@ namespace Project_期中專案
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label10.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label10.ForeColor = System.Drawing.Color.Chocolate;
             this.label10.Location = new System.Drawing.Point(325, 334);
             this.label10.Name = "label10";
@@ -227,7 +229,7 @@ namespace Project_期中專案
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label11.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label11.ForeColor = System.Drawing.Color.Chocolate;
             this.label11.Location = new System.Drawing.Point(30, 491);
             this.label11.Name = "label11";
@@ -246,7 +248,7 @@ namespace Project_期中專案
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.ForeColor = System.Drawing.Color.Chocolate;
             this.label12.Location = new System.Drawing.Point(30, 449);
             this.label12.Name = "label12";
@@ -265,7 +267,7 @@ namespace Project_期中專案
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label13.ForeColor = System.Drawing.Color.Chocolate;
             this.label13.Location = new System.Drawing.Point(30, 412);
             this.label13.Name = "label13";
@@ -284,7 +286,7 @@ namespace Project_期中專案
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label14.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label14.ForeColor = System.Drawing.Color.Chocolate;
             this.label14.Location = new System.Drawing.Point(30, 375);
             this.label14.Name = "label14";
@@ -294,16 +296,17 @@ namespace Project_期中專案
             // 
             // pic_box
             // 
-            this.pic_box.Location = new System.Drawing.Point(473, 82);
+            this.pic_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_box.Location = new System.Drawing.Point(473, 70);
             this.pic_box.Name = "pic_box";
-            this.pic_box.Size = new System.Drawing.Size(246, 179);
+            this.pic_box.Size = new System.Drawing.Size(246, 200);
             this.pic_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_box.TabIndex = 79;
             this.pic_box.TabStop = false;
             // 
             // btn_pic
             // 
-            this.btn_pic.Font = new System.Drawing.Font("微軟正黑體", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_pic.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_pic.ForeColor = System.Drawing.Color.Chocolate;
             this.btn_pic.Location = new System.Drawing.Point(329, 34);
             this.btn_pic.Name = "btn_pic";
@@ -362,7 +365,7 @@ namespace Project_期中專案
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("微軟正黑體", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label8.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label8.ForeColor = System.Drawing.Color.Chocolate;
             this.label8.Location = new System.Drawing.Point(30, 195);
             this.label8.Name = "label8";
@@ -379,6 +382,15 @@ namespace Project_期中專案
             this.account_mes.Size = new System.Drawing.Size(19, 24);
             this.account_mes.TabIndex = 86;
             this.account_mes.Text = "*";
+            // 
+            // bg
+            // 
+            this.bg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bg.Location = new System.Drawing.Point(0, 0);
+            this.bg.Name = "bg";
+            this.bg.Size = new System.Drawing.Size(796, 574);
+            this.bg.TabIndex = 87;
             // 
             // Form1
             // 
@@ -417,8 +429,11 @@ namespace Project_期中專案
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtAccount);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.bg);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_box)).EndInit();
@@ -460,6 +475,7 @@ namespace Project_期中專案
         private System.Windows.Forms.ComboBox cmb_are;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label account_mes;
+        private System.Windows.Forms.Panel bg;
     }
 }
 

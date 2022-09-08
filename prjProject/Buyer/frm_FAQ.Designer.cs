@@ -85,6 +85,7 @@ namespace prjProject.Buyer
             this.ClientSize = new System.Drawing.Size(923, 552);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frm_FAQ";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FAQ";
             this.Load += new System.EventHandler(this.FAQ_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

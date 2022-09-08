@@ -639,6 +639,13 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\screen_minimize20.png" />
+    <None Include="Resources\8674976_ic_fluent_full_screen_minimize_icon.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\memcenter.png" />
+    <None Include="Resources\signup.png" />
+    <None Include="Resources\account.png" />
+    <None Include="Resources\faq.png" />
     <None Include="Resources\EVENTCOUPON.png" />
     <None Include="Resources\Coupon.png" />
     <None Include="Resources\LOGO3.png" />

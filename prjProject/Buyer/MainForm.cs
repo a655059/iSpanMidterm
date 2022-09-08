@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2;
+using System.Resources;
 
 namespace prjProject
 {
@@ -49,7 +50,8 @@ namespace prjProject
             }
         }
 
-        public int memberID { get; set; }
+        int _memberID=0;
+        public int memberID { get { return _memberID; } set { _memberID = value;memCheck(value); } }
         iSpanProjectEntities dbContext = new iSpanProjectEntities();
         //int _page;
         //搜索系統
@@ -289,8 +291,13 @@ namespace prjProject
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
+                btnWinfrm2.Image = prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
             }
-            else this.WindowState = FormWindowState.Maximized;
+            else {
+                this.WindowState = FormWindowState.Maximized;
+                btnWinfrm2.Image = prjProject.Properties.Resources.screen_minimize20;
+
+            };
         }
         private void btnWindowMinimized_Click_1(object sender, EventArgs e)
         {
@@ -301,7 +308,6 @@ namespace prjProject
         {
             LoginForm form = new LoginForm();
             form.ShowDialog();
-            memCheck(memberID);
         }
         //點選購物車
         private void pbCart_Click(object sender, EventArgs e)
@@ -311,7 +317,6 @@ namespace prjProject
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
                 if (memberID == 0) return;
-                memCheck(memberID);
                 CartForm form2 = new CartForm();
                 form2.ShowDialog();
             }
@@ -334,7 +339,6 @@ namespace prjProject
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
                 if (memberID == 0) return;
-                memCheck(memberID);
                 member_center form2 = new member_center();
                 form2.memberName = memberName;
                 form2.memeberID = memberID;
@@ -459,7 +463,6 @@ namespace prjProject
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
                 if (memberID == 0) return;
-                memCheck(memberID);
                 賣家中心 form2 = new 賣家中心();
                 form2.memberID = memberID;
                 form2.ShowDialog();
@@ -489,15 +492,34 @@ namespace prjProject
             }
         }
         //檢查會員
-        private void memCheck(int i)
+        public void memCheck(int i)
         {
-            if (i == 0) return;
-            else
+            if (i != 0) 
             {
                 lblName.Visible = true;
-                linkLabelRegister.Visible = false;
+                linkLabelRegister.Text = "   登出";
+                linkLabelRegister.Image = prjProject.Properties.Resources.logout;
                 linkLabelLogin.Text = "歡迎";
+                linkLabelLogin.Image = null;
                 linkLabelLogin.LinkClicked -= linkLabelLogin_LinkClicked;
+            }
+            else
+            {
+                lblName.Visible = false;
+                linkLabelRegister.Text = "   註冊";
+                linkLabelRegister.Image = prjProject.Properties.Resources.signup;
+                linkLabelLogin.Text = "   登入";
+                linkLabelLogin.Image = prjProject.Properties.Resources.account;
+                linkLabelLogin.LinkClicked += linkLabelLogin_LinkClicked;
+            }
+            var q = dbContext.MemberAccounts.Where(p => p.MemberID==memberID && p.MemberAcc == "admin").Select(p => p).FirstOrDefault();
+            if (q != null)
+            {
+                linkLabelHouTai.Visible = true;
+            }
+            else 
+            {
+                linkLabelHouTai.Visible = false;
             }
         }
         //主頁面 優惠券領取
@@ -507,7 +529,6 @@ namespace prjProject
             {
                 LoginForm form = new LoginForm();
                 form.ShowDialog();
-                memCheck(memberID);
                 if (memberID == 0) return;
                 Event_Coupon form2 = new Event_Coupon() {memberID=memberID };
                 form2.ShowDialog();
@@ -521,8 +542,14 @@ namespace prjProject
         //註冊頁面連結
         private void linkLabelRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (memberID == 0) { 
             Form1 createAcc = new Form1();
             createAcc.ShowDialog();
+            }
+            else if(memberID != 0)
+            {
+                memberID = 0;
+            }            
         }
         //下排廣告輪播
         private void ads(PictureBox picturebox,TextBox textbox,Label l)

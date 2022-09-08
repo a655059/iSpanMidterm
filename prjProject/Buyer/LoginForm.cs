@@ -50,5 +50,11 @@ namespace prjProject
             ForgetPas form = new ForgetPas();
             form.ShowDialog();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 createAcc = new Form1();
+            createAcc.ShowDialog();
+        }
     }
 }
