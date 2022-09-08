@@ -272,9 +272,142 @@ namespace seller
             renew();
 
         }
-
+        int selectedProductID = -1;
+        int selectedProductDetailID = -1;
         private void alter_Click(object sender, EventArgs e)            //再產生對應新規格會卡住  要修改數量
         {
+            selectedProductID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+            selectedProductDetailID = Convert.ToInt32(dataGridView2.CurrentRow.Cells["ProductDetailID"].Value);
+            var product = isp.Products.Where(i => i.ProductID == selectedProductDetailID).Select(i => i).FirstOrDefault();
+            var productDetail = isp.ProductDetails.Where(i => i.ProductDetailID == selectedProductDetailID).Select(i => i).FirstOrDefault();
+            var smallTypeID = isp.SmallTypes.Where(i => i.SmallTypeName == cmb_smtype.Text).Select(i => i.SmallTypeID).FirstOrDefault();
+            var countryID = isp.CountryLists.Where(i => i.CountryName == cmb_country.Text).Select(i => i.CountryID).FirstOrDefault();
+            var regionID = isp.RegionLists.Where(i => i.RegionName == cmb_region.Text && i.CountryID == countryID).Select(i => i.RegionID).FirstOrDefault();
+            var productStatusID = isp.ProductStatus.Where(i => i.ProductStatusName == cmb_productstatus.Text).Select(i => i.ProductStatusID).FirstOrDefault();
+            MemoryStream ms = new MemoryStream();
+            picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes = ms.GetBuffer();
+            product.ProductName = txt_pdname.Text;
+            product.SmallTypeID = smallTypeID;
+            product.RegionID = regionID;
+            product.AdFee = Convert.ToDecimal(txt_adfee.Text);
+            product.Description = richTextBox_descript.Text;
+            product.ProductStatusID = productStatusID;
+            isp.SaveChanges();
+            productDetail.ProductID = selectedProductID;
+            productDetail.Style = txt_style.Text;
+            productDetail.Quantity = Convert.ToInt32(txt_quantity.Text);
+            productDetail.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+            productDetail.Pic = bytes;
+            isp.SaveChanges();
+
+            //if (okay())
+            //{
+            //    int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+
+
+            //    //先修改  shiptoproduct    productdetails     productpics
+            //    //-----------------------------------------------------------------------
+            //    var shipstatus = from a in isp.ShipperToProducts    //同一商品對應到多種運送方式
+            //                     where a.ProductID == pdid
+            //                     select a;
+
+            //    var shipid = (from a in isp.Shippers                //透過對應到的運送方式抓到
+            //                  where a.ShipperName == cmb_shipper.Text
+            //                  select a).ToList();
+
+            //    //var shipid = isp.ShipperToProducts.Where(a => a.ProductID == pdid).Select(a => a.ShipperID).ToList();
+
+            //    foreach (var shipst in shipstatus)      //倒底要給使用者更改shippertoproductid嗎?
+            //    {                                       //如果要個別改不同種的可能要再想一下
+            //        shipst.ShipperID = shipid[0].ShipperID;
+            //    }
+
+
+            //    var pddetail = isp.ProductDetails.Where(a => a.ProductID == pdid);
+            //    if (flag_formatpic)
+            //    {
+            //        System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            //        this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //        byte[] bytes = ms.GetBuffer();
+
+            //        foreach (var pdtt in pddetail)
+            //        {
+            //            pdtt.Pic = bytes;
+            //        }
+            //    }
+
+            //    foreach (var pdtt in pddetail)
+            //    {
+            //        pdtt.Style = txt_style.Text;
+            //        pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
+            //        pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+            //    }
+
+            //    var c = from d in isp.ProductPics       //抓取id
+            //            where d.ProductID == pdid
+            //            select d;
+
+            //    //----------------------------------------------------------------------------------------
+            //    if (flag_mainpic)
+            //    {
+            //        System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+            //        this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //        byte[] bytes1 = ms1.GetBuffer();
+            //        foreach (var ppic in c)
+            //        {
+            //            ppic.picture = bytes1;
+            //        }
+            //        flag_mainpic = false;
+            //    }
+            //    else
+            //    {
+            //        DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+            //            MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+            //    }
+
+            //    this.isp.SaveChanges();
+            //    //----------------------------------------------------------------------------------------
+            //    var j = (from s in isp.SmallTypes
+            //             where s.SmallTypeName == cmb_smtype.Text
+            //             select s).ToList();
+
+
+            //    var i = (from t in isp.RegionLists
+            //             where t.RegionName == cmb_region.Text
+            //             select t).ToList();
+
+            //    var g = from f in isp.Products
+            //            where f.ProductID == pdid
+            //            select f;
+
+
+            //    foreach (var prds in g)
+            //    {
+            //        prds.ProductName = txt_pdname.Text;
+            //        prds.Description = richTextBox_descript.Text;
+            //        prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
+            //        prds.SmallTypeID = j[0].SmallTypeID;
+            //        prds.RegionID = i[0].RegionID;
+            //        //prds.ShipperID = shipid[0].ShipperID;
+            //    }
+
+            //    this.isp.SaveChanges();
+
+            //    shiper.Clear();
+            //    pd_detail.Clear();
+            //    pd_pic.Clear();
+            //    //-----------------------------------------------------------------------
+
+            //    clear();
+
+            //    renew();
+            //}
+            //else
+            //{
+            //    DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
+            //        MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+            //}
 
             int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
@@ -359,7 +492,6 @@ namespace seller
             clear();
 
             renew();
-
         }
 
 
@@ -646,6 +778,24 @@ namespace seller
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView2_MouseUp(object sender, MouseEventArgs e)
+        {
+            int index = Convert.ToInt32(dataGridView2.CurrentRow.Cells["ProductDetailID"].Value);
+            var q = isp.ProductDetails.Where(i => i.ProductDetailID == index).Select(i => i).FirstOrDefault();
+            try
+            {
+                MemoryStream ms = new MemoryStream(q.Pic);
+                picb_format.Image = Image.FromStream(ms);
+            }
+            catch(Exception ex)
+            {
+                picb_format.Image = Image.FromFile("../../Images/cross.png");
+            }
+            txt_style.Text = q.Style;
+            txt_quantity.Text = q.Quantity.ToString("0");
+            txt_unitprice.Text = q.UnitPrice.ToString();
         }
 
         private void btn_clear_Click(object sender, EventArgs e)

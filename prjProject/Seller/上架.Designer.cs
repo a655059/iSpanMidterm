@@ -182,6 +182,7 @@ namespace seller
             this.dataGridView2.RowTemplate.Height = 27;
             this.dataGridView2.Size = new System.Drawing.Size(395, 105);
             this.dataGridView2.TabIndex = 59;
+            this.dataGridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseUp);
             // 
             // label11
             // 
