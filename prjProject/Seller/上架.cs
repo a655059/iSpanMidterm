@@ -284,6 +284,7 @@ namespace seller
             var countryID = isp.CountryLists.Where(i => i.CountryName == cmb_country.Text).Select(i => i.CountryID).FirstOrDefault();
             var regionID = isp.RegionLists.Where(i => i.RegionName == cmb_region.Text && i.CountryID == countryID).Select(i => i.RegionID).FirstOrDefault();
             var productStatusID = isp.ProductStatus.Where(i => i.ProductStatusName == cmb_productstatus.Text).Select(i => i.ProductStatusID).FirstOrDefault();
+
             MemoryStream ms = new MemoryStream();
             picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             byte[] bytes = ms.GetBuffer();
@@ -409,64 +410,64 @@ namespace seller
             //        MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             //}
 
-            int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+            //int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
 
 
-            var shiptopd = isp.ShipperToProducts.Where(a => a.Product.ProductID == pdid).ToList();
-            var new_sp_id = isp.Shippers.Where(a => a.ShipperName == cmb_shipper.Text).ToList();
-            shiptopd[0].ShipperID = new_sp_id[0].ShipperID;
+            //var shiptopd = isp.ShipperToProducts.Where(a => a.Product.ProductID == pdid).ToList();
+            //var new_sp_id = isp.Shippers.Where(a => a.ShipperName == cmb_shipper.Text).ToList();
+            //shiptopd[0].ShipperID = new_sp_id[0].ShipperID;
 
 
-            var pddetail = isp.ProductDetails.Where(a => a.ProductID == pdid);
-            if (flag_formatpic)
-            {
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] bytes = ms.GetBuffer();
+            //var pddetail = isp.ProductDetails.Where(a => a.ProductID == pdid);
+            //if (flag_formatpic)
+            //{
+            //    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            //    this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //    byte[] bytes = ms.GetBuffer();
 
-                foreach (var pdtt in pddetail)
-                {
-                    pdtt.Pic = bytes;
-                }
-            }
+            //    foreach (var pdtt in pddetail)
+            //    {
+            //        pdtt.Pic = bytes;
+            //    }
+            //}
 
-            foreach (var pdtt in pddetail)
-            {
-                pdtt.Style = txt_style.Text;
-                pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
-                pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
-            }
+            //foreach (var pdtt in pddetail)
+            //{
+            //    pdtt.Style = txt_style.Text;
+            //    pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
+            //    pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+            //}
 
-            var c = from d in isp.ProductPics       //抓取id
-                    where d.ProductID == pdid
-                    select d;
+            //var c = from d in isp.ProductPics       //抓取id
+            //        where d.ProductID == pdid
+            //        select d;
 
             //----------------------------------------------------------------------------------------
 
-            System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
-            this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
-            byte[] bytes1 = ms1.GetBuffer();
-            foreach (var ppic in c)
-            {
-                ppic.picture = bytes1;
-            }
-            flag_mainpic = false;
+            //System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+            //this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //byte[] bytes1 = ms1.GetBuffer();
+            //foreach (var ppic in c)
+            //{
+            //    ppic.picture = bytes1;
+            //}
+            //flag_mainpic = false;
 
 
-            this.isp.SaveChanges();
+            //this.isp.SaveChanges();
             //----------------------------------------------------------------------------------------
-            var j = (from s in isp.SmallTypes
-                     where s.SmallTypeName == cmb_smtype.Text
-                     select s).ToList();
+            //var j = (from s in isp.SmallTypes
+            //         where s.SmallTypeName == cmb_smtype.Text
+            //         select s).ToList();
 
 
-            var i = (from t in isp.RegionLists
-                     where t.RegionName == cmb_region.Text
-                     select t).ToList();
+            //var i = (from t in isp.RegionLists
+            //         where t.RegionName == cmb_region.Text
+            //         select t).ToList();
 
-            var g = from f in isp.Products
-                    where f.ProductID == pdid
-                    select f;
+            //var g = from f in isp.Products
+            //        where f.ProductID == pdid
+            //        select f;
 
             //var g = isp.Products.Where(a => a.ProductID == pdid && a.ProductStatu.ProductStatusName == cmb_productstatus.Text).ToList();
 
@@ -482,16 +483,16 @@ namespace seller
             //    prds.ProductStatusID = g[0].ProductStatusID;
             //}
 
-            this.isp.SaveChanges();
+            //this.isp.SaveChanges();
 
-            shiper.Clear();
-            pd_detail.Clear();
-            pd_pic.Clear();
-            //-----------------------------------------------------------------------
+            //shiper.Clear();
+            //pd_detail.Clear();
+            //pd_pic.Clear();
+            ////-----------------------------------------------------------------------
 
-            clear();
+            //clear();
 
-            renew();
+            //renew();
         }
 
 
