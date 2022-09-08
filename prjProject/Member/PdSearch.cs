@@ -28,25 +28,6 @@ namespace Project_期中專案
         {
             mem_Name.Text = memberName;
             myMemberShow();
-            //var q1 = (from i in dbContext.MemberAccounts
-            //          where i.MemberID == memberID
-            //          select i).ToList();
-            //int memid = q1[0].MemberID;
-
-            //var q = from i in dbContext.Orders
-            //        where i.MemberID == memid
-            //        select i;
-            //this.dataGridView1.DataSource = q.ToList();
-//==============================================================
-            //int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["OrderID"].Value.ToString());
-            //var or = (from i in dbContext.Orders
-            //          where i.MemberID == nowId
-            //          select i).FirstOrDefault();
-            //if (or == null) return;
-            //this.txt_id.Text = or.OrderID.ToString();
-            
-
-
         }
         void myMemberShow()
         {
@@ -61,14 +42,6 @@ namespace Project_期中專案
                     select new {訂單編號=i.OrderID,訂單成立時間=i.OrderDatetime,收件地址=i.RecieveAdr,訂單完成時間=i.FinishDate,優惠卷代碼=i.CouponID,訂單狀態=i.StatusID};
             this.dataGridView1.DataSource = q.ToList();
         }
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    Close();
-        //}
-
-
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int nowId = Convert.ToInt32(this.dataGridView1.CurrentRow.Cells["訂單編號"].Value.ToString());
