@@ -39,17 +39,13 @@ namespace prjProject.Member
             //_selected._isclicked = true;
             //Application.DoEvents();
             this.Likepanel.Controls.Clear();
-            var memberID = (from i in dbindex.Likes
-                            where i.MemberID == this.memberID
-                            select i).ToList();
-
             try
             {
-                int id = memberID[0].ProductID;
+                var id = (from q in dbindex.Likes where q.MemberID == memberID select q.ProductID).ToList();
                 //var productPic = from i in dbindex.Products
                 //                 where i.ProductID == memberID[0].ProductID
                 //                 select i;
-                var productpic = dbindex.Products.Where(x => x.ProductID == id).OrderBy(x => x.ProductID).Select(x => x);
+                var productpic = dbindex.Products.Where(x => id.Contains(x.ProductID)).OrderBy(x => x.ProductID).Select(x => x);
                 if (!productpic.Any())
                 {
                     return;
