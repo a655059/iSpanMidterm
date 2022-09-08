@@ -40,10 +40,10 @@ namespace prjProject.Buyer
             // linkLabelCommentPhoto
             // 
             this.linkLabelCommentPhoto.AutoSize = true;
-            this.linkLabelCommentPhoto.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelCommentPhoto.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelCommentPhoto.Location = new System.Drawing.Point(725, 53);
             this.linkLabelCommentPhoto.Name = "linkLabelCommentPhoto";
-            this.linkLabelCommentPhoto.Size = new System.Drawing.Size(40, 16);
+            this.linkLabelCommentPhoto.Size = new System.Drawing.Size(41, 20);
             this.linkLabelCommentPhoto.TabIndex = 11;
             this.linkLabelCommentPhoto.TabStop = true;
             this.linkLabelCommentPhoto.Text = "附圖";
@@ -51,7 +51,7 @@ namespace prjProject.Buyer
             // txtComment
             // 
             this.txtComment.Enabled = false;
-            this.txtComment.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtComment.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtComment.Location = new System.Drawing.Point(372, 19);
             this.txtComment.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtComment.Multiline = true;
@@ -62,11 +62,11 @@ namespace prjProject.Buyer
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblName.Location = new System.Drawing.Point(129, 19);
             this.lblName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(69, 19);
+            this.lblName.Size = new System.Drawing.Size(67, 24);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "評論人";
             // 

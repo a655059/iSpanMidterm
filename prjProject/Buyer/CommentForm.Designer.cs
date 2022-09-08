@@ -29,14 +29,10 @@ namespace prjProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommentForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flpAverageStar = new System.Windows.Forms.FlowLayoutPanel();
@@ -77,16 +73,13 @@ namespace prjProject
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.splitContainer1.Panel1.Controls.Add(this.lblWelcome);
             this.splitContainer1.Panel1.Controls.Add(this.linkLabelLogin);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1264, 721);
+            this.splitContainer1.Size = new System.Drawing.Size(1107, 721);
             this.splitContainer1.SplitterDistance = 110;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 0;
@@ -94,66 +87,39 @@ namespace prjProject
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWelcome.Location = new System.Drawing.Point(851, 6);
+            this.lblWelcome.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblWelcome.Location = new System.Drawing.Point(1041, 6);
             this.lblWelcome.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(54, 21);
+            this.lblWelcome.Size = new System.Drawing.Size(54, 27);
             this.lblWelcome.TabIndex = 40;
             this.lblWelcome.Text = "歡迎";
             // 
             // linkLabelLogin
             // 
             this.linkLabelLogin.AutoSize = true;
-            this.linkLabelLogin.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelLogin.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(724, 6);
+            this.linkLabelLogin.Location = new System.Drawing.Point(914, 6);
             this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(54, 21);
+            this.linkLabelLogin.Size = new System.Drawing.Size(54, 27);
             this.linkLabelLogin.TabIndex = 34;
             this.linkLabelLogin.TabStop = true;
             this.linkLabelLogin.Text = "登入";
             this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(647, 63);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(33, 33);
-            this.button1.TabIndex = 38;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(282, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(398, 33);
-            this.textBox1.TabIndex = 37;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(93, 41);
+            this.pictureBox1.Image = global::prjProject.Properties.Resources.LOGO3;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(111, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("標楷體", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(171, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 35);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "蝦到爆";
             // 
             // flowLayoutPanel1
             // 
@@ -186,12 +152,13 @@ namespace prjProject
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 283);
+            this.panel1.Size = new System.Drawing.Size(1107, 283);
             this.panel1.TabIndex = 5;
             // 
             // flpAverageStar
             // 
             this.flpAverageStar.AutoScroll = true;
+            this.flpAverageStar.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.flpAverageStar.Location = new System.Drawing.Point(9, 91);
             this.flpAverageStar.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.flpAverageStar.Name = "flpAverageStar";
@@ -213,11 +180,11 @@ namespace prjProject
             // lblStar
             // 
             this.lblStar.AutoSize = true;
-            this.lblStar.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblStar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblStar.Location = new System.Drawing.Point(460, 245);
             this.lblStar.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblStar.Name = "lblStar";
-            this.lblStar.Size = new System.Drawing.Size(72, 16);
+            this.lblStar.Size = new System.Drawing.Size(73, 20);
             this.lblStar.TabIndex = 16;
             this.lblStar.Text = "星星評分";
             // 
@@ -232,7 +199,7 @@ namespace prjProject
             // btnChoosePhoto
             // 
             this.btnChoosePhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnChoosePhoto.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnChoosePhoto.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnChoosePhoto.Location = new System.Drawing.Point(788, 194);
             this.btnChoosePhoto.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnChoosePhoto.Name = "btnChoosePhoto";
@@ -244,6 +211,7 @@ namespace prjProject
             // 
             // flpCommentPhoto
             // 
+            this.flpCommentPhoto.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.flpCommentPhoto.Location = new System.Drawing.Point(675, 96);
             this.flpCommentPhoto.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.flpCommentPhoto.Name = "flpCommentPhoto";
@@ -252,7 +220,7 @@ namespace prjProject
             // 
             // txtWriteComment
             // 
-            this.txtWriteComment.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtWriteComment.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txtWriteComment.Location = new System.Drawing.Point(225, 96);
             this.txtWriteComment.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtWriteComment.Multiline = true;
@@ -263,7 +231,7 @@ namespace prjProject
             // btnCommit
             // 
             this.btnCommit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnCommit.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCommit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnCommit.Location = new System.Drawing.Point(563, 234);
             this.btnCommit.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnCommit.Name = "btnCommit";
@@ -276,7 +244,7 @@ namespace prjProject
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button6.Location = new System.Drawing.Point(788, 42);
             this.button6.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.button6.Name = "button6";
@@ -288,7 +256,7 @@ namespace prjProject
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button5.Location = new System.Drawing.Point(675, 42);
             this.button5.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.button5.Name = "button5";
@@ -300,7 +268,7 @@ namespace prjProject
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button4.Location = new System.Drawing.Point(563, 42);
             this.button4.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.button4.Name = "button4";
@@ -312,7 +280,7 @@ namespace prjProject
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button3.Location = new System.Drawing.Point(450, 42);
             this.button3.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.button3.Name = "button3";
@@ -324,7 +292,7 @@ namespace prjProject
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button2.Location = new System.Drawing.Point(338, 42);
             this.button2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.button2.Name = "button2";
@@ -336,7 +304,7 @@ namespace prjProject
             // btnAll
             // 
             this.btnAll.BackColor = System.Drawing.Color.White;
-            this.btnAll.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAll.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAll.Location = new System.Drawing.Point(225, 42);
             this.btnAll.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnAll.Name = "btnAll";
@@ -348,22 +316,22 @@ namespace prjProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("標楷體", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.Location = new System.Drawing.Point(5, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 27);
+            this.label2.Size = new System.Drawing.Size(123, 34);
             this.label2.TabIndex = 3;
             this.label2.Text = "商品評價";
             // 
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Font = new System.Drawing.Font("標楷體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblProductName.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblProductName.Location = new System.Drawing.Point(229, 8);
             this.lblProductName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(98, 22);
+            this.lblProductName.Size = new System.Drawing.Size(96, 27);
             this.lblProductName.TabIndex = 4;
             this.lblProductName.Text = "商品名稱";
             // 
@@ -376,11 +344,11 @@ namespace prjProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 721);
+            this.ClientSize = new System.Drawing.Size(1107, 721);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "CommentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CommentForm";
             this.Load += new System.EventHandler(this.CommentForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -400,10 +368,7 @@ namespace prjProject
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.LinkLabel linkLabelLogin;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCommit;
         private System.Windows.Forms.Button button6;
