@@ -224,5 +224,10 @@ namespace Project_期中專案
         {
             myMemberShow();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

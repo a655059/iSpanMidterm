@@ -33,8 +33,12 @@ namespace Project_期中專案
             else 
             {
                 MessageBox.Show("查無此帳號，請確認輸入資料是否正確");
-                Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         //private void button2_Click(object sender, EventArgs e)

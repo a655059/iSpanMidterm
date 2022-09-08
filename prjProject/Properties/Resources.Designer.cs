@@ -63,6 +63,16 @@ namespace prjProject.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap _1564520_code_open_password_icon {
+            get {
+                object obj = ResourceManager.GetObject("1564520_code_open_password_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap _8664917_window_minimize_icon {
             get {
                 object obj = ResourceManager.GetObject("8664917_window_minimize_icon", resourceCulture);
@@ -136,6 +146,26 @@ namespace prjProject.Properties {
         internal static System.Drawing.Bitmap EVENTCOUPON {
             get {
                 object obj = ResourceManager.GetObject("EVENTCOUPON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap eye1 {
+            get {
+                object obj = ResourceManager.GetObject("eye1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap eye2 {
+            get {
+                object obj = ResourceManager.GetObject("eye2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
