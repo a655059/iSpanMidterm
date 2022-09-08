@@ -170,7 +170,7 @@ namespace Project_期中專案
             //this.dbindex.MemberAccount.Add(q);
             this.dbindex.SaveChanges();
             MessageBox.Show("修改成功");
-            
+            Close();
 
         }
 
