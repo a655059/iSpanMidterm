@@ -80,7 +80,7 @@ namespace WindowsFormsApp2
             var BIg = DBiSpan.SmallTypes.Where(n => n.SmallTypeID == SMall)
                 .Select(n => n.BigTypeID).FirstOrDefault();
             cbBig.Text = DBiSpan.BigTypes.Where(n => n.BigTypeID == BIg)
-                .Select(n => n.BigTypeName).FirstOrDefault();           
+                .Select(n => n.BigTypeName).FirstOrDefault();
 
             txtdesc.Text = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n.Description).FirstOrDefault();
@@ -114,11 +114,11 @@ namespace WindowsFormsApp2
                 .Select(n => n.ShipperID).FirstOrDefault();
             cbship.Text = DBiSpan.Shippers.Where(n => n.ShipperID == shp)
                 .Select(n => n.ShipperName).FirstOrDefault();
-            
-            var pic= DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
+
+            var pic = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
                .Select(n => n.Pic).FirstOrDefault();
 
-            var pics=DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
+            var pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
                .Select(n => n.picture).FirstOrDefault();
 
             if (pics != null)
@@ -133,14 +133,16 @@ namespace WindowsFormsApp2
                 return;
         }
 
-        public int productID= 0;
+        public int productID = 0;
 
         private void 新增_Click(object sender, EventArgs e)
-        {          
+        {
+            try
+            {
                 Product product = new Product()
                 {
                     ProductName = txtpdname.Text,
-                    AdFee = Convert.ToInt32(txtpdfee.Text),                   
+                    AdFee = Convert.ToInt32(txtpdfee.Text),
                     MemberID = 1,
                     RegionID = DBiSpan.RegionLists.Where(n => n.RegionName == cbRegion.Text)
                     .Select(n => n.RegionID).FirstOrDefault(),
@@ -149,15 +151,16 @@ namespace WindowsFormsApp2
                     .Select(n => n.SmallTypeID).FirstOrDefault()
                 };
                 DBiSpan.Products.Add(product);
+           
 
 
-                DBiSpan.SaveChanges();
+            DBiSpan.SaveChanges();
 
-                productID=product.ProductID;  //新增出來的ID放進變數，要給其他表關聯用
+            productID = product.ProductID;  //新增出來的ID放進變數，要給其他表關聯用
 
-                      
-            for(int i =0;i<商品細項list.Count;i++)
-            { 
+
+            for (int i = 0; i < 商品細項list.Count; i++)
+            {
                 ProductDetail PD = new ProductDetail();
 
                 PD.UnitPrice = 商品細項list[i].UnitPrice;
@@ -165,10 +168,10 @@ namespace WindowsFormsApp2
                 PD.Style = 商品細項list[i].Style;
                 PD.ProductID = productID;
                 PD.Pic = 商品細項list[i].pic;
-                
+
                 DBiSpan.ProductDetails.Add(PD);
             }
-                DBiSpan.SaveChanges();
+            DBiSpan.SaveChanges();
 
             if (pictureBox1.Image != null)
             {
@@ -181,7 +184,12 @@ namespace WindowsFormsApp2
                 }
                 DBiSpan.SaveChanges();
             }
-            
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("請確實填入資料!");
+                return;
+            }
             MessageBox.Show("新增成功");
             Close();
         }
@@ -238,7 +246,7 @@ namespace WindowsFormsApp2
                     .Select(n => n.SmallTypeID).FirstOrDefault();
 
             productID = P_select;  //選到的ID放進變數，要給其他表關聯用
-                        
+
             for (int i = 0; i < 商品細項list.Count; i++)
             {
                 var PD = DBiSpan.ProductDetails.Where(n => n.ProductDetailID == PD_select)
@@ -254,24 +262,28 @@ namespace WindowsFormsApp2
 
             if (pictureBox1.Image != null)
             {
-            for (int i = 0; i < 照片區.Count; i++)
-                        {
-                            var Pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
-                                .Select(n => n).FirstOrDefault();
-                            Pics.ProductID = productID;
-                            Pics.picture = 照片區[i].picture;
-                        }
-                        DBiSpan.SaveChanges();
+                for (int i = 0; i < 照片區.Count; i++)
+                {
+                    var Pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
+                        .Select(n => n).FirstOrDefault();
+                    //if (Pics == null)
+                    //{
+                    //    return;
+                    //}
+                        Pics.ProductID = productID;
+                    Pics.picture = 照片區[i].picture;
+                }
+                DBiSpan.SaveChanges();
             }
-            
-           MessageBox.Show("修改成功");
+
+            MessageBox.Show("修改成功");
             Close();
         }
 
         private void 商品增刪修_Load(object sender, EventArgs e)
         {
             if (isproductupdate)
-            { 
+            {
                 isLoad();
                 button1.Enabled = false;
                 button2.Enabled = true;
@@ -286,7 +298,7 @@ namespace WindowsFormsApp2
 
         private void 刪除product_Click(object sender, EventArgs e)
         {
-            var P=DBiSpan.Products.Where(n => n.ProductID == P_select)
+            var P = DBiSpan.Products.Where(n => n.ProductID == P_select)
                 .Select(n => n).FirstOrDefault();
             P.ProductStatusID = 2;
             this.DBiSpan.SaveChanges();
@@ -311,43 +323,43 @@ namespace WindowsFormsApp2
         List<照片區> 照片區 = new List<照片區>(); // 照片暫存   建立一個類別
         private void picmore_Click(object sender, EventArgs e)
         {
-            
+
             新增進照片類別();
             新增照片();
         }
 
-         private void 照片庫瀏覽_Click(object sender, EventArgs e)
-                {
+        private void 照片庫瀏覽_Click(object sender, EventArgs e)
+        {
             pictureBox2.Image = null;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                        pictureBox2.Image = Image.FromFile(openFileDialog1.FileName);
-                }
+                pictureBox2.Image = Image.FromFile(openFileDialog1.FileName);
+        }
 
-        void 新增進照片類別() 
+        void 新增進照片類別()
         {
             if (pictureBox2.Image != null)
             {
                 照片區 照片 = new 照片區();
 
-                            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                            pictureBox2.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                            byte[] bytes = ms.GetBuffer();
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                pictureBox2.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] bytes = ms.GetBuffer();
 
-                            照片.picture = bytes;  
-                            照片區.Add(照片);
+                照片.picture = bytes;
+                照片區.Add(照片);
             }
-            
+
         }
         void 新增照片()
         {
             picPanel3.Controls.Clear();
-            for(int i = 0; i < 照片區.Count(); i++)
+            for (int i = 0; i < 照片區.Count(); i++)
             {
                 照片控制項 照項 = new 照片控制項();
                 照項.picture = 照片區[i].picture;
                 picPanel3.Controls.Add(照項);
 
-                foreach(Control control in 照項.Controls)
+                foreach (Control control in 照項.Controls)
                 {
                     if (control.GetType() == typeof(Button))
                     {
@@ -372,8 +384,8 @@ namespace WindowsFormsApp2
 
         private void 新增樣式_Click(object sender, EventArgs e)
         {
-              新增進規格類別();
-              新增規格();              
+            新增進規格類別();
+            新增規格();
         }
 
         private void 新增規格()
@@ -408,14 +420,14 @@ namespace WindowsFormsApp2
             細項.Style = txtstyle.Text;
             if (pictureBox1.Image != null)
             {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                        byte[] bytes = ms.GetBuffer();
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] bytes = ms.GetBuffer();
 
-                        if (bytes != null)
-                            細項.pic = bytes;
+                if (bytes != null)
+                    細項.pic = bytes;
             }
-            
+
 
             商品細項list.Add(細項);
         }
@@ -448,7 +460,7 @@ namespace WindowsFormsApp2
                 foreach (Control control in 物項.Controls)// 抓出自訂控制項(UserContral)裡的控制項
                 {
                     if (control.GetType() == typeof(Button))// 找出控制項裡的屬性=Button屬性
-                    {                        
+                    {
                         Button button = (Button)control; //將control轉型成Button，用Button接
                         button.Click += 刪除物流紐_Click; //找到控制項裡的Button設定事件
                     }
@@ -472,9 +484,9 @@ namespace WindowsFormsApp2
             物流list.Add(物流);
         }
 
-        
+
     }
 }
 
-        
-    
+
+
