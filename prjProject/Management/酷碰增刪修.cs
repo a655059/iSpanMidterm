@@ -30,6 +30,7 @@ namespace WindowsFormsApp2
             Q.Discount = float.Parse(txtds.Text);
             DBiSpan.SaveChanges();
             MessageBox.Show("修改成功");
+            Close();
         }
 
         private void 酷碰增刪修_Load(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace WindowsFormsApp2
             txtds.Text = DBiSpan.Coupons.Where(n => n.CouponID == select)
                 .Select(n => n.Discount).FirstOrDefault().ToString();
         }
-
+                     
         private void 新增_Click(object sender, EventArgs e)
         {
             Coupon coupon = new Coupon() {
@@ -60,6 +61,7 @@ namespace WindowsFormsApp2
             DBiSpan.Coupons.Add(coupon);
             DBiSpan.SaveChanges();
             MessageBox.Show("新增成功");
+            Close();
         }
 
         private void 刪除_Click(object sender, EventArgs e)
@@ -69,6 +71,7 @@ namespace WindowsFormsApp2
             DBiSpan.Coupons.Remove(Q);
             DBiSpan.SaveChanges();
             MessageBox.Show("刪除成功");
+            Close();
         }
     }
 }
