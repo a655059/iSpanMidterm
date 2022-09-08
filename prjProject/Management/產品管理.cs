@@ -89,5 +89,10 @@ namespace WindowsFormsApp2
             }).ToList();
             dataGridView2.DataSource = W;
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
