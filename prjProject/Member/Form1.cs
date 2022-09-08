@@ -15,6 +15,7 @@ namespace Project_期中專案
     {
         iSpanProjectEntities dbindex = new iSpanProjectEntities();
         byte[] bytes;
+        bool _pwshow = false;
         public string account;
 
         public Form1()
@@ -143,6 +144,22 @@ namespace Project_期中專案
             if (txtpwd.Length <= 5) { account_mes.Text = "密碼強度低"; }
             else if (txtpwd.Length > 5 && txtpwd.Length < 8) { account_mes.Text = "密碼強度中等"; }
             else { account_mes.Text = "密碼強度高"; }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (_pwshow)
+            {
+                _pwshow = false;
+                pictureBox1.Image = prjProject.Properties.Resources.eye1;
+                txtPassworld.UseSystemPasswordChar = true;
+            }
+            else if (!_pwshow)
+            {
+                _pwshow = true;
+                pictureBox1.Image = prjProject.Properties.Resources.eye2;
+                txtPassworld.UseSystemPasswordChar = false;
+            }
         }
     }
 }

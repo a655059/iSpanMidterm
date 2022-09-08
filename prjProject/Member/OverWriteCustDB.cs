@@ -21,6 +21,8 @@ namespace Project_期中專案
         }
         public int memberID { get; set; }
         byte[] bytes;
+        private bool _pwshow=false;
+
         public OverWriteCustDB()
         {
             InitializeComponent();
@@ -199,6 +201,22 @@ namespace Project_期中專案
         private void cmbo_city_Click(object sender, EventArgs e)
         {
             cbload();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (_pwshow)
+            {
+                _pwshow = false;
+                pictureBox1.Image = prjProject.Properties.Resources.eye1;
+                txtPassworld.UseSystemPasswordChar = true;
+            }
+            else if (!_pwshow)
+            {
+                _pwshow = true;
+                pictureBox1.Image = prjProject.Properties.Resources.eye2;
+                txtPassworld.UseSystemPasswordChar = false;
+            }
         }
     }
 }

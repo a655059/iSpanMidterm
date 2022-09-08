@@ -69,5 +69,10 @@ namespace prjProject.Member
             txt_couDiscount.Text = myCoupon.Discount.ToString();
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

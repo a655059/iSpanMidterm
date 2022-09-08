@@ -639,6 +639,9 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\eye2.png" />
+    <None Include="Resources\eye1.png" />
+    <None Include="Resources\1564520_code_open_password_icon.png" />
     <None Include="Resources\screen_minimize20.png" />
     <None Include="Resources\8674976_ic_fluent_full_screen_minimize_icon.png" />
     <None Include="Resources\logout.png" />

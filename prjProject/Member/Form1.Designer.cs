@@ -52,7 +52,6 @@ namespace Project_期中專案
             this.label13 = new System.Windows.Forms.Label();
             this.txtadd = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.pic_box = new System.Windows.Forms.PictureBox();
             this.btn_pic = new System.Windows.Forms.Button();
             this.cmbo_city = new System.Windows.Forms.ComboBox();
             this.ckbox_yes = new System.Windows.Forms.CheckBox();
@@ -62,15 +61,20 @@ namespace Project_期中專案
             this.label8 = new System.Windows.Forms.Label();
             this.account_mes = new System.Windows.Forms.Label();
             this.bg = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic_box = new System.Windows.Forms.PictureBox();
+            this.bg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancle
             // 
             this.btn_cancle.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_cancle.Location = new System.Drawing.Point(136, 529);
+            this.btn_cancle.ForeColor = System.Drawing.Color.Chocolate;
+            this.btn_cancle.Location = new System.Drawing.Point(423, 558);
             this.btn_cancle.Name = "btn_cancle";
-            this.btn_cancle.Size = new System.Drawing.Size(88, 34);
+            this.btn_cancle.Size = new System.Drawing.Size(101, 34);
             this.btn_cancle.TabIndex = 36;
             this.btn_cancle.Text = "取消";
             this.btn_cancle.UseVisualStyleBackColor = true;
@@ -79,11 +83,12 @@ namespace Project_期中專案
             // btn_save
             // 
             this.btn_save.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_save.Location = new System.Drawing.Point(30, 529);
+            this.btn_save.ForeColor = System.Drawing.Color.Chocolate;
+            this.btn_save.Location = new System.Drawing.Point(287, 558);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(88, 34);
+            this.btn_save.Size = new System.Drawing.Size(101, 34);
             this.btn_save.TabIndex = 34;
-            this.btn_save.Text = "儲存";
+            this.btn_save.Text = "建立";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
@@ -100,7 +105,7 @@ namespace Project_期中專案
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label7.ForeColor = System.Drawing.Color.Chocolate;
-            this.label7.Location = new System.Drawing.Point(30, 326);
+            this.label7.Location = new System.Drawing.Point(76, 326);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 26);
             this.label7.TabIndex = 32;
@@ -119,7 +124,7 @@ namespace Project_期中專案
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label6.ForeColor = System.Drawing.Color.Chocolate;
-            this.label6.Location = new System.Drawing.Point(30, 283);
+            this.label6.Location = new System.Drawing.Point(76, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 26);
             this.label6.TabIndex = 30;
@@ -138,7 +143,7 @@ namespace Project_期中專案
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label5.ForeColor = System.Drawing.Color.Chocolate;
-            this.label5.Location = new System.Drawing.Point(30, 238);
+            this.label5.Location = new System.Drawing.Point(118, 238);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 26);
             this.label5.TabIndex = 28;
@@ -149,7 +154,7 @@ namespace Project_期中專案
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label4.ForeColor = System.Drawing.Color.Chocolate;
-            this.label4.Location = new System.Drawing.Point(30, 150);
+            this.label4.Location = new System.Drawing.Point(76, 150);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 26);
             this.label4.TabIndex = 26;
@@ -160,7 +165,7 @@ namespace Project_期中專案
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.Color.Chocolate;
-            this.label3.Location = new System.Drawing.Point(30, 108);
+            this.label3.Location = new System.Drawing.Point(113, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 26);
             this.label3.TabIndex = 24;
@@ -181,7 +186,7 @@ namespace Project_期中專案
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.Chocolate;
-            this.label2.Location = new System.Drawing.Point(30, 71);
+            this.label2.Location = new System.Drawing.Point(113, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 26);
             this.label2.TabIndex = 22;
@@ -200,7 +205,7 @@ namespace Project_期中專案
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.Chocolate;
-            this.label1.Location = new System.Drawing.Point(30, 34);
+            this.label1.Location = new System.Drawing.Point(50, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 26);
             this.label1.TabIndex = 20;
@@ -209,10 +214,10 @@ namespace Project_期中專案
             // txt_bio
             // 
             this.txt_bio.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_bio.Location = new System.Drawing.Point(473, 334);
+            this.txt_bio.Location = new System.Drawing.Point(423, 283);
             this.txt_bio.Multiline = true;
             this.txt_bio.Name = "txt_bio";
-            this.txt_bio.Size = new System.Drawing.Size(246, 190);
+            this.txt_bio.Size = new System.Drawing.Size(276, 241);
             this.txt_bio.TabIndex = 48;
             // 
             // label10
@@ -220,7 +225,7 @@ namespace Project_期中專案
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label10.ForeColor = System.Drawing.Color.Chocolate;
-            this.label10.Location = new System.Drawing.Point(325, 334);
+            this.label10.Location = new System.Drawing.Point(364, 291);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 24);
             this.label10.TabIndex = 47;
@@ -231,7 +236,7 @@ namespace Project_期中專案
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label11.ForeColor = System.Drawing.Color.Chocolate;
-            this.label11.Location = new System.Drawing.Point(30, 491);
+            this.label11.Location = new System.Drawing.Point(118, 491);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 26);
             this.label11.TabIndex = 45;
@@ -250,7 +255,7 @@ namespace Project_期中專案
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.ForeColor = System.Drawing.Color.Chocolate;
-            this.label12.Location = new System.Drawing.Point(30, 449);
+            this.label12.Location = new System.Drawing.Point(118, 449);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 26);
             this.label12.TabIndex = 43;
@@ -269,7 +274,7 @@ namespace Project_期中專案
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label13.ForeColor = System.Drawing.Color.Chocolate;
-            this.label13.Location = new System.Drawing.Point(30, 412);
+            this.label13.Location = new System.Drawing.Point(118, 412);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 26);
             this.label13.TabIndex = 41;
@@ -288,27 +293,17 @@ namespace Project_期中專案
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label14.ForeColor = System.Drawing.Color.Chocolate;
-            this.label14.Location = new System.Drawing.Point(30, 375);
+            this.label14.Location = new System.Drawing.Point(118, 375);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(54, 26);
             this.label14.TabIndex = 39;
             this.label14.Text = "地址";
             // 
-            // pic_box
-            // 
-            this.pic_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic_box.Location = new System.Drawing.Point(473, 70);
-            this.pic_box.Name = "pic_box";
-            this.pic_box.Size = new System.Drawing.Size(246, 200);
-            this.pic_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_box.TabIndex = 79;
-            this.pic_box.TabStop = false;
-            // 
             // btn_pic
             // 
             this.btn_pic.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_pic.ForeColor = System.Drawing.Color.Chocolate;
-            this.btn_pic.Location = new System.Drawing.Point(329, 34);
+            this.btn_pic.Location = new System.Drawing.Point(565, 238);
             this.btn_pic.Name = "btn_pic";
             this.btn_pic.Size = new System.Drawing.Size(123, 33);
             this.btn_pic.TabIndex = 80;
@@ -367,7 +362,7 @@ namespace Project_期中專案
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label8.ForeColor = System.Drawing.Color.Chocolate;
-            this.label8.Location = new System.Drawing.Point(30, 195);
+            this.label8.Location = new System.Drawing.Point(76, 195);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 26);
             this.label8.TabIndex = 84;
@@ -386,49 +381,71 @@ namespace Project_期中專案
             // bg
             // 
             this.bg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bg.Controls.Add(this.pictureBox1);
+            this.bg.Controls.Add(this.pic_box);
+            this.bg.Controls.Add(this.label1);
+            this.bg.Controls.Add(this.ckbox_yes);
+            this.bg.Controls.Add(this.account_mes);
+            this.bg.Controls.Add(this.txt_name);
+            this.bg.Controls.Add(this.cmb_are);
+            this.bg.Controls.Add(this.label8);
+            this.bg.Controls.Add(this.DTP_BIR);
+            this.bg.Controls.Add(this.btn_pic);
+            this.bg.Controls.Add(this.cmbo_city);
+            this.bg.Controls.Add(this.txt_bio);
+            this.bg.Controls.Add(this.label12);
+            this.bg.Controls.Add(this.label11);
+            this.bg.Controls.Add(this.label10);
+            this.bg.Controls.Add(this.label4);
+            this.bg.Controls.Add(this.txt_nickName);
+            this.bg.Controls.Add(this.txtadd);
+            this.bg.Controls.Add(this.label14);
+            this.bg.Controls.Add(this.label13);
+            this.bg.Controls.Add(this.btn_cancle);
+            this.bg.Controls.Add(this.txt_phon);
+            this.bg.Controls.Add(this.btn_save);
+            this.bg.Controls.Add(this.label7);
+            this.bg.Controls.Add(this.txt_backMail);
+            this.bg.Controls.Add(this.txt_mail);
+            this.bg.Controls.Add(this.label6);
+            this.bg.Controls.Add(this.label5);
+            this.bg.Controls.Add(this.txtPassworld);
+            this.bg.Controls.Add(this.label3);
+            this.bg.Controls.Add(this.txtAccount);
+            this.bg.Controls.Add(this.label2);
             this.bg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bg.Location = new System.Drawing.Point(0, 0);
             this.bg.Name = "bg";
-            this.bg.Size = new System.Drawing.Size(796, 574);
+            this.bg.Size = new System.Drawing.Size(796, 605);
             this.bg.TabIndex = 87;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::prjProject.Properties.Resources.eye1;
+            this.pictureBox1.Location = new System.Drawing.Point(81, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 87;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pic_box
+            // 
+            this.pic_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_box.Location = new System.Drawing.Point(423, 21);
+            this.pic_box.Name = "pic_box";
+            this.pic_box.Size = new System.Drawing.Size(265, 210);
+            this.pic_box.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_box.TabIndex = 79;
+            this.pic_box.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(796, 574);
-            this.Controls.Add(this.account_mes);
-            this.Controls.Add(this.cmb_are);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.DTP_BIR);
-            this.Controls.Add(this.ckbox_yes);
-            this.Controls.Add(this.cmbo_city);
-            this.Controls.Add(this.btn_pic);
-            this.Controls.Add(this.pic_box);
-            this.Controls.Add(this.txt_bio);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.txt_name);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.txt_nickName);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.txtadd);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.btn_cancle);
-            this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.txt_backMail);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txt_mail);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_phon);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPassworld);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtAccount);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(796, 605);
             this.Controls.Add(this.bg);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -436,9 +453,11 @@ namespace Project_期中專案
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.bg.ResumeLayout(false);
+            this.bg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -476,6 +495,7 @@ namespace Project_期中專案
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label account_mes;
         private System.Windows.Forms.Panel bg;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

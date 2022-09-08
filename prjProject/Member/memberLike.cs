@@ -84,5 +84,10 @@ namespace prjProject.Member
             //form.ProductNumInCart = ProductNumInCart;
             form.ShowDialog();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
