@@ -99,7 +99,7 @@ namespace prjProject
         public string memberCenter
         {
             get { return linkLabelLogin.Text; }
-            set { linkLabelLogin.Text = value; }
+            set { linkLabelLogin.Text = value; if (memberID != 0) linkLabelLogin.Visible = false; }
         }
         public Image heart
         {
@@ -127,7 +127,7 @@ namespace prjProject
             {
                 var q1 = dbContext.MemberAccounts.Where(i => i.MemberID == memberID).Select(i => i).FirstOrDefault();
                 lblWelcome.Text = $"歡迎 {q1.Name}";
-                linkLabelLogin.Text = "會員中心";
+                linkLabelLogin.Visible = false;
                 int memberRegionID = q1.RegionID;
                 string memberCountry = q1.RegionList.CountryList.CountryName;
                 int memberCountryID = q1.RegionList.CountryList.CountryID;
@@ -172,7 +172,7 @@ namespace prjProject
             {
                 Label label = new Label();
                 label.Text = p.Style;
-                label.Font = new Font("標楷體", 16);
+                label.Font = new Font("微軟正黑體", 16);
                 
                 label.Margin = new Padding(0, 0, 10, 10);
                 if (p.Quantity == 0)
@@ -183,8 +183,9 @@ namespace prjProject
                 else
                 {
                     label.BorderStyle = BorderStyle.FixedSingle;
-                    
+
                 }
+                label.AutoSize = true;
                 label.Click += Style_Click;
                 label.MouseEnter += Style_MouseEnter;
                 label.MouseLeave += Style_MouseLeave;
@@ -230,7 +231,7 @@ namespace prjProject
             
             string productDescription = q3.FirstOrDefault().Description;
             lblProductDescription.Text = productDescription;
-            int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerMemberID).Select(i => i).ToList().Count;
+            int sellerProductNum = dbContext.Products.Where(i => i.MemberID == sellerMemberID && i.ProductStatusID == 0).Select(i => i).ToList().Count;
             lblSellerProductNum.Text = sellerProductNum.ToString();
             CFunctions.SetHeart(this);
             CFunctions.SetHandLike(this);
@@ -256,7 +257,7 @@ namespace prjProject
             else
             {
                 lblStarScore.Text = "尚無評分";
-                lblStarScore.Font = new Font("標楷體", 12);
+                lblStarScore.Font = new Font("微軟正黑體", 12);
             }
             string smallTypeName = q3.Select(i => i.SmallType.SmallTypeName).FirstOrDefault();
             string bigTypeName = q3.Select(i => i.SmallType.BigType.BigTypeName).FirstOrDefault();

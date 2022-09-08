@@ -34,13 +34,23 @@ namespace prjProject
             this.spContainerMainPage = new System.Windows.Forms.SplitContainer();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.lblProductNumInCart = new System.Windows.Forms.Label();
+            this.pbCart = new System.Windows.Forms.PictureBox();
+            this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
             this.panelSearch = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.lblToSellerForm = new System.Windows.Forms.LinkLabel();
+            this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
+            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
             this.lblName = new System.Windows.Forms.Label();
             this.linkLabelHouTai = new System.Windows.Forms.LinkLabel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnWinfrm1 = new System.Windows.Forms.PictureBox();
+            this.btnWinfrm3 = new System.Windows.Forms.PictureBox();
+            this.btnWinfrm2 = new System.Windows.Forms.PictureBox();
             this.spContainerBotton = new System.Windows.Forms.SplitContainer();
             this.flowpanelType = new System.Windows.Forms.FlowLayoutPanel();
             this.spContainerItem = new System.Windows.Forms.SplitContainer();
@@ -52,33 +62,28 @@ namespace prjProject
             this.spADcontainer2 = new System.Windows.Forms.SplitContainer();
             this.adtrigger2 = new System.Windows.Forms.Label();
             this.tbAD2 = new System.Windows.Forms.TextBox();
+            this.pbAD2 = new System.Windows.Forms.PictureBox();
+            this.EventAD1 = new System.Windows.Forms.PictureBox();
             this.spADcontainer1 = new System.Windows.Forms.SplitContainer();
             this.adtrigger1 = new System.Windows.Forms.Label();
             this.tbAD1 = new System.Windows.Forms.TextBox();
+            this.pbAD1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowpanelTypeItem = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pbCart = new System.Windows.Forms.PictureBox();
-            this.linkLabelMemberCenter = new System.Windows.Forms.LinkLabel();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabelRegister = new System.Windows.Forms.LinkLabel();
-            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.btnWinfrm1 = new System.Windows.Forms.PictureBox();
-            this.btnWinfrm3 = new System.Windows.Forms.PictureBox();
-            this.btnWinfrm2 = new System.Windows.Forms.PictureBox();
-            this.pbAD2 = new System.Windows.Forms.PictureBox();
-            this.EventAD1 = new System.Windows.Forms.PictureBox();
-            this.pbAD1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerMainPage)).BeginInit();
             this.spContainerMainPage.Panel1.SuspendLayout();
             this.spContainerMainPage.Panel2.SuspendLayout();
             this.spContainerMainPage.SuspendLayout();
             this.panelTopBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
             this.panelSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).BeginInit();
             this.spContainerBotton.Panel1.SuspendLayout();
             this.spContainerBotton.Panel2.SuspendLayout();
@@ -97,19 +102,14 @@ namespace prjProject
             this.spADcontainer2.Panel1.SuspendLayout();
             this.spADcontainer2.Panel2.SuspendLayout();
             this.spADcontainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spADcontainer1)).BeginInit();
             this.spADcontainer1.Panel1.SuspendLayout();
             this.spADcontainer1.Panel2.SuspendLayout();
             this.spADcontainer1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // spContainerMainPage
@@ -166,6 +166,34 @@ namespace prjProject
             this.lblProductNumInCart.TabIndex = 20;
             this.lblProductNumInCart.Text = "0";
             // 
+            // pbCart
+            // 
+            this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
+            this.pbCart.Location = new System.Drawing.Point(537, 63);
+            this.pbCart.Name = "pbCart";
+            this.pbCart.Size = new System.Drawing.Size(38, 37);
+            this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbCart.TabIndex = 18;
+            this.pbCart.TabStop = false;
+            this.pbCart.Click += new System.EventHandler(this.pbCart_Click);
+            // 
+            // linkLabelMemberCenter
+            // 
+            this.linkLabelMemberCenter.AutoSize = true;
+            this.linkLabelMemberCenter.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.Image = global::prjProject.Properties.Resources.memcenter;
+            this.linkLabelMemberCenter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelMemberCenter.Location = new System.Drawing.Point(126, 3);
+            this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
+            this.linkLabelMemberCenter.Size = new System.Drawing.Size(111, 27);
+            this.linkLabelMemberCenter.TabIndex = 24;
+            this.linkLabelMemberCenter.TabStop = true;
+            this.linkLabelMemberCenter.Text = "   會員中心";
+            this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
+            // 
             // panelSearch
             // 
             this.panelSearch.Controls.Add(this.btnSearch);
@@ -174,6 +202,17 @@ namespace prjProject
             this.panelSearch.Name = "panelSearch";
             this.panelSearch.Size = new System.Drawing.Size(440, 41);
             this.panelSearch.TabIndex = 22;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(399, 4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(33, 33);
+            this.btnSearch.TabIndex = 17;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // tbSearch
             // 
@@ -186,6 +225,23 @@ namespace prjProject
             this.tbSearch.Text = "從全部商品中搜尋...";
             this.tbSearch.Enter += new System.EventHandler(this.tbSearch_Enter);
             this.tbSearch.Leave += new System.EventHandler(this.tbSearch_Leave);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabel2.ForeColor = System.Drawing.Color.Black;
+            this.linkLabel2.Image = global::prjProject.Properties.Resources.faq;
+            this.linkLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel2.Location = new System.Drawing.Point(530, 3);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(70, 27);
+            this.linkLabel2.TabIndex = 11;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "   FAQ";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // lblToSellerForm
             // 
@@ -201,6 +257,41 @@ namespace prjProject
             this.lblToSellerForm.TabStop = true;
             this.lblToSellerForm.Text = "賣家中心";
             this.lblToSellerForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblToSellerForm_LinkClicked);
+            // 
+            // linkLabelRegister
+            // 
+            this.linkLabelRegister.AutoSize = true;
+            this.linkLabelRegister.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelRegister.Image = global::prjProject.Properties.Resources.signup;
+            this.linkLabelRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabelRegister.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelRegister.Location = new System.Drawing.Point(284, 3);
+            this.linkLabelRegister.Name = "linkLabelRegister";
+            this.linkLabelRegister.Size = new System.Drawing.Size(69, 27);
+            this.linkLabelRegister.TabIndex = 12;
+            this.linkLabelRegister.TabStop = true;
+            this.linkLabelRegister.Text = "   註冊";
+            this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegister_LinkClicked);
+            // 
+            // linkLabelLogin
+            // 
+            this.linkLabelLogin.ActiveLinkColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.AutoSize = true;
+            this.linkLabelLogin.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.Image = global::prjProject.Properties.Resources.account;
+            this.linkLabelLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
+            this.linkLabelLogin.Location = new System.Drawing.Point(359, 3);
+            this.linkLabelLogin.Name = "linkLabelLogin";
+            this.linkLabelLogin.Size = new System.Drawing.Size(69, 27);
+            this.linkLabelLogin.TabIndex = 13;
+            this.linkLabelLogin.TabStop = true;
+            this.linkLabelLogin.Text = "   登入";
+            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
             // 
             // lblName
             // 
@@ -230,6 +321,16 @@ namespace prjProject
             this.linkLabelHouTai.Visible = false;
             this.linkLabelHouTai.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHouTai_LinkClicked);
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
+            this.pbLogo.Location = new System.Drawing.Point(10, 28);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(103, 98);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 29;
+            this.pbLogo.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -251,6 +352,36 @@ namespace prjProject
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(111, 26);
             this.panel4.TabIndex = 28;
+            // 
+            // btnWinfrm1
+            // 
+            this.btnWinfrm1.Image = global::prjProject.Properties.Resources._8664917_window_minimize_icon;
+            this.btnWinfrm1.Location = new System.Drawing.Point(3, 2);
+            this.btnWinfrm1.Name = "btnWinfrm1";
+            this.btnWinfrm1.Size = new System.Drawing.Size(22, 20);
+            this.btnWinfrm1.TabIndex = 26;
+            this.btnWinfrm1.TabStop = false;
+            this.btnWinfrm1.Click += new System.EventHandler(this.btnWindowMinimized_Click_1);
+            // 
+            // btnWinfrm3
+            // 
+            this.btnWinfrm3.Image = global::prjProject.Properties.Resources.close;
+            this.btnWinfrm3.Location = new System.Drawing.Point(85, 3);
+            this.btnWinfrm3.Name = "btnWinfrm3";
+            this.btnWinfrm3.Size = new System.Drawing.Size(25, 21);
+            this.btnWinfrm3.TabIndex = 23;
+            this.btnWinfrm3.TabStop = false;
+            this.btnWinfrm3.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnWinfrm2
+            // 
+            this.btnWinfrm2.Image = global::prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
+            this.btnWinfrm2.Location = new System.Drawing.Point(43, 3);
+            this.btnWinfrm2.Name = "btnWinfrm2";
+            this.btnWinfrm2.Size = new System.Drawing.Size(25, 20);
+            this.btnWinfrm2.TabIndex = 25;
+            this.btnWinfrm2.TabStop = false;
+            this.btnWinfrm2.Click += new System.EventHandler(this.btnWindowMaximized_Click_1);
             // 
             // spContainerBotton
             // 
@@ -342,7 +473,7 @@ namespace prjProject
             this.panel2.Controls.Add(this.flowpanelAD);
             this.panel2.Location = new System.Drawing.Point(140, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(830, 294);
+            this.panel2.Size = new System.Drawing.Size(830, 297);
             this.panel2.TabIndex = 0;
             // 
             // flowpanelAD
@@ -350,7 +481,7 @@ namespace prjProject
             this.flowpanelAD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowpanelAD.Location = new System.Drawing.Point(0, 0);
             this.flowpanelAD.Name = "flowpanelAD";
-            this.flowpanelAD.Size = new System.Drawing.Size(830, 294);
+            this.flowpanelAD.Size = new System.Drawing.Size(830, 297);
             this.flowpanelAD.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -419,6 +550,31 @@ namespace prjProject
             this.tbAD2.Text = "dddd";
             this.tbAD2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pbAD2
+            // 
+            this.pbAD2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbAD2.ErrorImage = global::prjProject.Properties.Resources.cross;
+            this.pbAD2.Location = new System.Drawing.Point(0, 0);
+            this.pbAD2.Name = "pbAD2";
+            this.pbAD2.Size = new System.Drawing.Size(362, 253);
+            this.pbAD2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAD2.TabIndex = 1;
+            this.pbAD2.TabStop = false;
+            this.pbAD2.Click += new System.EventHandler(this.pbAD2_Click);
+            // 
+            // EventAD1
+            // 
+            this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EventAD1.Image = global::prjProject.Properties.Resources.EVENTCOUPON;
+            this.EventAD1.Location = new System.Drawing.Point(742, 4);
+            this.EventAD1.Name = "EventAD1";
+            this.EventAD1.Size = new System.Drawing.Size(365, 311);
+            this.EventAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EventAD1.TabIndex = 0;
+            this.EventAD1.TabStop = false;
+            this.EventAD1.Click += new System.EventHandler(this.EventAD1_Click);
+            // 
             // spADcontainer1
             // 
             this.spADcontainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -467,6 +623,18 @@ namespace prjProject
             this.tbAD1.Text = "dddd";
             this.tbAD1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pbAD1
+            // 
+            this.pbAD1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbAD1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbAD1.ErrorImage")));
+            this.pbAD1.Location = new System.Drawing.Point(0, 0);
+            this.pbAD1.Name = "pbAD1";
+            this.pbAD1.Size = new System.Drawing.Size(362, 253);
+            this.pbAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAD1.TabIndex = 0;
+            this.pbAD1.TabStop = false;
+            this.pbAD1.Click += new System.EventHandler(this.pbAD1_Click);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.flowpanelTypeItem);
@@ -488,174 +656,6 @@ namespace prjProject
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // pbCart
-            // 
-            this.pbCart.Image = ((System.Drawing.Image)(resources.GetObject("pbCart.Image")));
-            this.pbCart.Location = new System.Drawing.Point(537, 63);
-            this.pbCart.Name = "pbCart";
-            this.pbCart.Size = new System.Drawing.Size(38, 37);
-            this.pbCart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbCart.TabIndex = 18;
-            this.pbCart.TabStop = false;
-            this.pbCart.Click += new System.EventHandler(this.pbCart_Click);
-            // 
-            // linkLabelMemberCenter
-            // 
-            this.linkLabelMemberCenter.AutoSize = true;
-            this.linkLabelMemberCenter.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelMemberCenter.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.Image = global::prjProject.Properties.Resources.memcenter;
-            this.linkLabelMemberCenter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabelMemberCenter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelMemberCenter.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelMemberCenter.Location = new System.Drawing.Point(126, 3);
-            this.linkLabelMemberCenter.Name = "linkLabelMemberCenter";
-            this.linkLabelMemberCenter.Size = new System.Drawing.Size(111, 27);
-            this.linkLabelMemberCenter.TabIndex = 24;
-            this.linkLabelMemberCenter.TabStop = true;
-            this.linkLabelMemberCenter.Text = "   會員中心";
-            this.linkLabelMemberCenter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMemberCenter_LinkClicked);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(399, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(33, 33);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel2.ForeColor = System.Drawing.Color.Black;
-            this.linkLabel2.Image = global::prjProject.Properties.Resources.faq;
-            this.linkLabel2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(530, 3);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(70, 27);
-            this.linkLabel2.TabIndex = 11;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "   FAQ";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // linkLabelRegister
-            // 
-            this.linkLabelRegister.AutoSize = true;
-            this.linkLabelRegister.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelRegister.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Image = global::prjProject.Properties.Resources.signup;
-            this.linkLabelRegister.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabelRegister.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelRegister.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelRegister.Location = new System.Drawing.Point(284, 3);
-            this.linkLabelRegister.Name = "linkLabelRegister";
-            this.linkLabelRegister.Size = new System.Drawing.Size(69, 27);
-            this.linkLabelRegister.TabIndex = 12;
-            this.linkLabelRegister.TabStop = true;
-            this.linkLabelRegister.Text = "   註冊";
-            this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegister_LinkClicked);
-            // 
-            // linkLabelLogin
-            // 
-            this.linkLabelLogin.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.AutoSize = true;
-            this.linkLabelLogin.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabelLogin.ForeColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Image = global::prjProject.Properties.Resources.account;
-            this.linkLabelLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLabelLogin.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabelLogin.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelLogin.Location = new System.Drawing.Point(359, 3);
-            this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(69, 27);
-            this.linkLabelLogin.TabIndex = 13;
-            this.linkLabelLogin.TabStop = true;
-            this.linkLabelLogin.Text = "   登入";
-            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = global::prjProject.Properties.Resources.LOGO3;
-            this.pbLogo.Location = new System.Drawing.Point(10, 25);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(114, 100);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 29;
-            this.pbLogo.TabStop = false;
-            // 
-            // btnWinfrm1
-            // 
-            this.btnWinfrm1.Image = global::prjProject.Properties.Resources._8664917_window_minimize_icon;
-            this.btnWinfrm1.Location = new System.Drawing.Point(3, 2);
-            this.btnWinfrm1.Name = "btnWinfrm1";
-            this.btnWinfrm1.Size = new System.Drawing.Size(22, 20);
-            this.btnWinfrm1.TabIndex = 26;
-            this.btnWinfrm1.TabStop = false;
-            this.btnWinfrm1.Click += new System.EventHandler(this.btnWindowMinimized_Click_1);
-            // 
-            // btnWinfrm3
-            // 
-            this.btnWinfrm3.Image = global::prjProject.Properties.Resources.close;
-            this.btnWinfrm3.Location = new System.Drawing.Point(85, 3);
-            this.btnWinfrm3.Name = "btnWinfrm3";
-            this.btnWinfrm3.Size = new System.Drawing.Size(25, 21);
-            this.btnWinfrm3.TabIndex = 23;
-            this.btnWinfrm3.TabStop = false;
-            this.btnWinfrm3.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnWinfrm2
-            // 
-            this.btnWinfrm2.Image = global::prjProject.Properties.Resources._8675159_ic_fluent_maximize_regular_icon;
-            this.btnWinfrm2.Location = new System.Drawing.Point(43, 3);
-            this.btnWinfrm2.Name = "btnWinfrm2";
-            this.btnWinfrm2.Size = new System.Drawing.Size(25, 20);
-            this.btnWinfrm2.TabIndex = 25;
-            this.btnWinfrm2.TabStop = false;
-            this.btnWinfrm2.Click += new System.EventHandler(this.btnWindowMaximized_Click_1);
-            // 
-            // pbAD2
-            // 
-            this.pbAD2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbAD2.ErrorImage = global::prjProject.Properties.Resources.cross;
-            this.pbAD2.Location = new System.Drawing.Point(0, 0);
-            this.pbAD2.Name = "pbAD2";
-            this.pbAD2.Size = new System.Drawing.Size(362, 253);
-            this.pbAD2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAD2.TabIndex = 1;
-            this.pbAD2.TabStop = false;
-            this.pbAD2.Click += new System.EventHandler(this.pbAD2_Click);
-            // 
-            // EventAD1
-            // 
-            this.EventAD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EventAD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EventAD1.Image = global::prjProject.Properties.Resources.EVENTCOUPON;
-            this.EventAD1.Location = new System.Drawing.Point(742, 4);
-            this.EventAD1.Name = "EventAD1";
-            this.EventAD1.Size = new System.Drawing.Size(365, 311);
-            this.EventAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.EventAD1.TabIndex = 0;
-            this.EventAD1.TabStop = false;
-            this.EventAD1.Click += new System.EventHandler(this.EventAD1_Click);
-            // 
-            // pbAD1
-            // 
-            this.pbAD1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbAD1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbAD1.ErrorImage")));
-            this.pbAD1.Location = new System.Drawing.Point(0, 0);
-            this.pbAD1.Name = "pbAD1";
-            this.pbAD1.Size = new System.Drawing.Size(362, 253);
-            this.pbAD1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAD1.TabIndex = 0;
-            this.pbAD1.TabStop = false;
-            this.pbAD1.Click += new System.EventHandler(this.pbAD1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -674,10 +674,15 @@ namespace prjProject
             this.spContainerMainPage.ResumeLayout(false);
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCart)).EndInit();
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm2)).EndInit();
             this.spContainerBotton.Panel1.ResumeLayout(false);
             this.spContainerBotton.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContainerBotton)).EndInit();
@@ -698,20 +703,15 @@ namespace prjProject
             this.spADcontainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spADcontainer2)).EndInit();
             this.spADcontainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).EndInit();
             this.spADcontainer1.Panel1.ResumeLayout(false);
             this.spADcontainer1.Panel1.PerformLayout();
             this.spADcontainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spADcontainer1)).EndInit();
             this.spADcontainer1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnWinfrm2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAD2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EventAD1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAD1)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

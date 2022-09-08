@@ -145,7 +145,7 @@ namespace prjProject.Models
                     }
                     f.starCountAndStarScore = 10.ToString();
                     f.memberCenter = "會員中心";
-                    
+
                 } 
                 else if (form.GetType() == typeof(CartForm))
                 {
@@ -161,6 +161,7 @@ namespace prjProject.Models
                     f.memberName = q.Name;
                     //f.ProductNumInCart = productNumInCart.ToString();
                     f.memberCenter = "會員中心";
+
                     f.IsLogin = true;
                 }
                 else if (form.GetType() == typeof(Event_Coupon))
