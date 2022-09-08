@@ -50,6 +50,7 @@ namespace WindowsFormsApp2
             var Q = DBiSpan.Products.Select(n =>
                         new
                         {
+                            n.ProductStatusID,
                             n.ProductID,
                             n.ProductName,
                             n.SmallTypeID,

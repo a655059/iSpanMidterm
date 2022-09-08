@@ -84,6 +84,7 @@ namespace seller
             this.cmb_shipper = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btn_clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -111,7 +112,7 @@ namespace seller
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -131,11 +132,12 @@ namespace seller
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.btn_clear);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView3);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView2);
             this.splitContainer2.Panel1.Controls.Add(this.label11);
@@ -163,7 +165,7 @@ namespace seller
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(18, 276);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 27;
@@ -174,7 +176,7 @@ namespace seller
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(18, 142);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 27;
@@ -219,7 +221,7 @@ namespace seller
             // alter
             // 
             this.alter.BackColor = System.Drawing.Color.LightSalmon;
-            this.alter.Location = new System.Drawing.Point(18, 529);
+            this.alter.Location = new System.Drawing.Point(18, 515);
             this.alter.Name = "alter";
             this.alter.Size = new System.Drawing.Size(75, 23);
             this.alter.TabIndex = 72;
@@ -442,7 +444,7 @@ namespace seller
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 574);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(392, 142);
             this.flowLayoutPanel2.TabIndex = 56;
@@ -498,7 +500,7 @@ namespace seller
             this.cmb_region.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_region.FormattingEnabled = true;
             this.cmb_region.Location = new System.Drawing.Point(54, 113);
-            this.cmb_region.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_region.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmb_region.Name = "cmb_region";
             this.cmb_region.Size = new System.Drawing.Size(191, 30);
             this.cmb_region.TabIndex = 58;
@@ -508,7 +510,7 @@ namespace seller
             this.cmb_country.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_country.FormattingEnabled = true;
             this.cmb_country.Location = new System.Drawing.Point(54, 38);
-            this.cmb_country.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_country.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmb_country.Name = "cmb_country";
             this.cmb_country.Size = new System.Drawing.Size(191, 30);
             this.cmb_country.TabIndex = 94;
@@ -564,7 +566,7 @@ namespace seller
             this.cmb_bigtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_bigtype.FormattingEnabled = true;
             this.cmb_bigtype.Location = new System.Drawing.Point(112, 45);
-            this.cmb_bigtype.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_bigtype.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmb_bigtype.Name = "cmb_bigtype";
             this.cmb_bigtype.Size = new System.Drawing.Size(191, 30);
             this.cmb_bigtype.TabIndex = 92;
@@ -575,7 +577,7 @@ namespace seller
             this.cmb_smtype.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_smtype.FormattingEnabled = true;
             this.cmb_smtype.Location = new System.Drawing.Point(112, 116);
-            this.cmb_smtype.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_smtype.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmb_smtype.Name = "cmb_smtype";
             this.cmb_smtype.Size = new System.Drawing.Size(191, 30);
             this.cmb_smtype.TabIndex = 56;
@@ -644,7 +646,7 @@ namespace seller
             // 
             this.richTextBox_descript.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.richTextBox_descript.Location = new System.Drawing.Point(612, 204);
-            this.richTextBox_descript.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox_descript.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox_descript.Name = "richTextBox_descript";
             this.richTextBox_descript.Size = new System.Drawing.Size(291, 65);
             this.richTextBox_descript.TabIndex = 48;
@@ -698,7 +700,7 @@ namespace seller
             this.cmb_shipper.Font = new System.Drawing.Font("標楷體", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.cmb_shipper.FormattingEnabled = true;
             this.cmb_shipper.Location = new System.Drawing.Point(492, 15);
-            this.cmb_shipper.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_shipper.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmb_shipper.Name = "cmb_shipper";
             this.cmb_shipper.Size = new System.Drawing.Size(191, 30);
             this.cmb_shipper.TabIndex = 60;
@@ -708,7 +710,7 @@ namespace seller
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(403, 574);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 142);
             this.flowLayoutPanel1.TabIndex = 55;
@@ -718,6 +720,17 @@ namespace seller
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.LightSalmon;
+            this.btn_clear.Location = new System.Drawing.Point(18, 574);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear.TabIndex = 73;
+            this.btn_clear.Text = "清除";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // 上架
             // 
@@ -810,5 +823,6 @@ namespace seller
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox picb_product;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

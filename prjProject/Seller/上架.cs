@@ -121,6 +121,8 @@ namespace seller
 
         }
 
+      
+
         private void btn_product_Click(object sender, EventArgs e)
         {
             if (this.ofd_product.ShowDialog() == DialogResult.OK)
@@ -406,6 +408,90 @@ namespace seller
             //    DialogResult result = MessageBox.Show("請正確輸入!!", "Warning",
             //        MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             //}
+
+            int pdid = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+
+
+            var shiptopd = isp.ShipperToProducts.Where(a => a.Product.ProductID == pdid).ToList();
+            var new_sp_id = isp.Shippers.Where(a => a.ShipperName == cmb_shipper.Text).ToList();
+            shiptopd[0].ShipperID = new_sp_id[0].ShipperID;
+
+
+            var pddetail = isp.ProductDetails.Where(a => a.ProductID == pdid);
+            if (flag_formatpic)
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                this.picb_format.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] bytes = ms.GetBuffer();
+
+                foreach (var pdtt in pddetail)
+                {
+                    pdtt.Pic = bytes;
+                }
+            }
+
+            foreach (var pdtt in pddetail)
+            {
+                pdtt.Style = txt_style.Text;
+                pdtt.Quantity = Convert.ToInt32(txt_quantity.Text);
+                pdtt.UnitPrice = Convert.ToDecimal(txt_unitprice.Text);
+            }
+
+            var c = from d in isp.ProductPics       //抓取id
+                    where d.ProductID == pdid
+                    select d;
+
+            //----------------------------------------------------------------------------------------
+
+            System.IO.MemoryStream ms1 = new System.IO.MemoryStream();
+            this.picb_product.Image.Save(ms1, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] bytes1 = ms1.GetBuffer();
+            foreach (var ppic in c)
+            {
+                ppic.picture = bytes1;
+            }
+            flag_mainpic = false;
+
+
+            this.isp.SaveChanges();
+            //----------------------------------------------------------------------------------------
+            var j = (from s in isp.SmallTypes
+                     where s.SmallTypeName == cmb_smtype.Text
+                     select s).ToList();
+
+
+            var i = (from t in isp.RegionLists
+                     where t.RegionName == cmb_region.Text
+                     select t).ToList();
+
+            var g = from f in isp.Products
+                    where f.ProductID == pdid
+                    select f;
+
+            //var g = isp.Products.Where(a => a.ProductID == pdid && a.ProductStatu.ProductStatusName == cmb_productstatus.Text).ToList();
+
+
+            //foreach (var prds in g)
+            //{
+            //    prds.ProductName = txt_pdname.Text;
+            //    prds.Description = richTextBox_descript.Text;
+            //    prds.AdFee = Convert.ToDecimal(txt_adfee.Text);
+            //    prds.SmallTypeID = j[0].SmallTypeID;
+            //    prds.RegionID = i[0].RegionID;
+            //    //prds.ShipperID = shipid[0].ShipperID;
+            //    prds.ProductStatusID = g[0].ProductStatusID;
+            //}
+
+            this.isp.SaveChanges();
+
+            shiper.Clear();
+            pd_detail.Clear();
+            pd_pic.Clear();
+            //-----------------------------------------------------------------------
+
+            clear();
+
+            renew();
         }
 
 
@@ -682,7 +768,6 @@ namespace seller
             }
 
 
-            renew();
         }
 
         private void cmb_smtype_SelectedIndexChanged(object sender, EventArgs e)
@@ -713,6 +798,9 @@ namespace seller
             txt_unitprice.Text = q.UnitPrice.ToString();
         }
 
-        
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
     }
 }

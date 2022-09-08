@@ -70,14 +70,18 @@ namespace WindowsFormsApp2
         
         private void 開啟帶入人名和地區_Load(object sender, EventArgs e) 
         {
-            
+
             //開啟時自動執行地區帶入
-            var Q = DBiSpan.RegionLists.Select(n => n.RegionName).ToList();
-            foreach (var i in Q)
+            var Contry = DBiSpan.CountryLists.Select(n => n.CountryName).ToList();
+            foreach (var c in Contry)
+            {
+                cbBig.Items.Add(c);
+            }
+            var reID = DBiSpan.RegionLists.Select(n => n.RegionName).ToList();
+            foreach(var i in reID)
             {
                 comRegionID.Items.Add(i);
             }
-
             //自動帶入帳號名單至listbox
             var QQ = DBiSpan.MemberAccounts.Select(n => n.MemberAcc).ToList();
             foreach (var i in QQ)
@@ -90,6 +94,8 @@ namespace WindowsFormsApp2
             {
                cbsta.Items.Add(i);
             }
+
+
             //if (listBox1.Items.Count==0) return;
             //listBox1.SelectedIndex = 0;  //預設選取第一筆資料
             //txtMemberAcc.Enabled = false;
@@ -140,7 +146,6 @@ namespace WindowsFormsApp2
             this.DBiSpan.SaveChanges();
             清空格子();
             MessageBox.Show("刪除成功");
-            listBox1.Items.Remove(listBox1.SelectedItem);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,7 +158,17 @@ namespace WindowsFormsApp2
             txtMemberAcc.Text = Q.MemberAcc;
             txtMemberPw.Text = Q.MemberPw;
             checkBox1.Checked = Q.TWorNOT;
-            comRegionID.SelectedIndex = Q.RegionID - 1;
+
+            var REgin = DBiSpan.MemberAccounts.Where(n => n.MemberAcc == Q.MemberAcc)
+               .Select(n => n.RegionID).FirstOrDefault();
+            comRegionID.Text = DBiSpan.RegionLists.Where(n => n.RegionID == REgin)
+                .Select(n => n.RegionName).FirstOrDefault();
+
+            var Country = DBiSpan.RegionLists.Where(n => n.RegionID == REgin)
+                .Select(n => n.CountryID).FirstOrDefault();
+            cbBig.Text = DBiSpan.CountryLists.Where(n => n.CountryID == Country)
+                .Select(n => n.CountryName).FirstOrDefault();
+
             txthone.Text = Q.Phone;
             txtEmail.Text = Q.Email;
             txtackUPEmail.Text = Q.BackUpEmail;
@@ -210,6 +225,20 @@ namespace WindowsFormsApp2
             會員查詢 會員查詢 = new 會員查詢();
             會員查詢.ShowDialog();
             listBox1.SelectedIndex= listBox1.FindString(會員查詢.acc);
+        }
+
+        private void cbBig_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comRegionID.Items.Clear();
+            var CID = DBiSpan.CountryLists.Where(n => n.CountryName == cbBig.Text)
+                .Select(n => n.CountryID).FirstOrDefault();
+            var ReginName = DBiSpan.RegionLists.Where(n => n.CountryID == CID)
+                .OrderBy(n => n.RegionID).Select(n => n.RegionName).ToList();
+            foreach (var i in ReginName)
+            {
+                comRegionID.Items.Add(i);
+            }
+            comRegionID.Text = comRegionID.Items[0].ToString();
         }
     }
 }

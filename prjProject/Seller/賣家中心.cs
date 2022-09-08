@@ -72,7 +72,8 @@ namespace seller
         }
 
         void shift() {
-            var q = isp.Products.OrderBy(a => a.ProductID).Where(a => a.MemberID == this.memberID);
+            if (page < 1) page = 1;
+            var q = isp.Products.OrderBy(a => a.ProductID).Where(a => a.MemberID == this.memberID && a.ProductStatusID != 2);
             if (q.Count() > 0)           //代表賣家有商品 可以顯示
             {
                 foreach (var pid in q.Skip((page-1)*2).Take(2))       //抓取特定賣家的id存入list中使用

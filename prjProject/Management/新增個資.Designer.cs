@@ -65,6 +65,7 @@ namespace WindowsFormsApp2
             this.button6 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.cbsta = new System.Windows.Forms.ComboBox();
+            this.cbBig = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,7 +227,7 @@ namespace WindowsFormsApp2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(678, 291);
+            this.button1.Location = new System.Drawing.Point(687, 332);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 34);
             this.button1.TabIndex = 23;
@@ -236,7 +237,7 @@ namespace WindowsFormsApp2
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(678, 335);
+            this.button2.Location = new System.Drawing.Point(687, 376);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 34);
             this.button2.TabIndex = 24;
@@ -246,7 +247,7 @@ namespace WindowsFormsApp2
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(678, 387);
+            this.button3.Location = new System.Drawing.Point(687, 428);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 25;
@@ -257,7 +258,7 @@ namespace WindowsFormsApp2
             // comRegionID
             // 
             this.comRegionID.FormattingEnabled = true;
-            this.comRegionID.Location = new System.Drawing.Point(461, 177);
+            this.comRegionID.Location = new System.Drawing.Point(578, 174);
             this.comRegionID.Name = "comRegionID";
             this.comRegionID.Size = new System.Drawing.Size(121, 26);
             this.comRegionID.TabIndex = 26;
@@ -276,13 +277,13 @@ namespace WindowsFormsApp2
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(70, 22);
             this.checkBox1.TabIndex = 28;
-            this.checkBox1.Text = "國外";
+            this.checkBox1.Text = "台灣";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(607, 180);
+            this.label13.Location = new System.Drawing.Point(625, 240);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 18);
             this.label13.TabIndex = 29;
@@ -290,9 +291,9 @@ namespace WindowsFormsApp2
             // 
             // txtBio
             // 
-            this.txtBio.Location = new System.Drawing.Point(669, 174);
+            this.txtBio.Location = new System.Drawing.Point(687, 234);
             this.txtBio.Name = "txtBio";
-            this.txtBio.Size = new System.Drawing.Size(100, 29);
+            this.txtBio.Size = new System.Drawing.Size(116, 29);
             this.txtBio.TabIndex = 30;
             // 
             // pictureBox1
@@ -338,7 +339,7 @@ namespace WindowsFormsApp2
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(678, 237);
+            this.button5.Location = new System.Drawing.Point(687, 278);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 34);
             this.button5.TabIndex = 35;
@@ -374,12 +375,22 @@ namespace WindowsFormsApp2
             this.cbsta.Size = new System.Drawing.Size(121, 26);
             this.cbsta.TabIndex = 38;
             // 
+            // cbBig
+            // 
+            this.cbBig.FormattingEnabled = true;
+            this.cbBig.Location = new System.Drawing.Point(451, 174);
+            this.cbBig.Name = "cbBig";
+            this.cbBig.Size = new System.Drawing.Size(121, 26);
+            this.cbBig.TabIndex = 39;
+            this.cbBig.SelectedIndexChanged += new System.EventHandler(this.cbBig_SelectedIndexChanged);
+            // 
             // 帳號管理
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1110, 557);
             this.ControlBox = false;
+            this.Controls.Add(this.cbBig);
             this.Controls.Add(this.cbsta);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button6);
@@ -466,5 +477,6 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cbsta;
+        private System.Windows.Forms.ComboBox cbBig;
     }
 }
