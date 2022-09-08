@@ -630,8 +630,8 @@ namespace prjProject
             this.ClientSize = new System.Drawing.Size(1264, 721);
             this.Controls.Add(this.splitContainer1);
             this.Name = "SelectedProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectedProductForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SelectedProductForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

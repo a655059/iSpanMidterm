@@ -538,6 +538,8 @@ namespace prjProject
                         dbContext.SaveChanges();
                     }
                     IsHandLike = !IsHandLike;
+                    int sellerFollowCount = dbContext.Follows.Where(i => i.FollowedMemID == sellerMemberID).Select(i => i).ToList().Count;
+                    lblSellerFollowNum.Text = sellerFollowCount.ToString();
                 }
             }
             else
