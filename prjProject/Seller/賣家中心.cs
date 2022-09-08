@@ -65,7 +65,7 @@ namespace seller
             {
                 pictureBox1.Image = Image.FromFile("../../Images/cross.png");
             }
-            var q = isp.Products.OrderBy(a => a.ProductID).Where(a => a.MemberID == this.memberID);
+            var q = isp.Products.OrderBy(a => a.ProductID).Where(a => a.MemberID == this.memberID && a.ProductStatusID != 2);
             lbl_sel_count.Text = q.Count().ToString();
             page++;
             shift();
