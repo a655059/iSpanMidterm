@@ -46,9 +46,9 @@ namespace prjProject.Management
 
         private void 修改_Click(object sender, EventArgs e)
         {
-            var selectID = dataGridView2.CurrentRow.Cells["ArgumentID"].Value;
-            修刪.inag = Convert.ToInt32(selectID);
-            修刪.ShowDialog();
+            //var selectID = dataGridView2.CurrentRow.Cells["ArgumentID"].Value;
+            //修刪.inag = Convert.ToInt32(selectID);
+            //修刪.ShowDialog();
         }
     }
 }

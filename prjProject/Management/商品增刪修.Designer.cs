@@ -417,7 +417,7 @@ namespace WindowsFormsApp2
             // 
             // picmore
             // 
-            this.picmore.Location = new System.Drawing.Point(76, 678);
+            this.picmore.Location = new System.Drawing.Point(80, 678);
             this.picmore.Name = "picmore";
             this.picmore.Size = new System.Drawing.Size(94, 42);
             this.picmore.TabIndex = 34;

@@ -170,20 +170,25 @@ namespace WindowsFormsApp2
             }
                 DBiSpan.SaveChanges();
 
-            for (int i = 0; i < 照片區.Count; i++)
+            if (pictureBox1.Image != null)
             {
-                ProductPic productPic = new ProductPic();
-                productPic.ProductID = productID;
-                productPic.picture = 照片區[i].picture;
-                DBiSpan.ProductPics.Add(productPic);
+                for (int i = 0; i < 照片區.Count; i++)
+                {
+                    ProductPic productPic = new ProductPic();
+                    productPic.ProductID = productID;
+                    productPic.picture = 照片區[i].picture;
+                    DBiSpan.ProductPics.Add(productPic);
+                }
+                DBiSpan.SaveChanges();
             }
-            DBiSpan.SaveChanges();
+            
             MessageBox.Show("新增成功");
             Close();
         }
 
         private void 瀏覽照片_Click(object sender, EventArgs e)
         {
+            pictureBox1.Image = null;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
         }
@@ -247,14 +252,18 @@ namespace WindowsFormsApp2
             }
             DBiSpan.SaveChanges();
 
-            for (int i = 0; i < 照片區.Count; i++)
+            if (pictureBox1.Image != null)
             {
-                var Pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
-                    .Select(n => n).FirstOrDefault();
-                Pics.ProductID = productID;
-                Pics.picture = 照片區[i].picture;
+            for (int i = 0; i < 照片區.Count; i++)
+                        {
+                            var Pics = DBiSpan.ProductPics.Where(n => n.ProductID == P_select)
+                                .Select(n => n).FirstOrDefault();
+                            Pics.ProductID = productID;
+                            Pics.picture = 照片區[i].picture;
+                        }
+                        DBiSpan.SaveChanges();
             }
-            DBiSpan.SaveChanges();
+            
            MessageBox.Show("修改成功");
             Close();
         }
@@ -302,26 +311,32 @@ namespace WindowsFormsApp2
         List<照片區> 照片區 = new List<照片區>(); // 照片暫存   建立一個類別
         private void picmore_Click(object sender, EventArgs e)
         {
+            
             新增進照片類別();
             新增照片();
         }
 
          private void 照片庫瀏覽_Click(object sender, EventArgs e)
                 {
-                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            pictureBox2.Image = null;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
                         pictureBox2.Image = Image.FromFile(openFileDialog1.FileName);
                 }
 
         void 新增進照片類別() 
         {
-            照片區 照片 = new 照片區();
+            if (pictureBox2.Image != null)
+            {
+                照片區 照片 = new 照片區();
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            pictureBox2.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            byte[] bytes = ms.GetBuffer();
+                            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                            pictureBox2.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            byte[] bytes = ms.GetBuffer();
 
-            照片.picture = bytes;  
-            照片區.Add(照片);
+                            照片.picture = bytes;  
+                            照片區.Add(照片);
+            }
+            
         }
         void 新增照片()
         {
@@ -391,13 +406,16 @@ namespace WindowsFormsApp2
             細項.Quantity = Convert.ToInt32(txtpdquty.Text);
             細項.UnitPrice = Convert.ToInt32(txtpdup.Text.Split('.')[0]);
             細項.Style = txtstyle.Text;
-
+            if (pictureBox1.Image != null)
+            {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            byte[] bytes = ms.GetBuffer();
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        byte[] bytes = ms.GetBuffer();
 
-            if (bytes != null)
-                細項.pic = bytes;
+                        if (bytes != null)
+                            細項.pic = bytes;
+            }
+            
 
             商品細項list.Add(細項);
         }
