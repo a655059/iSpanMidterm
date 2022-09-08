@@ -72,6 +72,12 @@ namespace Project_期中專案
 
         private void btn_pic_Click(object sender, EventArgs e)
         {
+            try
+            {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select file";
+            dialog.InitialDirectory = ".\\";
+            dialog.Filter = "xls files (*.*)|*.jpg";
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.pic_box.Image = Image.FromFile(this.openFileDialog1.FileName);
@@ -79,6 +85,13 @@ namespace Project_期中專案
                 this.pic_box.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 bytes = ms.GetBuffer();//將圖片轉成byt儲存起來
             }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("請選擇其他圖片(ex:jpg檔)");
+            }
+
+            
         }
 
         private void btn_cancle_Click(object sender, EventArgs e)
