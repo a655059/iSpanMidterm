@@ -50,7 +50,7 @@ namespace Project_期中專案
             {
             list.MemberAcc = txtAccount.Text;
             list.MemberPw = txtPassworld.Text;
-            list.TWorNOT = ckbox_yes.Checked;
+            list.TWorNOT = !ckbox_yes.Checked;
             list.RegionID =Convert.ToInt32(q1[0].RegionID);//countryID==>cmb_are.text
             list.Phone = txt_phon.Text;
             list.Email = txt_mail.Text;

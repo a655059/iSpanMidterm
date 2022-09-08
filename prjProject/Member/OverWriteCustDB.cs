@@ -156,7 +156,7 @@ namespace Project_期中專案
             //}
             q.MemberAcc = txtAccount.Text;
             q.MemberPw = txtPassworld.Text;
-            q.TWorNOT = ckbox_yes.Checked;
+            q.TWorNOT = !ckbox_yes.Checked;
             q.RegionID =Convert.ToInt32(q2[0].RegionID);
             q.Phone = txt_phon.Text;
             q.Email = txt_mail.Text;
